@@ -12,8 +12,10 @@ The site features a clean design with Bootstrap integration, a contact form powe
 - SEO-friendly structure and meta tags
 
 ## Project Structure
+
 ```
 tuunganes.com/
+
 ├── index.html                 # Home page
 ├── contact.html               # Contact page with form
 ├── services/                  # Folder for individual service pages
