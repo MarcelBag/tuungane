@@ -36,11 +36,22 @@ body {
 
 /* NAVIGATION */
 header.nav {
-  position:fixed; top:0; width:100%; background:rgba(29,127,191,0.85);
+  position:fixed; 
+  top:0; width:100%; 
+  background:rgba(29,127,191,0.85);
   backdrop-filter:blur(8px); z-index:100;
+  margin-left: auto;
 }
 header.nav .container {
-  display:flex; align-items:center; justify-content:space-between; padding:1rem 2vw;
+  display:flex; 
+  align-items:center; 
+  justify-content:space-between; 
+  padding:1rem 2vw;
+}
+header.nav nav {
+  margin-left: auto;
+  margin-left: auto;
+  margin-right: 2rem;
 }
 .logo { color:#fff; font-size:1.8rem; font-weight:700; text-decoration:none; }
 nav { display:flex; gap:2rem; }
