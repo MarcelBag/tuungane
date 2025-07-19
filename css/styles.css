@@ -243,3 +243,28 @@ a:hover {
   text-decoration: none; 
   color: var(--blue) !important;
 }
+
+/* Add a smooth transition for links */
+/* PILLARS – add this below your current .pillars rules */
+.pillars.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  padding: 2rem 0;
+}
+.pillar,
+.pillar.alt {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius);
+  transition: transform 0.3s ease;
+}
+.pillar:hover {
+  transform: translateY(-5px);
+}
+.pillar-overlay {
+  transition: background 0.3s ease;
+}
+.pillar:hover .pillar-overlay {
+  background: rgba(0,0,0,0.4);
+}
