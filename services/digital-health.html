@@ -3,97 +3,144 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Digital Health Tools — Masomo</title>
-  <link rel="icon" type="image/png" href="../assets/images/favicon.png">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="icon" type="image/jpeg" href="../assets/all.jpeg">
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-5995407194442748"
-     crossorigin="anonymous"></script>
-  <style>
-    .hero {
-      height: 60vh;
-      background: url('../assets/learnit.jpg') center/cover no-repeat;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #fff;
-      text-shadow: 0 0 5px #000;
-    }
-    .overlay-text {
-      background: rgba(0, 0, 0, 0.6);
-      color: #fff;
-      padding: 20px;
-      border-radius: 10px;
-    }
-  </style>
+  <title data-en="Digital Health Tools — Masomo"
+         data-fr="Outils de santé numérique — Masomo"
+         data-de="Digitale Gesundheitstools — Masomo">
+    Digital Health Tools — Masomo
+  </title>
+  <link rel="icon" href="../assets/fevicon.png" type="image/png">
+  <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <!-- NAVIGATION -->
+  <header class="nav">
     <div class="container">
-      <a class="navbar-brand" href="../index.html">Masomo</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto">
-          <li class="nav-item"><a class="nav-link" href="../index.html">Home</a></li>
-        </ul>
+      <a href="../index.html" class="logo">Masomo</a>
+      <nav>
+        <a href="../index.html"          data-en="Home"    data-fr="Accueil"      data-de="Startseite">Home</a>
+        <a href="index.html#about"      data-en="About"   data-fr="À propos"      data-de="Über uns">About</a>
+        <a href="index.html#services"   data-en="Services"data-fr="Services"     data-de="Dienstleistungen">Our services</a>
+        <a href="index.html#impact"     data-en="Impact"  data-fr="Impact"        data-de="Wirkung">Impact</a>
+        <a href="index.html#join"       data-en="Join Us" data-fr="Nous rejoindre"data-de="Mitmachen">Join Us</a>
+      </nav>
+      <div class="lang-switch">
+        <button onclick="setLang('en')">EN</button>
+        <button onclick="setLang('fr')">FR</button>
+        <button onclick="setLang('de')">DE</button>
       </div>
     </div>
-  </nav>
-
-  <header class="hero text-center">
-    <h1 class="display-4">Digital Health Tools</h1>
   </header>
 
-  <section class="py-5">
-    <div class="container">
-      <div class="row align-items-center">
-        <div class="col-md-6 mb-4 mb-md-0">
-          <div id="healthCarousel" class="carousel slide" data-bs-ride="carousel">
-            <div class="carousel-inner rounded">
-              <div class="carousel-item active">
-                <img src="../assets/kids.jpg" class="d-block w-100" alt="Health Dashboard">
-              </div>
-              <div class="carousel-item">
-                <img src="../assets/kidlearn.jpg" class="d-block w-100" alt="Mobile Health App">
-              </div>
-              <div class="carousel-item">
-                <img src="../assets/joe&kids.jpg" class="d-block w-100" alt="Analytics Dashboard">
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#healthCarousel" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon"></span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#healthCarousel" data-bs-slide="next">
-              <span class="carousel-control-next-icon"></span>
-            </button>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="overlay-text">
-            <h2>Innovating Health Access and Data</h2>
-            <p>Masomo delivers smart digital health solutions to improve health service delivery, patient data management, and public health reporting. From mobile-friendly applications for frontline workers to AI-powered dashboards for decision-makers, we offer modern tools for healthcare providers in resource-limited settings.</p>
-            <p>Our systems help track patient visits, manage electronic health records, analyze disease patterns, and support community health interventions with real-time data.</p>
-          </div>
-        </div>
-      </div>
+  <!-- HERO -->
+  <section id="hero" class="hero reveal" style="background-image:url('../assets/learnit.jpg')">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 data-en="Digital Health Tools"
+          data-fr="Outils de santé numérique"
+          data-de="Digitale Gesundheitstools">
+        Digital Health Tools
+      </h1>
+      <p data-en="Smart solutions for patient data, dashboards, and mobile care."
+         data-fr="Solutions intelligentes pour les données patients, tableaux de bord et soins mobiles."
+         data-de="Intelligente Lösungen für Patientendaten, Dashboards und mobile Pflege.">
+        Smart solutions for patient data, dashboards, and mobile care.
+      </p>
     </div>
   </section>
-<!-- begin code v 7.0 -->
-<span id="wts2198758"></span>
-<script>var wts=document.createElement('script');wts.async=true;
-wts.src='https://app.ardalio.com/wts7.js';document.head.appendChild(wts);
-wts.onload = function(){ wtsl7(2198758,1); };
-</script><noscript><img src="https://app.ardalio.com/7/1/2198758.png"></noscript>
-<!-- end code v 7.0 -->
-  <footer class="bg-primary text-white text-center py-3 mt-5">
-    &copy; 2025 Masomo. All rights reserved.
+
+  <!-- TOOLS GRID -->
+  <section id="services" class="pillars">
+    <article class="pillar reveal" style="background-image:url('../assets/kids.jpg')">
+      <div class="pillar-overlay"></div>
+      <div class="pillar-content">
+        <h3 data-en="Health Dashboard"
+            data-fr="Tableau de bord santé"
+            data-de="Gesundheits-Dashboard">
+          Health Dashboard
+        </h3>
+        <ul>
+          <li data-en="Visualize key metrics at a glance"
+              data-fr="Visualiser les indicateurs clés en un coup d’œil"
+              data-de="Wichtige Kennzahlen auf einen Blick anzeigen">
+            Visualize key metrics at a glance
+          </li>
+          <li data-en="Track patient visits & outcomes"
+              data-fr="Suivre les visites et résultats patients"
+              data-de="Patientenbesuche & Ergebnisse nachverfolgen">
+            Track patient visits & outcomes
+          </li>
+          <li data-en="Generate reports for stakeholders"
+              data-fr="Générer des rapports pour les parties prenantes"
+              data-de="Berichte für Stakeholder erstellen">
+            Generate reports for stakeholders
+          </li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="pillar alt reveal" style="background-image:url('../assets/kidlearn.jpg')">
+      <div class="pillar-overlay"></div>
+      <div class="pillar-content">
+        <h3 data-en="Mobile Health App"
+            data-fr="Application santé mobile"
+            data-de="Mobile Gesundheits-App">
+          Mobile Health App
+        </h3>
+        <ul>
+          <li data-en="Offline-first design for remote areas"
+              data-fr="Conception hors-ligne pour zones isolées"
+              data-de="Offline-Erst-Design für abgelegene Gebiete">
+            Offline-first design for remote areas
+          </li>
+          <li data-en="SMS & WhatsApp educational tips"
+              data-fr="Conseils éducatifs par SMS & WhatsApp"
+              data-de="SMS- & WhatsApp-Gesundheitstipps">
+            SMS & WhatsApp educational tips
+          </li>
+          <li data-en="Appointment reminders & alerts"
+              data-fr="Rappels de rendez-vous et alertes"
+              data-de="Erinnerungen & Alerten für Termine">
+            Appointment reminders & alerts
+          </li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="pillar reveal" style="background-image:url('../assets/joe&kids.jpg')">
+      <div class="pillar-overlay"></div>
+      <div class="pillar-content">
+        <h3 data-en="Analytics & Reporting"
+            data-fr="Analytique & reporting"
+            data-de="Analyse & Berichterstellung">
+          Analytics & Reporting
+        </h3>
+        <ul>
+          <li data-en="AI-powered disease pattern detection"
+              data-fr="Détection de maladies par IA"
+              data-de="KI-gestützte Mustererkennung">
+            AI-powered disease pattern detection
+          </li>
+          <li data-en="Custom dashboards for decision-makers"
+              data-fr="Tableaux personnalisés pour décideurs"
+              data-de="Maßgeschneiderte Dashboards für Entscheider">
+            Custom dashboards for decision-makers
+          </li>
+          <li data-en="Exportable data for partners"
+              data-fr="Données exportables pour partenaires"
+              data-de="Exportierbare Daten für Partner">
+            Exportable data for partners
+          </li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    © 2025 Masomo. All rights reserved.
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../route/lang.js"></script>
+  <script src="../route/animations.js"></script>
 </body>
 </html>
