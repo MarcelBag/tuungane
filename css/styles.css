@@ -221,3 +221,16 @@ nav a:hover::after { width:60%; }
     font-size:1.1rem; 
   }
 }
+
+/* Initial state: hidden & translated down */
+.numbers div {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+}
+
+/* When scrolled into view, flip to visible */
+.numbers div.in-view {
+  opacity: 1;
+  transform: translateY(0);
+}
