@@ -2,33 +2,72 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>About Tuunganes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-en="About Tuunganes"
+         data-fr="À propos de Tuunganes"
+         data-de="Über Tuunganes">
+    About Tuunganes
+  </title>
+  <link rel="icon" href="assets/fevicon.png" type="image/png">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    
-  <header>
+  <!-- NAVIGATION -->
+  <header class="nav reveal">
     <div class="container">
-      <h1>Tuunganes</h1>
+      <a href="index.html" class="logo">Tuunganes</a>
       <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="contact.html">Contact</a>
+        <a href="index.html"    data-en="Home"    data-fr="Accueil"      data-de="Startseite">Home</a>
+        <a href="about.html"    class="active" data-en="About"   data-fr="À propos"     data-de="Über uns">About</a>
+        <a href="services.html" data-en="Services"data-fr="Services"     data-de="Dienstleistungen">Services</a>
+        <a href="contact.html"  data-en="Contact" data-fr="Contact"      data-de="Kontakt">Contact</a>
       </nav>
+      <div class="lang-switch">
+        <button onclick="setLang('en')">EN</button>
+        <button onclick="setLang('fr')">FR</button>
+        <button onclick="setLang('de')">DE</button>
+      </div>
     </div>
   </header>
 
-  <section class="page-section">
-    <div class="container">
-      <h2>About Us</h2>
-      <p>Tuunganes is a dynamic organization committed to advancing digital solutions for schools, communities, and health services in Africa. We specialize in developing school management systems, public health tech platforms, IT support, and digital transformation services tailored for local communities.</p>
-      <p>Born from the need to bridge digital gaps in education and healthcare, Tuunganes envisions a connected, empowered, and tech-literate future for all.</p>
+  <!-- ABOUT SECTION -->
+  <section id="about" class="page-section split reveal">
+    <div class="split-image" style="background-image:url('assets/hero-about.jpg')"></div>
+    <div class="split-text">
+      <div class="container">
+        <h2 data-en="About Us" data-fr="À propos de nous" data-de="Über uns">About Us</h2>
+        <p data-en="Tuunganes is a dynamic organization committed to advancing digital solutions for schools, communities, and health services in Africa. We specialize in developing school management systems, public health tech platforms, IT support, and digital transformation services tailored for local communities."
+           data-fr="Tuunganes est une organisation dynamique dédiée aux solutions numériques pour les écoles, les collectivités et les services de santé en Afrique. Nous développons des systèmes de gestion scolaire, des plateformes de santé numérique, du support IT et des services de transformation numérique pour les communautés locales."
+           data-de="Tuunganes ist eine dynamische Organisation, die digitale Lösungen für Schulen, Gemeinden und Gesundheitsdienste in Afrika vorantreibt. Wir entwickeln Schulverwaltungssysteme, öffentliche Gesundheitstechnologieplattformen, IT-Support und digitale Transformationsdienste für lokale Gemeinschaften.">
+          Tuunganes is a dynamic organization committed to advancing digital solutions for schools, communities, and health services in Africa. We specialize in developing school management systems, public health tech platforms, IT support, and digital transformation services tailored for local communities.
+        </p>
+        <p data-en="Born from the need to bridge digital gaps in education and healthcare, Tuunganes envisions a connected, empowered, and tech-literate future for all."
+           data-fr="Née de la nécessité de combler les lacunes numériques dans l’éducation et la santé, Tuunganes imagine un avenir connecté, autonomisé et alphabétisé numériquement pour tous."
+           data-de="Entstanden aus dem Bedürfnis, digitale Lücken in Bildung und Gesundheitswesen zu schließen, sieht Tuunganes eine vernetzte, befähigte und technik-kompetente Zukunft für alle.">
+          Born from the need to bridge digital gaps in education and healthcare, Tuunganes envisions a connected, empowered, and tech-literate future for all.
+        </p>
+        <p data-en="Uniting communities. Driving digital transformation. Empowering lives."
+           data-fr="Unir les communautés. Accélérer la transformation numérique. Autonomiser les vies."
+           data-de="Gemeinschaften vereinen. Digitale Transformation vorantreiben. Leben stärken.">
+          Uniting communities. Driving digital transformation. Empowering lives.
+        </p>
+        <p data-en="Tuunganes is a grassroots-driven initiative born in Bukavu, Eastern Democratic Republic of Congo. Our mission is to create meaningful, community-led change through the power of technology, innovation, education, and compassion. We are more than a nonprofit—we are a movement built by and for the people, especially those affected by war, poverty, and marginalization in regions like Bukavu and Goma."
+           data-fr="Tuunganes est une initiative communautaire née à Bukavu, dans l’est de la RDC. Notre mission est de créer un changement significatif mené par la communauté grâce à la technologie, l’innovation, l’éducation et la compassion. Nous sommes plus qu’une association—nous sommes un mouvement construit par et pour les gens, en particulier ceux touchés par la guerre, la pauvreté et la marginalisation à Bukavu et Goma."
+           data-de="Tuunganes ist eine von der Basis getragene Initiative aus Bukavu in der östlichen Demokratischen Republik Kongo. Unsere Mission ist es, sinnvollen, gemeinschaftsgeführten Wandel durch Technologie, Innovation, Bildung und Mitgefühl zu schaffen. Wir sind mehr als eine gemeinnützige Organisation—wir sind eine Bewegung von und für die Menschen, insbesondere jene, die von Krieg, Armut und Marginalisierung in Regionen wie Bukavu und Goma betroffen sind.">
+          Tuunganes is a grassroots-driven initiative born in Bukavu, Eastern Democratic Republic of Congo. Our mission is to create meaningful, community-led change through the power of technology, innovation, education, and compassion. We are more than a nonprofit—we are a movement built by and for the people, especially those affected by war, poverty, and marginalization in regions like Bukavu and Goma.
+        </p>
+      </div>
     </div>
   </section>
 
-  <footer>
-    <p>&copy; 2025 Tuunganes. All Rights Reserved.</p>
+  <!-- FOOTER -->
+  <footer class="footer reveal">
+    <div class="container">
+      <p>&copy; 2025 Tuunganes. All Rights Reserved.</p>
+    </div>
   </footer>
+
+  <script src="route/lang.js"></script>
+  <script src="route/animations.js"></script>
 </body>
 </html>

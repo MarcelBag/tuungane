@@ -2,37 +2,93 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Our Services Tuunganes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title data-en="Our Services — Tuunganes"
+         data-fr="Nos services — Tuunganes"
+         data-de="Unsere Leistungen — Tuunganes">
+    Our Services — Tuunganes
+  </title>
+  <link rel="icon" href="assets/fevicon.png" type="image/png">
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-    
-  <header>
+  <!-- NAVIGATION -->
+  <header class="nav reveal">
     <div class="container">
-      <h1>Tuunganes</h1>
+      <a href="index.html" class="logo">Tuunganes</a>
       <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="contact.html">Contact</a>
+        <a href="index.html" data-en="Home" data-fr="Accueil" data-de="Startseite">Home</a>
+        <a href="about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+        <a href="services.html" class="active" data-en="Services" data-fr="Services" data-de="Dienstleistungen">Services</a>
+        <a href="contact.html" data-en="Contact" data-fr="Contact" data-de="Kontakt">Contact</a>
       </nav>
+      <div class="lang-switch">
+        <button onclick="setLang('en')">EN</button>
+        <button onclick="setLang('fr')">FR</button>
+        <button onclick="setLang('de')">DE</button>
+      </div>
     </div>
   </header>
 
-  <section class="page-section">
-    <div class="container">
-      <h2>Our Services</h2>
-      <ul>
-        <li><strong>School Management System:</strong> Streamlined digital platforms for student records, attendance, exams, and finance management.</li>
-        <li><strong>IT Support:</strong> Reliable hardware and software support for schools and small businesses.</li>
-        <li><strong>Public Health Tech:</strong> Digital tools for data collection, health surveys, and reporting systems.</li>
-        <li><strong>Digital Transformation:</strong> Tailored strategies and systems to modernize workflows and services for local institutions.</li>
-      </ul>
+  <!-- HERO -->
+  <section id="services-hero" class="hero reveal" style="background-image:url('assets/services-hero.jpg')">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 data-en="Our Services" data-fr="Nos services" data-de="Unsere Leistungen">Our Services</h1>
+      <p data-en="Discover how we empower communities through technology." data-fr="Découvrez comment nous renforçons les communautés grâce à la technologie." data-de="Erfahren Sie, wie wir Gemeinschaften durch Technologie stärken.">
+        Discover how we empower communities through technology.
+      </p>
     </div>
   </section>
 
-  <footer>
-    <p>&copy; 2025 Tuunganes. All Rights Reserved.</p>
+  <!-- SERVICES GRID -->
+  <section id="services" class="pillars grid reveal">
+    <article class="pillar" style="background-image:url('assets/school.jpg')">
+      <div class="pillar-overlay"></div>
+      <div class="pillar-content">
+        <h3 data-en="School Management System" data-fr="Système de gestion scolaire" data-de="Schulverwaltungssystem">School Management System</h3>
+        <p data-en="All-in-one platform for student records, attendance & reporting." data-fr="Plateforme tout-en-un pour dossiers élèves, présences & rapports." data-de="All-in-One-Plattform für Schülerakten, Anwesenheit & Berichte.">
+          All-in-one platform for student records, attendance & reporting.
+        </p>
+      </div>
+    </article>
+    <article class="pillar alt" style="background-image:url('assets/it-support.jpg')">
+      <div class="pillar-overlay"></div>
+      <div class="pillar-content">
+        <h3 data-en="IT Support" data-fr="Support informatique" data-de="IT-Support">IT Support</h3>
+        <p data-en="Reliable troubleshooting, maintenance & user training." data-fr="Dépannage, maintenance & formation utilisateur fiables." data-de="Zuverlässige Fehlerbehebung, Wartung & Benutzerschulung.">
+          Reliable troubleshooting, maintenance & user training.
+        </p>
+      </div>
+    </article>
+    <article class="pillar" style="background-image:url('assets/health-tech.jpg')">
+      <div class="pillar-overlay"></div>
+      <div class="pillar-content">
+        <h3 data-en="Public Health Tech" data-fr="Technologie santé publique" data-de="Gesundheitstechnologie">Public Health Tech</h3>
+        <p data-en="Digital tools for data collection & health reporting." data-fr="Outils numériques pour collecte de données & rapports santé." data-de="Digitale Tools für Datenerfassung & Gesundheitsberichte.">
+          Digital tools for data collection & health reporting.
+        </p>
+      </div>
+    </article>
+    <article class="pillar alt" style="background-image:url('assets/digital-transformation.jpg')">
+      <div class="pillar-overlay"></div>
+      <div class="pillar-content">
+        <h3 data-en="Digital Transformation" data-fr="Transformation numérique" data-de="Digitale Transformation">Digital Transformation</h3>
+        <p data-en="Strategy, implementation & custom solutions for modern workflows." data-fr="Stratégie, mise en œuvre & solutions sur mesure pour flux modernes." data-de="Strategie, Implementierung & maßgeschneiderte Lösungen für moderne Arbeitsabläufe.">
+          Strategy, implementation & custom solutions for modern workflows.
+        </p>
+      </div>
+    </article>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer reveal">
+    <div class="container">
+      <p>&copy; 2025 Tuunganes. All Rights Reserved.</p>
+    </div>
   </footer>
+
+  <script src="route/lang.js"></script>
+  <script src="route/animations.js"></script>
 </body>
 </html>
