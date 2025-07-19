@@ -234,3 +234,12 @@ nav a:hover::after { width:60%; }
   opacity: 1;
   transform: translateY(0);
 }
+
+a {
+  text-decoration: none;
+  color: lightblue;
+}
+a:hover {
+  text-decoration: none; 
+  color: var(--blue) !important;
+}
