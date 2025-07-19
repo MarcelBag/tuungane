@@ -2,137 +2,204 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Masomo — School Management System</title>
-  <link rel="icon" type="image/png" href="assets/images/favicon.png">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/styles.css">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title data-en="Tuunganes — Uniting Communities"
+         data-fr="Tuunganes — Unir les communautés"
+         data-de="Tuunganes — Gemeinschaft vereinen">
+    Tuunganes — Uniting Communities
+  </title>
+  <link rel="icon" href="assets/fevicon.png" type="image/png">
+  <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <!-- Navbar -->
-  <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm sticky-top">
+  <!-- NAVIGATION -->
+  <header class="nav">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="index.html">Masomo</a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNav">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <li class="nav-item"><a class="nav-link" href="#about" data-en="About" data-fr="À propos">About</a></li>
-          <li class="nav-item"><a class="nav-link" href="#services" data-en="Services" data-fr="Services">Services</a></li>
-          <li class="nav-item"><a class="nav-link" href="#contact" data-en="Contact" data-fr="Contact">Contact</a></li>
-          <li class="nav-item d-flex align-items-center">
-            <button class="btn btn-outline-light btn-sm ms-2" onclick="setLang('en')">EN</button>
-            <button class="btn btn-outline-light btn-sm ms-1" onclick="setLang('fr')">FR</button>
-          </li>
-        </ul>
+      <a href="index.html" class="logo">Tuunganes</a>
+      <nav>
+        <a href="#about" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+        <a href="#pillars" data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
+        <a href="#join" data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</a>
+      </nav>
+      <div class="lang-switch">
+        <button onclick="setLang('en')">EN</button>
+        <button onclick="setLang('fr')">FR</button>
+        <button onclick="setLang('de')">DE</button>
       </div>
-    </div>
-  </nav>
-
-  <!-- Hero Section -->
-  <header class="hero d-flex align-items-center justify-content-center text-center"
-    style="background: linear-gradient(rgba(41,128,185,0.6), rgba(41,128,185,0.6)), url('assets/sup.jpg') center/cover no-repeat; height: 80vh;">
-    <div class="w-100">
-      <h1 class="display-3 fw-bold text-white mb-3" data-en="Masomo" data-fr="Masomo"></h1>
-      <p class="lead text-white mb-4" data-en="Empowering schools with seamless digital management" data-fr="Donner du pouvoir aux écoles grâce à une gestion numérique transparente"></p>
-      <a href="#about" class="btn btn-lg btn-light shadow-sm px-5" data-en="Discover More" data-fr="Découvrir plus">Discover More</a>
     </div>
   </header>
 
-  <!-- About Section -->
-  <section id="about" class="py-5 bg-white">
-    <div class="container text-center">
-      <h2 class="mb-4" data-en="About Masomo" data-fr="À propos de Masomo"></h2>
-      <p class="mb-4" data-en="Masomo is a modern, interactive school management system. It provides student, staff, and fee management with a clean, responsive dashboard. Academic records, admissions, finance, and reporting—empowering schools with seamless digital tools." data-fr="Masomo est un système moderne et interactif de gestion scolaire. Il offre la gestion des élèves, du personnel et des frais avec un tableau de bord réactif. Dossiers académiques, admissions, finances, rapports : tout pour une gestion numérique simplifiée."></p>
-      <h4 class="mb-0 text-primary" data-en="We partner with agencies to make technology work for everyone" data-fr="Nous collaborons avec des agences pour rendre la technologie accessible à tous"></h4>
+  <!-- HERO -->
+  <section id="hero" class="hero reveal">
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <h1 data-en="Welcome to Tuunganes"
+          data-fr="Bienvenue à Tuunganes"
+          data-de="Willkommen bei Tuunganes">
+        Welcome to Tuunganes
+      </h1>
+      <p data-en="Uniting communities. Driving digital transformation. Empowering lives."
+         data-fr="Unir les communautés. Accélérer la transformation numérique. Autonomiser les vies."
+         data-de="Gemeinschaften vereinen. Digitale Transformation vorantreiben. Leben stärken.">
+        Uniting communities. Driving digital transformation. Empowering lives.
+      </p>
     </div>
   </section>
 
-  <!-- Services Section -->
-  <section id="services" class="py-5 bg-light">
+  <!-- ABOUT -->
+  <section id="about" class="about split reveal">
+    <div class="split-image"></div>
+    <div class="split-text">
+      <h2 data-en="About Tuunganes"
+          data-fr="À propos de Tuunganes"
+          data-de="Über Tuunganes">
+        About Tuunganes
+      </h2>
+      <p data-en="Tuunganes is a grassroots-driven initiative born in Bukavu, Eastern DRC. Our mission is to create community-led change through technology, innovation, education, and compassion—especially for those affected by war, poverty, and marginalization in Bukavu and Goma."
+         data-fr="Tuunganes est une initiative communautaire née à Bukavu, dans l’est de la RDC. Notre mission est de créer un changement communautaire grâce à la technologie, l’innovation, l’éducation et la compassion—surtout pour ceux touchés par la guerre, la pauvreté et la marginalisation à Bukavu et Goma."
+         data-de="Tuunganes ist eine von der Basis getragene Initiative aus Bukavu in Ostkongo. Unsere Mission ist es, gemeinschaftsgeführten Wandel durch Technologie, Innovation, Bildung und Mitgefühl zu schaffen—insbesondere für diejenigen, die von Krieg, Armut und Marginalisierung in Bukavu und Goma betroffen sind.">
+        Tuunganes is a grassroots-driven initiative born in Bukavu, Eastern DRC. Our mission is to create community-led change through technology, innovation, education, and compassion—especially for those affected by war, poverty, and marginalization in Bukavu and Goma.
+      </p>
+    </div>
+  </section>
+
+  <!-- PILLARS -->
+  <section id="pillars" class="pillars">
+    <article class="pillar reveal" style="background-image:url('assets/log.webp')">
+      <div class="pillar-overlay"></div>
+      <div class="pillar-content">
+        <h3 data-en="IT Consultancy & Digital Solutions"
+            data-fr="Conseil & solutions numériques"
+            data-de="IT-Beratung & Digitale Lösungen">
+          IT Consultancy & Digital Solutions
+        </h3>
+        <ul>
+          <li data-en="Digital Transformation Strategies: Helping businesses modernize..."
+              data-fr="Stratégies de transformation numérique : moderniser les entreprises..."
+              data-de="Digitale Transformationsstrategien: Unternehmen modernisieren...">
+            Digital Transformation Strategies: Helping businesses modernize...
+          </li>
+          <li data-en="Internet & Infrastructure Consulting: Advising on connectivity..."
+              data-fr="Conseil Internet & infrastructure : améliorer la connectivité..."
+              data-de="Internet- & Infrastrukturberatung: Konnektivität verbessern...">
+            Internet & Infrastructure Consulting: Advising on connectivity...
+          </li>
+          <li data-en="Training & Capacity Building: Empowering local teams..."
+              data-fr="Formation & renforcement des capacités : autonomiser les équipes locales..."
+              data-de="Schulungen & Kapazitätsaufbau: Stärkung lokaler Teams...">
+            Training & Capacity Building: Empowering local teams...
+          </li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="pillar alt reveal" style="background-image:url('assets/learnit.jpg')">
+      <div class="pillar-overlay"></div>
+      <div class="pillar-content">
+        <h3 data-en="Afya — Digital Health for All"
+            data-fr="Afya — Santé numérique pour tous"
+            data-de="Afya — Digitale Gesundheit für alle">
+          Afya — Digital Health for All
+        </h3>
+        <ul>
+          <li data-en="Mobile health education: SMS and WhatsApp tips"
+              data-fr="Éducation mobile santé : conseils par SMS et WhatsApp"
+              data-de="Mobile Gesundheitsbildung: SMS- und WhatsApp-Tipps">
+            Mobile health education: SMS and WhatsApp tips
+          </li>
+          <li data-en="Digital clinics: Teleconsultation for rural patients"
+              data-fr="Cliniques numériques : téléconsultations pour les ruraux"
+              data-de="Digitale Kliniken: Telekonsultation für ländliche Patienten">
+            Digital clinics: Teleconsultation for rural patients
+          </li>
+          <li data-en="Maternal & child support: Community programs & reminders"
+              data-fr="Soutien maternel & infantile : programmes communautaires et rappels"
+              data-de="Mütter- & Kindersupport: Gemeinschaftsprogramme & Erinnerungen">
+            Maternal & child support: Community programs & reminders
+          </li>
+        </ul>
+      </div>
+    </article>
+
+    <article class="pillar reveal" style="background-image:url('assets/agri1.jpg')">
+      <div class="pillar-overlay"></div>
+      <div class="pillar-content">
+        <h3 data-en="Sustainable Agriculture & Farmer Support"
+            data-fr="Agriculture durable & soutien aux agriculteurs"
+            data-de="Nachhaltige Landwirtschaft & Bauernförderung">
+          Sustainable Agriculture & Farmer Support
+        </h3>
+        <ul>
+          <li data-en="Training farmers in modern techniques"
+              data-fr="Former les agriculteurs aux techniques modernes"
+              data-de="Landwirte in modernen Techniken schulen">
+            Training farmers in modern techniques
+          </li>
+          <li data-en="Connecting farmers with buyers digitally"
+              data-fr="Connecter les agriculteurs aux acheteurs en ligne"
+              data-de="Landwirte digital mit Käufern verbinden">
+            Connecting farmers with buyers digitally
+          </li>
+          <li data-en="Promoting climate-resilient farming"
+              data-fr="Promouvoir l’agriculture résiliente au climat"
+              data-de="Förderung klimaresistenter Landwirtschaft">
+            Promoting climate-resilient farming
+          </li>
+        </ul>
+      </div>
+    </article>
+  </section>
+
+  <!-- IMPACT -->
+  <section class="impact reveal">
     <div class="container">
-      <h2 class="mb-5 text-center" data-en="Our Services" data-fr="Nos services"></h2>
-      <div class="row g-4">
-        <div class="col-md-4">
-          <div class="card h-100 shadow border-0 text-center">
-            <div class="card-body">
-              <div class="mb-3">
-                <img src="assets/images/school.svg" alt="" width="48" />
-              </div>
-              <h5 class="card-title mb-2" data-en="School Management Systems" data-fr="Systèmes de gestion scolaire"></h5>
-              <p class="card-text" data-en="Design, develop, and deploy modern school management platforms like Masomo." data-fr="Concevoir, développer et déployer des plateformes modernes de gestion scolaire comme Masomo."></p>
-            </div>
-            <div class="card-footer bg-transparent border-0">
-              <a href="#" class="btn btn-outline-primary" data-en="Learn More" data-fr="En savoir plus">Learn More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card h-100 shadow border-0 text-center">
-            <div class="card-body">
-              <div class="mb-3">
-                <img src="assets/images/health.svg" alt="" width="48" />
-              </div>
-              <h5 class="card-title mb-2" data-en="Digital Health Tools" data-fr="Outils de santé numérique"></h5>
-              <p class="card-text" data-en="Build public health apps for data analytics and decision support." data-fr="Développement d'applications de santé publique pour l'analyse de données et l'aide à la décision."></p>
-            </div>
-            <div class="card-footer bg-transparent border-0">
-              <a href="#" class="btn btn-outline-primary" data-en="Learn More" data-fr="En savoir plus">Learn More</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-4">
-          <div class="card h-100 shadow border-0 text-center">
-            <div class="card-body">
-              <div class="mb-3">
-                <img src="assets/images/it.svg" alt="" width="48" />
-              </div>
-              <h5 class="card-title mb-2" data-en="IT Consultancy & Support" data-fr="Conseil et support IT"></h5>
-              <p class="card-text" data-en="IT infrastructure setup, digital transformation consultancy, technical support." data-fr="Installation d'infrastructures IT, conseil en transformation numérique et support technique."></p>
-            </div>
-            <div class="card-footer bg-transparent border-0">
-              <a href="#" class="btn btn-outline-primary" data-en="Learn More" data-fr="En savoir plus">Learn More</a>
-            </div>
-          </div>
-        </div>
+      <h2 data-en="Our Impact One Life at a Time"
+          data-fr="Notre impact Une vie à la fois"
+          data-de="Unsere Wirkung  Leben für Leben">
+        Our Impact One Life at a Time
+      </h2>
+      <div class="numbers">
+        <div><strong>11+</strong><span data-en="Students" data-fr="Étudiants" data-de="Schüler">Students</span></div>
+        <div><strong>5</strong><span data-en="Farmers" data-fr="Agriculteurs" data-de="Landwirte">Farmers</span></div>
+        <div><strong>15</strong><span data-en="Youth connected" data-fr="Jeunes reliés" data-de="Jugend vernetzt">Youth connected</span></div>
+        <div><strong>4</strong><span data-en="Women & children" data-fr="Femmes & enfants" data-de="Frauen & Kinder">Women & children</span></div>
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="py-5">
-    <div class="container">
-      <h2 class="mb-4 text-center" data-en="Get In Touch" data-fr="Contactez-nous"></h2>
-      <div class="row justify-content-center">
-        <div class="col-md-7 col-lg-6">
-          <form action="https://formsubmit.co/5aae2ad84c9dda4efdb1b57165b95cc7" method="POST" class="bg-white shadow rounded p-4">
-            <div class="mb-3">
-              <label for="name" class="form-label" data-en="Name" data-fr="Nom">Name</label>
-              <input type="text" class="form-control" id="name" name="name" required placeholder="John Doe">
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label" data-en="Email" data-fr="E-mail">Email</label>
-              <input type="email" class="form-control" id="email" name="email" required placeholder="example@email.com">
-            </div>
-            <div class="mb-3">
-              <label for="message" class="form-label" data-en="Message" data-fr="Message">Message</label>
-              <textarea class="form-control" id="message" name="message" rows="4" required placeholder="Type your message here"></textarea>
-            </div>
-            <div class="d-grid">
-              <button type="submit" class="btn btn-primary" data-en="Send Message" data-fr="Envoyer">Send Message</button>
-            </div>
-          </form>
-        </div>
-      </div>
+  <!-- JOIN -->
+  <section id="join" class="join reveal">
+    <div class="join-content">
+      <h2 data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</h2>
+      <p data-en="Whether you’re a business looking for IT consulting, a donor interested in grassroots innovation, or a passionate individual ready to make change—there’s a place for you in Tuunganes."
+         data-fr="Que vous soyez une entreprise, un donateur ou un bénévole prêt à agir—vous avez votre place chez Tuunganes."
+         data-de="Ob Unternehmen, Spender oder engagierte Person—bei Tuunganes findet jeder seinen Platz.">
+        Whether you’re a business looking for IT consulting, a donor interested in grassroots innovation, or a passionate individual ready to make change—there’s a place for you in Tuunganes.
+      </p>
+      <form class="contact-form" action="https://formsubmit.co/youremail@tuunganes.com" method="POST">
+        <input type="text" name="name" required
+               data-en="Your Name" data-fr="Votre nom" data-de="Ihr Name"
+               placeholder="Your Name">
+        <input type="email" name="email" required
+               data-en="Your Email" data-fr="Votre e-mail" data-de="Ihre E-Mail"
+               placeholder="Your Email">
+        <textarea name="message" rows="4" required
+                  data-en="Your Message" data-fr="Votre message" data-de="Ihre Nachricht"
+                  placeholder="Your Message"></textarea>
+        <button type="submit"
+                data-en="Get in Touch" data-fr="Nous contacter" data-de="Kontakt aufnehmen">
+          Get in Touch
+        </button>
+      </form>
     </div>
   </section>
 
-  <footer class="bg-primary text-white text-center py-3 mt-auto">
-    &copy; 2025 Tuunganes. All rights reserved.
+  <!-- FOOTER -->
+  <footer class="footer">
+    © 2025 Tuunganes. All rights reserved.
   </footer>
 
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="route/lang.js"></script>
+  <script src="route/animations.js"></script>
 </body>
 </html>
