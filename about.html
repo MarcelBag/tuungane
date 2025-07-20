@@ -12,21 +12,28 @@
   <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
-  <!-- NAVIGATION -->
-  <header class="nav reveal">
+  <header class="nav">
     <div class="container">
       <a href="index.html" class="logo">Tuunganes</a>
-      <nav>
-        <a href="index.html"    data-en="Home"    data-fr="Accueil"      data-de="Startseite">Home</a>
-        <a href="about.html"    class="active" data-en="About"   data-fr="À propos"     data-de="Über uns">About</a>
-        <a href="services.html" data-en="Services"data-fr="Services"     data-de="Dienstleistungen">Services</a>
-        <a href="contact.html"  data-en="Contact" data-fr="Contact"      data-de="Kontakt">Contact</a>
+  
+      <!-- Links always visible -->
+      <nav class="main-nav">
+        <a href="about.html"
+           data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+        <a href="services.html"
+           data-en="Services" data-fr="Services" data-de="Dienst">Our services</a>
+        <a href="#impact"
+           data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
+        <a href="#join"
+           data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</a>
+  
+        <!-- language buttons stay last -->
+        <div class="lang-switch">
+          <button onclick="setLang('en')">EN</button>
+          <button onclick="setLang('fr')">FR</button>
+          <button onclick="setLang('de')">DE</button>
+        </div>
       </nav>
-      <div class="lang-switch">
-        <button onclick="setLang('en')">EN</button>
-        <button onclick="setLang('fr')">FR</button>
-        <button onclick="setLang('de')">DE</button>
-      </div>
     </div>
   </header>
 

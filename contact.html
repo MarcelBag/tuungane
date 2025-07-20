@@ -7,14 +7,27 @@
 </head>
 <body>
     
-  <header>
+  <header class="nav">
     <div class="container">
-      <h1>Tuunganes</h1>
-      <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="contact.html">Contact</a>
+      <a href="index.html" class="logo">Tuunganes</a>
+  
+      <!-- Links always visible -->
+      <nav class="main-nav">
+        <a href="about.html"
+           data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+        <a href="services.html"
+           data-en="Services" data-fr="Services" data-de="Dienst">Our services</a>
+        <a href="#impact"
+           data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
+        <a href="#join"
+           data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</a>
+  
+        <!-- language buttons stay last -->
+        <div class="lang-switch">
+          <button onclick="setLang('en')">EN</button>
+          <button onclick="setLang('fr')">FR</button>
+          <button onclick="setLang('de')">DE</button>
+        </div>
       </nav>
     </div>
   </header>
