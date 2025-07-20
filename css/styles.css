@@ -48,6 +48,7 @@ header.nav .container {
   align-items:center; 
   justify-content:space-between; 
   padding:1rem 2vw;
+  flex-wrap: wrap; 
 }
 header.nav nav {
   margin-left: auto;
@@ -58,9 +59,12 @@ header.nav nav {
   font-size:1.8rem; 
   font-weight:700; 
   text-decoration:none; }
-nav { 
-  display:flex; 
-  gap:2rem; }
+  .main-nav {             
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+    flex-wrap: wrap;        
+  }
 nav a {
   color:#fff; 
   font-weight:500; 
@@ -97,67 +101,26 @@ nav a:hover::after { width:60%; }
   background:var(--dark); color:#fff;
 }
 
+/* MOBILE */
 
-
-/* Hamburger button */
-.menu-toggle {
-  display: none;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 24px; height: 24px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 110;
-}
-.menu-toggle span {
-  width: 100%; height: 3px;
-  background: #fff;
-  border-radius: 2px;
-}
-
-/* Responsive nav-links collapse */
 @media (max-width: 768px) {
-  /* Show hamburger */
-  .menu-toggle { display: flex; }
-
-  /* Hide links by default */
-  .nav-links {
-    position: fixed;
-    top: var(--nav-height);
-    right: 0;
-    width: 70%;
-    max-width: 280px;
-    height: calc(100% - var(--nav-height));
-    background: rgba(29,127,191,0.95);
-    backdrop-filter: blur(8px);
-    display: none;
-    flex-direction: column;
-    align-items: flex-start;
-    padding: 1.5rem;
-    gap: 1.2rem;
-    overflow-y: auto;
-    z-index: 105;
+  .main-nav {
+    gap: 1rem;
+    font-size: 0.95rem;
   }
-
-  /* When open, show links */
-  header.nav.open .nav-links {
-    display: flex !important;
-    background: rgba(0,0,0,0.8) !important;
-  }
+  .main-nav a { padding: 0.4rem 0; }
+  .lang-switch { margin-top: 0.4rem; }
 }
 
-
-/* SCROLL-REVEAL UTILITY */
-.reveal { opacity:0; 
-  transform:translateY(20px); 
-  transition:opacity 0.6s var(--ease), 
-  transform 0.6s var(--ease);
- }
-.in-view { 
-  opacity:1; 
-  transform:translateY(0); 
+/* ─── SCROLL-REVEAL UTILITY  ────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+.in-view {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 /* HERO */
@@ -326,8 +289,6 @@ a:hover {
   color: var(--blue) !important;
 }
 
-/* Add a smooth transition for links */
-/* PILLARS – add this below your current .pillars rules */
 .pillars.grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -349,4 +310,41 @@ a:hover {
 }
 .pillar:hover .pillar-overlay {
   background: rgba(0,0,0,0.4);
+}
+
+
+/* ─── MOBILE-FRIENDLY HEADER (≤ 768 px) ─────────────── */
+@media (max-width: 768px) {
+
+  /* Let the header grow instead of staying 75 px tall */
+  header.nav {
+    height: auto;
+    line-height: initial;
+  }
+
+  /* Stack logo on its own line, then nav under it */
+  header.nav .container {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.6rem;
+    padding: 0.75rem 2vw;
+  }
+
+  /* Links wrap neatly, smaller gap and font */
+  .main-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.95rem;
+  }
+
+  /* Language buttons immediately below links, small pills */
+  .lang-switch {
+    margin-top: 0.4rem;
+  }
+  .lang-switch button {
+    padding: 0.25rem 0.6rem;
+    font-size: 0.8rem;
+    border-width: 1px;
+  }
 }
