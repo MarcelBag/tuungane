@@ -1,80 +1,210 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title data-en="About Tuunganes"
-         data-fr="À propos de Tuunganes"
-         data-de="Über Tuunganes">
-    About Tuunganes
-  </title>
-  <link rel="icon" href="assets/fevicon.png" type="image/png">
-  <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title data-en="About Tuunganes" data-fr="À propos de Tuunganes" data-de="Über Tuunganes">About Tuunganes</title>
+  <link rel="icon" href="assets/fevicon.png" type="image/png" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
-  <header class="nav">
-    <div class="container">
-      <a href="index.html" class="logo">Tuunganes</a>
-  
-      <!-- Links always visible -->
-      <nav class="main-nav">
-        <a href="about.html"
-           data-en="About" data-fr="À propos" data-de="Über uns">About</a>
-        <a href="services.html"
-           data-en="Services" data-fr="Services" data-de="Dienst">Our services</a>
-        <a href="#impact"
-           data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
-        <a href="#join"
-           data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</a>
-  
-        <!-- language buttons stay last -->
-        <div class="lang-switch">
-          <button onclick="setLang('en')">EN</button>
-          <button onclick="setLang('fr')">FR</button>
-          <button onclick="setLang('de')">DE</button>
+  <!-- ================= NAVBAR (shared) ================= -->
+  <header class="nav glass">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">
+        <img src="assets/fevicon.png" alt="Tuunganes" width="32" height="32" />
+        <span>Tuunganes</span>
+      </a>
+
+      <button id="navToggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+
+      <nav class="main-nav" id="mainNav">
+        <a href="about.html" aria-current="page" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+       
+        <a href="index.html#impact" data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
+        <a href="index.html#join" data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</a>
+
+        <div class="nav-right">
+          <div class="lang-switch">
+            <button type="button" data-lang="en">EN</button>
+            <button type="button" data-lang="fr">FR</button>
+            <button type="button" data-lang="de">DE</button>
+          </div>
+          <button id="themeBtn" class="theme-switcher" title="Toggle theme" aria-label="Toggle theme">
+            <span class="knob"></span>
+            <span class="moon" aria-hidden>🌙</span>
+            <span class="sun" aria-hidden>☀️</span>
+          </button>
         </div>
       </nav>
     </div>
   </header>
 
-  <!-- ABOUT SECTION -->
-  <section id="about" class="page-section split reveal">
-    <div class="split-image" style="background-image:url('assets/hero-about.jpg')"></div>
-    <div class="split-text">
-      <div class="container">
-        <h2 data-en="About Us" data-fr="À propos de nous" data-de="Über uns">About Us</h2>
-        <p data-en="Tuunganes is a dynamic organization committed to advancing digital solutions for schools, communities, and health services in Africa. We specialize in developing school management systems, public health tech platforms, IT support, and digital transformation services tailored for local communities."
-           data-fr="Tuunganes est une organisation dynamique dédiée aux solutions numériques pour les écoles, les collectivités et les services de santé en Afrique. Nous développons des systèmes de gestion scolaire, des plateformes de santé numérique, du support IT et des services de transformation numérique pour les communautés locales."
-           data-de="Tuunganes ist eine dynamische Organisation, die digitale Lösungen für Schulen, Gemeinden und Gesundheitsdienste in Afrika vorantreibt. Wir entwickeln Schulverwaltungssysteme, öffentliche Gesundheitstechnologieplattformen, IT-Support und digitale Transformationsdienste für lokale Gemeinschaften.">
-          Tuunganes is a dynamic organization committed to advancing digital solutions for schools, communities, and health services in Africa. We specialize in developing school management systems, public health tech platforms, IT support, and digital transformation services tailored for local communities.
+  <!-- ================= PAGE HERO ================= -->
+  <section class="hero reveal" style="padding-block: clamp(3.5rem,6vw,6rem);">
+    <div class="container hero-content">
+      <h1 data-en="About Tuunganes" data-fr="À propos de Tuunganes" data-de="Über Tuunganes">About Tuunganes</h1>
+      <p data-en="We are a grassroots movement using technology, education and compassion to empower communities in Bukavu, Goma and beyond."
+         data-fr="Nous sommes un mouvement citoyen qui utilise la technologie, l'éducation et la compassion pour autonomiser les communautés à Bukavu, Goma et au-delà."
+         data-de="Wir sind eine Basisbewegung, die Technologie, Bildung und Mitgefühl einsetzt, um Gemeinschaften in Bukavu, Goma und darüber hinaus zu stärken.">
+         We are a grassroots movement using technology, education and compassion to empower communities in Bukavu, Goma and beyond.
+      </p>
+    </div>
+  </section>
+
+  <!-- ================= INTRO SPLIT ================= -->
+  <section class="about reveal">
+    <div class="container about-grid">
+      <div class="about-image">
+        <img src="assets/pro.jpg" alt="Community collaboration" loading="lazy" />
+      </div>
+      <div class="about-text card">
+        <h2 data-en="Who we are" data-fr="Qui nous sommes" data-de="Wer wir sind">Who we are</h2>
+        <p data-en="Tuunganes is a dynamic organization committed to advancing digital solutions for schools, communities and health services in Africa. We build school management systems, public health tech, IT support and digital transformation services tailored for local realities."
+           data-fr="Tuunganes est une organisation dynamique dédiée aux solutions numériques pour les écoles, les communautés et les services de santé en Afrique. Nous créons des systèmes de gestion scolaire, des outils de santé publique, du support IT et des services de transformation numérique adaptés aux réalités locales."
+           data-de="Tuunganes ist eine dynamische Organisation, die digitale Lösungen für Schulen, Gemeinden und Gesundheitsdienste in Afrika vorantreibt. Wir entwickeln Schulverwaltungssysteme, Public-Health-Tech, IT Support und digitale Transformationsdienste, zugeschnitten auf lokale Realitäten.">
+           Tuunganes is a dynamic organization committed to advancing digital solutions for schools, communities and health services in Africa.
         </p>
-        <p data-en="Born from the need to bridge digital gaps in education and healthcare, Tuunganes envisions a connected, empowered, and tech-literate future for all."
-           data-fr="Née de la nécessité de combler les lacunes numériques dans l’éducation et la santé, Tuunganes imagine un avenir connecté, autonomisé et alphabétisé numériquement pour tous."
-           data-de="Entstanden aus dem Bedürfnis, digitale Lücken in Bildung und Gesundheitswesen zu schließen, sieht Tuunganes eine vernetzte, befähigte und technik-kompetente Zukunft für alle.">
-          Born from the need to bridge digital gaps in education and healthcare, Tuunganes envisions a connected, empowered, and tech-literate future for all.
-        </p>
-        <p data-en="Uniting communities. Driving digital transformation. Empowering lives."
-           data-fr="Unir les communautés. Accélérer la transformation numérique. Autonomiser les vies."
-           data-de="Gemeinschaften vereinen. Digitale Transformation vorantreiben. Leben stärken.">
-          Uniting communities. Driving digital transformation. Empowering lives.
-        </p>
-        <p data-en="Tuunganes is a grassroots-driven initiative born in Bukavu, Eastern Democratic Republic of Congo. Our mission is to create meaningful, community-led change through the power of technology, innovation, education, and compassion. We are more than a nonprofit—we are a movement built by and for the people, especially those affected by war, poverty, and marginalization in regions like Bukavu and Goma."
-           data-fr="Tuunganes est une initiative communautaire née à Bukavu, dans l’est de la RDC. Notre mission est de créer un changement significatif mené par la communauté grâce à la technologie, l’innovation, l’éducation et la compassion. Nous sommes plus qu’une association—nous sommes un mouvement construit par et pour les gens, en particulier ceux touchés par la guerre, la pauvreté et la marginalisation à Bukavu et Goma."
-           data-de="Tuunganes ist eine von der Basis getragene Initiative aus Bukavu in der östlichen Demokratischen Republik Kongo. Unsere Mission ist es, sinnvollen, gemeinschaftsgeführten Wandel durch Technologie, Innovation, Bildung und Mitgefühl zu schaffen. Wir sind mehr als eine gemeinnützige Organisation—wir sind eine Bewegung von und für die Menschen, insbesondere jene, die von Krieg, Armut und Marginalisierung in Regionen wie Bukavu und Goma betroffen sind.">
-          Tuunganes is a grassroots-driven initiative born in Bukavu, Eastern Democratic Republic of Congo. Our mission is to create meaningful, community-led change through the power of technology, innovation, education, and compassion. We are more than a nonprofit—we are a movement built by and for the people, especially those affected by war, poverty, and marginalization in regions like Bukavu and Goma.
+        <p data-en="Born in Bukavu (Eastern DRC), we envision a connected, empowered, tech-literate future for all—especially for people affected by war, poverty and marginalization."
+           data-fr="Née à Bukavu (Est de la RDC), nous imaginons un avenir connecté, autonomisé et numériquement compétent pour tous—particulièrement pour les personnes touchées par la guerre, la pauvreté et la marginalisation."
+           data-de="In Bukavu (Ostkongo) geboren, sehen wir eine vernetzte, befähigte, digital kompetente Zukunft für alle—insbesondere für Menschen, die von Krieg, Armut und Marginalisierung betroffen sind.">
+           Born in Bukavu (Eastern DRC), we envision a connected, empowered, tech-literate future for all.
         </p>
       </div>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="footer reveal">
+  <!-- ================= MISSION / VISION / VALUES ================= -->
+  <section class="pillars">
+    <div class="container pillars-grid">
+      <article class="card reveal">
+        <div class="pillar-content">
+          <h3 data-en="Our Mission" data-fr="Notre mission" data-de="Unsere Mission">Our Mission</h3>
+          <p data-en="Create meaningful, community-led change through technology, innovation, education and compassion."
+             data-fr="Créer un changement significatif mené par la communauté grâce à la technologie, l'innovation, l'éducation et la compassion."
+             data-de="Bedeutenden, gemeinschaftsgeführten Wandel durch Technologie, Innovation, Bildung und Mitgefühl schaffen.">
+             Create meaningful, community-led change through technology, innovation, education and compassion.
+          </p>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="pillar-content">
+          <h3 data-en="Our Vision" data-fr="Notre vision" data-de="Unsere Vision">Our Vision</h3>
+          <p data-en="A connected Great Lakes region where youth, women and families thrive with equal digital opportunities."
+             data-fr="Une région des Grands Lacs connectée où les jeunes, les femmes et les familles s'épanouissent avec des opportunités numériques égales."
+             data-de="Eine vernetzte Region der Großen Seen, in der Jugendliche, Frauen und Familien mit gleichen digitalen Chancen gedeihen.">
+             A connected Great Lakes region where youth, women and families thrive with equal digital opportunities.
+          </p>
+        </div>
+      </article>
+      <article class="card reveal">
+        <div class="pillar-content">
+          <h3 data-en="Our Values" data-fr="Nos valeurs" data-de="Unsere Werte">Our Values</h3>
+          <ul>
+            <li data-en="Community first" data-fr="La communauté d'abord" data-de="Gemeinschaft zuerst">Community first</li>
+            <li data-en="Transparency & accountability" data-fr="Transparence & redevabilité" data-de="Transparenz & Verantwortung">Transparency & accountability</li>
+            <li data-en="Learning mindset" data-fr="Esprit d'apprentissage" data-de="Lernmentalität">Learning mindset</li>
+            <li data-en="Dignity & compassion" data-fr="Dignité & compassion" data-de="Würde & Mitgefühl">Dignity & compassion</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ================= TIMELINE ================= -->
+  <section class="impact reveal">
     <div class="container">
-      <p>&copy; 2025 Tuunganes. All Rights Reserved.</p>
+      <h2 data-en="Our Journey" data-fr="Notre parcours" data-de="Unser Weg">Our Journey</h2>
+      <div class="numbers" style="grid-template-columns: 1fr 1fr; gap: .75rem;">
+        <div class="stat card"><strong>2021</strong><span data-en="Idea & pilot in Bukavu" data-fr="Idée & pilote à Bukavu" data-de="Idee & Pilot in Bukavu">Idea & pilot in Bukavu</span></div>
+        <div class="stat card"><strong>2023</strong><span data-en="Afya digital health MVP" data-fr="MVP Afya santé numérique" data-de="Afya Digital Health MVP">Afya digital health MVP</span></div>
+        <div class="stat card"><strong>2024</strong><span data-en="School system alpha" data-fr="Système scolaire alpha" data-de="Schulsystem Alpha"><a href="https://masomos.tuunganes.com/"> </a> system alpha</span></div>
+        <div class="stat card"><strong>2025</strong><span data-en="Community partnerships" data-fr="Partenariats communautaires" data-de="Gemeinschaftspartnerschaften">Community partnerships</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TEAM (OPTIONAL) ================= -->
+  <section class="join reveal">
+    <div class="container join-grid">
+      <div class="join-text">
+        <h2 data-en="Leadership & Team" data-fr="Direction & Équipe" data-de="Leitung & Team">Leadership & Team</h2>
+        <p data-en="We work with volunteers, educators, clinicians and engineers across Bukavu, Goma and the diaspora."
+           data-fr="Nous travaillons avec des bénévoles, des éducateurs, des cliniciens et des ingénieurs à Bukavu, Goma et dans la diaspora."
+           data-de="Wir arbeiten mit Freiwilligen, Pädagog:innen, Kliniker:innen und Ingenieur:innen in Bukavu, Goma und der Diaspora zusammen.">We work with volunteers, educators, clinicians and engineers across Bukavu, Goma and the diaspora.</p>
+      </div>
+      <div class="card" style="padding:1.2rem; display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem;">
+        <figure class="card" style="padding:.8rem; text-align:center;">
+          <img src="assets/fevicon.png" alt="Team member" style="width:100%; aspect-ratio:1; object-fit:cover; border-radius:12px;" loading="lazy" />
+          <figcaption style="margin-top:.5rem; font-weight:600;">A. Member</figcaption>
+          <small style="color:var(--text-muted);">Coordinator</small>
+        </figure>
+        <figure class="card" style="padding:.8rem; text-align:center;">
+          <img src="assets/fevicon.png" alt="Team member" style="width:100%; aspect-ratio:1; object-fit:cover; border-radius:12px;" loading="lazy" />
+          <figcaption style="margin-top:.5rem; font-weight:600;">B. Member</figcaption>
+          <small style="color:var(--text-muted);">Programs</small>
+        </figure>
+        <figure class="card" style="padding:.8rem; text-align:center;">
+          <img src="assets/fevicon.png" alt="Team member" style="width:100%; aspect-ratio:1; object-fit:cover; border-radius:12px;" loading="lazy" />
+          <figcaption style="margin-top:.5rem; font-weight:600;">C. Member</figcaption>
+          <small style="color:var(--text-muted);">Engineering</small>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer glass">
+    <div class="container">
+      <p>© 2025 Tuunganes. All Rights Reserved.</p>
     </div>
   </footer>
 
-  <script src="route/lang.js"></script>
-  <script src="route/animations.js"></script>
+  <!-- ================= Scripts ================= -->
+  <script>
+    // Theme init
+    (function(){
+      const saved = localStorage.getItem('tuunganes-theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+    })();
+
+    // Theme toggle
+    document.getElementById('themeBtn').addEventListener('click', function(){
+      const root = document.documentElement;
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('tuunganes-theme', next);
+    });
+
+    // Mobile nav
+    const navToggle = document.getElementById('navToggle');
+    const mainNav = document.getElementById('mainNav');
+    navToggle.addEventListener('click', () => {
+      const open = mainNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(open));
+    });
+
+    // Language switching fallback
+    document.querySelectorAll('.lang-switch [data-lang]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.dataset.lang;
+        document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+          el.textContent = el.getAttribute('data-' + lang);
+        });
+      });
+    });
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{threshold:0.15});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  </script>
+  <script src="route/lang.js" defer></script>
+  <script src="route/animations.js" defer></script>
 </body>
 </html>
