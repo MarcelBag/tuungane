@@ -1,220 +1,218 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title data-en="Tuunganes Uniting Communities"
-         data-fr="Tuunganes Unir les communautés"
-         data-de="Tuunganes Gemeinschaft vereinen">
-    Tuunganes Uniting Communities
-  </title>
-  <link rel="icon" href="assets/fevicon.png" type="image/png">
-  <link rel="stylesheet" href="css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title data-en="Tuunganes — Uniting Communities"
+          data-fr="Tuunganes — Unir les communautés"
+          data-de="Tuunganes — Gemeinschaft vereinen">Tuunganes — Uniting Communities</title>
+  <link rel="icon" href="assets/fevicon.png" type="image/png" />
+  <link rel="stylesheet" href="css/styles.css" />
 </head>
 <body>
- <!-- NAVIGATION -->
-<header class="nav">
-  <div class="container">
-    <a href="index.html" class="logo">Tuunganes</a>
+  <!-- ================= NAVBAR (No Sidebar) ================= -->
+  <header class="nav glass">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">
+        <img src="assets/fevicon.png" alt="Tuunganes" width="32" height="32" />
+        <span>Tuunganes</span>
+      </a>
 
-    <!-- Links always visible -->
-    <nav class="main-nav">
-      <a href="about.html"
-         data-en="About" data-fr="À propos" data-de="Über uns">About</a>
-      <a href="services.html"
-         data-en="Services" data-fr="Services" data-de="Dienst">Our services</a>
-      <a href="#impact"
-         data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
-      <a href="#join"
-         data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</a>
+      <button id="navToggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
 
-      <!-- language buttons stay last -->
-      <div class="lang-switch">
-        <button onclick="setLang('en')">EN</button>
-        <button onclick="setLang('fr')">FR</button>
-        <button onclick="setLang('de')">DE</button>
-      </div>
-    </nav>
-  </div>
-</header>
+      <nav class="main-nav" id="mainNav">
+        <a href="about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+        <a href="services.html" data-en="Services" data-fr="Services" data-de="Dienst">Our services</a>
+        <a href="#impact" data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
+        <a href="#join" data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</a>
 
-  <!-- HERO -->
+        <div class="nav-right">
+          <div class="lang-switch">
+            <button type="button" data-lang="en">EN</button>
+            <button type="button" data-lang="fr">FR</button>
+            <button type="button" data-lang="de">DE</button>
+          </div>
+          <button id="themeBtn" class="theme-switcher" title="Toggle theme" aria-label="Toggle theme">
+            <span class="knob"></span>
+            <span class="moon" aria-hidden>🌙</span>
+            <span class="sun" aria-hidden>☀️</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <!-- ================= HERO ================= -->
   <section id="hero" class="hero reveal">
     <div class="hero-overlay"></div>
-    <div class="hero-content">
+    <div class="container hero-content">
       <h1 data-en="Welcome to Tuunganes"
           data-fr="Bienvenue à Tuunganes"
-          data-de="Willkommen bei Tuunganes">
-        Welcome to Tuunganes
-      </h1>
+          data-de="Willkommen bei Tuunganes">Welcome to Tuunganes</h1>
       <p data-en="Uniting communities. Driving digital transformation. Empowering lives."
          data-fr="Unir les communautés. Accélérer la transformation numérique. Autonomiser les vies."
          data-de="Gemeinschaften vereinen. Digitale Transformation vorantreiben. Leben stärken.">
-        Uniting communities. Driving digital transformation. Empowering lives.
+         Uniting communities. Driving digital transformation. Empowering lives.
       </p>
+      <div class="hero-ctas">
+        <a href="#join" class="btn btn-primary" data-en="Get involved" data-fr="S'impliquer" data-de="Mitmachen">Get involved</a>
+        <a href="services.html" class="btn btn-ghost" data-en="Our services" data-fr="Nos services" data-de="Unsere Leistungen">Our services</a>
+      </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
-<section id="about" class="about split reveal">
-  <div class="split-image"></div>
-  <div class="split-text">
-    <h2 data-en="About Tuunganes"
-        data-fr="À propos de Tuunganes"
-        data-de="Über Tuunganes">
-      About Tuunganes
-    </h2>
-    <p data-en="Tuunganes is a grassroots-driven initiative born in Bukavu, Eastern DRC. Our mission is to create community led change through technology, innovation, education, and compassion especially for those affected by war, poverty, and marginalization in Bukavu and Goma."
-       data-fr="Tuunganes est une initiative communautaire née à Bukavu, dans l’est de la RDC. Notre mission est de créer un changement communautaire grâce à la technologie, l’innovation, l’éducation et la compassion surtout pour ceux touchés par la guerre, la pauvreté et la marginalisation à Bukavu et Goma."
-       data-de="Tuunganes ist eine von der Basis getragene Initiative aus Bukavu in Ostkongo. Unsere Mission ist es, gemeinschaftsgeführten Wandel durch Technologie, Innovation, Bildung und Mitgefühl zu schaffen insbesondere für diejenigen, die von Krieg, Armut und Marginalisierung in Bukavu und Goma betroffen sind.">
-      Tuunganes is a grassroots-driven initiative born in Bukavu, Eastern DRC. Our mission is to create community-led change through technology, innovation, education, and compassion especially for those affected by war, poverty, and marginalization in Bukavu and Goma.
-    </p>
-  </div>
-</section>
-
-
-  <!-- PILLARS -->
-  <section id="services" class="pillars">
-    <article class="pillar reveal" style="background-image:url('assets/log.webp')">
-      <div class="pillar-overlay"></div>
-      <a href="/services/it-consultancy.html">
-      <div class="pillar-content">
-        <h3 data-en="IT Consultancy & Digital Solutions"
-            data-fr="Conseil & solutions numériques"
-            data-de="IT-Beratung & Digitale Lösungen">
-          IT Consultancy & Digital Solutions
-        </h3>
-        <ul>
-          <li data-en="Digital Transformation Strategies: Helping businesses modernize..."
-              data-fr="Stratégies de transformation numérique : moderniser les entreprises..."
-              data-de="Digitale Transformationsstrategien: Unternehmen modernisieren...">
-            Digital Transformation Strategies: Helping businesses modernize...
-          </li>
-          <li data-en="Internet & Infrastructure Consulting: Advising on connectivity..."
-              data-fr="Conseil Internet & infrastructure : améliorer la connectivité..."
-              data-de="Internet- & Infrastrukturberatung: Konnektivität verbessern...">
-            Internet & Infrastructure Consulting: Advising on connectivity...
-          </li>
-          <li data-en="Training & Capacity Building: Empowering local teams..."
-              data-fr="Formation & renforcement des capacités : autonomiser les équipes locales..."
-              data-de="Schulungen & Kapazitätsaufbau: Stärkung lokaler Teams...">
-            Training & Capacity Building: Empowering local teams...
-          </li>
-        </ul>
+  <!-- ================= ABOUT (Split) ================= -->
+  <section id="about" class="about reveal">
+    <div class="container about-grid">
+      <div class="about-image">
+        <img src="assets/learnit.jpg" alt="Community and technology" loading="lazy" />
       </div>
-    </a>
-    </article>
+      <div class="about-text card">
+        <h2 data-en="About Tuunganes" data-fr="À propos de Tuunganes" data-de="Über Tuunganes">About Tuunganes</h2>
+        <p data-en="Tuunganes is a grassroots-driven initiative born in Bukavu, Eastern DRC. Our mission is to create community-led change through technology, innovation, education, and compassion—especially for those affected by war, poverty, and marginalization in Bukavu and Goma."
+           data-fr="Tuunganes est une initiative communautaire née à Bukavu, dans l’est de la RDC. Notre mission est de créer un changement communautaire grâce à la technologie, l’innovation, l’éducation et la compassion—surtout pour ceux touchés par la guerre, la pauvreté et la marginalisation à Bukavu et Goma."
+           data-de="Tuunganes ist eine von der Basis getragene Initiative aus Bukavu in Ostkongo. Unsere Mission ist es, gemeinschaftsgeführten Wandel durch Technologie, Innovation, Bildung und Mitgefühl zu schaffen—insbesondere für Betroffene von Krieg, Armut und Marginalisierung in Bukavu und Goma.">
+          Tuunganes is a grassroots-driven initiative born in Bukavu, Eastern DRC...
+        </p>
+        <a href="about.html" class="btn btn-primary" data-en="Learn more" data-fr="En savoir plus" data-de="Mehr erfahren">Learn more</a>
+      </div>
+    </div>
+  </section>
 
-    <article class="pillar alt reveal" style="background-image:url('assets/learnit.jpg')">
-      <div class="pillar-overlay"></div>
-      <a href="https://afya.tuunganes.com/">
+  <!-- ================= PILLARS / SERVICES ================= -->
+  <section id="services" class="pillars">
+    <div class="container pillars-grid">
+
+      <article class="pillar card reveal" style="--bg:url('assets/log.webp')">
+        <a class="stretch-link" href="/services/it-consultancy.html" aria-label="IT Consultancy & Digital Solutions"></a>
+        <div class="pillar-media" role="img" aria-label="IT & Digital"></div>
         <div class="pillar-content">
-          <h3 data-en="Afya Digital Health for All"
-              data-fr="Afya Santé numérique pour tous"
-              data-de="Afya Digitale Gesundheit für alle">
-            Afya Digital Health for All
-          </h3>
+          <h3 data-en="IT Consultancy & Digital Solutions" data-fr="Conseil & solutions numériques" data-de="IT-Beratung & Digitale Lösungen">IT Consultancy & Digital Solutions</h3>
           <ul>
-            <li data-en="Mobile health education: SMS and WhatsApp tips"
-                data-fr="Éducation mobile santé : conseils par SMS et WhatsApp"
-                data-de="Mobile Gesundheitsbildung: SMS- und WhatsApp Tipps">
-              Mobile health education: SMS and WhatsApp tips
-            </li>
-            <li data-en="Digital clinics: Teleconsultation for rural patients"
-                data-fr="Cliniques numériques : téléconsultations pour les ruraux"
-                data-de="Digitale Kliniken: Telekonsultation für ländliche Patienten">
-              Digital clinics: Teleconsultation for rural patients
-            </li>
-            <li data-en="Maternal & child support: Community programs & reminders"
-                data-fr="Soutien maternel & infantile : programmes communautaires et rappels"
-                data-de="Mütter & Kindersupport: Gemeinschaftsprogramme & Erinnerungen">
-              Maternal & child support: Community programs & reminders
-            </li>
+            <li data-en="Digital Transformation Strategies: Helping businesses modernize…" data-fr="Stratégies de transformation numérique : moderniser les entreprises…" data-de="Digitale Transformationsstrategien: Unternehmen modernisieren…">Digital Transformation Strategies: Helping businesses modernize…</li>
+            <li data-en="Internet & Infrastructure Consulting: Advising on connectivity…" data-fr="Conseil Internet & infrastructure : améliorer la connectivité…" data-de="Internet- & Infrastrukturberatung: Konnektivität verbessern…">Internet & Infrastructure Consulting: Advising on connectivity…</li>
+            <li data-en="Training & Capacity Building: Empowering local teams…" data-fr="Formation & renforcement des capacités : autonomiser les équipes locales…" data-de="Schulungen & Kapazitätsaufbau: Stärkung lokaler Teams…">Training & Capacity Building: Empowering local teams…</li>
           </ul>
         </div>
-      </a>
-    </article>
+      </article>
 
-    <article class="pillar reveal" style="background-image:url('assets/agri1.jpg')">
-      <div class="pillar-overlay"></div>
-      <div class="pillar-content">
-        <h3 data-en="Sustainable Agriculture & Farmer Support"
-            data-fr="Agriculture durable & soutien aux agriculteurs"
-            data-de="Nachhaltige Landwirtschaft & Bauernförderung">
-          Sustainable Agriculture & Farmer Support
-        </h3>
-        <ul>
-          <li data-en="Training farmers in modern techniques"
-              data-fr="Former les agriculteurs aux techniques modernes"
-              data-de="Landwirte in modernen Techniken schulen">
-            Training farmers in modern techniques
-          </li>
-          <li data-en="Connecting farmers with buyers digitally"
-              data-fr="Connecter les agriculteurs aux acheteurs en ligne"
-              data-de="Landwirte digital mit Käufern verbinden">
-            Connecting farmers with buyers digitally
-          </li>
-          <li data-en="Promoting climate-resilient farming"
-              data-fr="Promouvoir l'agriculture résiliente au climat"
-              data-de="Förderung klimaresistenter Landwirtschaft">
-            Promoting climate-resilient farming
-          </li>
-        </ul>
-      </div>
-    </article>
+      <article class="pillar card reveal" style="--bg:url('assets/learnit.jpg')">
+        <a class="stretch-link" href="https://afya.tuunganes.com/" aria-label="Afya Digital Health for All"></a>
+        <div class="pillar-media" role="img" aria-label="Afya Digital Health"></div>
+        <div class="pillar-content">
+          <h3 data-en="Afya Digital Health for All" data-fr="Afya Santé numérique pour tous" data-de="Afya Digitale Gesundheit für alle">Afya Digital Health for All</h3>
+          <ul>
+            <li data-en="Mobile health education: SMS and WhatsApp tips" data-fr="Éducation mobile santé : conseils par SMS et WhatsApp" data-de="Mobile Gesundheitsbildung: SMS- und WhatsApp Tipps">Mobile health education: SMS and WhatsApp tips</li>
+            <li data-en="Digital clinics: Teleconsultation for rural patients" data-fr="Cliniques numériques : téléconsultations pour les ruraux" data-de="Digitale Kliniken: Telekonsultation für ländliche Patienten">Digital clinics: Teleconsultation for rural patients</li>
+            <li data-en="Maternal & child support: Community programs & reminders" data-fr="Soutien maternel & infantile : programmes communautaires et rappels" data-de="Mütter & Kindersupport: Gemeinschaftsprogramme & Erinnerungen">Maternal & child support: Community programs & reminders</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="pillar card reveal" style="--bg:url('assets/agri1.jpg')">
+        <div class="pillar-media" role="img" aria-label="Sustainable Agriculture"></div>
+        <div class="pillar-content">
+          <h3 data-en="Sustainable Agriculture & Farmer Support" data-fr="Agriculture durable & soutien aux agriculteurs" data-de="Nachhaltige Landwirtschaft & Bauernförderung">Sustainable Agriculture & Farmer Support</h3>
+          <ul>
+            <li data-en="Training farmers in modern techniques" data-fr="Former les agriculteurs aux techniques modernes" data-de="Landwirte in modernen Techniken schulen">Training farmers in modern techniques</li>
+            <li data-en="Connecting farmers with buyers digitally" data-fr="Connecter les agriculteurs aux acheteurs en ligne" data-de="Landwirte digital mit Käufern verbinden">Connecting farmers with buyers digitally</li>
+            <li data-en="Promoting climate-resilient farming" data-fr="Promouvoir l'agriculture résiliente au climat" data-de="Förderung klimaresistenter Landwirtschaft">Promoting climate-resilient farming</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
   </section>
 
-  <!-- IMPACT -->
+  <!-- ================= IMPACT ================= -->
   <section id="impact" class="impact reveal">
     <div class="container">
-      <h2 data-en="Our Impact One Life at a Time"
-          data-fr="Notre impact Une vie à la fois"
-          data-de="Unsere Wirkung  Leben für Leben">
-        Our Impact One Life at a Time
-      </h2>
+      <h2 data-en="Our Impact — One Life at a Time" data-fr="Notre impact — Une vie à la fois" data-de="Unsere Wirkung — Leben für Leben">Our Impact — One Life at a Time</h2>
       <div class="numbers">
-        <div><strong>11+</strong><span data-en="Students" data-fr="Étudiants" data-de="Schüler">Students</span></div>
-        <div><strong>5</strong><span data-en="Farmers" data-fr="Agriculteurs" data-de="Landwirte">Farmers</span></div>
-        <div><strong>15</strong><span data-en="Youth connected" data-fr="Jeunes reliés" data-de="Jugend vernetzt">Youth connected</span></div>
-        <div><strong>4</strong><span data-en="Women & children" data-fr="Femmes & enfants" data-de="Frauen & Kinder">Women & children</span></div>
+        <div class="stat card"><strong>11+</strong><span data-en="Students" data-fr="Étudiants" data-de="Schüler">Students</span></div>
+        <div class="stat card"><strong>5</strong><span data-en="Farmers" data-fr="Agriculteurs" data-de="Landwirte">Farmers</span></div>
+        <div class="stat card"><strong>15</strong><span data-en="Youth connected" data-fr="Jeunes reliés" data-de="Jugend vernetzt">Youth connected</span></div>
+        <div class="stat card"><strong>4</strong><span data-en="Women & children" data-fr="Femmes & enfants" data-de="Frauen & Kinder">Women & children</span></div>
       </div>
     </div>
   </section>
 
-  <!-- JOIN -->
+  <!-- ================= JOIN ================= -->
   <section id="join" class="join reveal">
-    <div class="join-content">
-      <h2 data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</h2>
-      <p data-en="Whether you’re a business looking for IT consulting, a donor interested in grassroots innovation, or a passionate individual ready to make change—there’s a place for you in Tuunganes."
-         data-fr="Que vous soyez une entreprise, un donateur ou un bénévole prêt à agir—vous avez votre place chez Tuunganes."
-         data-de="Ob Unternehmen, Spender oder engagierte Person—bei Tuunganes findet jeder seinen Platz.">
-        Whether you’re a business looking for IT consulting, a donor interested in grassroots innovation, or a passionate individual ready to make change—there’s a place for you in Tuunganes.
-      </p>
-      <form class="contact-form" action="https://formsubmit.co/youremail@tuunganes.com" method="POST">
-        <input type="text" name="name" required
-               data-en="Your Name" data-fr="Votre nom" data-de="Ihr Name"
-               placeholder="Your Name">
-        <input type="email" name="email" required
-               data-en="Your Email" data-fr="Votre e-mail" data-de="Ihre E-Mail"
-               placeholder="Your Email">
-        <textarea name="message" rows="4" required
-                  data-en="Your Message" data-fr="Votre message" data-de="Ihre Nachricht"
-                  placeholder="Your Message"></textarea>
-        <button type="submit"
-                data-en="Get in Touch" data-fr="Nous contacter" data-de="Kontakt aufnehmen">
-          Get in Touch
-        </button>
+    <div class="container join-grid">
+      <div class="join-text">
+        <h2 data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</h2>
+        <p data-en="Whether you’re a business looking for IT consulting, a donor interested in grassroots innovation, or a passionate individual ready to make change—there’s a place for you in Tuunganes."
+           data-fr="Que vous soyez une entreprise, un donateur ou un bénévole prêt à agir—vous avez votre place chez Tuunganes."
+           data-de="Ob Unternehmen, Spender oder engagierte Person—bei Tuunganes findet jeder seinen Platz.">Whether you’re a business looking for IT consulting, a donor interested in grassroots innovation, or a passionate individual ready to make change—there’s a place for you in Tuunganes.</p>
+      </div>
+      <form class="contact-form card" action="https://formsubmit.co/youremail@tuunganes.com" method="POST">
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="text" name="name" required placeholder="Your Name"
+               data-en="Your Name" data-fr="Votre nom" data-de="Ihr Name" />
+        <input type="email" name="email" required placeholder="Your Email"
+               data-en="Your Email" data-fr="Votre e-mail" data-de="Ihre E-Mail" />
+        <textarea name="message" rows="4" required placeholder="Your Message"
+                  data-en="Your Message" data-fr="Votre message" data-de="Ihre Nachricht"></textarea>
+        <button type="submit" class="btn btn-primary" data-en="Get in Touch" data-fr="Nous contacter" data-de="Kontakt aufnehmen">Get in Touch</button>
       </form>
     </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    © 2025 Tuunganes. All rights reserved.
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer glass">
+    <div class="container">
+      <p>© 2025 Tuunganes. All rights reserved.</p>
+    </div>
   </footer>
 
-  <script src="route/lang.js"></script>
-  <script src="route/animations.js"></script>
- 
+  <!-- ================= Scripts ================= -->
+  <script>
+    // Theme init (use saved or OS)
+    (function(){
+      const saved = localStorage.getItem('tuunganes-theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+    })();
+
+    // Theme toggle
+    document.getElementById('themeBtn').addEventListener('click', function(){
+      const root = document.documentElement;
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('tuunganes-theme', next);
+    });
+
+    // Mobile nav
+    const navToggle = document.getElementById('navToggle');
+    const mainNav = document.getElementById('mainNav');
+    navToggle.addEventListener('click', () => {
+      const open = mainNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(open));
+    });
+
+    // Language switching (expects route/lang.js too, but keep a safe fallback)
+    document.querySelectorAll('.lang-switch [data-lang]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.dataset.lang;
+        document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+          el.textContent = el.getAttribute('data-' + lang);
+        });
+      });
+    });
+
+    // Simple reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      })
+    },{threshold:0.15});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  </script>
+  <script src="route/lang.js" defer></script>
+  <script src="route/animations.js" defer></script>
 </body>
 </html>
