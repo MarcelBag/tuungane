@@ -146,19 +146,28 @@ html[data-theme="dark"] .theme-switcher .knob { transform: translateX(24px); }
 }
 
 /* Image area */
+/* Pillar media image */
 .pillar-media {
   height: 160px;
   overflow: hidden;
+  position: relative;
 }
 
 .pillar-media img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* ensuring the image fills the card */
+  object-fit: cover;
   display: block;
   border-top-left-radius: var(--radius);
   border-top-right-radius: var(--radius);
+  transition: transform 0.6s ease;
 }
+
+/* Hover effect: card lifts + image zooms */
+.pillar:hover .pillar-media img {
+  transform: scale(1.08);
+}
+
 
 /* Text area */
 .pillar-content { 
