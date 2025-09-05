@@ -234,3 +234,83 @@ html[data-theme="dark"] .theme-switcher .knob { transform: translateX(24px); }
 /* ================= Reveal ================= */
 .reveal { opacity: 0; transform: translateY(14px); transition: opacity .6s ease, transform .6s ease; }
 .reveal.in { opacity: 1; transform: none; }
+
+/* ================= Page Section (used in service detail pages) ================= */
+.page-section {
+  padding: clamp(3rem, 6vw, 5rem) 0;
+}
+.page-section h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+  text-align: center;
+}
+.page-section p {
+  color: var(--text-2);
+  max-width: 70ch;
+  margin: 0 auto 1.2rem;
+  line-height: 1.7;
+}
+
+/* ================= Overlay Section (for about/overview text) ================= */
+.overlay-text {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 2rem;
+  box-shadow: var(--shadow);
+}
+
+/* ================= Service Highlights Grid (used in consultancy & health) ================= */
+.pillars.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem;
+}
+.pillar.alt {
+  background: var(--muted);
+}
+
+/* Pillar with background image (like health or consultancy highlights) */
+.pillar {
+  position: relative;
+  border-radius: var(--radius);
+  color: #fff;
+  min-height: 220px;
+  display: flex;
+  align-items: flex-end;
+  padding: 1.2rem;
+  overflow: hidden;
+}
+.pillar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.45);
+}
+.pillar-content {
+  position: relative;
+  z-index: 1;
+}
+.pillar-content h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  font-weight: 700;
+}
+
+/* ================= Hero Background Image (service detail hero) ================= */
+.hero[style*="background-image"] {
+  background-size: cover;
+  background-position: center;
+  color: #fff;
+  text-align: center;
+}
+.hero[style*="background-image"] .hero-overlay {
+  background: rgba(0,0,0,.45);
+  position: absolute;
+  inset: 0;
+}
+.hero[style*="background-image"] .hero-content {
+  position: relative;
+  z-index: 1;
+}

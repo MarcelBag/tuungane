@@ -1,131 +1,39 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="light dark" />
-  <title data-en="Legal Clinic | Tuunganes"
-          data-fr="Clinique juridique | Tuunganes"
-          data-de="Rechtsberatung | Tuunganes">
-          Legal Clinic | Tuunganes</title>
-  <link rel="icon" href="../assets/fevicon.png" type="image/png" />
-  <link rel="stylesheet" href="../css/styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Legal Clinic | Tuunganes</title>
+  <link rel="icon" href="../assets/fevicon.png" type="image/png">
+  <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-  <!-- ================= NAVBAR ================= -->
-  <header class="nav glass">
-    <div class="container nav-inner">
-      <a href="index.html" class="logo">
-        <img src="assets/fevicon.png" alt="Tuunganes" width="32" height="32" />
-        <span>Tuunganes</span>
-      </a>
-
-      <button id="navToggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-
-      <nav class="main-nav" id="mainNav">
-        <a href="about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
-        
-        <a href="#impact" data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
-        <a href="#join" data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</a>
-
-        <div class="nav-right">
-          <div class="lang-switch">
-            <button type="button" data-lang="en">EN</button>
-            <button type="button" data-lang="fr">FR</button>
-            <button type="button" data-lang="de">DE</button>
-          </div>
-          <button id="themeBtn" class="theme-switcher" title="Toggle theme" aria-label="Toggle theme">
-            <span class="knob"></span>
-            <span class="moon" aria-hidden>🌙</span>
-            <span class="sun" aria-hidden>☀️</span>
-          </button>
-        </div>
-      </nav>
-    </div>
-  </header>
-
-  <!-- ================= HERO ================= -->
-  <section class="hero reveal" style="padding: 4rem 0 2rem;">
+  <section class="hero reveal">
     <div class="container hero-content">
-      <h1 data-en="Legal and Judicial Advice and Assistance"
-          data-fr="Conseil et assistance juridique et judiciaire"
-          data-de="Rechtsberatung und gerichtliche Unterstützung">
-          Legal and Judicial Advice and Assistance
-      </h1>
-      <p data-en="The Tuunganes Legal Clinic provides free legal and judicial assistance to vulnerable communities including women, children and displaced persons."
-         data-fr="La clinique juridique Tuunganes fournit une assistance juridique et judiciaire gratuite aux communautés vulnérables y compris les femmes, les enfants et les personnes déplacées."
-         data-de="Die Tuunganes-Rechtsklinik bietet kostenlose rechtliche und gerichtliche Unterstützung für gefährdete Gemeinschaften einschließlich Frauen, Kinder und Vertriebene.">
-         The Tuunganes Legal Clinic provides free legal and judicial assistance to vulnerable communities including women, children and displaced persons.
-      </p>
+      <h1>Legal and Judicial Assistance</h1>
+      <p>Defending rights of vulnerable groups in Eastern DRC through free legal advice, judicial support and mediation.</p>
     </div>
   </section>
 
-  <!-- ================= CONTENT ================= -->
   <section class="about reveal">
-    <div class="container">
-      <div class="card" style="padding: 2rem; margin-bottom: 2rem;">
-        <h2 data-en="Our Mission"
-            data-fr="Notre mission"
-            data-de="Unsere Mission">Our Mission</h2>
-        <p data-en="We aim to protect the rights of the most vulnerable by offering free legal advice, judicial assistance, community mediation and training. Our clinic is a safe space where victims of violence and marginalized groups can find support and justice."
-           data-fr="Nous visons à protéger les droits des plus vulnérables en offrant des conseils juridiques gratuits, une assistance judiciaire, une médiation communautaire et des formations. Notre clinique est un espace sûr où les victimes de violences et les groupes marginalisés peuvent trouver soutien et justice."
-           data-de="Wir wollen die Rechte der Schwächsten schützen indem wir kostenlose Rechtsberatung, gerichtliche Unterstützung, Gemeindemediation und Schulungen anbieten. Unsere Klinik ist ein sicherer Ort an dem Opfer von Gewalt und marginalisierte Gruppen Unterstützung und Gerechtigkeit finden können.">
-           We aim to protect the rights of the most vulnerable by offering free legal advice, judicial assistance, community mediation and training. Our clinic is a safe space where victims of violence and marginalized groups can find support and justice.
-        </p>
-      </div>
-
-      <div class="card" style="padding: 2rem; margin-bottom: 2rem;">
-        <h2 data-en="Our Services"
-            data-fr="Nos services"
-            data-de="Unsere Leistungen">Our Services</h2>
+    <div class="container about-grid">
+      <div class="about-image"><img src="../assets/sup.jpg" alt="Legal Aid"></div>
+      <div class="about-text card">
+        <h2>Why It Matters in Congo</h2>
+        <p>Armed conflicts and displacement in North and South Kivu have left women, children and entire communities exposed to violence and exploitation.</p>
+        <h3>Our Clinic Provides</h3>
         <ul>
-          <li data-en="Free legal advice for women, children and displaced persons."
-              data-fr="Conseils juridiques gratuits pour les femmes, les enfants et les personnes déplacées."
-              data-de="Kostenlose Rechtsberatung für Frauen, Kinder und Vertriebene.">
-              Free legal advice for women, children and displaced persons.
-          </li>
-          <li data-en="Judicial support to accompany victims of violence through legal procedures."
-              data-fr="Assistance judiciaire pour accompagner les victimes de violences dans leurs démarches légales."
-              data-de="Gerichtliche Unterstützung um Opfer von Gewalt durch rechtliche Verfahren zu begleiten.">
-              Judicial support to accompany victims of violence through legal procedures.
-          </li>
-          <li data-en="Community mediation to promote peaceful resolution of minor conflicts."
-              data-fr="Médiation communautaire pour promouvoir la résolution pacifique des conflits mineurs."
-              data-de="Gemeindemediation zur Förderung der friedlichen Lösung kleinerer Konflikte.">
-              Community mediation to promote peaceful resolution of minor conflicts.
-          </li>
-          <li data-en="Awareness and training to educate communities on their rights and access to justice."
-              data-fr="Sensibilisation et formation pour éduquer les communautés sur leurs droits et l’accès à la justice."
-              data-de="Aufklärung und Schulungen um Gemeinschaften über ihre Rechte und den Zugang zur Justiz zu informieren.">
-              Awareness and training to educate communities on their rights and access to justice.
-          </li>
+          <li>Free legal advice for marginalized groups.</li>
+          <li>Judicial support for victims of violence.</li>
+          <li>Community mediation to resolve conflicts peacefully.</li>
+          <li>Awareness and training on rights and access to justice.</li>
         </ul>
       </div>
-
-      <div class="card" style="padding: 2rem;">
-        <h2 data-en="Contact the Legal Clinic"
-            data-fr="Contacter la clinique juridique"
-            data-de="Kontakt zur Rechtsklinik">Contact the Legal Clinic</h2>
-        <p data-en="If you or someone you know needs legal support, please reach out to our Tuunganes Legal Clinic team."
-           data-fr="Si vous ou quelqu’un de votre entourage avez besoin d’un soutien juridique, veuillez contacter l’équipe de la clinique juridique Tuunganes."
-           data-de="Wenn Sie oder jemand den Sie kennen rechtliche Unterstützung benötigen wenden Sie sich bitte an das Team der Tuunganes-Rechtsklinik.">
-           If you or someone you know needs legal support, please reach out to our Tuunganes Legal Clinic team.
-        </p>
-        <a href="../contact.html" class="btn btn-primary"
-           data-en="Contact Us"
-           data-fr="Nous contacter"
-           data-de="Kontaktieren Sie uns">Contact Us</a>
-      </div>
     </div>
   </section>
 
-  <!-- ================= FOOTER ================= -->
-  <footer class="footer glass">
-    <div class="container">
-      <p>© 2025 Tuunganes. All rights reserved.</p>
-    </div>
-  </footer>
+  <script src="../route/base.js" defer></script>
+  <script src="../route/lang.js" defer></script>
+  <script src="../route/animations.js" defer></script>
 </body>
 </html>

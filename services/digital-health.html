@@ -1,146 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title data-en="Digital Health Tools — Masomo"
-         data-fr="Outils de santé numérique — Masomo"
-         data-de="Digitale Gesundheitstools — Masomo">
-    Digital Health Tools Masomo
-  </title>
+  <title>Afya Digital Health | Tuunganes</title>
   <link rel="icon" href="../assets/fevicon.png" type="image/png">
   <link rel="stylesheet" href="../css/styles.css">
 </head>
 <body>
-  <!-- NAVIGATION -->
-  <header class="nav">
-    <div class="container">
-      <a href="../index.html" class="logo">Masomo</a>
-      <nav>
-        <a href="../index.html"          data-en="Home"    data-fr="Accueil"      data-de="Startseite">Home</a>
-        <a href="index.html#about"      data-en="About"   data-fr="À propos"      data-de="Über uns">About</a>
-        <a href="index.html#services"   data-en="Services"data-fr="Services"     data-de="Dienstleistungen">Our services</a>
-        <a href="index.html#impact"     data-en="Impact"  data-fr="Impact"        data-de="Wirkung">Impact</a>
-        <a href="index.html#join"       data-en="Join Us" data-fr="Nous rejoindre"data-de="Mitmachen">Join Us</a>
-      </nav>
-      <div class="lang-switch">
-        <button onclick="setLang('en')">EN</button>
-        <button onclick="setLang('fr')">FR</button>
-        <button onclick="setLang('de')">DE</button>
-      </div>
-    </div>
-  </header>
-
-  <!-- HERO -->
-  <section id="hero" class="hero reveal" style="background-image:url('../assets/learnit.jpg')">
-    <div class="hero-overlay"></div>
-    <div class="hero-content">
-      <h1 data-en="Digital Health Tools"
-          data-fr="Outils de santé numérique"
-          data-de="Digitale Gesundheitstools">
-        Digital Health Tools
-      </h1>
-      <p data-en="Smart solutions for patient data, dashboards, and mobile care."
-         data-fr="Solutions intelligentes pour les données patients, tableaux de bord et soins mobiles."
-         data-de="Intelligente Lösungen für Patientendaten, Dashboards und mobile Pflege.">
-        Smart solutions for patient data, dashboards, and mobile care.
-      </p>
+  <section class="hero reveal">
+    <div class="container hero-content">
+      <h1>Afya Digital Health for All</h1>
+      <p>Connecting families in rural Congo to clinicians through telehealth, mobile education and digital health tools.</p>
     </div>
   </section>
 
-  <!-- TOOLS GRID -->
-  <section id="services" class="pillars">
-    <article class="pillar reveal" style="background-image:url('../assets/kids.jpg')">
-      <div class="pillar-overlay"></div>
-      <div class="pillar-content">
-        <h3 data-en="Health Dashboard"
-            data-fr="Tableau de bord santé"
-            data-de="Gesundheits-Dashboard">
-          Health Dashboard
-        </h3>
+  <section class="about reveal">
+    <div class="container about-grid">
+      <div class="about-image"><img src="../assets/all.jpeg" alt="Digital Health"></div>
+      <div class="about-text card">
+        <h2>Why It Matters in Congo</h2>
+        <p>Many families walk hours to reach basic health services. Preventable diseases like malaria and malnutrition remain widespread.</p>
+        <h3>Our Health Tools</h3>
         <ul>
-          <li data-en="Visualize key metrics at a glance"
-              data-fr="Visualiser les indicateurs clés en un coup d’œil"
-              data-de="Wichtige Kennzahlen auf einen Blick anzeigen">
-            Visualize key metrics at a glance
-          </li>
-          <li data-en="Track patient visits & outcomes"
-              data-fr="Suivre les visites et résultats patients"
-              data-de="Patientenbesuche & Ergebnisse nachverfolgen">
-            Track patient visits & outcomes
-          </li>
-          <li data-en="Generate reports for stakeholders"
-              data-fr="Générer des rapports pour les parties prenantes"
-              data-de="Berichte für Stakeholder erstellen">
-            Generate reports for stakeholders
-          </li>
+          <li>Teleconsultations for rural and underserved patients.</li>
+          <li>Mobile health education via SMS and WhatsApp.</li>
+          <li>Maternal and child health programs with digital reminders.</li>
+          <li>AI-assisted data collection to predict outbreaks early.</li>
         </ul>
       </div>
-    </article>
-
-    <article class="pillar alt reveal" style="background-image:url('../assets/kidlearn.jpg')">
-      <div class="pillar-overlay"></div>
-      <div class="pillar-content">
-        <h3 data-en="Mobile Health App"
-            data-fr="Application santé mobile"
-            data-de="Mobile Gesundheits-App">
-          Mobile Health App
-        </h3>
-        <ul>
-          <li data-en="Offline-first design for remote areas"
-              data-fr="Conception hors-ligne pour zones isolées"
-              data-de="Offline-Erst-Design für abgelegene Gebiete">
-            Offline-first design for remote areas
-          </li>
-          <li data-en="SMS & WhatsApp educational tips"
-              data-fr="Conseils éducatifs par SMS & WhatsApp"
-              data-de="SMS- & WhatsApp-Gesundheitstipps">
-            SMS & WhatsApp educational tips
-          </li>
-          <li data-en="Appointment reminders & alerts"
-              data-fr="Rappels de rendez-vous et alertes"
-              data-de="Erinnerungen & Alerten für Termine">
-            Appointment reminders & alerts
-          </li>
-        </ul>
-      </div>
-    </article>
-
-    <article class="pillar reveal" style="background-image:url('../assets/joe&kids.jpg')">
-      <div class="pillar-overlay"></div>
-      <div class="pillar-content">
-        <h3 data-en="Analytics & Reporting"
-            data-fr="Analytique & reporting"
-            data-de="Analyse & Berichterstellung">
-          Analytics & Reporting
-        </h3>
-        <ul>
-          <li data-en="AI-powered disease pattern detection"
-              data-fr="Détection de maladies par IA"
-              data-de="KI-gestützte Mustererkennung">
-            AI-powered disease pattern detection
-          </li>
-          <li data-en="Custom dashboards for decision-makers"
-              data-fr="Tableaux personnalisés pour décideurs"
-              data-de="Maßgeschneiderte Dashboards für Entscheider">
-            Custom dashboards for decision-makers
-          </li>
-          <li data-en="Exportable data for partners"
-              data-fr="Données exportables pour partenaires"
-              data-de="Exportierbare Daten für Partner">
-            Exportable data for partners
-          </li>
-        </ul>
-      </div>
-    </article>
+    </div>
   </section>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    © 2025 Masomo. All rights reserved.
-  </footer>
-
-  <script src="../route/lang.js"></script>
-  <script src="../route/animations.js"></script>
+  <script src="../route/base.js" defer></script>
+  <script src="../route/lang.js" defer></script>
+  <script src="../route/animations.js" defer></script>
 </body>
 </html>
