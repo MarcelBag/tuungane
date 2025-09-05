@@ -146,10 +146,14 @@ html[data-theme="dark"] .theme-switcher .knob { transform: translateX(24px); }
 }
 
 /* Image area */
-.pillar-media { 
-  height: 160px; 
-  background: var(--pillar-image) center/cover no-repeat; 
+.pillar-media {
+  height: 160px;
+  background-image: var(--pillar-image);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
+
 
 /* Text area */
 .pillar-content { 
@@ -174,6 +178,17 @@ html[data-theme="dark"] .theme-switcher .knob { transform: translateX(24px); }
   position: absolute; 
   inset: 0; 
   z-index: 1; 
+}
+.pillar-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.2);
+  opacity: 0;
+  transition: opacity var(--transition);
+}
+.pillar:hover .pillar-media::after {
+  opacity: 1;
 }
 
 
