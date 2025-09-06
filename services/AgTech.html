@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title
+    data-en="Agriculture & Food Security (AgTech) | Tuunganes"
+    data-fr="Agriculture & Sécurité alimentaire (AgTech) | Tuunganes"
+    data-de="Landwirtschaft & Ernährungssicherheit (AgTech) | Tuunganes">
+    Agriculture & Food Security (AgTech) | Tuunganes
+  </title>
+
+  <link rel="icon" href="../assets/fevicon.png" type="image/png" />
+  <link rel="stylesheet" href="../css/styles.css" />
+
+  <!-- Page-only polish -->
+  <style>
+    .section{padding-block:clamp(2.25rem,5vw,3.5rem)}
+    .center{max-width:980px;margin-inline:auto}
+    .grid-2{display:grid;grid-template-columns:1.05fr .95fr;gap:1.2rem;align-items:center}
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+    @media (max-width:960px){.grid-2{grid-template-columns:1fr}}
+
+    .hero--agri{padding-block:clamp(3rem,6vw,5rem)}
+    .eyebrow{letter-spacing:.06em;text-transform:uppercase;font-weight:800;color:var(--text-muted)}
+    .lede{color:var(--text-2);max-width:70ch}
+
+    .imgframe{border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+    .imgframe img{display:block;width:100%;height:auto;object-fit:cover}
+
+    .card.pad{padding:1rem 1.1rem}
+    .muted{color:var(--text-muted)}
+    .list{margin:.5rem 0 0 1.1rem}
+    .list li{margin:.35rem 0}
+
+    .chip-row{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.5rem}
+    .chip{border:1px solid var(--border);border-radius:999px;padding:.3rem .6rem;font-weight:600;background:color-mix(in hsl,var(--surface)92%,transparent)}
+
+    .stat{display:flex;flex-direction:column;gap:.25rem;align-items:flex-start;padding:1rem;border:1px solid var(--border);background:var(--surface);border-radius:14px;box-shadow:var(--shadow)}
+    .stat strong{font-size:1.1rem;color:var(--brand)}
+
+    .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+    .step .num{width:2rem;height:2rem;display:inline-grid;place-items:center;border-radius:999px;border:1px solid var(--border);font-weight:800;margin-bottom:.35rem}
+
+    .cta-band{margin-top:1rem;display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;justify-content:space-between;
+      background:color-mix(in hsl,var(--surface)92%,transparent);border:1px solid var(--border);border-radius:16px;padding:1rem 1.1rem}
+  </style>
+</head>
+<body>
+  <!-- Header injected by base.js -->
+  <div id="site-header"></div>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero hero--agri reveal in">
+    <div class="container center">
+      <div class="eyebrow"
+           data-en="AgTech by Tuunganes"
+           data-fr="AgTech par Tuunganes"
+           data-de="AgTech von Tuunganes">AgTech by Tuunganes</div>
+
+      <h1
+        data-en="Agriculture & Food Security"
+        data-fr="Agriculture & Sécurité alimentaire"
+        data-de="Landwirtschaft & Ernährungssicherheit">
+        Agriculture & Food Security
+      </h1>
+
+      <p class="lede"
+         data-en="Sustainable agriculture is the backbone of resilient communities. We help smallholder farmers in Eastern DRC increase yields, access markets, and strengthen local food systems."
+         data-fr="Une agriculture durable est la base de communautés résilientes. Nous aidons les petits exploitants de l’Est de la RDC à augmenter leurs rendements, accéder aux marchés et renforcer les systèmes alimentaires locaux."
+         data-de="Nachhaltige Landwirtschaft ist das Rückgrat widerstandsfähiger Gemeinschaften. Wir helfen Kleinbäuer:innen im Osten der DR Kongo, Erträge zu steigern, Märkte zu erreichen und lokale Ernährungssysteme zu stärken.">
+        Sustainable agriculture is the backbone of resilient communities…
+      </p>
+
+      <div class="hero-ctas" style="margin-top:.9rem;display:flex;gap:.8rem;flex-wrap:wrap">
+        <a href="../contact.html" class="btn btn-primary"
+           data-en="Talk to our team"
+           data-fr="Parler à notre équipe"
+           data-de="Mit unserem Team sprechen">Talk to our team</a>
+        <a href="../services/services.html" class="btn btn-ghost"
+           data-en="Explore all services"
+           data-fr="Voir tous les services"
+           data-de="Alle Services ansehen">Explore all services</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHY IT MATTERS (split) ================= -->
+  <section class="section reveal in">
+    <div class="container grid-2">
+      <div class="card pad">
+        <h2
+          data-en="Why this matters"
+          data-fr="Pourquoi c’est important"
+          data-de="Warum das wichtig ist">
+          Why this matters
+        </h2>
+
+        <p
+          data-en="Agriculture is the backbone of communities in the Democratic Republic of Congo, yet many smallholder farmers face low productivity, lack of access to markets, and outdated farming techniques."
+          data-fr="L’agriculture est l’épine dorsale des communautés en République Démocratique du Congo, mais de nombreux petits producteurs font face à une faible productivité, à un manque d’accès aux marchés et à des techniques dépassées."
+          data-de="Landwirtschaft ist das Rückgrat vieler Gemeinden in der DR Kongo, doch Kleinbäuer:innen kämpfen mit niedriger Produktivität, mangelndem Marktzugang und veralteten Anbaumethoden.">
+          Agriculture is the backbone of communities in the DRC…
+        </p>
+
+        <p class="muted"
+          data-en="In Eastern DRC, conflict and displacement have disrupted food systems, leaving families vulnerable to hunger and malnutrition. Sustainable agriculture is key to resilience and development."
+          data-fr="À l’Est de la RDC, les conflits et déplacements ont perturbé les systèmes alimentaires, rendant les familles vulnérables à la faim et à la malnutrition. Une agriculture durable est essentielle à la résilience et au développement."
+          data-de="Im Osten der DR Kongo haben Konflikte und Vertreibung Ernährungssysteme gestört – Familien sind anfällig für Hunger und Mangelernährung. Nachhaltige Landwirtschaft ist entscheidend für Resilienz und Entwicklung.">
+          In Eastern DRC, conflict and displacement have disrupted food systems…
+        </p>
+      </div>
+
+      <figure class="imgframe">
+        <img src="../assets/agri1.jpg" alt="Smallholder farming in Eastern DRC" loading="lazy">
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= OUR FOCUS AREAS ================= -->
+  <section class="section reveal in">
+    <div class="container">
+      <h2
+        data-en="Our focus areas"
+        data-fr="Nos axes d’action"
+        data-de="Unsere Schwerpunkte">
+        Our focus areas
+      </h2>
+
+      <div class="grid-3">
+        <article class="card pad">
+          <h3 data-en="Farmer Training & Capacity Building" data-fr="Formation & renforcement de capacités" data-de="Schulungen & Kapazitätsaufbau">Farmer Training & Capacity Building</h3>
+          <p class="muted"
+             data-en="Workshops and practical resources that teach modern, climate-smart techniques and post-harvest best practices."
+             data-fr="Ateliers et ressources pratiques sur les techniques modernes, intelligentes face au climat, et les bonnes pratiques post-récolte."
+             data-de="Workshops und praxisnahe Unterlagen zu modernen, klimaintelligenten Methoden und Post-Harvest-Best-Practices.">
+            Workshops & climate-smart practices.
+          </p>
+        </article>
+
+        <article class="card pad">
+          <h3 data-en="Digital Tools for Agriculture" data-fr="Outils numériques pour l’agriculture" data-de="Digitale Werkzeuge für die Landwirtschaft">Digital Tools for Agriculture</h3>
+          <p class="muted"
+             data-en="Apps and simple platforms for crop planning, weather, soil tips, yield tracking, and cooperative coordination."
+             data-fr="Applications et plateformes simples pour la planification des cultures, la météo, les conseils sur les sols, le suivi des rendements et la coordination en coopérative."
+             data-de="Apps und einfache Plattformen für Anbauplanung, Wetter, Bodentipps, Ertrags-Tracking und Kooperationskoordination.">
+            Apps & platforms for planning and tracking.
+          </p>
+          <div class="chip-row">
+            <span class="chip">Weather</span><span class="chip">Soil tips</span><span class="chip">Yield logs</span><span class="chip">Coop tools</span>
+          </div>
+        </article>
+
+        <article class="card pad">
+          <h3 data-en="Market Access" data-fr="Accès au marché" data-de="Marktzugang">Market Access</h3>
+          <p class="muted"
+             data-en="Linking farmers to buyers and input suppliers, reducing post-harvest losses and improving prices."
+             data-fr="Relier les agriculteurs aux acheteurs et fournisseurs d’intrants, réduire les pertes post-récolte et améliorer les prix."
+             data-de="Vernetzung mit Abnehmern und Lieferanten, weniger Nachernteverluste und bessere Preise.">
+            Buyers, inputs & fair pricing.
+          </p>
+        </article>
+
+        <article class="card pad">
+          <h3 data-en="Community Gardens & Food Programs" data-fr="Jardins communautaires & programmes alimentaires" data-de="Gemeinschaftsgärten & Ernährungsprogramme">Community Gardens & Food Programs</h3>
+          <p class="muted"
+             data-en="Supporting schools and local groups to grow food, fight malnutrition and build food literacy."
+             data-fr="Soutien aux écoles et groupes locaux pour cultiver, lutter contre la malnutrition et développer la culture alimentaire."
+             data-de="Unterstützung von Schulen und lokalen Gruppen beim Anbau, gegen Mangelernährung und für Ernährungskompetenz.">
+            School & community food initiatives.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROGRAM GOALS ================= -->
+  <section class="section reveal in">
+    <div class="container center">
+      <h2
+        data-en="Why this work matters"
+        data-fr="Pourquoi ce travail est essentiel"
+        data-de="Warum diese Arbeit wichtig ist">
+        Why this work matters
+      </h2>
+
+      <div class="grid-3" style="margin-top:.6rem">
+        <div class="stat">
+          <strong data-en="Reduce hunger & malnutrition" data-fr="Réduire faim & malnutrition" data-de="Hunger & Mangelernährung senken">Reduce hunger & malnutrition</strong>
+          <span class="muted" data-en="Reliable access to nutritious food for families." data-fr="Accès fiable à une alimentation nutritive pour les familles." data-de="Verlässlicher Zugang zu nahrhaften Lebensmitteln.">Reliable access to nutritious food.</span>
+        </div>
+        <div class="stat">
+          <strong data-en="Increase farmer income" data-fr="Augmenter les revenus" data-de="Einkommen der Bäuer:innen steigern">Increase farmer income</strong>
+          <span class="muted" data-en="Higher yields and fairer prices improve livelihoods." data-fr="De meilleurs rendements et des prix plus justes améliorent les moyens de subsistance." data-de="Höhere Erträge und fairere Preise verbessern Lebensgrundlagen.">Better yields & prices.</span>
+        </div>
+        <div class="stat">
+          <strong data-en="Stronger local food systems" data-fr="Systèmes alimentaires renforcés" data-de="Stärkere lokale Ernährungssysteme">Stronger local food systems</strong>
+          <span class="muted" data-en="Communities withstand conflict and climate shocks." data-fr="Des communautés plus résilientes face aux conflits et aux chocs climatiques." data-de="Gemeinschaften werden widerstandsfähiger gegen Konflikte & Klimaeinflüsse.">Resilience to shocks.</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HOW WE WORK ================= -->
+  <section class="section reveal in">
+    <div class="container">
+      <h2 data-en="How we work" data-fr="Notre approche" data-de="So arbeiten wir">How we work</h2>
+      <div class="steps" style="margin-top:.6rem">
+        <div class="card pad step">
+          <div class="num">1</div>
+          <h3 data-en="Assess" data-fr="Diagnostiquer" data-de="Bewerten">Assess</h3>
+          <p class="muted" data-en="Field visit and baseline survey with farmers and cooperatives." data-fr="Visite terrain et ligne de base avec agriculteurs et coopératives." data-de="Feldbesuch und Baseline-Erhebung mit Bäuer:innen und Genossenschaften.">Field visit & baseline.</p>
+        </div>
+        <div class="card pad step">
+          <div class="num">2</div>
+          <h3 data-en="Train" data-fr="Former" data-de="Schulen">Train</h3>
+          <p class="muted" data-en="Practical workshops on climate-smart practices and post-harvest." data-fr="Ateliers pratiques sur les pratiques climato-intelligentes et le post-récolte." data-de="Praxisworkshops zu klimaintelligenten Methoden und Post-Harvest.">Hands-on workshops.</p>
+        </div>
+        <div class="card pad step">
+          <div class="num">3</div>
+          <h3 data-en="Deploy Tools" data-fr="Déployer les outils" data-de="Tools einführen">Deploy Tools</h3>
+          <p class="muted" data-en="Simple digital tools for planning, weather and yield tracking." data-fr="Outils numériques simples pour la planification, la météo et le suivi des rendements." data-de="Einfache digitale Tools für Planung, Wetter und Ertrags-Tracking.">Simple digital tools.</p>
+        </div>
+        <div class="card pad step">
+          <div class="num">4</div>
+          <h3 data-en="Link to Markets" data-fr="Relier aux marchés" data-de="Mit Märkten vernetzen">Link to Markets</h3>
+          <p class="muted" data-en="Connect to buyers and inputs; support aggregation and logistics." data-fr="Connexion aux acheteurs et intrants ; appui à l’agrégation et à la logistique." data-de="Vernetzung mit Abnehmern & Inputs; Unterstützung bei Bündelung & Logistik.">Buyers & logistics.</p>
+        </div>
+        <div class="card pad step">
+          <div class="num">5</div>
+          <h3 data-en="Monitor & Improve" data-fr="Suivre & améliorer" data-de="Messen & verbessern">Monitor & Improve</h3>
+          <p class="muted" data-en="Track outcomes and iterate with farmers and partners." data-fr="Suivi des résultats et itérations avec agriculteurs et partenaires." data-de="Ergebnisse messen und gemeinsam iterieren.">Outcomes + iteration.</p>
+        </div>
+      </div>
+
+      <div class="cta-band">
+        <p class="muted"
+           data-en="Ready to co-design an agriculture program with your community or cooperative?"
+           data-fr="Prêt·e à co-concevoir un programme agricole avec votre communauté ou coopérative ?"
+           data-de="Bereit, gemeinsam mit Ihrer Gemeinschaft oder Genossenschaft ein Landwirtschaftsprogramm zu entwerfen?">
+          Ready to co-design an agriculture program with your community or cooperative?
+        </p>
+        <div class="hero-ctas">
+          <a href="../contact.html" class="btn btn-primary"
+             data-en="Start a conversation"
+             data-fr="Commencer une discussion"
+             data-de="Ein Gespräch starten">Start a conversation</a>
+          <a href="../services/services.html" class="btn btn-ghost"
+             data-en="See all services"
+             data-fr="Voir tous les services"
+             data-de="Alle Services ansehen">See all services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="section reveal in">
+    <div class="container center">
+      <h2 data-en="FAQs" data-fr="FAQ" data-de="FAQ">FAQs</h2>
+
+      <details class="card pad">
+        <summary
+          data-en="Do you work outside Bukavu & Goma?"
+          data-fr="Intervenez-vous en dehors de Bukavu & Goma ?"
+          data-de="Arbeiten Sie auch außerhalb von Bukavu & Goma?">
+          Do you work outside Bukavu & Goma?
+        </summary>
+        <p class="muted"
+           data-en="Yes. We support cooperatives and NGOs across the DRC, remotely and on site where needed."
+           data-fr="Oui. Nous accompagnons des coopératives et ONG à travers la RDC, à distance et sur site si nécessaire."
+           data-de="Ja. Wir unterstützen Genossenschaften und NGOs landesweit – remote und bei Bedarf vor Ort.">
+          Yes — nationwide and remote.
+        </p>
+      </details>
+
+      <details class="card pad">
+        <summary
+          data-en="How do smallholders participate?"
+          data-fr="Comment les petits producteurs participent-ils ?"
+          data-de="Wie beteiligen sich Kleinbäuer:innen?">
+          How do smallholders participate?
+        </summary>
+        <p class="muted"
+           data-en="Through local groups or cooperatives. We co-design sessions, then run practical training and follow-ups with lead farmers."
+           data-fr="Via des groupes locaux ou des coopératives. Nous co-concevons les sessions puis animons des formations pratiques et suivis avec des agriculteurs référents."
+           data-de="Über lokale Gruppen oder Genossenschaften. Wir co-designen Workshops und führen Praxistrainings mit Lead-Farmer:innen durch.">
+          Via local groups or coops.
+        </p>
+      </details>
+
+      <details class="card pad">
+        <summary
+          data-en="Do you supply seeds, tools or funding?"
+          data-fr="Fournissez-vous semences, outils ou financement ?"
+          data-de="Liefern Sie Saatgut, Geräte oder Finanzierung?">
+          Do you supply seeds, tools or funding?
+        </summary>
+        <p class="muted"
+           data-en="We focus on training, coordination and digital tools. For inputs or finance, we can connect you to trusted partners."
+           data-fr="Nous nous concentrons sur la formation, la coordination et les outils numériques. Pour les intrants ou le financement, nous pouvons vous relier à des partenaires de confiance."
+           data-de="Unser Fokus liegt auf Training, Koordination und digitalen Tools. Für Betriebsmittel oder Finanzierung vernetzen wir mit verlässlichen Partnern.">
+          Training first; partners for inputs/finance.
+        </p>
+      </details>
+
+      <details class="card pad">
+        <summary
+          data-en="How do you handle low connectivity?"
+          data-fr="Comment gérez-vous la faible connectivité ?"
+          data-de="Wie gehen Sie mit geringer Konnektivität um?">
+          How do you handle low connectivity?
+        </summary>
+        <p class="muted"
+           data-en="Our tools are offline-first with lightweight sync; we also use SMS/USSD where smartphones are limited."
+           data-fr="Nos outils sont offline-first avec synchronisation légère ; nous utilisons aussi SMS/USSD lorsque les smartphones sont limités."
+           data-de="Unsere Tools sind offline-first mit schlanker Synchronisierung; bei geringer Smartphone-Abdeckung nutzen wir SMS/USSD.">
+          Offline-first + SMS/USSD.
+        </p>
+      </details>
+
+      <details class="card pad">
+        <summary
+          data-en="Can schools start gardens with you?"
+          data-fr="Les écoles peuvent-elles créer des jardins avec vous ?"
+          data-de="Können Schulen mit Ihnen Gärten aufbauen?">
+          Can schools start gardens with you?
+        </summary>
+        <p class="muted"
+           data-en="Yes. We support school gardens and food programs to improve nutrition and teach practical skills."
+           data-fr="Oui. Nous soutenons les jardins scolaires et programmes alimentaires pour améliorer la nutrition et enseigner des compétences pratiques."
+           data-de="Ja. Wir unterstützen Schulgärten und Ernährungsprogramme zur Verbesserung der Ernährung und als Praxisschulung.">
+          Yes — school gardens & food programs.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Footer injected by base.js -->
+  <div id="site-footer"></div>
+
+  <!-- Global scripts -->
+  <script src="../route/base.js" defer></script>
+  <script src="../route/lang.js" defer></script>
+  <script src="../route/animations.js" defer></script>
+</body>
+</html>
