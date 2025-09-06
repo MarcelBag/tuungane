@@ -87,15 +87,21 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // ================= Language switching =================
-  document.querySelectorAll('.lang-switch [data-lang]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const lang = btn.dataset.lang;
+// ================= Language switching =================
+document.querySelectorAll('.lang-switch [data-lang]').forEach(btn => {
+  btn.addEventListener('click', () => {
+    const lang = btn.dataset.lang;
+    if (window.setLang) {
+      window.setLang(lang); // uses innerHTML safely
+    } else {
+      // fallback if lang.js isn't loaded
       document.querySelectorAll('[data-' + lang + ']').forEach(el => {
-        el.textContent = el.getAttribute('data-' + lang);
+        el.innerHTML = el.getAttribute('data-' + lang);
       });
       localStorage.setItem('siteLang', lang);
-    });
+    }
   });
+});
 
   // ================= Keeping .html to links =================
   // Removed the block that stripped .html because we need static file access and for the future we will check the possibility

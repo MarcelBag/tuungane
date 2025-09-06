@@ -1,7 +1,7 @@
 function setLang(lang) {
   document.querySelectorAll('[data-en]').forEach(el => {
     if (el.hasAttribute('data-' + lang)) {
-      el.innerHTML = el.getAttribute('data-' + lang); // keep inline HTML (e.g., <small>)
+      el.innerHTML = el.getAttribute('data-' + lang);
     }
   });
 
