@@ -12,18 +12,22 @@ document.addEventListener("DOMContentLoaded", () => {
     siteHeader.innerHTML = `
       <header class="nav glass">
         <div class="container nav-inner">
-          <a href="/index" class="logo">
-            <img src="/assets/fevicon.png" alt="Tuunganes" width="32" height="32">
+          <a href="../index.html" class="logo">
+            <img src="../assets/fevicon.png" alt="Tuunganes" width="32" height="32">
             <span>Tuunganes</span>
           </a>
           <button id="navToggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false">
             <span></span><span></span><span></span>
           </button>
           <nav class="main-nav" id="mainNav">
-            <a href="/about" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
-            <a href="/services" data-en="Services" data-fr="Services" data-de="Dienstleistungen">Services</a>
-            <a href="/index#impact" data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
-            <a href="/index#join" data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</a>
+            <a href="../about.html" 
+               data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+            <a href="../services/services.html" 
+               data-en="Services" data-fr="Services" data-de="Dienstleistungen">Services</a>
+            <a href="../index.html#impact" 
+               data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
+            <a href="../index.html#join" 
+               data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</a>
             <div class="nav-right">
               <div class="lang-switch">
                 <button type="button" data-lang="en">EN</button>
@@ -84,10 +88,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  // ================= Routing (remove .html in URL) =================
-  document.querySelectorAll("a[href]").forEach(a => {
-    if (a.getAttribute("href").endsWith(".html")) {
-      a.setAttribute("href", a.getAttribute("href").replace(".html", ""));
-    }
-  });
+  // ================= Keeping .html to links =================
+  // Removed the block that stripped .html because we need static file access and for the future we will check the possibility
 });

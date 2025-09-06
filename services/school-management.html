@@ -16,6 +16,7 @@
     .plan { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; text-align: center; box-shadow: var(--shadow); }
     .plan h3 { margin: 0 0 .5rem; font-size: 1.4rem; }
     .plan strong { font-size: 2rem; display: block; margin: .5rem 0; }
+    .plan strong small { display: block; font-size: .9rem; color: var(--text-muted); }
     .plan ul { text-align: left; margin: 1rem 0; padding-left: 1.2rem; color: var(--text-2); }
     .plan ul li { margin: .4rem 0; }
     .toggle { display: flex; justify-content: center; align-items: center; gap: .75rem; margin-top: 1rem; }
@@ -59,7 +60,8 @@
       <!-- Free -->
       <div class="plan">
         <h3 data-en="Free" data-fr="Gratuit" data-de="Kostenlos">Free</h3>
-        <strong id="freePrice" data-en="$0" data-fr="0$" data-de="0€">$0</strong>
+        <strong data-en="$0" data-fr="0$" data-de="0€">$0</strong>
+        <small data-en="per month" data-fr="par mois" data-de="pro Monat">per month</small>
         <p data-en="Up to 50 users, ideal for small schools starting digital management."
            data-fr="Jusqu'à 50 utilisateurs, idéal pour les petites écoles commençant la gestion numérique."
            data-de="Bis zu 50 Benutzer, ideal für kleine Schulen, die mit digitaler Verwaltung beginnen.">
@@ -86,6 +88,7 @@
       <div class="plan">
         <h3 data-en="Pro" data-fr="Pro" data-de="Pro">Pro</h3>
         <strong id="proPrice" data-en="$250" data-fr="250$" data-de="250€">$250</strong>
+        <small data-en="per month" data-fr="par mois" data-de="pro Monat">per month</small>
         <p data-en="Up to 100 users, with advanced academic management."
            data-fr="Jusqu'à 100 utilisateurs, avec gestion académique avancée."
            data-de="Bis zu 100 Benutzer, mit erweiterter Verwaltung.">
@@ -112,6 +115,7 @@
       <div class="plan">
         <h3 data-en="Premium" data-fr="Premium" data-de="Premium">Premium</h3>
         <strong id="premiumPrice" data-en="$350" data-fr="350$" data-de="350€">$350</strong>
+        <small data-en="per month" data-fr="par mois" data-de="pro Monat">per month</small>
         <p data-en="Unlimited users, designed for districts and networks."
            data-fr="Utilisateurs illimités, conçu pour les districts et réseaux."
            data-de="Unbegrenzte Benutzer, entwickelt für Bezirke und Netzwerke.">
@@ -139,7 +143,6 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
   <div id="site-footer"></div>
 
   <!-- Scripts -->
@@ -157,13 +160,25 @@
         annualBtn.classList.remove("active");
         proPrice.textContent = "$250";
         premiumPrice.textContent = "$350";
+        proPrice.setAttribute("data-en", "$250");
+        proPrice.setAttribute("data-fr", "250$");
+        proPrice.setAttribute("data-de", "250€");
+        premiumPrice.setAttribute("data-en", "$350");
+        premiumPrice.setAttribute("data-fr", "350$");
+        premiumPrice.setAttribute("data-de", "350€");
       });
 
       annualBtn.addEventListener("click", () => {
         monthlyBtn.classList.remove("active");
         annualBtn.classList.add("active");
-        proPrice.textContent = "$200";   // 20% off
-        premiumPrice.textContent = "$280"; // 20% off
+        proPrice.textContent = "$200";
+        premiumPrice.textContent = "$280";
+        proPrice.setAttribute("data-en", "$200");
+        proPrice.setAttribute("data-fr", "200$");
+        proPrice.setAttribute("data-de", "200€");
+        premiumPrice.setAttribute("data-en", "$280");
+        premiumPrice.setAttribute("data-fr", "280$");
+        premiumPrice.setAttribute("data-de", "280€");
       });
     });
   </script>
