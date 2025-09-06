@@ -10,9 +10,34 @@
   </title>
   <link rel="icon" href="../assets/fevicon.png" type="image/png">
   <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    /* Pricing Section */
+    .pricing { padding: clamp(3rem, 6vw, 5rem) 0; text-align: center; }
+    .pricing h2 { margin-bottom: 1rem; }
+    .plans { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem; margin-top:2rem; }
+    .plan { border:1px solid var(--border); border-radius: var(--radius); padding:1.5rem; background: var(--surface); box-shadow: var(--shadow); display:flex; flex-direction:column; justify-content:space-between; }
+    .plan h3 { margin-top:0; font-size:1.25rem; }
+    .plan strong { font-size:2rem; display:block; margin:.5rem 0; background:var(--grad-accent); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .plan ul { text-align:left; margin:1rem 0; padding-left:1.2rem; }
+    .plan li { margin:.35rem 0; color:var(--text-2); }
+    .plan .btn { width:100%; text-align:center; }
+
+    /* FAQ */
+    .faq { padding: clamp(3rem, 6vw, 5rem) 0; }
+    .faq details { background: var(--surface); border:1px solid var(--border); border-radius: var(--radius); margin:.6rem 0; padding:1rem; box-shadow: var(--shadow); }
+    .faq summary { font-weight:600; cursor:pointer; }
+
+    /* Comparison Table */
+    .comparison { overflow-x:auto; margin-top:2rem; }
+    table { width:100%; border-collapse: collapse; }
+    th, td { padding:.75rem 1rem; border:1px solid var(--border); text-align:center; }
+    th { background: var(--muted); }
+    td:first-child, th:first-child { text-align:left; }
+    .check { color:green; font-weight:700; }
+  </style>
 </head>
 <body>
-  <!-- Header injected by base.js -->
+  <!-- Header -->
   <div id="site-header"></div>
 
   <!-- HERO -->
@@ -31,131 +56,137 @@
     </div>
   </section>
 
-  <!-- INTRO -->
-  <section class="about reveal">
-    <div class="container about-grid">
-      <div class="about-image"><img src="../assets/kidlearn.jpg" alt="School Management"></div>
-      <div class="about-text card">
-        <p data-en="Education is the backbone of every community — but in many parts of the Democratic Republic of Congo, especially in the Eastern provinces, schools are still largely non-digital. Records are stored on paper, payments are tracked manually, and communication is often slow or unreliable."
-           data-fr="L'éducation est l'épine dorsale de toute communauté — mais dans de nombreuses régions de la République démocratique du Congo, en particulier dans l'Est, les écoles restent largement non numériques. Les dossiers sont conservés sur papier, les paiements sont suivis manuellement et la communication est souvent lente ou peu fiable."
-           data-de="Bildung ist das Rückgrat jeder Gemeinschaft — doch in vielen Teilen der Demokratischen Republik Kongo, insbesondere in den östlichen Provinzen, sind Schulen noch weitgehend nicht digitalisiert. Aufzeichnungen werden auf Papier geführt, Zahlungen manuell verfolgt und die Kommunikation ist oft langsam oder unzuverlässig.">
-           Education is the backbone of every community — but in many parts of the Democratic Republic of Congo, schools are still largely non-digital. Records are stored on paper, payments are tracked manually, and communication is often slow or unreliable.
-        </p>
-        <p data-en="At Tuunganes, we are changing this by building a modern, multi-tenancy School Management System that transforms how schools operate."
-           data-fr="Chez Tuunganes, nous changeons cela en construisant un système de gestion scolaire moderne et multi-écoles qui transforme la manière dont les écoles fonctionnent."
-           data-de="Bei Tuunganes ändern wir dies, indem wir ein modernes, mehrschulisches Verwaltungssystem entwickeln, das die Arbeitsweise der Schulen verändert.">
-           At Tuunganes, we are changing this by building a modern, multi-tenancy School Management System that transforms how schools operate.
-        </p>
+  <!-- PRICING -->
+  <section class="pricing reveal">
+    <div class="container">
+      <h2 data-en="Simple & Flexible Pricing"
+          data-fr="Tarification simple et flexible"
+          data-de="Einfache & flexible Preisgestaltung">
+          Simple & Flexible Pricing
+      </h2>
+      <p data-en="Choose a plan that fits your school. All plans come with a free 30-day trial."
+         data-fr="Choisissez un plan adapté à votre école. Tous les plans incluent un essai gratuit de 30 jours."
+         data-de="Wählen Sie einen Plan, der zu Ihrer Schule passt. Alle Pläne beinhalten eine kostenlose 30-Tage-Testversion.">
+         Choose a plan that fits your school. All plans come with a free 30-day trial.
+      </p>
+
+      <div class="plans">
+        <!-- Free -->
+        <div class="plan">
+          <h3 data-en="Free" data-fr="Gratuit" data-de="Kostenlos">Free</h3>
+          <strong>$0</strong>
+          <p data-en="Built for small schools just starting with digital tools."
+             data-fr="Conçu pour les petites écoles qui commencent avec les outils numériques."
+             data-de="Für kleine Schulen, die gerade mit digitalen Tools beginnen.">
+             Built for small schools just starting with digital tools.
+          </p>
+          <ul>
+            <li>Up to 100 students</li>
+            <li>Basic grade management</li>
+            <li>Parent communication</li>
+            <li>Email support</li>
+          </ul>
+          <a href="#" class="btn btn-primary" data-en="Get Started" data-fr="Commencer" data-de="Loslegen">Get Started</a>
+        </div>
+
+        <!-- Pro -->
+        <div class="plan">
+          <h3 data-en="Pro" data-fr="Pro" data-de="Pro">Pro</h3>
+          <strong>$9</strong>
+          <p data-en="For medium-sized schools needing full academic management."
+             data-fr="Pour les écoles moyennes ayant besoin d'une gestion académique complète."
+             data-de="Für mittelgroße Schulen, die eine vollständige Verwaltung benötigen.">
+             For medium-sized schools needing full academic management.
+          </p>
+          <ul>
+            <li>Unlimited students</li>
+            <li>Full grade & report card automation</li>
+            <li>Timetable & class management</li>
+            <li>Fee tracking with receipts</li>
+            <li>Priority support</li>
+          </ul>
+          <a href="#" class="btn btn-primary" data-en="Start Free Trial" data-fr="Commencer l'essai gratuit" data-de="Kostenlose Testversion starten">Start Free Trial</a>
+        </div>
+
+        <!-- Premium -->
+        <div class="plan">
+          <h3 data-en="Premium" data-fr="Premium" data-de="Premium">Premium</h3>
+          <strong>$14</strong>
+          <p data-en="For large schools & districts needing advanced features."
+             data-fr="Pour les grandes écoles et districts ayant besoin de fonctionnalités avancées."
+             data-de="Für große Schulen & Bezirke mit erweiterten Anforderungen.">
+             For large schools & districts needing advanced features.
+          </p>
+          <ul>
+            <li>Everything in Pro</li>
+            <li>Multi-school management</li>
+            <li>Location tracking for safety</li>
+            <li>Custom analytics & reports</li>
+            <li>Dedicated support team</li>
+          </ul>
+          <a href="#" class="btn btn-primary" data-en="Start Free Trial" data-fr="Commencer l'essai gratuit" data-de="Kostenlose Testversion starten">Start Free Trial</a>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- WHY IT MATTERS -->
-  <section class="page-section reveal">
+  <!-- FAQ -->
+  <section class="faq reveal">
     <div class="container">
-      <h2 data-en="Why It Matters"
-          data-fr="Pourquoi c'est important"
-          data-de="Warum es wichtig ist">
-          Why It Matters
-      </h2>
-      <div class="pillars-grid">
-        <article class="card">
-          <h3 data-en="For Students" data-fr="Pour les élèves" data-de="Für Schüler">For Students</h3>
-          <p data-en="Digitization keeps their grades, attendance, and progress always updated and motivates them to stay engaged."
-             data-fr="La numérisation maintient leurs notes, leur présence et leurs progrès toujours à jour et les motive à rester impliqués."
-             data-de="Die Digitalisierung hält Noten, Anwesenheit und Fortschritte stets aktuell und motiviert sie, engagiert zu bleiben.">
-             Digitization keeps their grades, attendance, and progress always updated and motivates them to stay engaged.
-          </p>
-        </article>
-        <article class="card">
-          <h3 data-en="For Teachers" data-fr="Pour les enseignants" data-de="Für Lehrer">For Teachers</h3>
-          <p data-en="The platform reduces administrative burden, automates report cards, and allows teachers to focus on teaching."
-             data-fr="La plateforme réduit la charge administrative, automatise les bulletins et permet aux enseignants de se concentrer sur l'enseignement."
-             data-de="Die Plattform reduziert den Verwaltungsaufwand, automatisiert Zeugnisse und ermöglicht es Lehrern, sich auf das Unterrichten zu konzentrieren.">
-             The platform reduces administrative burden, automates report cards, and allows teachers to focus on teaching.
-          </p>
-        </article>
-        <article class="card">
-          <h3 data-en="For Parents" data-fr="Pour les parents" data-de="Für Eltern">For Parents</h3>
-          <p data-en="Parents gain real-time access to their child’s academic performance, attendance, and even location, helping them stay involved."
-             data-fr="Les parents ont un accès en temps réel aux performances scolaires, à la présence et même à la localisation de leur enfant, ce qui les aide à rester impliqués."
-             data-de="Eltern erhalten Echtzeitzugang zu den Leistungen, der Anwesenheit und sogar dem Standort ihres Kindes, was ihnen hilft, engagiert zu bleiben.">
-             Parents gain real-time access to their child’s academic performance, attendance, and even location, helping them stay involved.
-          </p>
-        </article>
-        <article class="card">
-          <h3 data-en="For Administrators" data-fr="Pour les administrateurs" data-de="Für Administratoren">For Administrators</h3>
-          <p data-en="The system ensures transparency in school finances, fees, and performance metrics, making management data-driven and efficient."
-             data-fr="Le système assure la transparence des finances scolaires, des frais et des indicateurs de performance, rendant la gestion plus efficace et fondée sur les données."
-             data-de="Das System sorgt für Transparenz bei Schulfinanzen, Gebühren und Leistungskennzahlen und macht die Verwaltung effizienter und datengestützt.">
-             The system ensures transparency in school finances, fees, and performance metrics, making management data-driven and efficient.
-          </p>
-        </article>
-      </div>
+      <h2 data-en="Pricing FAQs" data-fr="FAQ Tarification" data-de="Preis-FAQs">Pricing FAQs</h2>
+      <details>
+        <summary data-en="What happens at the end of my trial?" data-fr="Que se passe-t-il à la fin de mon essai ?" data-de="Was passiert am Ende meiner Testversion?">What happens at the end of my trial?</summary>
+        <p>You can upgrade to a paid plan or continue with Free.</p>
+      </details>
+      <details>
+        <summary data-en="Can I change plans later?" data-fr="Puis-je changer de plan plus tard ?" data-de="Kann ich später den Plan ändern?">Can I change plans later?</summary>
+        <p>Yes, you can upgrade or downgrade anytime.</p>
+      </details>
+      <details>
+        <summary data-en="Do you offer discounts for districts?" data-fr="Offrez-vous des réductions pour les districts ?" data-de="Bieten Sie Rabatte für Schulbezirke an?">Do you offer discounts for districts?</summary>
+        <p>Yes, we provide discounts for large school networks.</p>
+      </details>
     </div>
   </section>
 
-  <!-- FEATURES -->
-  <section class="page-section reveal">
+  <!-- Comparison Table -->
+  <section class="comparison reveal">
     <div class="container">
-      <h2 data-en="Key Features" data-fr="Fonctionnalités principales" data-de="Hauptfunktionen">Key Features</h2>
-      <ul>
-        <li data-en="Student profiles from enrollment to graduation"
-            data-fr="Profils d'élèves de l'inscription à la remise des diplômes"
-            data-de="Schülerprofile von der Einschreibung bis zum Abschluss">Student profiles from enrollment to graduation</li>
-        <li data-en="Class and timetable management"
-            data-fr="Gestion des classes et des emplois du temps"
-            data-de="Verwaltung von Klassen und Stundenplänen">Class and timetable management</li>
-        <li data-en="Automatic grade entry and report cards"
-            data-fr="Saisie automatique des notes et bulletins scolaires"
-            data-de="Automatische Noteneingabe und Zeugnisse">Automatic grade entry and report cards</li>
-        <li data-en="Subscription and fee tracking"
-            data-fr="Suivi des abonnements et des frais scolaires"
-            data-de="Verfolgung von Abonnements und Schulgebühren">Subscription and fee tracking</li>
-        <li data-en="Multi-school support with secure data isolation"
-            data-fr="Support multi-écoles avec isolement sécurisé des données"
-            data-de="Unterstützung mehrerer Schulen mit sicherer Datenisolation">Multi-school support with secure data isolation</li>
-      </ul>
+      <h2 data-en="Compare Plans" data-fr="Comparer les plans" data-de="Pläne vergleichen">Compare Plans</h2>
+      <table>
+        <thead>
+          <tr>
+            <th>Feature</th>
+            <th>Free</th>
+            <th>Pro</th>
+            <th>Premium</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Students</td><td>100</td><td class="check">Unlimited</td><td class="check">Unlimited</td>
+          </tr>
+          <tr>
+            <td>Grade automation</td><td>Basic</td><td class="check">Full</td><td class="check">Full</td>
+          </tr>
+          <tr>
+            <td>Timetable management</td><td>–</td><td class="check">✔</td><td class="check">✔</td>
+          </tr>
+          <tr>
+            <td>Fee tracking</td><td>–</td><td class="check">✔</td><td class="check">✔</td>
+          </tr>
+          <tr>
+            <td>Multi-school support</td><td>–</td><td>–</td><td class="check">✔</td>
+          </tr>
+          <tr>
+            <td>Location tracking</td><td>–</td><td>–</td><td class="check">✔</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
   </section>
 
-  <!-- SAFETY -->
-  <section class="page-section reveal">
-    <div class="container">
-      <h2 data-en="Safety and Security: Our Top Priority"
-          data-fr="Sécurité et protection : notre priorité"
-          data-de="Sicherheit und Schutz: Unsere oberste Priorität">
-          Safety and Security: Our Top Priority
-      </h2>
-      <p data-en="Child safety is a major concern in Eastern Congo. Our system integrates protective features to keep students safe."
-         data-fr="La sécurité des enfants est une préoccupation majeure dans l'est du Congo. Notre système intègre des fonctionnalités de protection pour assurer la sécurité des élèves."
-         data-de="Kindersicherheit ist im Osten des Kongo ein großes Anliegen. Unser System integriert Schutzfunktionen, um Schüler zu schützen.">
-         Child safety is a major concern in Eastern Congo. Our system integrates protective features to keep students safe.
-      </p>
-      <ul>
-        <li data-en="Embedded map and real-time location tracking for parents"
-            data-fr="Carte intégrée et suivi en temps réel de la localisation pour les parents"
-            data-de="Eingebettete Karte und Echtzeit-Standortverfolgung für Eltern">Embedded map and real-time location tracking for parents</li>
-        <li data-en="Access control ensures only authorized parents can view data"
-            data-fr="Le contrôle d'accès garantit que seuls les parents autorisés peuvent consulter les données"
-            data-de="Zugangskontrolle stellt sicher, dass nur autorisierte Eltern Daten einsehen können">Access control ensures only authorized parents can view data</li>
-        <li data-en="Alerts and notifications when children arrive or leave school"
-            data-fr="Alertes et notifications lorsque les enfants arrivent ou quittent l'école"
-            data-de="Benachrichtigungen, wenn Kinder die Schule betreten oder verlassen">Alerts and notifications when children arrive or leave school</li>
-      </ul>
-      <p data-en="By combining education with security and transparency, we are creating a safer learning environment for the next generation."
-         data-fr="En combinant l'éducation avec la sécurité et la transparence, nous créons un environnement d'apprentissage plus sûr pour la prochaine génération."
-         data-de="Durch die Kombination von Bildung mit Sicherheit und Transparenz schaffen wir eine sicherere Lernumgebung für die nächste Generation.">
-         By combining education with security and transparency, we are creating a safer learning environment for the next generation.
-      </p>
-      <p><a href="https://masomos.tuunganes.com" target="_blank" class="btn btn-primary"
-            data-en="Explore Masomo"
-            data-fr="Explorer Masomo"
-            data-de="Masomo entdecken"> Explore Masomo</a></p>
-    </div>
-  </section>
-
-  <!-- Footer injected by base.js -->
+  <!-- Footer -->
   <div id="site-footer"></div>
 
   <!-- Scripts -->
