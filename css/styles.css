@@ -218,3 +218,29 @@ html[data-theme="dark"] .theme-switcher .knob { transform: translateX(24px); }
 .reveal.in { 
   opacity: 1; 
   transform: none; }
+
+/* ===============================
+   Pricing Section 
+=============================== */
+    .pricing { padding: clamp(3rem, 6vw, 5rem) 0; text-align: center; }
+    .pricing h2 { margin-bottom: 1rem; }
+    .plans { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem; margin-top:2rem; }
+    .plan { border:1px solid var(--border); border-radius: var(--radius); padding:1.5rem; background: var(--surface); box-shadow: var(--shadow); display:flex; flex-direction:column; justify-content:space-between; }
+    .plan h3 { margin-top:0; font-size:1.25rem; }
+    .plan strong { font-size:2rem; display:block; margin:.5rem 0; background:var(--grad-accent); -webkit-background-clip:text; background-clip:text; color:transparent; }
+    .plan ul { text-align:left; margin:1rem 0; padding-left:1.2rem; }
+    .plan li { margin:.35rem 0; color:var(--text-2); }
+    .plan .btn { width:100%; text-align:center; }
+
+    /* FAQ */
+    .faq { padding: clamp(3rem, 6vw, 5rem) 0; }
+    .faq details { background: var(--surface); border:1px solid var(--border); border-radius: var(--radius); margin:.6rem 0; padding:1rem; box-shadow: var(--shadow); }
+    .faq summary { font-weight:600; cursor:pointer; }
+
+    /* Comparison Table */
+    .comparison { overflow-x:auto; margin-top:2rem; }
+    table { width:100%; border-collapse: collapse; }
+    th, td { padding:.75rem 1rem; border:1px solid var(--border); text-align:center; }
+    th { background: var(--muted); }
+    td:first-child, th:first-child { text-align:left; }
+    .check { color:green; font-weight:700; }

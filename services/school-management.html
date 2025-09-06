@@ -10,31 +10,6 @@
   </title>
   <link rel="icon" href="../assets/fevicon.png" type="image/png">
   <link rel="stylesheet" href="../css/styles.css">
-  <style>
-    /* Pricing Section */
-    .pricing { padding: clamp(3rem, 6vw, 5rem) 0; text-align: center; }
-    .pricing h2 { margin-bottom: 1rem; }
-    .plans { display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap:1.2rem; margin-top:2rem; }
-    .plan { border:1px solid var(--border); border-radius: var(--radius); padding:1.5rem; background: var(--surface); box-shadow: var(--shadow); display:flex; flex-direction:column; justify-content:space-between; }
-    .plan h3 { margin-top:0; font-size:1.25rem; }
-    .plan strong { font-size:2rem; display:block; margin:.5rem 0; background:var(--grad-accent); -webkit-background-clip:text; background-clip:text; color:transparent; }
-    .plan ul { text-align:left; margin:1rem 0; padding-left:1.2rem; }
-    .plan li { margin:.35rem 0; color:var(--text-2); }
-    .plan .btn { width:100%; text-align:center; }
-
-    /* FAQ */
-    .faq { padding: clamp(3rem, 6vw, 5rem) 0; }
-    .faq details { background: var(--surface); border:1px solid var(--border); border-radius: var(--radius); margin:.6rem 0; padding:1rem; box-shadow: var(--shadow); }
-    .faq summary { font-weight:600; cursor:pointer; }
-
-    /* Comparison Table */
-    .comparison { overflow-x:auto; margin-top:2rem; }
-    table { width:100%; border-collapse: collapse; }
-    th, td { padding:.75rem 1rem; border:1px solid var(--border); text-align:center; }
-    th { background: var(--muted); }
-    td:first-child, th:first-child { text-align:left; }
-    .check { color:green; font-weight:700; }
-  </style>
 </head>
 <body>
   <!-- Header -->
@@ -81,12 +56,15 @@
              Built for small schools just starting with digital tools.
           </p>
           <ul>
-            <li>Up to 100 students</li>
-            <li>Basic grade management</li>
-            <li>Parent communication</li>
-            <li>Email support</li>
+            <li data-en="Up to 100 students" data-fr="Jusqu'à 100 élèves" data-de="Bis zu 100 Schüler">Up to 100 students</li>
+            <li data-en="Basic grade management" data-fr="Gestion basique des notes" data-de="Grundlegende Notenverwaltung">Basic grade management</li>
+            <li data-en="Parent communication" data-fr="Communication avec les parents" data-de="Elternkommunikation">Parent communication</li>
+            <li data-en="Email support" data-fr="Support par e-mail" data-de="E-Mail-Support">Email support</li>
           </ul>
-          <a href="#" class="btn btn-primary" data-en="Get Started" data-fr="Commencer" data-de="Loslegen">Get Started</a>
+          <a href="#" class="btn btn-primary"
+             data-en="Get Started"
+             data-fr="Commencer"
+             data-de="Loslegen">Get Started</a>
         </div>
 
         <!-- Pro -->
@@ -99,13 +77,16 @@
              For medium-sized schools needing full academic management.
           </p>
           <ul>
-            <li>Unlimited students</li>
-            <li>Full grade & report card automation</li>
-            <li>Timetable & class management</li>
-            <li>Fee tracking with receipts</li>
-            <li>Priority support</li>
+            <li data-en="Unlimited students" data-fr="Élèves illimités" data-de="Unbegrenzte Schüler">Unlimited students</li>
+            <li data-en="Full grade & report card automation" data-fr="Automatisation complète des notes et bulletins" data-de="Automatisierte Noten und Zeugnisse">Full grade & report card automation</li>
+            <li data-en="Timetable & class management" data-fr="Gestion des classes et emplois du temps" data-de="Klassen- & Stundenplanverwaltung">Timetable & class management</li>
+            <li data-en="Fee tracking with receipts" data-fr="Suivi des frais avec reçus" data-de="Gebührenverwaltung mit Quittungen">Fee tracking with receipts</li>
+            <li data-en="Priority support" data-fr="Support prioritaire" data-de="Priorisierter Support">Priority support</li>
           </ul>
-          <a href="#" class="btn btn-primary" data-en="Start Free Trial" data-fr="Commencer l'essai gratuit" data-de="Kostenlose Testversion starten">Start Free Trial</a>
+          <a href="#" class="btn btn-primary"
+             data-en="Start Free Trial"
+             data-fr="Commencer l'essai gratuit"
+             data-de="Kostenlose Testversion starten">Start Free Trial</a>
         </div>
 
         <!-- Premium -->
@@ -118,13 +99,16 @@
              For large schools & districts needing advanced features.
           </p>
           <ul>
-            <li>Everything in Pro</li>
-            <li>Multi-school management</li>
-            <li>Location tracking for safety</li>
-            <li>Custom analytics & reports</li>
-            <li>Dedicated support team</li>
+            <li data-en="Everything in Pro" data-fr="Tout dans Pro" data-de="Alles in Pro">Everything in Pro</li>
+            <li data-en="Multi-school management" data-fr="Gestion multi-écoles" data-de="Mehrschulverwaltung">Multi-school management</li>
+            <li data-en="Location tracking for safety" data-fr="Suivi de localisation pour la sécurité" data-de="Standortverfolgung für Sicherheit">Location tracking for safety</li>
+            <li data-en="Custom analytics & reports" data-fr="Analyses et rapports personnalisés" data-de="Individuelle Analysen & Berichte">Custom analytics & reports</li>
+            <li data-en="Dedicated support team" data-fr="Équipe de support dédiée" data-de="Engagiertes Support-Team">Dedicated support team</li>
           </ul>
-          <a href="#" class="btn btn-primary" data-en="Start Free Trial" data-fr="Commencer l'essai gratuit" data-de="Kostenlose Testversion starten">Start Free Trial</a>
+          <a href="#" class="btn btn-primary"
+             data-en="Start Free Trial"
+             data-fr="Commencer l'essai gratuit"
+             data-de="Kostenlose Testversion starten">Start Free Trial</a>
         </div>
       </div>
     </div>
@@ -135,16 +119,34 @@
     <div class="container">
       <h2 data-en="Pricing FAQs" data-fr="FAQ Tarification" data-de="Preis-FAQs">Pricing FAQs</h2>
       <details>
-        <summary data-en="What happens at the end of my trial?" data-fr="Que se passe-t-il à la fin de mon essai ?" data-de="Was passiert am Ende meiner Testversion?">What happens at the end of my trial?</summary>
-        <p>You can upgrade to a paid plan or continue with Free.</p>
+        <summary data-en="What happens at the end of my trial?"
+                 data-fr="Que se passe-t-il à la fin de mon essai ?"
+                 data-de="Was passiert am Ende meiner Testversion?">What happens at the end of my trial?</summary>
+        <p data-en="You can upgrade to a paid plan or continue with Free."
+           data-fr="Vous pouvez passer à un plan payant ou continuer avec Gratuit."
+           data-de="Sie können auf einen kostenpflichtigen Plan upgraden oder mit Kostenlos fortfahren.">
+           You can upgrade to a paid plan or continue with Free.
+        </p>
       </details>
       <details>
-        <summary data-en="Can I change plans later?" data-fr="Puis-je changer de plan plus tard ?" data-de="Kann ich später den Plan ändern?">Can I change plans later?</summary>
-        <p>Yes, you can upgrade or downgrade anytime.</p>
+        <summary data-en="Can I change plans later?"
+                 data-fr="Puis-je changer de plan plus tard ?"
+                 data-de="Kann ich später den Plan ändern?">Can I change plans later?</summary>
+        <p data-en="Yes, you can upgrade or downgrade anytime."
+           data-fr="Oui, vous pouvez passer à un plan supérieur ou inférieur à tout moment."
+           data-de="Ja, Sie können jederzeit upgraden oder downgraden.">
+           Yes, you can upgrade or downgrade anytime.
+        </p>
       </details>
       <details>
-        <summary data-en="Do you offer discounts for districts?" data-fr="Offrez-vous des réductions pour les districts ?" data-de="Bieten Sie Rabatte für Schulbezirke an?">Do you offer discounts for districts?</summary>
-        <p>Yes, we provide discounts for large school networks.</p>
+        <summary data-en="Do you offer discounts for districts?"
+                 data-fr="Offrez-vous des réductions pour les districts ?"
+                 data-de="Bieten Sie Rabatte für Schulbezirke an?">Do you offer discounts for districts?</summary>
+        <p data-en="Yes, we provide discounts for large school networks."
+           data-fr="Oui, nous offrons des réductions pour les grands réseaux scolaires."
+           data-de="Ja, wir bieten Rabatte für große Schulnetzwerke an.">
+           Yes, we provide discounts for large school networks.
+        </p>
       </details>
     </div>
   </section>
@@ -156,30 +158,38 @@
       <table>
         <thead>
           <tr>
-            <th>Feature</th>
-            <th>Free</th>
-            <th>Pro</th>
-            <th>Premium</th>
+            <th data-en="Feature" data-fr="Fonctionnalité" data-de="Funktion">Feature</th>
+            <th data-en="Free" data-fr="Gratuit" data-de="Kostenlos">Free</th>
+            <th data-en="Pro" data-fr="Pro" data-de="Pro">Pro</th>
+            <th data-en="Premium" data-fr="Premium" data-de="Premium">Premium</th>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>Students</td><td>100</td><td class="check">Unlimited</td><td class="check">Unlimited</td>
+            <td data-en="Students" data-fr="Élèves" data-de="Schüler">Students</td>
+            <td>100</td><td data-en="Unlimited" data-fr="Illimité" data-de="Unbegrenzt">Unlimited</td><td data-en="Unlimited" data-fr="Illimité" data-de="Unbegrenzt">Unlimited</td>
           </tr>
           <tr>
-            <td>Grade automation</td><td>Basic</td><td class="check">Full</td><td class="check">Full</td>
+            <td data-en="Grade automation" data-fr="Automatisation des notes" data-de="Notenautomatisierung">Grade automation</td>
+            <td data-en="Basic" data-fr="Basique" data-de="Einfach">Basic</td>
+            <td data-en="Full" data-fr="Complète" data-de="Vollständig">Full</td>
+            <td data-en="Full" data-fr="Complète" data-de="Vollständig">Full</td>
           </tr>
           <tr>
-            <td>Timetable management</td><td>–</td><td class="check">✔</td><td class="check">✔</td>
+            <td data-en="Timetable management" data-fr="Gestion des emplois du temps" data-de="Stundenplanverwaltung">Timetable management</td>
+            <td>–</td><td class="check">✔</td><td class="check">✔</td>
           </tr>
           <tr>
-            <td>Fee tracking</td><td>–</td><td class="check">✔</td><td class="check">✔</td>
+            <td data-en="Fee tracking" data-fr="Suivi des frais" data-de="Gebührenverwaltung">Fee tracking</td>
+            <td>–</td><td class="check">✔</td><td class="check">✔</td>
           </tr>
           <tr>
-            <td>Multi-school support</td><td>–</td><td>–</td><td class="check">✔</td>
+            <td data-en="Multi-school support" data-fr="Support multi-écoles" data-de="Mehrschulunterstützung">Multi-school support</td>
+            <td>–</td><td>–</td><td class="check">✔</td>
           </tr>
           <tr>
-            <td>Location tracking</td><td>–</td><td>–</td><td class="check">✔</td>
+            <td data-en="Location tracking" data-fr="Suivi de localisation" data-de="Standortverfolgung">Location tracking</td>
+            <td>–</td><td>–</td><td class="check">✔</td>
           </tr>
         </tbody>
       </table>
