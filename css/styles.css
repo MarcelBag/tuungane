@@ -246,3 +246,12 @@ html[data-theme="dark"] .theme-switcher .knob { transform: translateX(24px); }
     .check { color:green; font-weight:700; }
 
 
+.hero--banner{
+  min-height: clamp(280px, 42vh, 460px);
+  display:flex; align-items:center;
+  background:
+    linear-gradient(180deg, rgba(0,0,0,.35), rgba(0,0,0,.15)),
+    center/cover no-repeat var(--hero);
+  color: #fff;
+}
+.hero--banner .lede{ color: rgba(255,255,255,.9); }
