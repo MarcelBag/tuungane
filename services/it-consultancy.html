@@ -1,37 +1,369 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>IT Consultancy & Digital Solutions | Tuunganes</title>
-  <link rel="icon" href="../assets/fevicon.png" type="image/png">
-  <link rel="stylesheet" href="../css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title
+    data-en="IT Consultancy & Digital Solutions | Tuunganes"
+    data-fr="Conseil IT & Solutions numériques | Tuunganes"
+    data-de="IT-Beratung & Digitale Lösungen | Tuunganes">
+    IT Consultancy & Digital Solutions | Tuunganes
+  </title>
+
+  <link rel="icon" href="../assets/fevicon.png" type="image/png" />
+  <link rel="stylesheet" href="../css/styles.css" />
+
+  <style>
+    /* Local enhancements just for this page */
+    .hero .eyebrow { font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--text-muted); }
+    .pillars-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
+    .pillar.card { background: var(--surface); color: var(--text); padding: 1rem; }
+    .partner-chips { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.5rem; }
+    .chip {
+      display:inline-flex; align-items:center; gap:.4rem;
+      border:1px solid var(--border); padding:.45rem .7rem; border-radius:999px;
+      background: color-mix(in hsl, var(--surface) 92%, transparent);
+      font-weight:600; font-size:.92rem;
+    }
+    .steps { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:1rem; }
+    .step { background: var(--surface); border:1px solid var(--border); border-radius:14px; padding:1rem; text-align:center; }
+    .step b { display:block; font-size:1.1rem; margin-bottom:.25rem; }
+    .cta-band { background: color-mix(in hsl, var(--surface) 92%, transparent); border:1px solid var(--border); border-radius:16px; padding:1.1rem; display:flex; gap:.8rem; flex-wrap:wrap; align-items:center; justify-content:space-between; }
+    .faqs { width:min(860px, 92%); margin:0 auto; }
+    details { background: var(--surface); border:1px solid var(--border); border-radius:12px; padding:.8rem 1rem; }
+    details + details { margin-top:.6rem; }
+    summary { cursor:pointer; font-weight:700; }
+  </style>
 </head>
 <body>
+  <!-- Header injected by base.js -->
+  <div id="site-header"></div>
+
+  <!-- HERO -->
   <section class="hero reveal">
     <div class="container hero-content">
-      <h1>IT Consultancy & Digital Solutions</h1>
-      <p>Supporting NGOs, schools and businesses in the DRC to adopt secure, reliable and modern technology systems.</p>
-    </div>
-  </section>
-
-  <section class="about reveal">
-    <div class="container about-grid">
-      <div class="about-image"><img src="../assets/pro.jpg" alt="Digital Solutions"></div>
-      <div class="about-text card">
-        <h2>Why It Matters in Congo</h2>
-        <p>Eastern Congo faces unreliable internet, weak infrastructure and limited IT capacity. Many schools and NGOs cannot compete globally due to outdated systems.</p>
-        <h3>Our Solutions</h3>
-        <ul>
-          <li>Digital transformation strategies for growth.</li>
-          <li>Internet & infrastructure consulting.</li>
-          <li>Cloud platforms and IT security audits.</li>
-          <li>Training and capacity building for local teams.</li>
-        </ul>
+      <div class="eyebrow"
+           data-en="Advisory • Engineering • Enablement"
+           data-fr="Conseil • Ingénierie • Accompagnement"
+           data-de="Beratung • Engineering • Enablement">
+        Advisory • Engineering • Enablement
+      </div>
+      <h1
+        data-en="IT Consultancy & Digital Solutions"
+        data-fr="Conseil IT & Solutions numériques"
+        data-de="IT-Beratung & Digitale Lösungen">
+        IT Consultancy & Digital Solutions
+      </h1>
+      <p
+        data-en="We help NGOs, schools and businesses in the DRC plan, build and run secure, reliable and modern technology—fast."
+        data-fr="Nous aidons les ONG, les écoles et les entreprises en RDC à planifier, déployer et exploiter des technologies modernes, fiables et sécurisées — rapidement."
+        data-de="Wir helfen NGOs, Schulen und Unternehmen in der DR Kongo, moderne, zuverlässige und sichere Technologie schnell zu planen, aufzubauen und zu betreiben.">
+        We help NGOs, schools and businesses in the DRC plan, build and run secure, reliable and modern technology—fast.
+      </p>
+      <div class="hero-ctas">
+        <a href="../contact.html" class="btn btn-primary"
+           data-en="Book a consultation"
+           data-fr="Réserver une consultation"
+           data-de="Beratung anfragen">Book a consultation</a>
+        <a href="../services/services.html" class="btn btn-ghost"
+           data-en="See all services"
+           data-fr="Voir tous les services"
+           data-de="Alle Services ansehen">See all services</a>
       </div>
     </div>
   </section>
 
+  <!-- INTRO / WHY -->
+  <section class="about reveal">
+    <div class="container about-grid">
+      <div class="about-image">
+        <img src="../assets/pro.jpg" alt="Consultants collaborating on modern IT solutions" />
+      </div>
+      <div class="about-text card">
+        <h2
+          data-en="We turn challenges into digital results"
+          data-fr="Nous transformons vos défis en résultats numériques"
+          data-de="Wir verwandeln Herausforderungen in digitale Ergebnisse">
+          We turn challenges into digital results
+        </h2>
+        <p
+          data-en="Unreliable connectivity, legacy systems and limited capacity can slow teams down. Our young, professional engineers bring practical experience across infrastructure, cloud and AI to modernize what you have and build what you need."
+          data-fr="La connectivité instable, les systèmes hérités et le manque de ressources freinent les équipes. Nos ingénieurs jeunes et professionnels apportent une expérience concrète en infrastructure, cloud et IA pour moderniser l’existant et construire ce dont vous avez besoin."
+          data-de="Unzuverlässige Konnektivität, Altsysteme und fehlende Kapazitäten bremsen Teams aus. Unsere jungen, professionellen Engineers bringen Praxis in Infrastruktur, Cloud und KI mit, um Ihr Bestehendes zu modernisieren und Neues aufzubauen.">
+          Unreliable connectivity, legacy systems and limited capacity can slow teams down. Our young, professional engineers bring practical experience across infrastructure, cloud and AI to modernize what you have and build what you need.
+        </p>
+
+        <div class="cta-band">
+          <div
+            data-en="Vendors & platforms we work with:"
+            data-fr="Fournisseurs & plateformes maîtrisés :"
+            data-de="Anbieter & Plattformen, mit denen wir arbeiten:">
+            Vendors & platforms we work with:
+          </div>
+          <div class="partner-chips" aria-label="Technology partners">
+            <span class="chip">Microsoft 365</span>
+            <span class="chip">Azure</span>
+            <span class="chip">AWS</span>
+            <span class="chip">Google Meet</span>
+            <span class="chip">Google Workspace</span>
+            <span class="chip">Cisco</span>
+            <span class="chip">Linux/Ubuntu</span>
+            <span class="chip">Power BI</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHAT WE DO -->
+  <section class="pillars reveal">
+    <div class="container">
+      <h2
+        data-en="What we do"
+        data-fr="Ce que nous faisons"
+        data-de="Was wir tun">
+        What we do
+      </h2>
+
+      <div class="pillars-grid">
+        <article class="pillar card">
+          <h3 data-en="IT Consultancy & Audits" data-fr="Conseil & audits IT" data-de="IT-Beratung & Audits">IT Consultancy & Audits</h3>
+          <p data-en="Assess your current environment and define a practical roadmap for reliability, security and growth."
+             data-fr="Évaluer votre environnement et définir une feuille de route pragmatique pour la fiabilité, la sécurité et la croissance."
+             data-de="Bestandsaufnahme und praxisnahe Roadmap für Zuverlässigkeit, Sicherheit und Wachstum.">
+            Assess your current environment and define a practical roadmap for reliability, security and growth.
+          </p>
+        </article>
+
+        <article class="pillar card">
+          <h3 data-en="Cloud Architecture & Migration" data-fr="Architecture & migration Cloud" data-de="Cloud-Architektur & Migration">Cloud Architecture & Migration</h3>
+          <p data-en="Azure, AWS or Google—design, migrate and optimize cloud services with cost and performance in mind."
+             data-fr="Azure, AWS ou Google — concevoir, migrer et optimiser vos services cloud avec maîtrise des coûts et des performances."
+             data-de="Azure, AWS oder Google — Services mit Blick auf Kosten und Performance planen, migrieren und optimieren.">
+            Azure, AWS or Google—design, migrate and optimize cloud services with cost and performance in mind.
+          </p>
+        </article>
+
+        <article class="pillar card">
+          <h3 data-en="Infrastructure & Networking" data-fr="Infrastructure & Réseaux" data-de="Infrastruktur & Netzwerke">Infrastructure & Networking</h3>
+          <p data-en="LAN/Wi-Fi design, switching/routing (incl. Cisco), servers, backups and disaster recovery tuned for the DRC."
+             data-fr="Conception LAN/Wi-Fi, commutation/routage (incl. Cisco), serveurs, sauvegardes et PRA adaptés au contexte RDC."
+             data-de="LAN/WLAN-Design, Switching/Routing (inkl. Cisco), Server, Backups und Desaster-Recovery für die DRK.">
+            LAN/Wi-Fi design, switching/routing (incl. Cisco), servers, backups and disaster recovery tuned for the DRC.
+          </p>
+        </article>
+
+        <article class="pillar card">
+          <h3 data-en="Internet Connectivity & Optimization" data-fr="Connectivité Internet & optimisation" data-de="Internet-Anbindung & Optimierung">Internet Connectivity & Optimization</h3>
+          <p data-en="From last-mile options to SD-WAN and failover—we make your connection stable, fast and visible."
+             data-fr="Du dernier kilomètre au SD-WAN et au basculement — rendre votre connexion stable, rapide et observable."
+             data-de="Von Last-Mile bis SD-WAN und Failover — wir machen Ihre Verbindung stabil, schnell und transparent.">
+            From last-mile options to SD-WAN and failover—we make your connection stable, fast and visible.
+          </p>
+        </article>
+
+        <article class="pillar card">
+          <h3 data-en="Data Analysis & Dashboards" data-fr="Analyse de données & tableaux de bord" data-de="Datenanalyse & Dashboards">Data Analysis & Dashboards</h3>
+          <p data-en="From cleaning to modeling to dashboards (Power BI/Looker)—turn raw data into decisions."
+             data-fr="Du nettoyage à la modélisation jusqu’aux tableaux de bord (Power BI/Looker) — transformer vos données en décisions."
+             data-de="Von Aufbereitung über Modellierung bis Dashboards (Power BI/Looker) — Rohdaten in Entscheidungen verwandeln.">
+            From cleaning to modeling to dashboards (Power BI/Looker)—turn raw data into decisions.
+          </p>
+        </article>
+
+        <article class="pillar card">
+          <h3 data-en="Cybersecurity & Compliance" data-fr="Cybersécurité & conformité" data-de="Cybersecurity & Compliance">Cybersecurity & Compliance</h3>
+          <p data-en="Identity & access, endpoint hardening, mail security, zero-trust basics and awareness for your teams."
+             data-fr="Gestion des identités/accès, durcissement postes, sécurité mail, principes zero-trust et sensibilisation des équipes."
+             data-de="Identitäten & Zugriffe, Härtung, Mail-Security, Zero-Trust-Grundlagen und Awareness für Ihre Teams.">
+            Identity & access, endpoint hardening, mail security, zero-trust basics and awareness for your teams.
+          </p>
+        </article>
+
+        <article class="pillar card">
+          <h3 data-en="Hardware & Licensing" data-fr="Matériel & licences" data-de="Hardware & Lizenzen">Hardware & Licensing</h3>
+          <p data-en="Right-sizing devices, servers and software—procurement support for Microsoft, Windows, security and more."
+             data-fr="Dimensionnement de matériels, serveurs et logiciels — accompagnement d’achat (Microsoft, Windows, sécurité, etc.)."
+             data-de="Passende Geräte, Server und Software — Beschaffung für Microsoft, Windows, Security u. a.">
+            Right-sizing devices, servers and software—procurement support for Microsoft, Windows, security and more.
+          </p>
+        </article>
+
+        <article class="pillar card">
+          <h3 data-en="AI & Automation" data-fr="IA & automatisation" data-de="KI & Automatisierung">AI & Automation</h3>
+          <p data-en="Apply AI safely: document search, chatbots, RAG, OCR, and workflow automation to save time at scale."
+             data-fr="Appliquer l’IA en sécurité : recherche documentaire, chatbots, RAG, OCR et automatisation pour gagner du temps."
+             data-de="KI sicher nutzen: Dokumentsuche, Chatbots, RAG, OCR und Workflow-Automatisierung für spürbare Effizienz.">
+            Apply AI safely: document search, chatbots, RAG, OCR, and workflow automation to save time at scale.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW WE WORK -->
+  <section class="page-section reveal">
+    <div class="container">
+      <h2
+        data-en="How we work"
+        data-fr="Notre méthode"
+        data-de="So arbeiten wir">
+        How we work
+      </h2>
+      <div class="steps">
+        <div class="step">
+          <b data-en="Discover" data-fr="Découvrir" data-de="Entdecken">Discover</b>
+          <span data-en="Workshops and a quick audit to understand goals and gaps."
+                data-fr="Ateliers et audit rapide pour comprendre objectifs et écarts."
+                data-de="Workshops und Kurz-Audit, um Ziele und Lücken zu verstehen.">
+            Workshops and a quick audit to understand goals and gaps.
+          </span>
+        </div>
+        <div class="step">
+          <b data-en="Design" data-fr="Concevoir" data-de="Gestalten">Design</b>
+          <span data-en="An actionable plan with costs, timeline and clear responsibilities."
+                data-fr="Un plan actionnable avec coûts, délais et responsabilités claires."
+                data-de="Ein umsetzbarer Plan mit Kosten, Zeitplan und Verantwortlichkeiten.">
+            An actionable plan with costs, timeline and clear responsibilities.
+          </span>
+        </div>
+        <div class="step">
+          <b data-en="Deliver" data-fr="Déployer" data-de="Liefern">Deliver</b>
+          <span data-en="We implement, migrate and document—without disrupting your work."
+                data-fr="Nous implémentons, migrons et documentons — sans perturber vos activités."
+                data-de="Wir implementieren, migrieren und dokumentieren — ohne Ihren Betrieb zu stören.">
+            We implement, migrate and document—without disrupting your work.
+          </span>
+        </div>
+        <div class="step">
+          <b data-en="Grow" data-fr="Faire grandir" data-de="Wachsen">Grow</b>
+          <span data-en="Training, handover and optional managed support to keep you moving."
+                data-fr="Formation, transfert et support managé en option pour avancer sereinement."
+                data-de="Training, Übergabe und optionales Managed Support, damit es vorangeht.">
+            Training, handover and optional managed support to keep you moving.
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="join reveal">
+    <div class="container cta-band">
+      <p
+        data-en="Ready to modernize your IT? Tell us what you need and we’ll propose the fastest path."
+        data-fr="Prêt à moderniser votre IT ? Dites-nous vos besoins, nous proposerons la voie la plus rapide."
+        data-de="Bereit, Ihre IT zu modernisieren? Sagen Sie uns, was Sie brauchen – wir schlagen den schnellsten Weg vor.">
+        Ready to modernize your IT? Tell us what you need and we’ll propose the fastest path.
+      </p>
+      <div class="hero-ctas">
+        <a href="../contact.html" class="btn btn-primary"
+           data-en="Request a proposal"
+           data-fr="Demander une proposition"
+           data-de="Vorschlag anfordern">Request a proposal</a>
+        <a href="../contact.html#form" class="btn btn-ghost"
+           data-en="Contact our team"
+           data-fr="Contacter notre équipe"
+           data-de="Team kontaktieren">Contact our team</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQs -->
+  <section class="page-section reveal">
+    <div class="container faqs">
+      <h2 data-en="IT Consultancy — FAQs" data-fr="Conseil IT — FAQs" data-de="IT-Beratung — FAQs">IT Consultancy — FAQs</h2>
+
+      <details>
+        <summary data-en="How do you price projects?"
+                 data-fr="Comment tarifez-vous les projets ?"
+                 data-de="Wie kalkuliert ihr Projekte?">
+          How do you price projects?
+        </summary>
+        <p class="subtle"
+           data-en="Most work is fixed-scope/fixed-fee based on an initial discovery. We also offer day-rates and monthly retainers for ongoing support."
+           data-fr="La plupart des missions sont au forfait (périmètre défini) après une découverte initiale. Nous proposons aussi des journées et des abonnements mensuels."
+           data-de="Meist arbeiten wir mit Festpreis/Festumfang nach einer Discovery. Für laufende Hilfe bieten wir Tagessätze und monatliche Retainer.">
+           Most work is fixed-scope/fixed-fee based on an initial discovery. We also offer day-rates and monthly retainers for ongoing support.
+        </p>
+      </details>
+
+      <details>
+        <summary data-en="Can you work on-site outside Bukavu?"
+                 data-fr="Pouvez-vous intervenir sur site hors de Bukavu ?"
+                 data-de="Arbeitet ihr auch vor Ort außerhalb von Bukavu?">
+          Can you work on-site outside Bukavu?
+        </summary>
+        <p class="subtle"
+           data-en="Yes. We combine remote delivery with on-site visits when needed. Travel is planned transparently in the proposal."
+           data-fr="Oui. Nous combinons le travail à distance avec des visites sur site selon besoin. Les déplacements sont planifiés de façon transparente dans la proposition."
+           data-de="Ja. Remote-Leistung kombiniert mit Vor-Ort-Besuchen bei Bedarf. Reisen werden transparent im Angebot geplant.">
+           Yes. We combine remote delivery with on-site visits when needed. Travel is planned transparently in the proposal.
+        </p>
+      </details>
+
+      <details>
+        <summary data-en="What if our internet is unreliable?"
+                 data-fr="Et si notre connexion est instable ?"
+                 data-de="Was, wenn unser Internet unzuverlässig ist?">
+          What if our internet is unreliable?
+        </summary>
+        <p class="subtle"
+           data-en="We design with constraints in mind: offline-first options, bandwidth-aware tools, caching and multi-link failover."
+           data-fr="Nous concevons avec vos contraintes : options « offline-first », outils sobres en bande passante, cache et bascule multi-liens."
+           data-de="Wir planen mit Ihren Randbedingungen: Offline-First-Optionen, bandbreitenarme Tools, Caching und Multi-Link-Failover.">
+           We design with constraints in mind: offline-first options, bandwidth-aware tools, caching and multi-link failover.
+        </p>
+      </details>
+
+      <details>
+        <summary data-en="How do you handle security?"
+                 data-fr="Comment gérez-vous la sécurité ?"
+                 data-de="Wie geht ihr mit Sicherheit um?">
+          How do you handle security?
+        </summary>
+        <p class="subtle"
+           data-en="Security is baked into every step: identity & access, email security, device hardening, backups and clear incident playbooks."
+           data-fr="La sécurité est intégrée à chaque étape : identités & accès, sécurité mail, durcissement des postes, sauvegardes et procédures d’incident."
+           data-de="Security ist in jeder Phase enthalten: Identitäten & Zugriffe, Mail-Security, Härtung, Backups und klare Incident-Playbooks.">
+           Security is baked into every step: identity & access, email security, device hardening, backups and clear incident playbooks.
+        </p>
+      </details>
+
+      <details>
+        <summary data-en="Do you supply hardware and licenses?"
+                 data-fr="Fournissez-vous matériel et licences ?"
+                 data-de="Liefern Sie Hardware und Lizenzen?">
+          Do you supply hardware and licenses?
+        </summary>
+        <p class="subtle"
+           data-en="Yes—through trusted partners. We help you select the right devices and procure Microsoft, Windows and security licenses."
+           data-fr="Oui — via des partenaires de confiance. Nous aidons à choisir le matériel adéquat et à obtenir les licences Microsoft, Windows et sécurité."
+           data-de="Ja — über vertrauenswürdige Partner. Wir helfen bei Auswahl und Beschaffung von Geräten sowie Microsoft-, Windows- und Security-Lizenzen.">
+           Yes—through trusted partners. We help you select the right devices and procure Microsoft, Windows and security licenses.
+        </p>
+      </details>
+
+      <details>
+        <summary data-en="Can you use AI safely in our org?"
+                 data-fr="Pouvez-vous utiliser l’IA en sécurité dans notre organisation ?"
+                 data-de="Könnt ihr KI sicher in unserer Organisation einsetzen?">
+          Can you use AI safely in our org?
+        </summary>
+        <p class="subtle"
+           data-en="We start small—private document search, internal chat/FAQ and workflow automation—while keeping data private and access controlled."
+           data-fr="Nous commençons simplement — recherche documentaire privée, chat/FAQ interne et automatisations — tout en protégeant les données et les accès."
+           data-de="Wir starten klein — private Dokumentsuche, internes Chat/FAQ und Automatisierungen — mit Datenschutz und Zugriffskontrolle.">
+           We start small—private document search, internal chat/FAQ and workflow automation—while keeping data private and access controlled.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- Footer injected by base.js -->
+  <div id="site-footer"></div>
+
+  <!-- Scripts -->
   <script src="../route/base.js" defer></script>
   <script src="../route/lang.js" defer></script>
   <script src="../route/animations.js" defer></script>
