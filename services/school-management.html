@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title data-en="School Management Pricing | Tuunganes"
           data-fr="Tarifs de gestion scolaire | Tuunganes"
           data-de="Schulverwaltungs-Preise | Tuunganes">
     School Management Pricing | Tuunganes
   </title>
-  <link rel="icon" href="../assets/fevicon.png" type="image/png">
-  <link rel="stylesheet" href="../css/styles.css">
+
+  <link rel="icon" href="../assets/fevicon.png" type="image/png" />
+  <link rel="stylesheet" href="../css/styles.css" />
+
   <style>
     .pricing { padding: clamp(3rem, 6vw, 5rem) 0; }
     .plans { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 1.5rem; margin-top: 2rem; }
@@ -21,50 +23,55 @@
     .plan ul li { margin: .4rem 0; }
     .toggle { display: flex; justify-content: center; align-items: center; gap: .75rem; margin-top: 1rem; }
     .toggle button { border: 1px solid var(--border); background: var(--surface); padding: .5rem 1rem; border-radius: 999px; cursor: pointer; }
-    .toggle button.active { background: var(--grad-primary); color: white; }
+    .toggle button.active { background: var(--grad-primary); color: #fff; }
   </style>
 </head>
 <body>
-  <!-- Header injected by base.js -->
+  <!-- header injected by base.js -->
   <div id="site-header"></div>
 
-  <!-- HERO -->
-  <section class="hero reveal">
+  <!-- HERO (force-visible with .in so page works even if animations.js fails) -->
+  <section class="hero reveal in">
     <div class="container hero-content">
       <h1 data-en="Simple & Flexible Pricing"
           data-fr="Tarification simple et flexible"
           data-de="Einfache & flexible Preisgestaltung">
-          Simple & Flexible Pricing
+        Simple & Flexible Pricing
       </h1>
       <p data-en="Choose a plan for your school. Prices are per month. Annual subscriptions save 20%."
          data-fr="Choisissez un plan pour votre école. Les prix sont mensuels. Les abonnements annuels économisent 20%."
          data-de="Wählen Sie einen Plan für Ihre Schule. Preise pro Monat. Jahresabos sparen 20%.">
-         Choose a plan for your school. Prices are per month. Annual subscriptions save 20%.
+        Choose a plan for your school. Prices are per month. Annual subscriptions save 20%.
       </p>
+
       <div class="toggle">
         <button id="monthlyBtn" class="active"
-                data-en="Monthly"
-                data-fr="Mensuel"
-                data-de="Monatlich">Monthly</button>
+                data-en="Monthly" data-fr="Mensuel" data-de="Monatlich">Monthly</button>
         <button id="annualBtn"
-                data-en="Annual (20% off)"
-                data-fr="Annuel (20% de réduction)"
-                data-de="Jährlich (20% Rabatt)">Annual (20% off)</button>
+                data-en="Annual (20% off)" data-fr="Annuel (20% de réduction)" data-de="Jährlich (20% Rabatt)">
+          Annual (20% off)
+        </button>
       </div>
     </div>
   </section>
 
-  <!-- PLANS -->
-  <section class="pricing reveal">
+  <!-- PLANS (also force-visible) -->
+  <section class="pricing reveal in">
     <div class="container plans">
+
       <!-- Free -->
       <div class="plan">
         <h3 data-en="Free" data-fr="Gratuit" data-de="Kostenlos">Free</h3>
-        <strong id="freePrice" data-en="$0" data-fr="0$" data-de="0€">$0 <small data-en="per month" data-fr="par mois" data-de="pro Monat">per month</small></strong>
+        <strong id="freePrice"
+                data-en="$0 <small>per month</small>"
+                data-fr="0$ <small>par mois</small>"
+                data-de="0€ <small>pro Monat</small>">
+          $0 <small>per month</small>
+        </strong>
         <p data-en="Up to 50 users, ideal for small schools starting digital management."
            data-fr="Jusqu'à 50 utilisateurs, idéal pour les petites écoles commençant la gestion numérique."
            data-de="Bis zu 50 Benutzer, ideal für kleine Schulen, die mit digitaler Verwaltung beginnen.">
-           Up to 50 users, ideal for small schools starting digital management.
+          Up to 50 users, ideal for small schools starting digital management.
         </p>
         <ul>
           <li data-en="Basic student profiles" data-fr="Profils d'élèves basiques" data-de="Einfache Schülerprofile">Basic student profiles</li>
@@ -78,11 +85,16 @@
       <!-- Pro -->
       <div class="plan">
         <h3 data-en="Pro" data-fr="Pro" data-de="Pro">Pro</h3>
-        <strong id="proPrice" data-en="$250" data-fr="250$" data-de="250€">$250 <small data-en="per month" data-fr="par mois" data-de="pro Monat">per month</small></strong>
+        <strong id="proPrice"
+                data-en="$250 <small>per month</small>"
+                data-fr="250$ <small>par mois</small>"
+                data-de="250€ <small>pro Monat</small>">
+          $250 <small>per month</small>
+        </strong>
         <p data-en="Up to 100 users, with advanced academic management."
            data-fr="Jusqu'à 100 utilisateurs, avec gestion académique avancée."
            data-de="Bis zu 100 Benutzer, mit erweiterter Verwaltung.">
-           Up to 100 users, with advanced academic management.
+          Up to 100 users, with advanced academic management.
         </p>
         <ul>
           <li data-en="Automated grades & report cards" data-fr="Notes et bulletins automatisés" data-de="Automatisierte Noten & Zeugnisse">Automated grades & report cards</li>
@@ -96,29 +108,37 @@
       <!-- Premium -->
       <div class="plan">
         <h3 data-en="Premium" data-fr="Premium" data-de="Premium">Premium</h3>
-        <strong id="premiumPrice" data-en="$350" data-fr="350$" data-de="350€">$350 <small data-en="per month" data-fr="par mois" data-de="pro Monat">per month</small></strong>
+        <strong id="premiumPrice"
+                data-en="$350 <small>per month</small>"
+                data-fr="350$ <small>par mois</small>"
+                data-de="350€ <small>pro Monat</small>">
+          $350 <small>per month</small>
+        </strong>
         <p data-en="Unlimited users, designed for districts and networks."
            data-fr="Utilisateurs illimités, conçu pour les districts et réseaux."
            data-de="Unbegrenzte Benutzer, entwickelt für Bezirke und Netzwerke.">
-           Unlimited users, designed for districts and networks.
+          Unlimited users, designed for districts and networks.
         </p>
         <ul>
           <li data-en="Everything in Pro" data-fr="Tout dans Pro" data-de="Alles in Pro">Everything in Pro</li>
-          <li data-en="Multi-school support" data-fr="Support multi-écoles" data-de="Mehrschulunterstützung">Multi-school support</li>
+          <li data-en="Multi-school support" data-fr="Support multi-écoles" data-de="Mehrschul-Unterstützung">Multi-school support</li>
           <li data-en="Location tracking for safety" data-fr="Suivi de localisation pour la sécurité" data-de="Standortverfolgung für Sicherheit">Location tracking for safety</li>
           <li data-en="Custom reports & analytics" data-fr="Rapports & analyses personnalisés" data-de="Individuelle Berichte & Analysen">Custom reports & analytics</li>
         </ul>
         <a href="#" class="btn btn-primary"
            data-en="Start Free Trial" data-fr="Commencer l'essai gratuit" data-de="Kostenlose Testversion starten">Start Free Trial</a>
       </div>
+
     </div>
   </section>
 
+  <!-- footer injected by base.js -->
   <div id="site-footer"></div>
 
   <!-- Scripts -->
   <script src="../route/base.js" defer></script>
   <script src="../route/lang.js" defer></script>
+  <script src="../route/animations.js" defer></script>
   <script>
     document.addEventListener("DOMContentLoaded", () => {
       const monthlyBtn = document.getElementById("monthlyBtn");

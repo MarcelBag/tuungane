@@ -1,3 +1,12 @@
+function setLang(lang) {
+  console.log('Setting language to:', lang);
+  document.querySelectorAll('[data-en]').forEach(el => {
+    if (el.hasAttribute('data-' + lang)) {
+      el.innerHTML = el.getAttribute('data-' + lang);
+    }
+  });
+  // ... rest of the function
+}
 // ================= Theme init =================
 (function(){
   const saved = localStorage.getItem('tuunganes-theme');
