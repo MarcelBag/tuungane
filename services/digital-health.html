@@ -1,37 +1,420 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Afya Digital Health | Tuunganes</title>
-  <link rel="icon" href="../assets/fevicon.png" type="image/png">
-  <link rel="stylesheet" href="../css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title
+    data-en="Afya Digital Health | Tuunganes"
+    data-fr="Afya Santé Numérique | Tuunganes"
+    data-de="Afya Digitale Gesundheit | Tuunganes">
+    Afya Digital Health | Tuunganes
+  </title>
+
+  <link rel="icon" href="../assets/fevicon.png" type="image/png" />
+  <link rel="stylesheet" href="../css/styles.css" />
+
+  <style>
+    .section{padding-block:clamp(2.25rem,5vw,3.5rem)}
+    .center{max-width:980px;margin-inline:auto}
+    .grid-2{display:grid;grid-template-columns:1.05fr .95fr;gap:1.2rem;align-items:center}
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+    @media (max-width:960px){.grid-2{grid-template-columns:1fr}}
+
+    .hero--afya{padding-block:clamp(3rem,6vw,5rem)}
+    .eyebrow{letter-spacing:.06em;text-transform:uppercase;font-weight:800;color:var(--text-muted)}
+    .lede{color:var(--text-2);max-width:70ch}
+
+    .imgframe{border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+    .imgframe img{display:block;width:100%;height:auto;object-fit:cover}
+
+    .card.pad{padding:1rem 1.1rem}
+    .muted{color:var(--text-muted)}
+    .list{margin:.5rem 0 0 1.1rem}
+    .list li{margin:.35rem 0}
+
+    .chip-row{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.5rem}
+    .chip{border:1px solid var(--border);border-radius:999px;padding:.3rem .6rem;font-weight:600;background:color-mix(in hsl,var(--surface)92%,transparent)}
+
+    .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+    .step .num{width:2rem;height:2rem;display:inline-grid;place-items:center;border-radius:999px;border:1px solid var(--border);font-weight:800;margin-bottom:.35rem}
+
+    .stat{display:flex;flex-direction:column;gap:.25rem;align-items:flex-start;padding:1rem;border:1px solid var(--border);background:var(--surface);border-radius:14px;box-shadow:var(--shadow)}
+    .stat strong{font-size:1.1rem;color:var(--brand)}
+
+    .cta-band{margin-top:1rem;display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;justify-content:space-between;
+      background:color-mix(in hsl,var(--surface)92%,transparent);border:1px solid var(--border);border-radius:16px;padding:1rem 1.1rem}
+
+    details.card{padding:1rem;border-radius:14px;border:1px solid var(--border);background:var(--surface)}
+    details+details{margin-top:.6rem}
+    summary{cursor:pointer;font-weight:700}
+  </style>
 </head>
 <body>
-  <section class="hero reveal">
-    <div class="container hero-content">
-      <h1>Afya Digital Health for All</h1>
-      <p>Connecting families in rural Congo to clinicians through telehealth, mobile education and digital health tools.</p>
-    </div>
-  </section>
+  <!-- Header injected by base.js -->
+  <div id="site-header"></div>
 
-  <section class="about reveal">
-    <div class="container about-grid">
-      <div class="about-image"><img src="../assets/all.jpeg" alt="Digital Health"></div>
-      <div class="about-text card">
-        <h2>Why It Matters in Congo</h2>
-        <p>Many families walk hours to reach basic health services. Preventable diseases like malaria and malnutrition remain widespread.</p>
-        <h3>Our Health Tools</h3>
-        <ul>
-          <li>Teleconsultations for rural and underserved patients.</li>
-          <li>Mobile health education via SMS and WhatsApp.</li>
-          <li>Maternal and child health programs with digital reminders.</li>
-          <li>AI-assisted data collection to predict outbreaks early.</li>
-        </ul>
+  <!-- ================= HERO ================= -->
+  <section class="hero hero--afya reveal in">
+    <div class="container center">
+      <div class="eyebrow"
+           data-en="Afya by Tuunganes"
+           data-fr="Afya par Tuunganes"
+           data-de="Afya von Tuunganes">Afya by Tuunganes</div>
+
+      <h1
+        data-en="Digital Health for All"
+        data-fr="La santé numérique pour tous"
+        data-de="Digitale Gesundheit für alle">
+        Digital Health for All
+      </h1>
+
+      <p class="lede"
+         data-en="Connecting families in rural Congo to clinicians through telehealth, mobile education and data-driven tools  designed for low-connectivity environments."
+         data-fr="Relier les familles en zones rurales du Congo aux cliniciens via la télémédecine, l’éducation mobile et des outils guidés par les données  conçus pour les environnements à faible connectivité."
+         data-de="Familien im ländlichen Kongo per Telemedizin, mobiler Aufklärung und datengestützten Tools mit Kliniker:innen verbinden  ausgelegt für geringe Konnektivität.">
+        Connecting families in rural Congo to clinicians through telehealth, mobile education and data-driven tools  designed for low-connectivity environments.
+      </p>
+
+      <div class="hero-ctas" style="margin-top:.9rem;display:flex;gap:.8rem;flex-wrap:wrap">
+        <a href="https://afya.tuunganes.com" target="_blank" rel="noopener" class="btn btn-primary"
+           data-en="Explore Afya"
+           data-fr="Explorer Afya"
+           data-de="Afya entdecken">Explore Afya</a>
+        <a href="../contact.html" class="btn btn-ghost"
+           data-en="Talk to our team"
+           data-fr="Parler à notre équipe"
+           data-de="Mit unserem Team sprechen">Talk to our team</a>
       </div>
     </div>
   </section>
 
+  <!-- ================= WHY IT MATTERS (split) ================= -->
+  <section class="section reveal in">
+    <div class="container grid-2">
+      <div class="card pad">
+        <h2
+          data-en="Why it matters in Congo"
+          data-fr="Pourquoi c’est essentiel au Congo"
+          data-de="Warum es im Kongo wichtig ist">
+          Why it matters in Congo
+        </h2>
+        <p
+          data-en="In Eastern DRC, many families walk hours for basic care. Preventable diseases such as malaria and malnutrition remain common, and health information is often hard to access."
+          data-fr="À l’Est de la RDC, de nombreuses familles marchent des heures pour des soins de base. Des maladies évitables comme le paludisme et la malnutrition restent fréquentes, et l’information sanitaire est difficile d’accès."
+          data-de="Im Osten der DR Kongo laufen viele Familien stundenlang zur Basisversorgung. Vermeidbare Krankheiten wie Malaria und Mangelernährung sind verbreitet, Gesundheitsinformationen oft schwer zugänglich.">
+          In Eastern DRC, many families walk hours for basic care…
+        </p>
+        <p class="muted"
+          data-en="Afya blends teleconsultations, community-based data collection and mobile education to bring timely advice and follow-up to the last mile."
+          data-fr="Afya combine téléconsultations, collecte de données communautaires et éducation mobile pour apporter des conseils et un suivi jusqu’au dernier kilomètre."
+          data-de="Afya verbindet Telekonsultationen, gemeinschaftsnahe Datenerhebung und mobile Aufklärung, um Beratung und Nachsorge bis in die entlegensten Gebiete zu bringen.">
+          Afya blends teleconsultations, community data and mobile education…
+        </p>
+      </div>
+
+      <figure class="imgframe">
+        <img src="../assets/all.jpeg" alt="Community digital health in Eastern DRC" loading="lazy">
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= WHAT WE BUILD ================= -->
+  <section class="section reveal in">
+    <div class="container">
+      <h2
+        data-en="What we build"
+        data-fr="Ce que nous construisons"
+        data-de="Was wir entwickeln">
+        What we build
+      </h2>
+
+      <div class="grid-3">
+        <article class="card pad">
+          <h3 data-en="Telehealth & Triage" data-fr="Télésanté & triage" data-de="Telemedizin & Triage">Telehealth & Triage</h3>
+          <p class="muted"
+            data-en="Community health workers capture symptoms offline; clinicians review and advise by phone or chat."
+            data-fr="Les agents de santé collectent les symptômes hors ligne ; les cliniciens analysent et conseillent par téléphone ou messagerie."
+            data-de="Community-Health-Worker erfassen Symptome offline; Kliniker:innen beraten per Telefon oder Chat.">
+            CHWs collect offline; clinicians advise remotely.
+          </p>
+        </article>
+
+        <article class="card pad">
+          <h3 data-en="Mobile Health Education" data-fr="Éducation santé mobile" data-de="Mobile Gesundheitsaufklärung">Mobile Health Education</h3>
+          <p class="muted"
+            data-en="SMS/WhatsApp campaigns for malaria, nutrition, vaccination and maternal health."
+            data-fr="Campagnes SMS/WhatsApp: paludisme, nutrition, vaccination et santé maternelle."
+            data-de="SMS/WhatsApp-Kampagnen zu Malaria, Ernährung, Impfungen und Müttergesundheit.">
+            SMS/WhatsApp campaigns on priority topics.
+          </p>
+        </article>
+
+        <article class="card pad">
+          <h3 data-en="Maternal & Child Health" data-fr="Santé maternelle & infantile" data-de="Mütter- & Kindergesundheit">Maternal & Child Health</h3>
+          <p class="muted"
+            data-en="Digital reminders for ANC/PNC visits, growth monitoring and danger sign alerts."
+            data-fr="Rappels numériques pour CPN/CPoN, suivi de croissance et alertes de signes de danger."
+            data-de="Digitale Erinnerungen für Vor-/Nachsorge, Wachstumskontrolle und Warnzeichen.">
+            Digital reminders and growth tracking.
+          </p>
+        </article>
+
+        <article class="card pad">
+          <h3 data-en="Data & Early Warning" data-fr="Données & alerte précoce" data-de="Daten & Frühwarnung">Data & Early Warning</h3>
+          <p class="muted"
+            data-en="KoboToolbox forms plus dashboards (Power BI/Looker) spot trends and trigger outreach."
+            data-fr="Formulaires KoboToolbox + tableaux de bord (Power BI/Looker) pour détecter les tendances et déclencher l’action."
+            data-de="KoboToolbox-Formulare und Dashboards (Power BI/Looker) erkennen Trends und lösen Maßnahmen aus.">
+            Kobo + dashboards for outreach.
+          </p>
+          <div class="chip-row">
+            <span class="chip">KoboToolbox</span><span class="chip">Power BI</span><span class="chip">Looker Studio</span>
+          </div>
+        </article>
+
+        <article class="card pad">
+          <h3 data-en="Clinic Tools" data-fr="Outils pour cliniques" data-de="Tools für Kliniken">Clinic Tools</h3>
+          <p class="muted"
+            data-en="Patient lists, follow-up queues and secure notes; exports to DHIS2 where available."
+            data-fr="Listes de patients, files de suivi et notes sécurisées ; exports vers DHIS2 lorsque disponible."
+            data-de="Patientenlisten, Nachverfolgung, sichere Notizen; Export nach DHIS2 (wo verfügbar).">
+            Patient lists, follow-up and exports.
+          </p>
+          <div class="chip-row">
+            <span class="chip">DHIS2 (where available)</span><span class="chip">CSV/Excel</span>
+          </div>
+        </article>
+
+        <article class="card pad">
+          <h3 data-en="Offline & Low-Bandwidth" data-fr="Hors ligne & bas débit" data-de="Offline & geringe Bandbreite">Offline & Low-Bandwidth</h3>
+          <p class="muted"
+            data-en="Works offline-first on Android devices; syncs when signal returns; data encrypted in transit."
+            data-fr="Fonctionne hors ligne sur Android ; synchronisation lorsque le réseau revient ; données chiffrées en transit."
+            data-de="Offline-first auf Android; Synchronisation bei Signal; Daten verschlüsselt während der Übertragung.">
+            Offline-first, secure sync.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= HOW IT WORKS ================= -->
+  <section class="section reveal in">
+    <div class="container">
+      <h2
+        data-en="How it works"
+        data-fr="Comment ça marche"
+        data-de="So funktioniert es">
+        How it works
+      </h2>
+      <div class="steps">
+        <div class="card pad step">
+          <div class="num">1</div>
+          <h3 data-en="Community Intake" data-fr="Accueil communautaire" data-de="Community Intake">Community Intake</h3>
+          <p class="muted"
+             data-en="CHW screens and records symptoms offline; severe cases flagged immediately."
+             data-fr="ASC évalue et enregistre hors ligne ; cas graves signalés immédiatement."
+             data-de="CHW erfasst offline; schwere Fälle sofort markiert.">
+            CHW screens & records.
+          </p>
+        </div>
+        <div class="card pad step">
+          <div class="num">2</div>
+          <h3 data-en="Clinician Review" data-fr="Revue clinicien" data-de="Ärztliche Prüfung">Clinician Review</h3>
+          <p class="muted"
+             data-en="Nurse/doctor reviews the case and calls/texts the family or CHW."
+             data-fr="Infirmier·e/médecin examine le dossier et contacte famille ou ASC."
+             data-de="Pflege/Ärzt:in prüft den Fall und kontaktiert Familie oder CHW.">
+            Nurse/doctor contacts.
+          </p>
+        </div>
+        <div class="card pad step">
+          <div class="num">3</div>
+          <h3 data-en="Guidance & Referral" data-fr="Conseil & orientation" data-de="Beratung & Überweisung">Guidance & Referral</h3>
+          <p class="muted"
+             data-en="Care advice is given; urgent cases referred to nearest facility."
+             data-fr="Conseils prodigués ; cas urgents orientés vers la structure la plus proche."
+             data-de="Beratung; dringende Fälle an nächste Einrichtung überwiesen.">
+            Advice + urgent referrals.
+          </p>
+        </div>
+        <div class="card pad step">
+          <div class="num">4</div>
+          <h3 data-en="Follow-up & Education" data-fr="Suivi & éducation" data-de="Nachsorge & Aufklärung">Follow-up & Education</h3>
+          <p class="muted"
+             data-en="Automated reminders and targeted SMS/WhatsApp education for the family."
+             data-fr="Rappels automatisés et messages d’éducation ciblés pour la famille."
+             data-de="Automatische Erinnerungen und gezielte Aufklärung per SMS/WhatsApp.">
+            Reminders + education.
+          </p>
+        </div>
+      </div>
+
+      <div class="cta-band">
+        <p class="muted"
+          data-en="See the live Afya platform, use demo data, or talk to us about pilots."
+          data-fr="Découvrez la plateforme Afya, utilisez des données de démo ou parlons d’un pilote."
+          data-de="Sehen Sie sich Afya live an, nutzen Sie Demodaten oder sprechen Sie mit uns über Pilotprojekte.">
+          See the live Afya platform, use demo data, or talk to us about pilots.
+        </p>
+        <div class="hero-ctas">
+          <a href="https://afya.tuunganes.com" target="_blank" rel="noopener" class="btn btn-primary"
+             data-en="Open Afya"
+             data-fr="Ouvrir Afya"
+             data-de="Afya öffnen">Open Afya</a>
+          <a href="../contact.html" class="btn btn-ghost"
+             data-en="Contact us"
+             data-fr="Nous contacter"
+             data-de="Kontakt aufnehmen">Contact us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= PROGRAMS & OUTCOMES ================= -->
+  <section class="section reveal in">
+    <div class="container">
+      <h2
+        data-en="Programs & outcomes"
+        data-fr="Programmes & résultats"
+        data-de="Programme & Ergebnisse">
+        Programs & outcomes
+      </h2>
+
+      <div class="grid-3">
+        <div class="stat">
+          <strong data-en="Malaria fast-track" data-fr="Paludisme fast-track" data-de="Malaria-Fasttrack">Malaria fast-track</strong>
+          <span class="muted"
+                data-en="Rapid triage + test reminder flows in high-incidence zones."
+                data-fr="Triage rapide + rappels de test dans les zones à forte incidence."
+                data-de="Schnelle Triage + Test-Erinnerungen in Hochinzidenzgebieten.">
+            Rapid triage + reminder flows.
+          </span>
+        </div>
+        <div class="stat">
+          <strong data-en="Maternal SMS" data-fr="SMS maternité" data-de="SMS für Mütter">Maternal SMS</strong>
+          <span class="muted"
+                data-en="ANC/PNC reminders and danger signs prompts."
+                data-fr="Rappels CPN/CPoN et alertes signes de danger."
+                data-de="Erinnerungen vor/nach der Geburt & Warnhinweise.">
+            ANC/PNC reminders.
+          </span>
+        </div>
+        <div class="stat">
+          <strong data-en="School health days" data-fr="Journées santé à l’école" data-de="Schulgesundheitstage">School health days</strong>
+          <span class="muted"
+                data-en="Screening + referral drives with local clinics."
+                data-fr="Dépistage + orientation avec les cliniques locales."
+                data-de="Screening + Überweisungen mit lokalen Kliniken.">
+            Screening + referrals.
+          </span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= INTEGRATIONS ================= -->
+  <section class="section reveal in">
+    <div class="container center">
+      <h2
+        data-en="Integrations & platforms"
+        data-fr="Intégrations & plateformes"
+        data-de="Integrationen & Plattformen">
+        Integrations & platforms
+      </h2>
+      <div class="chip-row" style="justify-content:center">
+        <span class="chip">KoboToolbox</span>
+        <span class="chip">DHIS2</span>
+        <span class="chip">Power BI</span>
+        <span class="chip">Looker Studio</span>
+        <span class="chip">WhatsApp</span>
+        <span class="chip">SMS</span>
+        <span class="chip">Android</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQ ================= -->
+  <section class="section reveal in">
+    <div class="container center">
+      <h2 data-en="FAQs" data-fr="FAQ" data-de="FAQ">FAQs</h2>
+
+      <details class="card">
+        <summary
+          data-en="Do you operate outside Bukavu & Goma?"
+          data-fr="Intervenez-vous hors de Bukavu & Goma ?"
+          data-de="Arbeiten Sie auch außerhalb von Bukavu & Goma?">
+          Do you operate outside Bukavu & Goma?
+        </summary>
+        <p class="muted"
+           data-en="Yes. We support partners across the DRC remotely, and on site with local clinics when needed."
+           data-fr="Oui. Nous accompagnons des partenaires à travers la RDC à distance, et sur le terrain avec les cliniques locales si nécessaire."
+           data-de="Ja. Wir unterstützen Partner landesweit remote und bei Bedarf vor Ort mit lokalen Kliniken.">
+          Yes  nationwide with local partners.
+        </p>
+      </details>
+
+      <details class="card">
+        <summary
+          data-en="Is Afya compliant and secure?"
+          data-fr="Afya est-il conforme et sécurisé ?"
+          data-de="Ist Afya konform und sicher?">
+          Is Afya compliant and secure?
+        </summary>
+        <p class="muted"
+           data-en="We use consent-based workflows, role-based access and encryption in transit. Data policies adapt to local regulations and partner requirements."
+           data-fr="Nous utilisons des parcours basés sur le consentement, des accès par rôles et un chiffrement en transit. Les politiques s’adaptent aux réglementations locales et aux exigences des partenaires."
+           data-de="Einwilligungsbasierte Abläufe, rollenbasierter Zugriff und Verschlüsselung in Transit. Richtlinien passen sich lokalen Vorgaben und Partneranforderungen an.">
+          Consent, RBAC and encryption in transit.
+        </p>
+      </details>
+
+      <details class="card">
+        <summary
+          data-en="Can Afya work offline?"
+          data-fr="Afya peut-il fonctionner hors ligne ?"
+          data-de="Kann Afya offline arbeiten?">
+          Can Afya work offline?
+        </summary>
+        <p class="muted"
+           data-en="Yes. Forms and records work offline-first on Android and sync when connectivity returns."
+           data-fr="Oui. Les formulaires et dossiers fonctionnent hors ligne sur Android et se synchronisent au retour du réseau."
+           data-de="Ja. Formulare und Akten sind offline-first auf Android und synchronisieren bei Verbindung.">
+          Yes  offline-first on Android.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section class="section reveal in">
+    <div class="container center">
+      <div class="cta-band">
+        <p class="muted"
+           data-en="Ready to explore Afya or run a pilot in your community?"
+           data-fr="Prêt à explorer Afya ou lancer un pilote dans votre communauté ?"
+           data-de="Bereit, Afya zu testen oder ein Pilotprojekt zu starten?">
+          Ready to explore Afya or run a pilot in your community?
+        </p>
+        <div class="hero-ctas">
+          <a href="https://afya.tuunganes.com" target="_blank" rel="noopener" class="btn btn-primary"
+             data-en="Visit Afya"
+             data-fr="Visiter Afya"
+             data-de="Afya besuchen">Visit Afya</a>
+          <a href="../contact.html" class="btn btn-ghost"
+             data-en="Book a call"
+             data-fr="Réserver un appel"
+             data-de="Gespräch buchen">Book a call</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer injected by base.js -->
+  <div id="site-footer"></div>
+
+  <!-- Global scripts -->
   <script src="../route/base.js" defer></script>
   <script src="../route/lang.js" defer></script>
   <script src="../route/animations.js" defer></script>
