@@ -1,37 +1,427 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Legal Clinic | Tuunganes</title>
-  <link rel="icon" href="../assets/fevicon.png" type="image/png">
-  <link rel="stylesheet" href="../css/styles.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="color-scheme" content="light dark" />
+  <title
+    data-en="Legal Clinic & Advocacy | Tuunganes"
+    data-fr="Clinique juridique & Plaidoyer | Tuunganes"
+    data-de="Rechtsklinik & Advocacy | Tuunganes">
+    Legal Clinic & Advocacy | Tuunganes
+  </title>
+
+  <link rel="icon" href="../assets/fevicon.png" type="image/png" />
+  <link rel="stylesheet" href="../css/styles.css" />
+
+  <!-- Page-only polish using your design tokens -->
+  <style>
+    .section{padding-block:clamp(2.25rem,5vw,3.5rem)}
+    .center{max-width:980px;margin-inline:auto}
+    .grid-2{display:grid;grid-template-columns:1.05fr .95fr;gap:1.2rem;align-items:center}
+    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+    @media (max-width:960px){.grid-2{grid-template-columns:1fr}}
+
+    .hero--legal{padding-block:clamp(3rem,6vw,5rem)}
+    .eyebrow{letter-spacing:.06em;text-transform:uppercase;font-weight:800;color:var(--text-muted)}
+    .lede{color:var(--text-2);max-width:70ch}
+
+    .imgframe{border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
+    .imgframe img{display:block;width:100%;height:auto;object-fit:cover}
+
+    .card.pad{padding:1rem 1.1rem}
+    .list{margin:.5rem 0 0 1.1rem}
+    .list li{margin:.35rem 0}
+    .check{display:flex;gap:.5rem;align-items:flex-start}
+    .check::before{content:"✓";font-weight:900;line-height:1;transform:translateY(.15rem)}
+
+    .pillars-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+    .muted{color:var(--text-muted)}
+
+    .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+    .step .num{width:2rem;height:2rem;display:inline-grid;place-items:center;border-radius:999px;border:1px solid var(--border);font-weight:800;margin-bottom:.35rem}
+
+    .cta-band{margin-top:1rem;display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;justify-content:space-between;
+      background:color-mix(in hsl,var(--surface)92%,transparent);border:1px solid var(--border);border-radius:16px;padding:1rem 1.1rem}
+
+    details.card{padding:1rem;border-radius:14px;border:1px solid var(--border);background:var(--surface)}
+    details + details{margin-top:.6rem}
+    summary{cursor:pointer;font-weight:700}
+  </style>
 </head>
 <body>
-  <section class="hero reveal">
-    <div class="container hero-content">
-      <h1>Legal and Judicial Assistance</h1>
-      <p>Defending rights of vulnerable groups in Eastern DRC through free legal advice, judicial support and mediation.</p>
+  <!-- Header injected by base.js -->
+  <div id="site-header"></div>
+
+  <!-- ================= HERO ================= -->
+  <section class="hero hero--legal reveal in">
+    <div class="container center">
+      <div class="eyebrow"
+        data-en="Justice. Dignity. Protection."
+        data-fr="Justice. Dignité. Protection."
+        data-de="Gerechtigkeit. Würde. Schutz.">
+        Justice. Dignity. Protection.
+      </div>
+
+      <h1
+        data-en="Legal Clinic & Advocacy"
+        data-fr="Clinique Juridique & Plaidoyer"
+        data-de="Rechtsklinik & Advocacy">
+        Legal Clinic & Advocacy
+      </h1>
+
+      <p class="lede"
+        data-en="Free, confidential legal assistance for vulnerable people in Eastern DRC — with a focus on women, children, displaced families and survivors of violence."
+        data-fr="Assistance juridique gratuite et confidentielle pour les personnes vulnérables à l’Est de la RDC — avec un focus sur les femmes, les enfants, les familles déplacées et les survivant·e·s de violences."
+        data-de="Kostenlose, vertrauliche Rechtsunterstützung für besonders schutzbedürftige Menschen im Osten der DR Kongo — mit Fokus auf Frauen, Kinder, vertriebene Familien und Überlebende von Gewalt.">
+        Free, confidential legal assistance for vulnerable people in Eastern DRC — with a focus on women, children, displaced families and survivors of violence.
+      </p>
     </div>
   </section>
 
-  <section class="about reveal">
-    <div class="container about-grid">
-      <div class="about-image"><img src="../assets/sup.jpg" alt="Legal Aid"></div>
-      <div class="about-text card">
-        <h2>Why It Matters in Congo</h2>
-        <p>Armed conflicts and displacement in North and South Kivu have left women, children and entire communities exposed to violence and exploitation.</p>
-        <h3>Our Clinic Provides</h3>
-        <ul>
-          <li>Free legal advice for marginalized groups.</li>
-          <li>Judicial support for victims of violence.</li>
-          <li>Community mediation to resolve conflicts peacefully.</li>
-          <li>Awareness and training on rights and access to justice.</li>
-        </ul>
+  <!-- ================= WHY IT MATTERS (split) ================= -->
+  <section class="section reveal in">
+    <div class="container grid-2">
+      <div class="card pad">
+        <h2
+          data-en="Why it matters in Congo"
+          data-fr="Pourquoi c’est essentiel au Congo"
+          data-de="Warum es im Kongo wichtig ist">
+          Why it matters in Congo
+        </h2>
+
+        <p
+          data-en="Communities in North and South Kivu face conflict, displacement and exploitation. Many victims cannot afford a lawyer, don’t know their rights, or fear retaliation. Cases — especially those involving children — are too often ignored."
+          data-fr="Les communautés du Nord et du Sud-Kivu font face aux conflits, aux déplacements et à l’exploitation. Beaucoup de victimes ne peuvent pas payer d’avocat, ne connaissent pas leurs droits ou craignent des représailles. Les dossiers — notamment ceux impliquant des enfants — sont trop souvent ignorés."
+          data-de="Gemeinschaften in Nord- und Südkivu erleben Konflikte, Vertreibung und Ausbeutung. Viele Betroffene können sich keinen Anwalt leisten, kennen ihre Rechte nicht oder fürchten Repression. Fälle — insbesondere mit Kindern — bleiben zu oft unbeachtet.">
+          Communities in North and South Kivu face conflict, displacement and exploitation…
+        </p>
+
+        <p class="muted"
+          data-en="Tuunganes’ Legal Clinic combines legal aid, protection services and community education to restore dignity and access to justice."
+          data-fr="La Clinique juridique de Tuunganes combine aide juridique, services de protection et éducation communautaire pour restaurer la dignité et l’accès à la justice."
+          data-de="Die Rechtsklinik von Tuunganes verbindet Rechtsbeistand, Schutzmaßnahmen und Aufklärung, um Würde und Zugang zur Justiz wiederherzustellen.">
+          Tuunganes’ Legal Clinic combines legal aid, protection services and community education…
+        </p>
+      </div>
+
+      <figure class="imgframe">
+        <img src="../assets/sup.jpg" alt="Community legal support in Eastern DRC" loading="lazy">
+      </figure>
+    </div>
+  </section>
+
+  <!-- ================= WHAT WE PROVIDE ================= -->
+  <section class="section reveal in">
+    <div class="container">
+      <h2
+        data-en="What we provide"
+        data-fr="Ce que nous offrons"
+        data-de="Was wir anbieten">
+        What we provide
+      </h2>
+
+      <div class="pillars-grid">
+        <article class="card pad">
+          <h3 data-en="Free Legal Aid" data-fr="Aide juridique gratuite" data-de="Kostenlose Rechtsberatung">Free Legal Aid</h3>
+          <p class="muted"
+            data-en="Walk-in or referred consultations for people who cannot afford representation."
+            data-fr="Consultations sur place ou orientées pour les personnes ne pouvant pas payer un avocat."
+            data-de="Offene oder überwiesene Beratungen für Menschen ohne finanzielle Mittel.">
+            Walk-in or referred consultations…
+          </p>
+          <ul class="list">
+            <li class="check" data-en="Family & child protection" data-fr="Famille & protection de l’enfance" data-de="Familie & Kinderschutz">Family & child protection</li>
+            <li class="check" data-en="Gender-based violence (GBV)" data-fr="Violences basées sur le genre (VBG)" data-de="Geschlechtsbasierte Gewalt (GBV)">Gender-based violence (GBV)</li>
+            <li class="check" data-en="Labor & workplace rights" data-fr="Droit du travail" data-de="Arbeitsrecht & Arbeitnehmerrechte">Labor & workplace rights</li>
+          </ul>
+        </article>
+
+        <article class="card pad">
+          <h3 data-en="Child Safety & Missing Children" data-fr="Protection de l’enfant & enfants disparus" data-de="Kinderschutz & Vermisste">Child Safety & Missing Children</h3>
+          <p class="muted"
+            data-en="Coordination with schools and authorities on abductions, trafficking and safe reunification."
+            data-fr="Coordination avec écoles et autorités sur les enlèvements, la traite et la réunification sécurisée."
+            data-de="Koordination mit Schulen und Behörden bei Entführungen, Menschenhandel und sicherer Wiedervereinigung.">
+            Coordination with schools and authorities…
+          </p>
+          <ul class="list">
+            <li class="check" data-en="Emergency reporting & evidence" data-fr="Signalement d’urgence & collecte de preuves" data-de="Notfallmeldung & Beweissicherung">Emergency reporting & evidence</li>
+            <li class="check" data-en="Victim-centered approach" data-fr="Approche centrée sur la victime" data-de="Opferzentrierter Ansatz">Victim-centered approach</li>
+          </ul>
+        </article>
+
+        <article class="card pad">
+          <h3 data-en="Mediation & Community Peace" data-fr="Médiation & paix communautaire" data-de="Mediation & Gemeindefrieden">Mediation & Community Peace</h3>
+          <p class="muted"
+            data-en="Neutral facilitation to resolve disputes (land, family, neighbors) before escalation."
+            data-fr="Facilitation neutre pour résoudre les différends (foncier, famille, voisinage) avant l’escalade."
+            data-de="Neutrale Moderation bei Streitfällen (Land, Familie, Nachbarschaft) vor der Eskalation.">
+            Neutral facilitation to resolve disputes…
+          </p>
+          <ul class="list">
+            <li class="check" data-en="Land & property issues" data-fr="Problèmes fonciers & immobiliers" data-de="Land- & Eigentumsfragen">Land & property issues</li>
+            <li class="check" data-en="Community agreements" data-fr="Accords communautaires" data-de="Gemeinschaftliche Vereinbarungen">Community agreements</li>
+          </ul>
+        </article>
+
+        <article class="card pad">
+          <h3 data-en="Civil Registry & Documentation" data-fr="État civil & documents" data-de="Meldewesen & Dokumente">Civil Registry & Documentation</h3>
+          <p class="muted"
+            data-en="Guidance for birth certificates, IDs, school attestations and lost documents."
+            data-fr="Appui pour actes de naissance, pièces d’identité, attestations scolaires et documents perdus."
+            data-de="Hilfe bei Geburtsurkunden, Ausweisen, Schulbescheinigungen und Verlustdokumenten.">
+            Guidance for birth certificates, IDs, attestations…
+          </p>
+        </article>
+
+        <article class="card pad">
+          <h3 data-en="Detention & Police Matters" data-fr="Détention & affaires policières" data-de="Haft & Polizeisachen">Detention & Police Matters</h3>
+          <p class="muted"
+            data-en="Linkage to licensed lawyers and rights monitoring in police/penal processes."
+            data-fr="Orientation vers des avocats agréés et monitoring des droits dans les procédures policières/pénales."
+            data-de="Vermittlung an zugelassene Anwälte und Rechtemonitoring in Polizei-/Strafverfahren.">
+            Linkage to licensed lawyers and rights monitoring…
+          </p>
+        </article>
+
+        <article class="card pad">
+          <h3 data-en="Rights Awareness & Training" data-fr="Sensibilisation & formation" data-de="Rechtsaufklärung & Schulungen">Rights Awareness & Training</h3>
+          <p class="muted"
+            data-en="Workshops for schools, parents and community leaders on law, protection and safe reporting."
+            data-fr="Ateliers pour écoles, parents et leaders communautaires : droit, protection et signalement sécurisé."
+            data-de="Workshops für Schulen, Eltern und Gemeinde: Recht, Schutz und sichere Meldung.">
+            Workshops for schools, parents and community leaders…
+          </p>
+        </article>
       </div>
     </div>
   </section>
 
+  <!-- ================= HOW IT WORKS ================= -->
+  <section class="section reveal in">
+    <div class="container">
+      <h2
+        data-en="How it works"
+        data-fr="Comment ça marche"
+        data-de="So funktioniert es">
+        How it works
+      </h2>
+      <div class="steps">
+        <div class="card pad step">
+          <div class="num">1</div>
+          <h3 data-en="Intake & safety" data-fr="Accueil & sécurité" data-de="Aufnahme & Sicherheit">Intake & safety</h3>
+          <p class="muted"
+            data-en="We listen, stabilize the situation and document facts confidentially."
+            data-fr="Nous écoutons, sécurisons la situation et documentons les faits de manière confidentielle."
+            data-de="Wir hören zu, stabilisieren die Lage und dokumentieren vertraulich.">
+            We listen and document confidentially.
+          </p>
+        </div>
+        <div class="card pad step">
+          <div class="num">2</div>
+          <h3 data-en="Case review" data-fr="Analyse du dossier" data-de="Fallprüfung">Case review</h3>
+          <p class="muted"
+            data-en="Lawyers/paralegals assess options — legal action, mediation or referrals."
+            data-fr="Avocats/parajuristes évaluent les options — action, médiation ou orientation."
+            data-de="Jurist:innen/Para­legal prüfen Optionen — Verfahren, Mediation oder Verweis.">
+            We assess options with you.
+          </p>
+        </div>
+        <div class="card pad step">
+          <div class="num">3</div>
+          <h3 data-en="Action" data-fr="Action" data-de="Maßnahmen">Action</h3>
+          <p class="muted"
+            data-en="Filing, letters, negotiations, safe referrals or support at authorities."
+            data-fr="Dépôt, courriers, négociations, orientations sécurisées ou appui auprès des autorités."
+            data-de="Anzeigen, Schreiben, Verhandlungen, sichere Verweise oder Begleitung.">
+            Concrete steps toward resolution.
+          </p>
+        </div>
+        <div class="card pad step">
+          <div class="num">4</div>
+          <h3 data-en="Follow-up" data-fr="Suivi" data-de="Nachbetreuung">Follow-up</h3>
+          <p class="muted"
+            data-en="We track outcomes and provide ongoing support where needed."
+            data-fr="Nous suivons les résultats et assurons l’appui continu si nécessaire."
+            data-de="Wir verfolgen Ergebnisse und bieten fortlaufende Unterstützung.">
+            We track outcomes and support as needed.
+          </p>
+        </div>
+      </div>
+
+      <div class="cta-band">
+        <p class="muted"
+          data-en="We are youth-led, professional and community-rooted. Your safety and privacy come first."
+          data-fr="Nous sommes une équipe jeune, professionnelle et ancrée dans la communauté. Votre sécurité et votre vie privée sont prioritaires."
+          data-de="Junges, professionelles Team mit starken Community-Wurzeln. Ihre Sicherheit und Privatsphäre stehen an erster Stelle.">
+          We are youth-led, professional and community-rooted. Your safety and privacy come first.
+        </p>
+        <div class="hero-ctas">
+          <a href="../contact.html" class="btn btn-primary"
+            data-en="Request help"
+            data-fr="Demander de l’aide"
+            data-de="Hilfe anfragen">Request help</a>
+          <a href="../services/services.html" class="btn btn-ghost"
+            data-en="Explore all services"
+            data-fr="Voir tous les services"
+            data-de="Alle Services ansehen">Explore all services</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= WHO WE SERVE ================= -->
+  <section class="section reveal in">
+    <div class="container">
+      <h2
+        data-en="Who we serve"
+        data-fr="Qui nous aidons"
+        data-de="Wem wir helfen">
+        Who we serve
+      </h2>
+      <div class="grid-3">
+        <article class="card pad">
+          <h3 data-en="Women & Girls" data-fr="Femmes & filles" data-de="Frauen & Mädchen">Women & Girls</h3>
+          <p class="muted"
+            data-en="Survivors of GBV, exploitation and discrimination."
+            data-fr="Survivantes de VBG, d’exploitation et de discrimination."
+            data-de="Überlebende geschlechtsbasierter Gewalt, Ausbeutung und Diskriminierung.">
+            Survivors of GBV, exploitation and discrimination.
+          </p>
+        </article>
+        <article class="card pad">
+          <h3 data-en="Children & Students" data-fr="Enfants & élèves" data-de="Kinder & Schüler:innen">Children & Students</h3>
+          <p class="muted"
+            data-en="Missing children, abuse, school safety and parental rights."
+            data-fr="Enfants disparus, abus, sécurité scolaire et droits parentaux."
+            data-de="Vermisste Kinder, Missbrauch, Schulsicherheit und Elternrechte.">
+            Missing children, abuse, school safety and parental rights.
+          </p>
+        </article>
+        <article class="card pad">
+          <h3 data-en="Displaced Families" data-fr="Familles déplacées" data-de="Vertriebene Familien">Displaced Families</h3>
+          <p class="muted"
+            data-en="Land/property, documentation and humanitarian referrals."
+            data-fr="Foncier/biens, documents et orientations humanitaires."
+            data-de="Land/Eigentum, Dokumente und humanitäre Verweise.">
+            Land/property, documentation and referrals.
+          </p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= FAQs ================= -->
+  <section class="section reveal in">
+    <div class="container center">
+      <h2 data-en="FAQs" data-fr="FAQ" data-de="FAQ">FAQs</h2>
+
+      <details class="card">
+        <summary
+          data-en="Is the service really free?"
+          data-fr="Le service est-il vraiment gratuit ?"
+          data-de="Ist der Dienst wirklich kostenlos?">
+          Is the service really free?
+        </summary>
+        <p class="muted"
+          data-en="Yes. Basic legal aid and mediation are free for eligible clients. If a licensed lawyer must file a case, we discuss any possible fees and seek pro bono options."
+          data-fr="Oui. L’aide juridique de base et la médiation sont gratuites pour les bénéficiaires éligibles. Si un avocat doit déposer une affaire, nous discutons des éventuels frais et cherchons des options pro bono."
+          data-de="Ja. Basis-Rechtsbeistand und Mediation sind für Berechtigte kostenlos. Wenn ein:e Anwält:in Klage einreichen muss, besprechen wir mögliche Kosten und bemühen uns um Pro-bono-Lösungen.">
+          Yes — free for eligible clients; we also seek pro bono options.
+        </p>
+      </details>
+
+      <details class="card">
+        <summary
+          data-en="Do you go to court?"
+          data-fr="Allez-vous au tribunal ?"
+          data-de="Gehen Sie vor Gericht?">
+          Do you go to court?
+        </summary>
+        <p class="muted"
+          data-en="We partner with licensed lawyers when court action is required. Many issues can be resolved through mediation or administrative processes."
+          data-fr="Nous travaillons avec des avocats agréés si une action en justice est nécessaire. Beaucoup de problèmes se résolvent par médiation ou démarches administratives."
+          data-de="Bei Bedarf arbeiten wir mit zugelassenen Anwält:innen. Vieles lässt sich auch durch Mediation oder Verwaltung klären.">
+          We partner with licensed lawyers when court action is required.
+        </p>
+      </details>
+
+      <details class="card">
+        <summary
+          data-en="Do you work outside Bukavu and Goma?"
+          data-fr="Intervenez-vous hors de Bukavu et Goma ?"
+          data-de="Arbeiten Sie außerhalb von Bukavu und Goma?">
+          Do you work outside Bukavu and Goma?
+        </summary>
+        <p class="muted"
+          data-en="Yes. We support cases across the DRC remotely and, when necessary, on site with local partners."
+          data-fr="Oui. Nous accompagnons des dossiers à travers la RDC à distance et, si nécessaire, sur le terrain avec des partenaires locaux."
+          data-de="Ja. Wir unterstützen Fälle in der gesamten DRK remote und bei Bedarf vor Ort mit Partnern.">
+          Yes — nationwide support with local partners.
+        </p>
+      </details>
+
+      <details class="card">
+        <summary
+          data-en="Is my information confidential?"
+          data-fr="Mes informations sont-elles confidentielles ?"
+          data-de="Sind meine Informationen vertraulich?">
+          Is my information confidential?
+        </summary>
+        <p class="muted"
+          data-en="Absolutely. We follow strict safeguarding, obtain consent and only share information when it protects you or a child."
+          data-fr="Absolument. Nous appliquons une protection stricte, recueillons le consentement et ne partageons des informations que pour vous protéger, vous ou un enfant."
+          data-de="Auf jeden Fall. Strenger Schutz, Einwilligung und Informationsweitergabe nur zum Schutz von Ihnen oder einem Kind.">
+          Absolutely — strict safeguarding and consent.
+        </p>
+      </details>
+
+      <details class="card">
+        <summary
+          data-en="How quickly can you help?"
+          data-fr="À quelle vitesse pouvez-vous aider ?"
+          data-de="Wie schnell können Sie helfen?">
+          How quickly can you help?
+        </summary>
+        <p class="muted"
+          data-en="Emergencies (child abduction, risk of GBV, unlawful detention) are prioritized the same day. For other cases, we schedule the earliest possible slot."
+          data-fr="Les urgences (enlèvement d’enfant, risque de VBG, détention illégale) sont prioritaires le jour même. Pour les autres dossiers, nous planifions le premier créneau disponible."
+          data-de="Notfälle (Kindesentführung, GBV-Risiko, unrechtmäßige Haft) haben am selben Tag Priorität. Andere Fälle erhalten den frühestmöglichen Termin.">
+          Emergencies are prioritized the same day.
+        </p>
+      </details>
+    </div>
+  </section>
+
+  <!-- ================= CTA ================= -->
+  <section class="section reveal in">
+    <div class="container center">
+      <div class="cta-band">
+        <p class="muted"
+          data-en="Need help now? Tell us what happened — we will respond as fast as possible."
+          data-fr="Besoin d’aide maintenant ? Expliquez-nous ce qui s’est passé — nous répondrons au plus vite."
+          data-de="Brauchen Sie jetzt Hilfe? Schildern Sie den Vorfall — wir reagieren so schnell wie möglich.">
+          Need help now? Tell us what happened — we will respond as fast as possible.
+        </p>
+        <div class="hero-ctas">
+          <a href="../contact.html" class="btn btn-primary"
+            data-en="Contact the Legal Clinic"
+            data-fr="Contacter la Clinique juridique"
+            data-de="Rechtsklinik kontaktieren">Contact the Legal Clinic</a>
+          <a href="../index.html#join" class="btn btn-ghost"
+            data-en="Partner or volunteer"
+            data-fr="Devenir partenaire ou bénévole"
+            data-de="Partnern oder freiwillig helfen">Partner or volunteer</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer injected by base.js -->
+  <div id="site-footer"></div>
+
+  <!-- Global scripts -->
   <script src="../route/base.js" defer></script>
   <script src="../route/lang.js" defer></script>
   <script src="../route/animations.js" defer></script>
