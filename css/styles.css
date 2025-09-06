@@ -244,3 +244,5 @@ html[data-theme="dark"] .theme-switcher .knob { transform: translateX(24px); }
     th { background: var(--muted); }
     td:first-child, th:first-child { text-align:left; }
     .check { color:green; font-weight:700; }
+
+

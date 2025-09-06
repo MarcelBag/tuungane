@@ -3,208 +3,403 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="light dark" />
-  <title data-en="About Tuunganes" data-fr="À propos de Tuunganes" data-de="Über Tuunganes">About Tuunganes</title>
+  <title
+    data-en="IT Consultancy & Digital Solutions | Tuunganes"
+    data-fr="Conseil IT & Solutions numériques | Tuunganes"
+    data-de="IT-Beratung & Digitale Lösungen | Tuunganes">
+    IT Consultancy & Digital Solutions | Tuunganes
+  </title>
+
   <link rel="icon" href="assets/fevicon.png" type="image/png" />
   <link rel="stylesheet" href="css/styles.css" />
+
+  <!-- Page-only touches -->
+  <style>
+    .hero .eyebrow { letter-spacing:.04em; text-transform:uppercase; color:var(--text-muted); font-weight:800; }
+    .offer-grid { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem; }
+    .offer-grid .card { padding:1rem 1.1rem; }
+    .chip-row { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.6rem; }
+    .chip { border:1px solid var(--border); padding:.35rem .6rem; border-radius:999px; font-weight:600; background:color-mix(in hsl,var(--surface)92%,transparent); }
+
+    .models { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1rem; }
+    .models .card { padding:1rem 1.1rem; }
+
+    .cta-band { background:color-mix(in hsl,var(--surface)92%,transparent); border:1px solid var(--border); border-radius:16px; padding:1.1rem; display:flex; flex-wrap:wrap; gap:.8rem; align-items:center; justify-content:space-between; }
+    .lead { color:var(--text-2); }
+
+    /* Table-like checklist */
+    .checklist { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1rem; }
+    .check { background:var(--surface); border:1px solid var(--border); border-radius:14px; padding:1rem; }
+  </style>
 </head>
 <body>
-  <!-- ================= NAVBAR ================= -->
-  <header class="nav glass">
-    <div class="container nav-inner">
-      <a href="index.html" class="logo">
-        <img src="assets/fevicon.png" alt="Tuunganes" width="32" height="32" />
-        <span>Tuunganes</span>
-      </a>
+  <!-- Header injected by base.js -->
+  <div id="site-header"></div>
+  
 
-      <button id="navToggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-
-      <nav class="main-nav" id="mainNav">
-        <a href="about.html" aria-current="page" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
-       
-        <a href="index.html#impact" data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
-        <a href="index.html#join" data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</a>
-
-        <div class="nav-right">
-          <div class="lang-switch">
-            <button type="button" data-lang="en">EN</button>
-            <button type="button" data-lang="fr">FR</button>
-            <button type="button" data-lang="de">DE</button>
-          </div>
-          <button id="themeBtn" class="theme-switcher" title="Toggle theme" aria-label="Toggle theme">
-            <span class="knob"></span>
-            <span class="moon" aria-hidden>🌙</span>
-            <span class="sun" aria-hidden>☀️</span>
-          </button>
-        </div>
-      </nav>
-    </div>
-  </header>
-
-  <!-- ================= PAGE HERO ================= -->
-  <section class="hero reveal" style="padding-block: clamp(3.5rem,6vw,6rem);">
+  <!-- HERO -->
+  <section class="hero reveal in">
     <div class="container hero-content">
-      <h1 data-en="About Tuunganes" data-fr="À propos de Tuunganes" data-de="Über Tuunganes">About Tuunganes</h1>
-      <p data-en="We are a grassroots movement using technology, education and compassion to empower communities in Bukavu, Goma and beyond."
-         data-fr="Nous sommes un mouvement citoyen qui utilise la technologie, l'éducation et la compassion pour autonomiser les communautés à Bukavu, Goma et au-delà."
-         data-de="Wir sind eine Basisbewegung, die Technologie, Bildung und Mitgefühl einsetzt, um Gemeinschaften in Bukavu, Goma und darüber hinaus zu stärken.">
-         We are a grassroots movement using technology, education and compassion to empower communities in Bukavu, Goma and beyond.
+      <div class="eyebrow"
+           data-en="Established 2023 • Bukavu & Goma"
+           data-fr="Fondé en 2023 • Bukavu & Goma"
+           data-de="Gegründet 2023 • Bukavu & Goma">Established 2023 • Bukavu & Goma</div>
+
+      <h1
+        data-en="IT Consultancy & Digital Solutions"
+        data-fr="Conseil IT & Solutions numériques"
+        data-de="IT-Beratung & Digitale Lösungen">
+        IT Consultancy & Digital Solutions
+      </h1>
+
+      <p class="lead"
+         data-en="We help NGOs, schools and businesses in the DRC adopt secure, reliable and modern technology—cloud, connectivity, data & AI—so teams can focus on impact."
+         data-fr="Nous aidons ONG, écoles et entreprises en RDC à adopter des technologies sûres, fiables et modernes — cloud, connectivité, données & IA — pour se concentrer sur l’impact."
+         data-de="Wir helfen NGOs, Schulen und Unternehmen in der DR Kongo, sichere, zuverlässige und moderne Technologien einzusetzen — Cloud, Konnektivität, Daten & KI — damit Teams Wirkung erzielen.">
+        We help NGOs, schools and businesses in the DRC adopt secure, reliable and modern technology—cloud, connectivity, data & AI—so teams can focus on impact.
       </p>
     </div>
   </section>
 
-  <!-- ================= INTRO SPLIT ================= -->
-  <section class="about reveal">
+  <!-- INTRO SPLIT -->
+  <section class="about reveal in">
     <div class="container about-grid">
       <div class="about-image">
-        <img src="assets/pro.jpg" alt="Community collaboration" loading="lazy" />
+        <img src="assets/pro.jpg" alt="Consulting & implementation" loading="lazy" />
       </div>
+
       <div class="about-text card">
-        <h2 data-en="Who we are" data-fr="Qui nous sommes" data-de="Wer wir sind">Who we are</h2>
-        <p data-en="Tuunganes is a dynamic organization committed to advancing digital solutions for schools, communities and health services in Africa. We build school management systems, public health tech, IT support and digital transformation services tailored for local realities."
-           data-fr="Tuunganes est une organisation dynamique dédiée aux solutions numériques pour les écoles, les communautés et les services de santé en Afrique. Nous créons des systèmes de gestion scolaire, des outils de santé publique, du support IT et des services de transformation numérique adaptés aux réalités locales."
-           data-de="Tuunganes ist eine dynamische Organisation, die digitale Lösungen für Schulen, Gemeinden und Gesundheitsdienste in Afrika vorantreibt. Wir entwickeln Schulverwaltungssysteme, Public-Health-Tech, IT Support und digitale Transformationsdienste, zugeschnitten auf lokale Realitäten.">
-           Tuunganes is a dynamic organization committed to advancing digital solutions for schools, communities and health services in Africa.
+        <h2
+          data-en="Modernization that fits Congo’s realities"
+          data-fr="Modernisation adaptée aux réalités du Congo"
+          data-de="Modernisierung passend zur Realität im Kongo">
+          Modernization that fits Congo’s realities
+        </h2>
+
+        <p
+          data-en="From unreliable internet to legacy infrastructure, teams in Eastern DRC face unique constraints. Tuunganes blends global best practices with local know-how to deliver solutions that work offline-first, are cost-aware, and easy to maintain."
+          data-fr="Entre internet instable et infrastructures héritées, les équipes à l’Est de la RDC font face à des contraintes uniques. Tuunganes mêle bonnes pratiques mondiales et savoir-faire local pour des solutions offline-first, économes et faciles à maintenir."
+          data-de="Von instabilem Internet bis Legacy-Infrastruktur – im Osten der DRK gibt es besondere Hürden. Tuunganes kombiniert globale Best Practices mit lokalem Know-how für offline-first, kostensensible und leicht wartbare Lösungen.">
+          From unreliable internet to legacy infrastructure, teams in Eastern DRC face unique constraints. Tuunganes blends global best practices with local know-how…
         </p>
-        <p data-en="Born in Bukavu (Eastern DRC), we envision a connected, empowered, tech-literate future for all—especially for people affected by war, poverty and marginalization."
-           data-fr="Née à Bukavu (Est de la RDC), nous imaginons un avenir connecté, autonomisé et numériquement compétent pour tous—particulièrement pour les personnes touchées par la guerre, la pauvreté et la marginalisation."
-           data-de="In Bukavu (Ostkongo) geboren, sehen wir eine vernetzte, befähigte, digital kompetente Zukunft für alle—insbesondere für Menschen, die von Krieg, Armut und Marginalisierung betroffen sind.">
-           Born in Bukavu (Eastern DRC), we envision a connected, empowered, tech-literate future for all.
-        </p>
+
+        <ul>
+          <li
+            data-en="Advisory to implementation: we design, deploy and train"
+            data-fr="Du conseil au déploiement : conception, mise en œuvre et formation"
+            data-de="Von Beratung bis Umsetzung: Design, Rollout und Schulung">
+            Advisory to implementation: we design, deploy and train
+          </li>
+          <li
+            data-en="Youthful, professional team with deep community roots"
+            data-fr="Équipe jeune et professionnelle, ancrée dans les communautés"
+            data-de="Junges, professionelles Team mit starken Community-Wurzeln">
+            Youthful, professional team with deep community roots
+          </li>
+          <li
+            data-en="Transparent, outcomes-driven, and vendor-neutral"
+            data-fr="Transparent, orienté résultats et neutre vis-à-vis des fournisseurs"
+            data-de="Transparent, wirkungsorientiert und herstellerneutral">
+            Transparent, outcomes-driven, and vendor-neutral
+          </li>
+        </ul>
       </div>
     </div>
   </section>
 
-  <!-- ================= MISSION / VISION / VALUES ================= -->
-  <section class="pillars">
-    <div class="container pillars-grid">
-      <article class="card reveal">
-        <div class="pillar-content">
-          <h3 data-en="Our Mission" data-fr="Notre mission" data-de="Unsere Mission">Our Mission</h3>
-          <p data-en="Create meaningful, community-led change through technology, innovation, education and compassion."
-             data-fr="Créer un changement significatif mené par la communauté grâce à la technologie, l'innovation, l'éducation et la compassion."
-             data-de="Bedeutenden, gemeinschaftsgeführten Wandel durch Technologie, Innovation, Bildung und Mitgefühl schaffen.">
-             Create meaningful, community-led change through technology, innovation, education and compassion.
+  <!-- WHAT WE OFFER -->
+  <section class="pillars reveal in">
+    <div class="container">
+      <h2
+        data-en="What we offer"
+        data-fr="Ce que nous proposons"
+        data-de="Was wir anbieten">
+        What we offer
+      </h2>
+
+      <div class="offer-grid">
+        <article class="card">
+          <div class="pillar-content">
+            <h3 data-en="IT Consultancy" data-fr="Conseil IT" data-de="IT-Beratung">IT Consultancy</h3>
+            <p
+              data-en="Strategic roadmaps, technology audits, and digital transformation programs tailored to your budget and context."
+              data-fr="Feuilles de route stratégiques, audits technologiques et programmes de transformation numérique adaptés à votre budget et contexte."
+              data-de="Strategische Roadmaps, Technologie-Audits und Digitalprogramme, zugeschnitten auf Budget und Kontext.">
+              Strategic roadmaps, technology audits, and digital transformation programs…
+            </p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="pillar-content">
+            <h3 data-en="Cloud Consultancy" data-fr="Conseil Cloud" data-de="Cloud-Beratung">Cloud Consultancy</h3>
+            <p
+              data-en="Microsoft 365/Azure, Google Workspace/Meet, and AWS setup & migration. Identity, security, and governance done right."
+              data-fr="Mise en place & migration Microsoft 365/Azure, Google Workspace/Meet et AWS. Identité, sécurité et gouvernance maîtrisées."
+              data-de="Einrichtung & Migration von Microsoft 365/Azure, Google Workspace/Meet und AWS. Identität, Sicherheit & Governance sauber umgesetzt.">
+              Microsoft 365/Azure, Google Workspace/Meet, and AWS setup & migration…
+            </p>
+            <div class="chip-row">
+              <span class="chip">Microsoft 365</span><span class="chip">Azure</span><span class="chip">AWS</span><span class="chip">Google Workspace/Meet</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="pillar-content">
+            <h3 data-en="Infrastructure & Internet" data-fr="Infrastructure & Internet" data-de="Infrastruktur & Internet">Infrastructure & Internet</h3>
+            <p
+              data-en="Network design, Wi-Fi, campus-to-campus links, ISP evaluation and optimization for challenging environments."
+              data-fr="Conception réseau, Wi-Fi, liaisons inter-sites, évaluation et optimisation des FAI pour environnements exigeants."
+              data-de="Netzwerkdesign, WLAN, Standort-Verbindungen, ISP-Bewertung und Optimierung für anspruchsvolle Umgebungen.">
+              Network design, Wi-Fi, campus-to-campus links, ISP evaluation and optimization…
+            </p>
+            <div class="chip-row">
+              <span class="chip">Cisco</span><span class="chip">Ubiquiti</span><span class="chip">MikroTik</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="pillar-content">
+            <h3 data-en="Cybersecurity" data-fr="Cybersécurité" data-de="Cybersecurity">Cybersecurity</h3>
+            <p
+              data-en="Risk assessments, hardening, EDR/antivirus, MFA/SSO, backup & recovery, and staff awareness programs."
+              data-fr="Analyses de risque, durcissement, EDR/antivirus, MFA/SSO, sauvegarde & reprise, et sensibilisation des équipes."
+              data-de="Risikobewertungen, Härtung, EDR/Antivirus, MFA/SSO, Backup & Recovery sowie Awareness-Trainings.">
+              Risk assessments, hardening, EDR/antivirus, MFA/SSO, backup & recovery…
+            </p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="pillar-content">
+            <h3 data-en="Data & AI" data-fr="Données & IA" data-de="Daten & KI">Data & AI</h3>
+            <p
+              data-en="Dashboards and analytics (Power BI/Looker), data collection (KoboToolbox), and responsible AI assistance for decisions."
+              data-fr="Tableaux de bord & analytics (Power BI/Looker), collecte de données (KoboToolbox) et assistance IA responsable pour la décision."
+              data-de="Dashboards & Analytics (Power BI/Looker), Datenerhebung (KoboToolbox) und verantwortungsvolle KI-Assistenz.">
+              Dashboards and analytics, data collection, and responsible AI…
+            </p>
+            <div class="chip-row">
+              <span class="chip">Power BI</span><span class="chip">Looker Studio</span><span class="chip">KoboToolbox</span>
+            </div>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="pillar-content">
+            <h3 data-en="Licensing & Procurement" data-fr="Licences & acquisition" data-de="Lizenzen & Beschaffung">Licensing & Procurement</h3>
+            <p
+              data-en="Right-sizing software licenses, sourcing reliable computers and devices, and negotiating for better value."
+              data-fr="Dimensionnement des licences, acquisition d’ordinateurs et équipements fiables, et négociation pour un meilleur rapport qualité-prix."
+              data-de="Passende Lizenzierung, Beschaffung zuverlässiger Geräte und bessere Konditionen durch Verhandlung.">
+              Right-sizing software licenses and sourcing reliable devices…
+            </p>
+          </div>
+        </article>
+
+        <article class="card">
+          <div class="pillar-content">
+            <h3 data-en="Training & Support" data-fr="Formation & support" data-de="Schulung & Support">Training & Support</h3>
+            <p
+              data-en="On-site and remote training, change management, and ongoing managed support to keep systems healthy."
+              data-fr="Formations sur site et à distance, conduite du changement, et support managé continu pour la santé des systèmes."
+              data-de="Vor-Ort- und Remote-Schulungen, Change-Management und laufender Managed Support.">
+              On-site and remote training, change management, and managed support…
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ENGAGEMENT MODELS -->
+  <section class="page-section reveal in">
+    <div class="container">
+      <h2
+        data-en="Engagement models"
+        data-fr="Modèles d’accompagnement"
+        data-de="Zusammenarbeitsmodelle">
+        Engagement models
+      </h2>
+      <div class="models">
+        <div class="card">
+          <h3 data-en="Advisory" data-fr="Conseil" data-de="Advisory">Advisory</h3>
+          <p
+            data-en="Short, focused consulting to assess, plan or review. Perfect for audits, network redesigns or cloud readiness."
+            data-fr="Conseils ciblés pour évaluer, planifier ou revoir. Idéal pour audits, refontes réseau ou préparation au cloud."
+            data-de="Kurze, fokussierte Beratung für Bewertung, Planung oder Review. Ideal für Audits, Netzwerk-Redesigns oder Cloud-Readiness.">
+            Short, focused consulting to assess, plan or review…
           </p>
         </div>
-      </article>
-      <article class="card reveal">
-        <div class="pillar-content">
-          <h3 data-en="Our Vision" data-fr="Notre vision" data-de="Unsere Vision">Our Vision</h3>
-          <p data-en="A connected Great Lakes region where youth, women and families thrive with equal digital opportunities."
-             data-fr="Une région des Grands Lacs connectée où les jeunes, les femmes et les familles s'épanouissent avec des opportunités numériques égales."
-             data-de="Eine vernetzte Region der Großen Seen, in der Jugendliche, Frauen und Familien mit gleichen digitalen Chancen gedeihen.">
-             A connected Great Lakes region where youth, women and families thrive with equal digital opportunities.
+        <div class="card">
+          <h3 data-en="Implementation" data-fr="Implémentation" data-de="Implementierung">Implementation</h3>
+          <p
+            data-en="We design & deploy: cloud migration, Wi-Fi rollout, identity & security, analytics and more—end to end."
+            data-fr="Nous concevons & déployons : migration cloud, déploiement Wi-Fi, identité & sécurité, analytics, etc. de bout en bout."
+            data-de="Wir designen & implementieren: Cloud-Migration, WLAN-Rollout, Identität & Sicherheit, Analytics u.v.m.—End-to-End.">
+            We design & deploy end to end…
           </p>
         </div>
-      </article>
-      <article class="card reveal">
-        <div class="pillar-content">
-          <h3 data-en="Our Values" data-fr="Nos valeurs" data-de="Unsere Werte">Our Values</h3>
-          <ul>
-            <li data-en="Community first" data-fr="La communauté d'abord" data-de="Gemeinschaft zuerst">Community first</li>
-            <li data-en="Transparency & accountability" data-fr="Transparence & redevabilité" data-de="Transparenz & Verantwortung">Transparency & accountability</li>
-            <li data-en="Learning mindset" data-fr="Esprit d'apprentissage" data-de="Lernmentalität">Learning mindset</li>
-            <li data-en="Dignity & compassion" data-fr="Dignité & compassion" data-de="Würde & Mitgefühl">Dignity & compassion</li>
-          </ul>
+        <div class="card">
+          <h3 data-en="Managed Support" data-fr="Support managé" data-de="Managed Support">Managed Support</h3>
+          <p
+            data-en="Proactive monitoring, updates, backups, helpdesk and monthly reviews to keep your environment stable."
+            data-fr="Supervision proactive, mises à jour, sauvegardes, helpdesk et revues mensuelles pour stabiliser votre environnement."
+            data-de="Proaktives Monitoring, Updates, Backups, Helpdesk und Monatsreviews für Stabilität.">
+            Proactive monitoring, updates, backups, helpdesk and monthly reviews…
+          </p>
         </div>
-      </article>
+      </div>
+
+      <div class="cta-band" style="margin-top:1rem;">
+        <p class="lead"
+           data-en="Tell us your challenge—let’s design the simplest solution that works today and scales tomorrow."
+           data-fr="Parlez-nous de votre défi — concevons la solution la plus simple, efficace aujourd’hui et évolutive demain."
+           data-de="Erzählen Sie uns Ihre Herausforderung — wir entwerfen die einfachste Lösung, die heute funktioniert und morgen skaliert.">
+          Tell us your challenge—let’s design the simplest solution that works today and scales tomorrow.
+        </p>
+        <div class="hero-ctas">
+          <a href="../contact.html" class="btn btn-primary"
+             data-en="Book a consultation"
+             data-fr="Réserver une consultation"
+             data-de="Beratung buchen">Book a consultation</a>
+          <a href="../services/services.html" class="btn btn-ghost"
+             data-en="Explore all services"
+             data-fr="Voir tous les services"
+             data-de="Alle Services ansehen">Explore all services</a>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- ================= TIMELINE ================= -->
-  <section class="impact reveal">
+  <!-- QUICK CHECKLIST -->
+  <section class="page-section reveal in">
     <div class="container">
-      <h2 data-en="Our Journey" data-fr="Notre parcours" data-de="Unser Weg">Our Journey</h2>
-      <div class="numbers" style="grid-template-columns: 1fr 1fr; gap: .75rem;">
-        <div class="stat card"><strong>2021</strong><span data-en="Idea & pilot in Bukavu" data-fr="Idée & pilote à Bukavu" data-de="Idee & Pilot in Bukavu">Idea & pilot in Bukavu</span></a></div>
-        <div class="stat card"><strong>2023</strong><span data-en="Afya digital health MVP" data-fr="MVP Afya santé numérique" data-de="Afya Digital Health MVP">Afya digital health MVP</span></a></div>
-        <div class="stat card"><a href="https://masomos.tuunganes.com/"> <strong>2024</strong><span data-en="School system alpha" data-fr="Système scolaire alpha" data-de="Schulsystem Alpha"> </span></a></div>
-        <div class="stat card"><strong>2025</strong><span data-en="Community partnerships" data-fr="Partenariats communautaires" data-de="Gemeinschaftspartnerschaften">Community partnerships</span></a></div>
+      <h2
+        data-en="Where we help most"
+        data-fr="Où nous aidons le plus"
+        data-de="Wo wir am meisten helfen">
+        Where we help most
+      </h2>
+      <div class="checklist">
+        <div class="check">
+          <strong data-en="Connectivity & Wi-Fi" data-fr="Connectivité & Wi-Fi" data-de="Konnektivität & WLAN">Connectivity & Wi-Fi</strong>
+          <p data-en="Design, coverage, QoS and ISP optimization."
+             data-fr="Conception, couverture, QoS et optimisation des FAI."
+             data-de="Design, Abdeckung, QoS und ISP-Optimierung.">Design, coverage, QoS and ISP optimization.</p>
+        </div>
+        <div class="check">
+          <strong data-en="Cloud & Identity" data-fr="Cloud & Identité" data-de="Cloud & Identität">Cloud & Identity</strong>
+          <p data-en="Microsoft 365/Azure, Google, AWS, SSO/MFA and governance."
+             data-fr="Microsoft 365/Azure, Google, AWS, SSO/MFA et gouvernance."
+             data-de="Microsoft 365/Azure, Google, AWS, SSO/MFA und Governance.">Microsoft 365/Azure, Google, AWS…</p>
+        </div>
+        <div class="check">
+          <strong data-en="Security posture" data-fr="Posture de sécurité" data-de="Sicherheitsniveau">Security posture</strong>
+          <p data-en="Hardening, EDR/AV, backups and incident readiness."
+             data-fr="Durcissement, EDR/AV, sauvegardes et préparation aux incidents."
+             data-de="Härtung, EDR/AV, Backups und Incident-Readiness.">Hardening & resilience.</p>
+        </div>
+        <div class="check">
+          <strong data-en="Data & AI" data-fr="Données & IA" data-de="Daten & KI">Data & AI</strong>
+          <p data-en="Dashboards, training data and responsible assistance."
+             data-fr="Tableaux de bord, données d’entraînement et assistance responsable."
+             data-de="Dashboards, Trainingsdaten und verantwortungsvolle Assistenz.">Dashboards & responsible AI.</p>
+        </div>
       </div>
     </div>
   </section>
 
-  <!-- ================= TEAM ================= -->
-  <section class="join reveal">
-    <div class="container join-grid">
-      <div class="join-text">
-        <h2 data-en="Leadership & Team" data-fr="Direction & Équipe" data-de="Leitung & Team">Leadership & Team</h2>
-        <p data-en="We work with volunteers, educators, clinicians and engineers across Bukavu, Goma and the diaspora."
-           data-fr="Nous travaillons avec des bénévoles, des éducateurs, des cliniciens et des ingénieurs à Bukavu, Goma et dans la diaspora."
-           data-de="Wir arbeiten mit Freiwilligen, Pädagog:innen, Kliniker:innen und Ingenieur:innen in Bukavu, Goma und der Diaspora zusammen.">We work with volunteers, educators, clinicians and engineers across Bukavu, Goma and the diaspora.</p>
-      </div>
-      <div class="card" style="padding:1.2rem; display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem;">
-        <figure class="card" style="padding:.8rem; text-align:center;">
-          <img src="assets/fevicon.png" alt="Team member" style="width:100%; aspect-ratio:1; object-fit:cover; border-radius:12px;" loading="lazy" />
-          <figcaption style="margin-top:.5rem; font-weight:600;">A. Member</figcaption>
-          <small style="color:var(--text-muted);">Coordinator</small>
-        </figure>
-        <figure class="card" style="padding:.8rem; text-align:center;">
-          <img src="assets/fevicon.png" alt="Team member" style="width:100%; aspect-ratio:1; object-fit:cover; border-radius:12px;" loading="lazy" />
-          <figcaption style="margin-top:.5rem; font-weight:600;">B. Member</figcaption>
-          <small style="color:var(--text-muted);">Programs</small>
-        </figure>
-        <figure class="card" style="padding:.8rem; text-align:center;">
-          <img src="assets/fevicon.png" alt="Team member" style="width:100%; aspect-ratio:1; object-fit:cover; border-radius:12px;" loading="lazy" />
-          <figcaption style="margin-top:.5rem; font-weight:600;">C. Member</figcaption>
-          <small style="color:var(--text-muted);">Engineering</small>
-        </figure>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= FOOTER ================= -->
-  <footer class="footer glass">
+  <!-- FAQ -->
+  <section class="page-section reveal in">
     <div class="container">
-      <p>© 2025 Tuunganes. All Rights Reserved.</p>
+      <h2 data-en="FAQs" data-fr="FAQ" data-de="FAQ">FAQs</h2>
+
+      <details class="card" style="padding:1rem;">
+        <summary
+          data-en="Do you work outside Bukavu & Goma?"
+          data-fr="Intervenez-vous en dehors de Bukavu & Goma ?"
+          data-de="Arbeiten Sie auch außerhalb von Bukavu & Goma?">
+          Do you work outside Bukavu & Goma?
+        </summary>
+        <p
+          data-en="Yes. We support clients across the DRC and remotely for global teams. Travel is possible when needed."
+          data-fr="Oui. Nous accompagnons des clients à travers la RDC et à distance pour des équipes globales. Déplacements possibles si nécessaire."
+          data-de="Ja. Wir unterstützen Kund:innen in der ganzen DRK und remote für globale Teams. Reisen sind bei Bedarf möglich.">
+          Yes—nationwide and remote.
+        </p>
+      </details>
+
+      <details class="card" style="padding:1rem;">
+        <summary
+          data-en="Which vendors do you recommend?"
+          data-fr="Quels fournisseurs recommandez-vous ?"
+          data-de="Welche Anbieter empfehlen Sie?">
+          Which vendors do you recommend?
+        </summary>
+        <p
+          data-en="We are vendor-neutral. Common stacks include Microsoft 365/Azure, Google Workspace/Meet, AWS, Cisco/Ubiquiti, Power BI and KoboToolbox—selected to match your goals and budget."
+          data-fr="Nous sommes neutres. Les stacks fréquentes : Microsoft 365/Azure, Google Workspace/Meet, AWS, Cisco/Ubiquiti, Power BI et KoboToolbox — selon vos objectifs et votre budget."
+          data-de="Wir sind herstellerneutral. Häufige Stacks: Microsoft 365/Azure, Google Workspace/Meet, AWS, Cisco/Ubiquiti, Power BI und KoboToolbox—passend zu Zielen und Budget.">
+          We are vendor-neutral…
+        </p>
+      </details>
+
+      <details class="card" style="padding:1rem;">
+        <summary
+          data-en="Can you procure computers and licenses?"
+          data-fr="Pouvez-vous fournir ordinateurs et licences ?"
+          data-de="Beschaffen Sie Geräte und Lizenzen?">
+          Can you procure computers and licenses?
+        </summary>
+        <p
+          data-en="Yes. We right-size licensing and help source reliable devices. We can also refurbish donated computers for schools and labs."
+          data-fr="Oui. Nous dimensionnons les licences et aidons à trouver du matériel fiable. Nous pouvons aussi reconditionner des ordinateurs donnés pour écoles et labs."
+          data-de="Ja. Wir dimensionieren Lizenzen passend und beschaffen zuverlässige Geräte. Wir können auch gespendete Computer für Schulen/Labore aufbereiten.">
+          Yes—licensing + hardware procurement and refurbishing.
+        </p>
+      </details>
+
+      <details class="card" style="padding:1rem;">
+        <summary
+          data-en="How do you price projects?"
+          data-fr="Comment tarifez-vous les projets ?"
+          data-de="Wie bepreisen Sie Projekte?">
+          How do you price projects?
+        </summary>
+        <p
+          data-en="Advisory is typically day-rate; implementations are fixed or milestone-based; managed support is monthly. We’ll propose a clear, transparent quote."
+          data-fr="Le conseil est au forfait jour ; les mises en œuvre au forfait ou par jalons ; le support managé est mensuel. Nous vous fournirons un devis clair et transparent."
+          data-de="Beratung i.d.R. Tagessatz; Implementierungen fix oder Meilenstein-basiert; Managed Support monatlich. Wir liefern ein klares, transparentes Angebot.">
+          Transparent pricing—advisory, implementation, or managed support.
+        </p>
+      </details>
+
+      <details class="card" style="padding:1rem;">
+        <summary
+          data-en="Can you train our staff?"
+          data-fr="Pouvez-vous former nos équipes ?"
+          data-de="Schulen Sie unsere Mitarbeitenden?">
+          Can you train our staff?
+        </summary>
+        <p
+          data-en="Absolutely. We run practical workshops—cloud basics, security hygiene, device management, and data/AI literacy."
+          data-fr="Absolument. Ateliers pratiques — bases du cloud, hygiène sécurité, gestion des postes et culture data/IA."
+          data-de="Auf jeden Fall. Praxis-Workshops—Cloud-Grundlagen, Security-Hygiene, Geräteverwaltung und Daten/KI-Kompetenz.">
+          Absolutely—hands-on workshops.
+        </p>
+      </details>
     </div>
-  </footer>
+  </section>
 
-  <!-- ================= Scripts ================= -->
-  <script>
-    // Theme init
-    (function(){
-      const saved = localStorage.getItem('tuunganes-theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
-    })();
+  <!-- Footer injected by base.js -->
+  <div id="site-footer"></div>
 
-    // Theme toggle
-    document.getElementById('themeBtn').addEventListener('click', function(){
-      const root = document.documentElement;
-      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      localStorage.setItem('tuunganes-theme', next);
-    });
-
-    // Mobile nav
-    const navToggle = document.getElementById('navToggle');
-    const mainNav = document.getElementById('mainNav');
-    navToggle.addEventListener('click', () => {
-      const open = mainNav.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', String(open));
-    });
-
-    // Language switching fallback
-    document.querySelectorAll('.lang-switch [data-lang]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const lang = btn.dataset.lang;
-        document.querySelectorAll('[data-' + lang + ']').forEach(el => {
-          el.textContent = el.getAttribute('data-' + lang);
-        });
-      });
-    });
-
-    // Reveal on scroll
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-    },{threshold:0.15});
-    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-  </script>
-  <script src="route/lang.js" defer></script>
-  <script src="route/animations.js" defer></script>
+  <!-- Scripts (use your global base/lang/animations) -->
+  <script src="../route/base.js" defer></script>
+  <script src="../route/lang.js" defer></script>
+  <script src="../route/animations.js" defer></script>
 </body>
 </html>
