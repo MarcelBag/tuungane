@@ -50,7 +50,7 @@ document.addEventListener("DOMContentLoaded", () => {
     siteFooter.innerHTML = `
       <footer class="footer glass">
         <div class="container">
-          <p>© 2025 Tuunganes. All rights reserved.</p>
+          <p data-en="©2025 Tuunganes. All rights reserved." data-fr="©2025 Tuunganes. Tous droits réservés" data-de="©2025 Tuunganes. Alle Rechte vorbehalten."> </p>
         </div>
       </footer>
     `;

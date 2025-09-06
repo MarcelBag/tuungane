@@ -11,7 +11,7 @@
   <link rel="icon" href="../assets/fevicon.png" type="image/png">
   <link rel="stylesheet" href="../css/styles.css">
   <style>
-    .pricing-header { text-align: center; margin-bottom: 2rem; }
+    .pricing { padding: clamp(3rem, 6vw, 5rem) 0; }
     .plans { display: grid; grid-template-columns: repeat(auto-fit,minmax(280px,1fr)); gap: 1.5rem; margin-top: 2rem; }
     .plan { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 2rem; text-align: center; box-shadow: var(--shadow); }
     .plan h3 { margin: 0 0 .5rem; font-size: 1.4rem; }
@@ -22,10 +22,10 @@
     .toggle { display: flex; justify-content: center; align-items: center; gap: .75rem; margin-top: 1rem; }
     .toggle button { border: 1px solid var(--border); background: var(--surface); padding: .5rem 1rem; border-radius: 999px; cursor: pointer; }
     .toggle button.active { background: var(--grad-primary); color: white; }
-    .discount { color: #16a34a; font-weight: 600; font-size: .9rem; }
   </style>
 </head>
 <body>
+  <!-- Header injected by base.js -->
   <div id="site-header"></div>
 
   <!-- HERO -->
@@ -60,85 +60,56 @@
       <!-- Free -->
       <div class="plan">
         <h3 data-en="Free" data-fr="Gratuit" data-de="Kostenlos">Free</h3>
-        <strong data-en="$0" data-fr="0$" data-de="0€">$0</strong>
-        <small data-en="per month" data-fr="par mois" data-de="pro Monat">per month</small>
+        <strong id="freePrice" data-en="$0" data-fr="0$" data-de="0€">$0 <small data-en="per month" data-fr="par mois" data-de="pro Monat">per month</small></strong>
         <p data-en="Up to 50 users, ideal for small schools starting digital management."
            data-fr="Jusqu'à 50 utilisateurs, idéal pour les petites écoles commençant la gestion numérique."
            data-de="Bis zu 50 Benutzer, ideal für kleine Schulen, die mit digitaler Verwaltung beginnen.">
            Up to 50 users, ideal for small schools starting digital management.
         </p>
         <ul>
-          <li data-en="Basic student profiles"
-              data-fr="Profils d'élèves basiques"
-              data-de="Einfache Schülerprofile">Basic student profiles</li>
-          <li data-en="Manual grade entry"
-              data-fr="Saisie manuelle des notes"
-              data-de="Manuelle Noteneingabe">Manual grade entry</li>
-          <li data-en="Parent communication"
-              data-fr="Communication avec les parents"
-              data-de="Elternkommunikation">Parent communication</li>
+          <li data-en="Basic student profiles" data-fr="Profils d'élèves basiques" data-de="Einfache Schülerprofile">Basic student profiles</li>
+          <li data-en="Manual grade entry" data-fr="Saisie manuelle des notes" data-de="Manuelle Noteneingabe">Manual grade entry</li>
+          <li data-en="Parent communication" data-fr="Communication avec les parents" data-de="Elternkommunikation">Parent communication</li>
         </ul>
         <a href="#" class="btn btn-primary"
-           data-en="Get Started"
-           data-fr="Commencer"
-           data-de="Loslegen">Get Started</a>
+           data-en="Get Started" data-fr="Commencer" data-de="Loslegen">Get Started</a>
       </div>
 
       <!-- Pro -->
       <div class="plan">
         <h3 data-en="Pro" data-fr="Pro" data-de="Pro">Pro</h3>
-        <strong id="proPrice" data-en="$250" data-fr="250$" data-de="250€">$250</strong>
-        <small data-en="per month" data-fr="par mois" data-de="pro Monat">per month</small>
+        <strong id="proPrice" data-en="$250" data-fr="250$" data-de="250€">$250 <small data-en="per month" data-fr="par mois" data-de="pro Monat">per month</small></strong>
         <p data-en="Up to 100 users, with advanced academic management."
            data-fr="Jusqu'à 100 utilisateurs, avec gestion académique avancée."
            data-de="Bis zu 100 Benutzer, mit erweiterter Verwaltung.">
            Up to 100 users, with advanced academic management.
         </p>
         <ul>
-          <li data-en="Automated grades & report cards"
-              data-fr="Notes et bulletins automatisés"
-              data-de="Automatisierte Noten & Zeugnisse">Automated grades & report cards</li>
-          <li data-en="Fee tracking & receipts"
-              data-fr="Suivi des frais & reçus"
-              data-de="Gebührenverwaltung & Quittungen">Fee tracking & receipts</li>
-          <li data-en="Class & timetable management"
-              data-fr="Gestion des classes & emplois du temps"
-              data-de="Klassen- & Stundenplanverwaltung">Class & timetable management</li>
+          <li data-en="Automated grades & report cards" data-fr="Notes et bulletins automatisés" data-de="Automatisierte Noten & Zeugnisse">Automated grades & report cards</li>
+          <li data-en="Fee tracking & receipts" data-fr="Suivi des frais & reçus" data-de="Gebührenverwaltung & Quittungen">Fee tracking & receipts</li>
+          <li data-en="Class & timetable management" data-fr="Gestion des classes & emplois du temps" data-de="Klassen- & Stundenplanverwaltung">Class & timetable management</li>
         </ul>
         <a href="#" class="btn btn-primary"
-           data-en="Start Free Trial"
-           data-fr="Commencer l'essai gratuit"
-           data-de="Kostenlose Testversion starten">Start Free Trial</a>
+           data-en="Start Free Trial" data-fr="Commencer l'essai gratuit" data-de="Kostenlose Testversion starten">Start Free Trial</a>
       </div>
 
       <!-- Premium -->
       <div class="plan">
         <h3 data-en="Premium" data-fr="Premium" data-de="Premium">Premium</h3>
-        <strong id="premiumPrice" data-en="$350" data-fr="350$" data-de="350€">$350</strong>
-        <small data-en="per month" data-fr="par mois" data-de="pro Monat">per month</small>
+        <strong id="premiumPrice" data-en="$350" data-fr="350$" data-de="350€">$350 <small data-en="per month" data-fr="par mois" data-de="pro Monat">per month</small></strong>
         <p data-en="Unlimited users, designed for districts and networks."
            data-fr="Utilisateurs illimités, conçu pour les districts et réseaux."
            data-de="Unbegrenzte Benutzer, entwickelt für Bezirke und Netzwerke.">
            Unlimited users, designed for districts and networks.
         </p>
         <ul>
-          <li data-en="Everything in Pro"
-              data-fr="Tout dans Pro"
-              data-de="Alles in Pro">Everything in Pro</li>
-          <li data-en="Multi-school support"
-              data-fr="Support multi-écoles"
-              data-de="Mehrschulunterstützung">Multi-school support</li>
-          <li data-en="Location tracking for safety"
-              data-fr="Suivi de localisation pour la sécurité"
-              data-de="Standortverfolgung für Sicherheit">Location tracking for safety</li>
-          <li data-en="Custom reports & analytics"
-              data-fr="Rapports & analyses personnalisés"
-              data-de="Individuelle Berichte & Analysen">Custom reports & analytics</li>
+          <li data-en="Everything in Pro" data-fr="Tout dans Pro" data-de="Alles in Pro">Everything in Pro</li>
+          <li data-en="Multi-school support" data-fr="Support multi-écoles" data-de="Mehrschulunterstützung">Multi-school support</li>
+          <li data-en="Location tracking for safety" data-fr="Suivi de localisation pour la sécurité" data-de="Standortverfolgung für Sicherheit">Location tracking for safety</li>
+          <li data-en="Custom reports & analytics" data-fr="Rapports & analyses personnalisés" data-de="Individuelle Berichte & Analysen">Custom reports & analytics</li>
         </ul>
         <a href="#" class="btn btn-primary"
-           data-en="Start Free Trial"
-           data-fr="Commencer l'essai gratuit"
-           data-de="Kostenlose Testversion starten">Start Free Trial</a>
+           data-en="Start Free Trial" data-fr="Commencer l'essai gratuit" data-de="Kostenlose Testversion starten">Start Free Trial</a>
       </div>
     </div>
   </section>
@@ -158,27 +129,15 @@
       monthlyBtn.addEventListener("click", () => {
         monthlyBtn.classList.add("active");
         annualBtn.classList.remove("active");
-        proPrice.textContent = "$250";
-        premiumPrice.textContent = "$350";
-        proPrice.setAttribute("data-en", "$250");
-        proPrice.setAttribute("data-fr", "250$");
-        proPrice.setAttribute("data-de", "250€");
-        premiumPrice.setAttribute("data-en", "$350");
-        premiumPrice.setAttribute("data-fr", "350$");
-        premiumPrice.setAttribute("data-de", "350€");
+        proPrice.innerHTML = "$250 <small>per month</small>";
+        premiumPrice.innerHTML = "$350 <small>per month</small>";
       });
 
       annualBtn.addEventListener("click", () => {
         monthlyBtn.classList.remove("active");
         annualBtn.classList.add("active");
-        proPrice.textContent = "$200";
-        premiumPrice.textContent = "$280";
-        proPrice.setAttribute("data-en", "$200");
-        proPrice.setAttribute("data-fr", "200$");
-        proPrice.setAttribute("data-de", "200€");
-        premiumPrice.setAttribute("data-en", "$280");
-        premiumPrice.setAttribute("data-fr", "280$");
-        premiumPrice.setAttribute("data-de", "280€");
+        proPrice.innerHTML = "$200 <small>per month</small>";
+        premiumPrice.innerHTML = "$280 <small>per month</small>";
       });
     });
   </script>
