@@ -255,3 +255,19 @@ html[data-theme="dark"] .theme-switcher .knob { transform: translateX(24px); }
   color: #fff;
 }
 .hero--banner .lede{ color: rgba(255,255,255,.9); }
+
+/* ===============================
+   SERVICES GRID FIX
+   Force single column on small screens
+=============================== */
+.pillars-grid {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+}
+
+@media (max-width: 600px) {
+  .pillars-grid {
+    grid-template-columns: 1fr; /* ✅ Always one card per row on mobile */
+  }
+}
