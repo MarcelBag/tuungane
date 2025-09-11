@@ -29,5 +29,4 @@ tuunganes.com/
 ├── nginx/                     # config for the server
 │   └── tuunganes.com.conf
 └── README.md                  # Project documentation
-
 ```
