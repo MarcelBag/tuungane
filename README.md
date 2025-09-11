@@ -2,7 +2,6 @@
 A modern, responsive HTML5 and CSS website for Tuunganes a community driven organization providing digital solutions in school management, public health tech, IT support, and digital transformation services. Built to showcase projects and empower communities with technology.
 
 The site features a clean design with Bootstrap integration, a contact form powered by FormSubmit, and secure HTTPS hosting on a VPS.
-
 ## Features
 - Responsive design using Bootstrap 5
 - Light blue and white color scheme for clean and look
