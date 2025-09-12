@@ -271,7 +271,7 @@
       <!-- Basic -->
       <article class="plan" aria-labelledby="plan-basic">
         <h3 id="plan-basic" data-en="Basic" data-fr="Basique" data-de="Basic">Basic</h3>
-        <div class="price" id="basicPrice" data-en="60" data-fr="60$" data-de="80€">60</div>
+        <div class="price" id="basicPrice" data-en="$60" data-fr="60$" data-de="60€">$60</div>
         <span class="per" data-en="per month" data-fr="par mois" data-de="pro Monat">per month</span>
         <p class="cap"
            data-en="Up to 50 users perfect for small schools."
@@ -562,7 +562,7 @@
         annualBtn.setAttribute("aria-selected", "false");
 
         // Set prices
-        basicPrice.textContent = "60";
+        basicPrice.textContent = "$60";
         proPrice.textContent = "$100";
         premPrice.textContent = "$120";
         basicPrice.setAttribute("data-en", "$60");
@@ -571,9 +571,9 @@
         proPrice.setAttribute("data-en", "$100");
         proPrice.setAttribute("data-fr", "100$");
         proPrice.setAttribute("data-de", "100€");
-        premPrice.setAttribute("data-en", "$130");
-        premPrice.setAttribute("data-fr", "130$");
-        premPrice.setAttribute("data-de", "130€");
+        premPrice.setAttribute("data-en", "$120");
+        premPrice.setAttribute("data-fr", "120$");
+        premPrice.setAttribute("data-de", "120€");
 
         // Set period text to "per month"
         periodSpans.forEach(span => {
@@ -590,10 +590,10 @@
         monthlyBtn.classList.remove("active");
         monthlyBtn.setAttribute("aria-selected", "false");
 
-        // Set prices (Basic is $700, others get 20% discount)
+        // Set prices
         basicPrice.textContent = "$700";
-        proPrice.textContent = "$1000"; // 20% off from $100
-        premPrice.textContent = "$1200"; // 20% off from $120
+        proPrice.textContent = "$1000";
+        premPrice.textContent = "$1200";
         basicPrice.setAttribute("data-en", "$700");
         basicPrice.setAttribute("data-fr", "700$");
         basicPrice.setAttribute("data-de", "700€");
@@ -612,6 +612,7 @@
           span.setAttribute("data-de", "pro Jahr");
         });
       }
+
       monthlyBtn.addEventListener("click", setMonthly);
       annualBtn.addEventListener("click", setAnnual);
 
