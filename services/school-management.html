@@ -1,4 +1,43 @@
-<!DOCTYPE html>
+<script type="text/javascript">
+        var gk_isXlsx = false;
+        var gk_xlsxFileLookup = {};
+        var gk_fileData = {};
+        function filledCell(cell) {
+          return cell !== '' && cell != null;
+        }
+        function loadFileData(filename) {
+        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
+            try {
+                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
+                var firstSheetName = workbook.SheetNames[0];
+                var worksheet = workbook.Sheets[firstSheetName];
+
+                // Convert sheet to JSON to filter blank rows
+                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
+                // Filter out blank rows (rows where all cells are empty, null, or undefined)
+                var filteredData = jsonData.filter(row => row.some(filledCell));
+
+                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
+                var headerRowIndex = filteredData.findIndex((row, index) =>
+                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
+                );
+                // Fallback
+                if (headerRowIndex === -1 || headerRowIndex > 25) {
+                  headerRowIndex = 0;
+                }
+
+                // Convert filtered JSON back to CSV
+                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
+                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
+                return csv;
+            } catch (e) {
+                console.error(e);
+                return "";
+            }
+        }
+        return gk_fileData[filename] || "";
+        }
+        </script><!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
@@ -229,10 +268,10 @@
   <!-- PRICING PLANS -->
   <section class="pricing reveal in" aria-label="Pricing plans">
     <div class="container plans">
-      <!-- Free -->
-      <article class="plan" aria-labelledby="plan-free">
-        <h3 id="plan-free" data-en="Basic" data-fr="Basique" data-de="basic">Basic</h3>
-        <div class="price" id="freePrice" data-en="$80" data-fr="80$" data-de="0€">80$</div>
+      <!-- Basic -->
+      <article class="plan" aria-labelledby="plan-basic">
+        <h3 id="plan-basic" data-en="Basic" data-fr="Basique" data-de="Basic">Basic</h3>
+        <div class="price" id="basicPrice" data-en="60" data-fr="60$" data-de="80€">60</div>
         <span class="per" data-en="per month" data-fr="par mois" data-de="pro Monat">per month</span>
         <p class="cap"
            data-en="Up to 50 users perfect for small schools."
@@ -257,7 +296,7 @@
       <!-- Pro -->
       <article class="plan" aria-labelledby="plan-pro">
         <h3 id="plan-pro" data-en="Pro" data-fr="Pro" data-de="Pro">Pro</h3>
-        <div class="price" id="proPrice" data-en="$250" data-fr="250$" data-de="250€">$250</div>
+        <div class="price" id="proPrice" data-en="$100" data-fr="100$" data-de="100€">$100</div>
         <span class="per" data-en="per month" data-fr="par mois" data-de="pro Monat">per month</span>
         <p class="cap"
            data-en="Up to 100 users with advanced academic tools."
@@ -283,7 +322,7 @@
       <!-- Premium -->
       <article class="plan" aria-labelledby="plan-premium">
         <h3 id="plan-premium" data-en="Premium" data-fr="Premium" data-de="Premium">Premium</h3>
-        <div class="price" id="premiumPrice" data-en="$350" data-fr="350$" data-de="350€">$350</div>
+        <div class="price" id="premiumPrice" data-en="$120" data-fr="120$" data-de="120€">$120</div>
         <span class="per" data-en="per month" data-fr="par mois" data-de="pro Monat">per month</span>
         <p class="cap"
            data-en="Unlimited users perfect for districts & networks."
@@ -373,7 +412,7 @@
         <thead>
           <tr>
             <th data-en="Features" data-fr="Fonctionnalités" data-de="Funktionen">Features</th>
-            <th data-en="Free" data-fr="Gratuit" data-de="Kostenlos">Free</th>
+            <th data-en="Basic" data-fr="Basique" data-de="Basic">Basic</th>
             <th data-en="Pro" data-fr="Pro" data-de="Pro">Pro</th>
             <th data-en="Premium" data-fr="Premium" data-de="Premium">Premium</th>
           </tr>
@@ -507,32 +546,78 @@
   <script src="../route/lang.js" defer></script>
   <script src="../route/animations.js" defer></script>
   <script>
-    // Monthly / Annual toggle with data-* sync so language switching keeps current prices
+    // Monthly / Annual toggle with data-* sync for prices and period text
     document.addEventListener("DOMContentLoaded", () => {
       const monthlyBtn = document.getElementById("monthlyBtn");
-      const annualBtn  = document.getElementById("annualBtn");
-      const proPrice   = document.getElementById("proPrice");
-      const premPrice  = document.getElementById("premiumPrice");
+      const annualBtn = document.getElementById("annualBtn");
+      const basicPrice = document.getElementById("basicPrice");
+      const proPrice = document.getElementById("proPrice");
+      const premPrice = document.getElementById("premiumPrice");
+      const periodSpans = document.querySelectorAll(".per");
 
-      function setMonthly(){
-        monthlyBtn.classList.add("active"); monthlyBtn.setAttribute("aria-selected","true");
-        annualBtn.classList.remove("active"); annualBtn.setAttribute("aria-selected","false");
-        proPrice.textContent  = "$250";
-        premPrice.textContent = "$350";
-        proPrice.setAttribute("data-en","$250");   proPrice.setAttribute("data-fr","250$");   proPrice.setAttribute("data-de","250€");
-        premPrice.setAttribute("data-en","$350");  premPrice.setAttribute("data-fr","350$");  premPrice.setAttribute("data-de","350€");
+      function setMonthly() {
+        monthlyBtn.classList.add("active");
+        monthlyBtn.setAttribute("aria-selected", "true");
+        annualBtn.classList.remove("active");
+        annualBtn.setAttribute("aria-selected", "false");
+
+        // Set prices
+        basicPrice.textContent = "60";
+        proPrice.textContent = "$100";
+        premPrice.textContent = "$120";
+        basicPrice.setAttribute("data-en", "$60");
+        basicPrice.setAttribute("data-fr", "60$");
+        basicPrice.setAttribute("data-de", "60€");
+        proPrice.setAttribute("data-en", "$100");
+        proPrice.setAttribute("data-fr", "100$");
+        proPrice.setAttribute("data-de", "100€");
+        premPrice.setAttribute("data-en", "$130");
+        premPrice.setAttribute("data-fr", "130$");
+        premPrice.setAttribute("data-de", "130€");
+
+        // Set period text to "per month"
+        periodSpans.forEach(span => {
+          span.textContent = "per month";
+          span.setAttribute("data-en", "per month");
+          span.setAttribute("data-fr", "par mois");
+          span.setAttribute("data-de", "pro Monat");
+        });
       }
-      function setAnnual(){
-        annualBtn.classList.add("active"); annualBtn.setAttribute("aria-selected","true");
-        monthlyBtn.classList.remove("active"); monthlyBtn.setAttribute("aria-selected","false");
-        proPrice.textContent  = "$200";   // 20% off
-        premPrice.textContent = "$280";   // 20% off
-        proPrice.setAttribute("data-en","$200");   proPrice.setAttribute("data-fr","200$");   proPrice.setAttribute("data-de","200€");
-        premPrice.setAttribute("data-en","$280");  premPrice.setAttribute("data-fr","280$");  premPrice.setAttribute("data-de","280€");
+
+      function setAnnual() {
+        annualBtn.classList.add("active");
+        annualBtn.setAttribute("aria-selected", "true");
+        monthlyBtn.classList.remove("active");
+        monthlyBtn.setAttribute("aria-selected", "false");
+
+        // Set prices (Basic is $960, others get 20% discount)
+        basicPrice.textContent = "$700";
+        proPrice.textContent = "$1000"; // 20% off from $100
+        premPrice.textContent = "$1200"; // 20% off from $120
+        basicPrice.setAttribute("data-en", "$700");
+        basicPrice.setAttribute("data-fr", "700$");
+        basicPrice.setAttribute("data-de", "700€");
+        proPrice.setAttribute("data-en", "$1000");
+        proPrice.setAttribute("data-fr", "1000$");
+        proPrice.setAttribute("data-de", "1000€");
+        premPrice.setAttribute("data-en", "$1200");
+        premPrice.setAttribute("data-fr", "1200$");
+        premPrice.setAttribute("data-de", "1200€");
+
+        // Set period text to "per year"
+        periodSpans.forEach(span => {
+          span.textContent = "per year";
+          span.setAttribute("data-en", "per year");
+          span.setAttribute("data-fr", "par an");
+          span.setAttribute("data-de", "pro Jahr");
+        });
       }
 
       monthlyBtn.addEventListener("click", setMonthly);
       annualBtn.addEventListener("click", setAnnual);
+
+      // Initialize with monthly view
+      setMonthly();
     });
   </script>
 </body>
