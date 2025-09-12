@@ -603,7 +603,6 @@
         premPrice.setAttribute("data-en", "$1200");
         premPrice.setAttribute("data-fr", "1200$");
         premPrice.setAttribute("data-de", "1200€");
-
         // Set period text to "per year"
         periodSpans.forEach(span => {
           span.textContent = "per year";
@@ -612,10 +611,8 @@
           span.setAttribute("data-de", "pro Jahr");
         });
       }
-
       monthlyBtn.addEventListener("click", setMonthly);
       annualBtn.addEventListener("click", setAnnual);
-
       // Initialize with monthly view
       setMonthly();
     });
