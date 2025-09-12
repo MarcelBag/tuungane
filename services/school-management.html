@@ -590,7 +590,7 @@
         monthlyBtn.classList.remove("active");
         monthlyBtn.setAttribute("aria-selected", "false");
 
-        // Set prices (Basic is $960, others get 20% discount)
+        // Set prices (Basic is $700, others get 20% discount)
         basicPrice.textContent = "$700";
         proPrice.textContent = "$1000"; // 20% off from $100
         premPrice.textContent = "$1200"; // 20% off from $120
@@ -612,7 +612,6 @@
           span.setAttribute("data-de", "pro Jahr");
         });
       }
-
       monthlyBtn.addEventListener("click", setMonthly);
       annualBtn.addEventListener("click", setAnnual);
 
