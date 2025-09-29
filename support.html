@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title
+    data-en="Support & SLA | Harvest Time Tracking by MarcelBag"
+    data-fr="Support & SLA | Suivi du Temps Harvest par MarcelBag"
+    data-de="Support & SLA | Harvest Time Tracking von MarcelBag">
+    Support & SLA | Harvest Time Tracking by MarcelBag
+  </title>
+
+  <link rel="icon" href="assets/fevicon.png" type="image/png" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    body {font-family: sans-serif; line-height: 1.6; margin: 0; padding: 0;}
+    .container {max-width: 800px; margin: auto; padding: 2rem;}
+    h1, h2 {margin-top: 1.5rem;}
+    p, li {margin-top: 0.75rem;}
+    ul {padding-left: 1.25rem;}
+    .muted {color: gray;}
+  </style>
+</head>
+<body>
+  <!-- ================= NAVBAR ================= -->
+  <header class="nav glass">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">
+        <img src="assets/fevicon.png" alt="Tuunganes" width="32" height="32" />
+        <span>Tuunganes</span>
+      </a>
+      <div class="nav-right">
+        <div class="lang-switch">
+          <button type="button" data-lang="en">EN</button>
+          <button type="button" data-lang="fr">FR</button>
+          <button type="button" data-lang="de">DE</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1 data-en="Support & SLA"
+        data-fr="Support & SLA"
+        data-de="Support & SLA">
+      Support & SLA
+    </h1>
+
+    <p data-en="We provide direct support for the Harvest Time Tracking by MarcelBag app. Our goal is to help small companies adopt Jira integrations without heavy costs, while ensuring reliable assistance when needed."
+       data-fr="Nous assurons un support direct pour l’application Harvest Time Tracking par MarcelBag. Notre objectif est d’aider les petites entreprises à adopter des intégrations Jira sans coûts élevés, tout en garantissant une assistance fiable."
+       data-de="Wir bieten direkten Support für die App Harvest Time Tracking von MarcelBag. Unser Ziel ist es, kleinen Unternehmen die Nutzung von Jira-Integrationen ohne hohe Kosten zu ermöglichen und dabei zuverlässige Unterstützung zu gewährleisten.">
+      Support text
+    </p>
+
+    <h2 data-en="Emergency Contact (24/7)"
+        data-fr="Contact d'urgence (24/7)"
+        data-de="Notfallkontakt (24/7)">
+      Emergency Contact (24/7)
+    </h2>
+    <ul>
+      <li>📧 Email: <a href="mailto:marcelbag44@gmail.com">marcelbag44@gmail.com</a></li>
+      <li>📞 Phone/WhatsApp: +243 972 887 465</li>
+    </ul>
+
+    <h2 data-en="Support Hours"
+        data-fr="Heures de support"
+        data-de="Supportzeiten">
+      Support Hours
+    </h2>
+    <p data-en="Standard support: Monday – Friday, 9:00 – 18:00 (CET). Emergency support: available 24/7."
+       data-fr="Support standard : lundi – vendredi, 9h00 – 18h00 (CET). Support d'urgence : disponible 24/7."
+       data-de="Standard-Support: Montag – Freitag, 9:00 – 18:00 (CET).Notfallsupport: 24/7 verfügbar.">
+      Support hours
+    </p>
+
+    <h2 data-en="Service Level Agreement (SLA)"
+        data-fr="Accord de niveau de service (SLA)"
+        data-de="Service-Level-Agreement (SLA)">
+      SLA
+    </h2>
+    <ul>
+      <li data-en="Normal requests: response within 48h (business days)."
+          data-fr="Demandes normales : réponse sous 48h (jours ouvrables)."
+          data-de="Normale Anfragen: Antwort innerhalb von 48 Stunden (werktags)."></li>
+      <li data-en="High priority issues: response within 24h."
+          data-fr="Problèmes prioritaires : réponse sous 24h."
+          data-de="Hochpriorisierte Probleme: Antwort innerhalb von 24 Stunden."></li>
+      <li data-en="Critical outages: immediate response, 24/7 availability."
+          data-fr="Pannes critiques : réponse immédiate, disponible 24/7."
+          data-de="Kritische Ausfälle: sofortige Reaktion, 24/7 verfügbar."></li>
+    </ul>
+
+    <h2 data-en="Last Updated"
+        data-fr="Dernière mise à jour"
+        data-de="Zuletzt aktualisiert">
+      Last Updated
+    </h2>
+    <p class="muted">Sept 29, 2025</p>
+  </div>
+
+  <footer class="footer glass">
+    <div class="container">
+      <p>© 2025 Tuunganes. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ================= Scripts ================= -->
+  <script>
+    // Language switching
+    document.querySelectorAll('.lang-switch [data-lang]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.dataset.lang;
+        document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+          el.textContent = el.getAttribute('data-' + lang);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
