@@ -23,6 +23,35 @@
   </style>
 </head>
 <body>
+      <!-- ================= NAVBAR ================= -->
+  <header class="nav glass">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">
+        <img src="assets/fevicon.png" alt="Tuunganes" width="32" height="32" />
+        <span>Tuunganes</span>
+      </a>
+      <button id="navToggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="mainNav">
+        <a href="about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+        <a href="#impact" data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
+        <a href="contact.html" data-en="Contact us" data-fr="Nous rejoindre" data-de="Mitmachen">Get in touch</a>
+        <div class="nav-right">
+          <div class="lang-switch">
+            <button type="button" data-lang="en">EN</button>
+            <button type="button" data-lang="fr">FR</button>
+            <button type="button" data-lang="de">DE</button>
+          </div>
+          <button id="themeBtn" class="theme-switcher" title="Toggle theme" aria-label="Toggle theme">
+            <span class="knob"></span>
+            <span class="moon" aria-hidden>🌙</span>
+            <span class="sun" aria-hidden>☀️</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
   <div class="container">
     <h1 data-en="Privacy Policy"
         data-fr="Politique de Confidentialité"
@@ -59,9 +88,9 @@
           data-de="Erstellt Zeiteinträge in Harvest, die mit Jira-Issues verknüpft sind.">
         Create time entries in Harvest linked to Jira issues.
       </li>
-      <li data-en="(Optional) Log work directly in Jira."
-          data-fr="(Optionnel) Enregistrer le travail directement dans Jira."
-          data-de="(Optional) Arbeitsprotokolle direkt in Jira speichern.">
+      <li data-en="Log work directly in Jira."
+          data-fr="Enregistrer le travail directement dans Jira."
+          data-de="Arbeitsprotokolle direkt in Jira speichern.">
         Log work directly in Jira if enabled.
       </li>
       <li data-en="We never sell or share your data with third parties, and we do not use your data for marketing."
@@ -72,7 +101,7 @@
       <li data-en="No data is permanently stored outside Jira or Harvest."
           data-fr="Aucune donnée n’est stockée de façon permanente en dehors de Jira ou Harvest."
           data-de="Keine Daten werden dauerhaft außerhalb von Jira oder Harvest gespeichert.">
-        No permanent storage outside Jira/Harvest.
+        No permanent storage outside Jira & Harvest.
       </li>
     </ul>
 
@@ -113,6 +142,6 @@
     </p>
   </div>
 
-  <script src="../route/lang.js" defer></script>
+  <script src="route/lang.js" defer></script>
 </body>
 </html>

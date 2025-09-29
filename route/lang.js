@@ -1,3 +1,4 @@
+// route/lang.js
 function setLang(lang) {
   document.querySelectorAll('[data-en]').forEach(el => {
     if (el.hasAttribute('data-' + lang)) {
