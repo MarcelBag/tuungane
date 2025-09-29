@@ -135,13 +135,64 @@
       Contact Us
     </h2>
     <p class="muted"
-       data-en="If you have questions about this Privacy Policy or how we handle your data, contact us at: marcelbag44@gmail.com"
-       data-fr="Pour toute question concernant cette Politique de Confidentialité ou la manière dont nous traitons vos données, contactez-nous : marcelbag44@gmail.com"
-       data-de="Wenn Sie Fragen zu dieser Datenschutzerklärung oder zum Umgang mit Ihren Daten haben, erreichen Sie uns unter: marcelbag44@gmail.com">
-      Email: marcelbag44@gmail.com
-    </p>
-  </div>
+   data-en='If you have questions about this Privacy Policy or how we handle your data, contact us at: <a href="mailto:marcelbag44@gmail.com">marcelbag44@gmail.com</a>'
+   data-fr='Pour toute question concernant cette Politique de Confidentialité ou la manière dont nous traitons vos données, contactez-nous : <a href="mailto:marcelbag44@gmail.com">marcelbag44@gmail.com</a>'
+   data-de='Wenn Sie Fragen zu dieser Datenschutzerklärung oder zum Umgang mit Ihren Daten haben, erreichen Sie uns unter: <a href="mailto:marcelbag44@gmail.com">marcelbag44@gmail.com</a>'>
+   Email: <a href="mailto:marcelbag44@gmail.com">marcelbag44@gmail.com</a>
+   </p>
 
+  </div>
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer glass">
+    <div class="container">
+      <p>© 2025 Tuunganes. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ================= Scripts ================= -->
+  <script>
+    // Theme init (use saved or OS)
+    (function(){
+      const saved = localStorage.getItem('tuunganes-theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+    })();
+
+    // Theme toggle
+    document.getElementById('themeBtn').addEventListener('click', function(){
+      const root = document.documentElement;
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('tuunganes-theme', next);
+    });
+
+    // Mobile nav
+    const navToggle = document.getElementById('navToggle');
+    const mainNav = document.getElementById('mainNav');
+    navToggle.addEventListener('click', () => {
+      const open = mainNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(open));
+    });
+
+    // Language switching (expects route/lang.js too, but keep a safe fallback)
+    document.querySelectorAll('.lang-switch [data-lang]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.dataset.lang;
+        document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+          el.textContent = el.getAttribute('data-' + lang);
+        });
+      });
+    });
+
+    // Simple reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+      })
+    },{threshold:0.15});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  </script>
   <script src="route/lang.js" defer></script>
+  <script src="route/animations.js" defer></script>
 </body>
 </html>
