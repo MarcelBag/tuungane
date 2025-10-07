@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title
+    data-en="Documentation | Harvest Time Tracking by MarcelBag"
+    data-fr="Documentation | Suivi du Temps Harvest par MarcelBag"
+    data-de="Dokumentation | Harvest Time Tracking von MarcelBag">
+    Documentation | Harvest Time Tracking by MarcelBag
+  </title>
+
+  <link rel="icon" href="assets/fevicon.png" type="image/png" />
+  <link rel="stylesheet" href="css/styles.css" />
+
+  <style>
+    body {font-family: sans-serif; line-height: 1.6; margin: 0; padding: 0;}
+    .container {max-width: 850px; margin: auto; padding: 2rem;}
+    h1, h2, h3 {margin-top: 1.5rem;}
+    p, li {margin-top: 0.75rem;}
+    ul {padding-left: 1.25rem;}
+    code {background: #f5f5f5; padding: 2px 5px; border-radius: 4px;}
+    .muted {color: gray;}
+  </style>
+</head>
+
+<body>
+  <!-- ================= NAVBAR ================= -->
+  <header class="nav glass">
+    <div class="container nav-inner">
+      <a href="index.html" class="logo">
+        <img src="assets/fevicon.png" alt="Tuunganes" width="32" height="32" />
+        <span>Tuunganes</span>
+      </a>
+      <button id="navToggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+      <nav class="main-nav" id="mainNav">
+        <a href="about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+        <a href="#setup" data-en="Setup" data-fr="Installation" data-de="Einrichtung">Setup</a>
+        <a href="#support" data-en="Support" data-fr="Assistance" data-de="Support">Support</a>
+        <div class="nav-right">
+          <div class="lang-switch">
+            <button type="button" data-lang="en">EN</button>
+            <button type="button" data-lang="fr">FR</button>
+            <button type="button" data-lang="de">DE</button>
+          </div>
+          <button id="themeBtn" class="theme-switcher" title="Toggle theme" aria-label="Toggle theme">
+            <span class="knob"></span>
+            <span class="moon" aria-hidden>🌙</span>
+            <span class="sun" aria-hidden>☀️</span>
+          </button>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="container">
+    <h1 data-en="Harvest Time Tracking Documentation"
+        data-fr="Suivi du Temps Harvest Documentation"
+        data-de="Harvest Zeiterfassung Dokumentation">
+      Harvest Time Tracking Documentation
+    </h1>
+
+    <p class="muted" data-en="This guide explains how to install, authorize, and use the Harvest Time Tracking by MarcelBag app in Jira Cloud."
+       data-fr="Ce guide explique comment installer, autoriser et utiliser l’application Harvest Time Tracking par MarcelBag dans Jira Cloud."
+       data-de="Diese Anleitung erklärt, wie Sie die App Harvest Time Tracking von MarcelBag in Jira Cloud installieren und autorisieren.">
+       This guide helps you get started.
+    </p>
+
+    <h2 id="setup" data-en="1. Installation"
+        data-fr="1. Installation"
+        data-de="1. Installation">
+      1. Installation
+    </h2>
+    <ol>
+      <li data-en="Go to the Atlassian Marketplace and install 'Harvest Time Tracking by MarcelBag'."
+          data-fr="Allez sur Atlassian Marketplace et installez 'Harvest Time Tracking par MarcelBag'."
+          data-de="Gehen Sie in den Atlassian Marketplace und installieren Sie 'Harvest Time Tracking von MarcelBag'.">
+        Install the app from the Atlassian Marketplace.
+      </li>
+      <li data-en="After installation, open any Jira issue — the Harvest Time Tracking panel appears on the right side."
+          data-fr="Après l’installation, ouvrez un ticket Jira — le panneau Harvest Time Tracking apparaît sur le côté droit."
+          data-de="Nach der Installation öffnen Sie ein Jira-Issue – das Harvest Time Tracking Panel erscheint rechts.">
+        Access it directly from Jira issues.
+      </li>
+    </ol>
+
+    <h2 id="authorize" data-en="2. Authorize Your Harvest Account"
+        data-fr="2. Autoriser votre compte Harvest"
+        data-de="2. Harvest-Konto autorisieren">
+      2. Authorize Your Harvest Account
+    </h2>
+    <p data-en="Click the 'Connect to Harvest' button. A secure OAuth 2.0 window will appear asking you to authorize access. Your credentials are not stored; the app only receives a temporary token to interact with your Harvest account."
+       data-fr="Cliquez sur le bouton 'Connecter à Harvest'. Une fenêtre sécurisée OAuth 2.0 apparaîtra pour vous demander d’autoriser l’accès. Vos identifiants ne sont pas stockés ; l’application reçoit uniquement un jeton temporaire pour interagir avec votre compte Harvest."
+       data-de="Klicken Sie auf 'Mit Harvest verbinden'. Ein sicheres OAuth 2.0-Fenster erscheint, um den Zugriff zu autorisieren. Ihre Anmeldedaten werden nicht gespeichert; die App erhält nur ein temporäres Token.">
+       Authorize safely using OAuth 2.0.
+    </p>
+
+    <h2 id="usage" data-en="3. Track Time from Jira"
+        data-fr="3. Suivre le temps depuis Jira"
+        data-de="3. Zeit aus Jira erfassen">
+      3. Track Time from Jira
+    </h2>
+    <ul>
+      <li data-en="Start or stop timers directly within Jira issues."
+          data-fr="Démarrez ou arrêtez les minuteries directement dans les tickets Jira."
+          data-de="Starten oder stoppen Sie Timer direkt in Jira-Issues.">
+        Start or stop timers from the issue panel.
+      </li>
+      <li data-en="Time entries automatically include the Jira issue key and summary in Harvest notes."
+          data-fr="Les saisies de temps incluent automatiquement la clé et le résumé du ticket Jira dans les notes Harvest."
+          data-de="Zeiteinträge enthalten automatisch den Jira-Issue-Key und die Zusammenfassung in den Harvest-Notizen.">
+        Automatic note synchronization.
+      </li>
+      <li data-en="View total logged time per issue and navigate easily to the matching Harvest project."
+          data-fr="Affichez le temps total enregistré par ticket et accédez facilement au projet Harvest correspondant."
+          data-de="Zeigen Sie die insgesamt erfasste Zeit pro Issue an und navigieren Sie leicht zum passenden Harvest-Projekt.">
+        Monitor your time seamlessly.
+      </li>
+    </ul>
+
+    <h2 id="troubleshooting" data-en="4. Troubleshooting"
+        data-fr="4. Dépannage"
+        data-de="4. Fehlerbehebung">
+      4. Troubleshooting
+    </h2>
+    <ul>
+      <li data-en="If your browser blocks the popup window, click 'Open Harvest in new tab'."
+          data-fr="Si votre navigateur bloque la fenêtre contextuelle, cliquez sur 'Ouvrir Harvest dans un nouvel onglet'."
+          data-de="Wenn Ihr Browser das Popup blockiert, klicken Sie auf 'Harvest in neuem Tab öffnen'.">
+        Allow popups or use “Open in new tab”.
+      </li>
+      <li data-en="If you see 'Unauthorized', log out of Harvest and reconnect from Jira."
+          data-fr="Si vous voyez 'Non autorisé', déconnectez-vous de Harvest et reconnectez-vous depuis Jira."
+          data-de="Wenn 'Nicht autorisiert' erscheint, melden Sie sich von Harvest ab und verbinden Sie sich erneut.">
+        Reconnect if authorization expires.
+      </li>
+    </ul>
+
+    <h2 id="support" data-en="5. Support"
+        data-fr="5. Assistance"
+        data-de="5. Support">
+      5. Support
+    </h2>
+    <p class="muted"
+       data-en='For support or bug reports, email <a href="mailto:support@tuunganes.com">support@tuunganes.com</a>. Responses within 24 hours on business days.'
+       data-fr='Pour toute assistance ou rapport de bug, écrivez à <a href="mailto:support@tuunganes.com">support@tuunganes.com</a>. Réponse sous 24h les jours ouvrables.'
+       data-de='Für Support oder Fehlerberichte schreiben Sie an <a href="mailto:support@tuunganes.com">support@tuunganes.com</a>. Antwort innerhalb von 24 Stunden an Werktagen.'>
+       Contact us anytime for help.
+    </p>
+  </div>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="footer glass">
+    <div class="container">
+      <p>© 2025 Tuunganes. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- ================= Scripts ================= -->
+  <script>
+    const themeBtn = document.getElementById('themeBtn');
+    const navToggle = document.getElementById('navToggle');
+    const mainNav = document.getElementById('mainNav');
+
+    // Theme toggle
+    themeBtn.addEventListener('click', function(){
+      const root = document.documentElement;
+      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-theme', next);
+      localStorage.setItem('tuunganes-theme', next);
+    });
+
+    // Nav toggle
+    navToggle.addEventListener('click', () => {
+      const open = mainNav.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', String(open));
+    });
+
+    // Language switching
+    document.querySelectorAll('.lang-switch [data-lang]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.dataset.lang;
+        document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+          el.textContent = el.getAttribute('data-' + lang);
+        });
+      });
+    });
+  </script>
+</body>
+</html>
