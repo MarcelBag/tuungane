@@ -1,198 +1,223 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title
-    data-en="Privacy Policy | Harvest Time Tracking by MarcelBag"
-    data-fr="Politique de Confidentialité | Suivi du Temps Harvest par MarcelBag"
-    data-de="Datenschutzerklärung | Harvest Time Tracking von MarcelBag">
-    Privacy Policy | Harvest Time Tracking by MarcelBag
-  </title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-en="Privacy Policy | Harvest Time Tracking by MarcelBag & Jira wrapped"
+        data-fr="Politique de Confidentialité | Suivi du Temps Harvest et Jira wrapped par MarcelBag"
+        data-de="Datenschutzerklärung | Harvest Time Tracking und Jira wrapped von MarcelBag">
+        Privacy Policy | Harvest Time Tracking by MarcelBag
+    </title>
 
-  <link rel="icon" href="assets/fevicon.png" type="image/png" />
-  <link rel="stylesheet" href="css/styles.css" />
+    <link rel="icon" href="assets/fevicon.png" type="image/png" />
+    <link rel="stylesheet" href="css/styles.css" />
 
-  <style>
-    body {font-family: sans-serif; line-height: 1.6; margin: 0; padding: 0;}
-    .container {max-width: 800px; margin: auto; padding: 2rem;}
-    h1, h2 {margin-top: 1.5rem;}
-    p, li {margin-top: 0.75rem;}
-    ul {padding-left: 1.25rem;}
-    .muted {color: gray;}
-  </style>
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 2rem;
+        }
+
+        h1,
+        h2 {
+            margin-top: 1.5rem;
+        }
+
+        p,
+        li {
+            margin-top: 0.75rem;
+        }
+
+        ul {
+            padding-left: 1.25rem;
+        }
+
+        .muted {
+            color: gray;
+        }
+    </style>
 </head>
+
 <body>
-      <!-- ================= NAVBAR ================= -->
-  <header class="nav glass">
-    <div class="container nav-inner">
-      <a href="index.html" class="logo">
-        <img src="assets/fevicon.png" alt="Tuunganes" width="32" height="32" />
-        <span>Tuunganes</span>
-      </a>
-      <button id="navToggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="main-nav" id="mainNav">
-        <a href="about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
-        <a href="#impact" data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
-        <a href="contact.html" data-en="Contact us" data-fr="Nous rejoindre" data-de="Mitmachen">Get in touch</a>
-        <div class="nav-right">
-          <div class="lang-switch">
-            <button type="button" data-lang="en">EN</button>
-            <button type="button" data-lang="fr">FR</button>
-            <button type="button" data-lang="de">DE</button>
-          </div>
-          <button id="themeBtn" class="theme-switcher" title="Toggle theme" aria-label="Toggle theme">
-            <span class="knob"></span>
-            <span class="moon" aria-hidden>🌙</span>
-            <span class="sun" aria-hidden>☀️</span>
-          </button>
+    <!-- ================= NAVBAR ================= -->
+    <header class="nav glass">
+        <div class="container nav-inner">
+            <a href="index.html" class="logo">
+                <img src="assets/fevicon.png" alt="Tuunganes" width="32" height="32" />
+                <span>Tuunganes</span>
+            </a>
+            <button id="navToggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="main-nav" id="mainNav">
+                <a href="about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+                <a href="#impact" data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
+                <a href="contact.html" data-en="Contact us" data-fr="Nous rejoindre" data-de="Mitmachen">Get in
+                    touch</a>
+                <div class="nav-right">
+                    <div class="lang-switch">
+                        <button type="button" data-lang="en">EN</button>
+                        <button type="button" data-lang="fr">FR</button>
+                        <button type="button" data-lang="de">DE</button>
+                    </div>
+                    <button id="themeBtn" class="theme-switcher" title="Toggle theme" aria-label="Toggle theme">
+                        <span class="knob"></span>
+                        <span class="moon" aria-hidden>🌙</span>
+                        <span class="sun" aria-hidden>☀️</span>
+                    </button>
+                </div>
+            </nav>
         </div>
-      </nav>
-    </div>
-  </header>
-  <div class="container">
-    <h1 data-en="Privacy Policy"
-        data-fr="Politique de Confidentialité"
-        data-de="Datenschutzerklärung">
-      Privacy Policy
-    </h1>
-
-    <p data-en="We value your privacy. This Privacy Policy explains clearly how the Harvest Time Tracking by MarcelBag app handles your information when used in Jira Cloud. Our goal is transparency: we only use what is strictly necessary to provide time tracking."
-       data-fr="Nous attachons une grande importance à votre vie privée. Cette Politique de Confidentialité explique clairement comment l’application Harvest Time Tracking par MarcelBag traite vos informations lorsqu’elle est utilisée dans Jira Cloud. Notre objectif est la transparence : nous n’utilisons que ce qui est strictement nécessaire au suivi du temps."
-       data-de="Wir legen großen Wert auf Ihre Privatsphäre. Diese Datenschutzerklärung erklärt klar, wie die App Harvest Time Tracking von MarcelBag Ihre Informationen in Jira Cloud verarbeitet. Unser Ziel ist Transparenz: Wir verwenden nur das, was für die Zeiterfassung unbedingt erforderlich ist.">
-      We value your privacy and keep things simple.
-    </p>
-
-    <h2 data-en="Information We Access"
-        data-fr="Informations auxquelles nous accédons"
-        data-de="Welche Informationen wir verarbeiten">
-      Information We Access
-    </h2>
-    <p class="muted"
-       data-en="The app only accesses data needed for time tracking: Jira issue keys and summaries, your user account ID for authentication, and the time entries you submit. We do not access comments, attachments, or other private Jira data."
-       data-fr="L’application n’accède qu’aux données nécessaires au suivi du temps : clés et résumés Jira, votre identifiant utilisateur pour l’authentification, et les saisies de temps que vous fournissez. Nous n’accédons pas aux commentaires, pièces jointes ou autres données privées de Jira."
-       data-de="Die App greift nur auf Daten zu, die für die Zeiterfassung notwendig sind: Jira-Issue-Keys und Zusammenfassungen, Ihre Benutzerkonto-ID zur Authentifizierung und die Zeiterfassungen, die Sie eingeben. Wir greifen nicht auf Kommentare, Anhänge oder andere private Jira-Daten zu.">
-      Minimal data, only what’s needed for time tracking.
-    </p>
-
-    <h2 data-en="How We Use Data"
-        data-fr="Comment nous utilisons les données"
-        data-de="Wie wir Daten verwenden">
-      How We Use Data
-    </h2>
-    <ul>
-      <li data-en="Create time entries in Harvest linked to Jira issues."
-          data-fr="Créer des saisies de temps dans Harvest liées aux tickets Jira."
-          data-de="Erstellt Zeiteinträge in Harvest, die mit Jira-Issues verknüpft sind.">
-        Create time entries in Harvest linked to Jira issues.
-      </li>
-      <li data-en="Log work directly in Jira."
-          data-fr="Enregistrer le travail directement dans Jira."
-          data-de="Arbeitsprotokolle direkt in Jira speichern.">
-        Log work directly in Jira if enabled.
-      </li>
-      <li data-en="We never sell or share your data with third parties, and we do not use your data for marketing."
-          data-fr="Nous ne vendons ni ne partageons jamais vos données avec des tiers, et nous n’utilisons pas vos données à des fins de marketing."
-          data-de="Wir verkaufen oder teilen Ihre Daten niemals mit Dritten und verwenden Ihre Daten nicht für Marketingzwecke.">
-        No sharing, no marketing use.
-      </li>
-      <li data-en="No data is permanently stored outside Jira or Harvest."
-          data-fr="Aucune donnée n’est stockée de façon permanente en dehors de Jira ou Harvest."
-          data-de="Keine Daten werden dauerhaft außerhalb von Jira oder Harvest gespeichert.">
-        No permanent storage outside Jira & Harvest.
-      </li>
-    </ul>
-
-    <h2 data-en="Security & Storage"
-        data-fr="Sécurité & Stockage"
-        data-de="Sicherheit & Speicherung">
-      Security & Storage
-    </h2>
-    <p class="muted"
-       data-en="The app is built on Atlassian Forge, which provides a secure sandbox environment. Authentication with Harvest uses OAuth 2.0. We do not run any external servers or databases. This means your data never leaves Atlassian or Harvest systems."
-       data-fr="L’application est construite sur Atlassian Forge, qui offre un environnement sécurisé. L’authentification avec Harvest utilise OAuth 2.0. Nous n’exploitons aucun serveur ou base de données externe. Cela signifie que vos données ne quittent jamais les systèmes Atlassian ou Harvest."
-       data-de="Die App basiert auf Atlassian Forge, einer sicheren Sandbox-Umgebung. Die Authentifizierung mit Harvest verwendet OAuth 2.0. Wir betreiben keine externen Server oder Datenbanken. Das bedeutet, dass Ihre Daten Atlassian- oder Harvest-Systeme nie verlassen.">
-      Secure by design: no external storage, OAuth-based authentication.
-    </p>
-
-    <h2 data-en="Your Rights"
-        data-fr="Vos droits"
-        data-de="Ihre Rechte">
-      Your Rights
-    </h2>
-    <p class="muted"
-       data-en="You remain in control. You can uninstall the app at any time from Jira Cloud, which instantly revokes all access. You also manage your own data directly in Jira and Harvest, and you can contact us for questions about data use."
-       data-fr="Vous gardez le contrôle. Vous pouvez désinstaller l’application à tout moment depuis Jira Cloud, ce qui révoque instantanément tout accès. Vous gérez également vos propres données directement dans Jira et Harvest, et vous pouvez nous contacter pour toute question sur l’utilisation des données."
-       data-de="Sie behalten die Kontrolle. Sie können die App jederzeit in Jira Cloud deinstallieren, wodurch der Zugriff sofort widerrufen wird. Sie verwalten Ihre Daten direkt in Jira und Harvest und können uns bei Fragen zur Datennutzung kontaktieren.">
-      You stay in control uninstall anytime, ask anytime.
-    </p>
-
-    <h2 data-en="Contact Us"
-        data-fr="Nous contacter"
-        data-de="Kontakt">
-      Contact Us
-    </h2>
-    <p class="muted"
-   data-en='If you have questions about this Privacy Policy or how we handle your data, contact us at: <a href="mailto:marcelbag44@gmail.com">marcelbag44@gmail.com</a>'
-   data-fr='Pour toute question concernant cette Politique de Confidentialité ou la manière dont nous traitons vos données, contactez-nous : <a href="mailto:marcelbag44@gmail.com">marcelbag44@gmail.com</a>'
-   data-de='Wenn Sie Fragen zu dieser Datenschutzerklärung oder zum Umgang mit Ihren Daten haben, erreichen Sie uns unter: <a href="mailto:marcelbag44@gmail.com">marcelbag44@gmail.com</a>'>
-   Email: <a href="mailto:marcelbag44@gmail.com">marcelbag44@gmail.com</a>
-   </p>
-
-  </div>
-  <!-- ================= FOOTER ================= -->
-  <footer class="footer glass">
+    </header>
     <div class="container">
-      <p>© 2025 Tuunganes. All rights reserved.</p>
+        <h1 data-en="Privacy Policy" data-fr="Politique de Confidentialité" data-de="Datenschutzerklärung">
+            Privacy Policy
+        </h1>
+
+        <p data-en="We value your privacy. This Privacy Policy explains clearly how the Harvest Time Tracking and Jira wrapped by MarcelBag app handles your information when used in Jira Cloud. Our goal is transparency: we only use what is strictly necessary to provide time tracking."
+            data-fr="Nous attachons une grande importance à votre vie privée. Cette Politique de Confidentialité explique clairement comment l’application Harvest Time Tracking par MarcelBag traite vos informations lorsqu’elle est utilisée dans Jira Cloud. Notre objectif est la transparence : nous n’utilisons que ce qui est strictement nécessaire au suivi du temps."
+            data-de="Wir legen großen Wert auf Ihre Privatsphäre. Diese Datenschutzerklärung erklärt klar, wie die App Harvest Time Tracking von MarcelBag Ihre Informationen in Jira Cloud verarbeitet. Unser Ziel ist Transparenz: Wir verwenden nur das, was für die Zeiterfassung unbedingt erforderlich ist.">
+            We value your privacy and keep things simple.
+        </p>
+
+        <h2 data-en="Information We Access" data-fr="Informations auxquelles nous accédons"
+            data-de="Welche Informationen wir verarbeiten">
+            Information We Access
+        </h2>
+        <p class="muted"
+            data-en="The app only accesses data needed for time tracking: Jira issue keys and summaries, your user account ID for authentication, and the time entries you submit. We do not access comments, attachments, or other private Jira data. For Jira Wrapped, we analyse issue timestamps and counts (assigned, reported, participated) to generate productivity insights, without reading sensitive issue descriptions."
+            data-fr="L’application n’accède qu’aux données nécessaires au suivi du temps : clés et résumés Jira, votre identifiant utilisateur pour l’authentification, et les saisies de temps que vous fournissez. Nous n’accédons pas aux commentaires, pièces jointes ou autres données privées de Jira. Pour Jira Wrapped, nous analysons les horodatages et les décomptes des tickets (assignés, signalés, participés) pour générer des informations de productivité, sans lire les descriptions sensibles des tickets."
+            data-de="Die App greift nur auf Daten zu, die für die Zeiterfassung notwendig sind: Jira-Issue-Keys und Zusammenfassungen, Ihre Benutzerkonto-ID zur Authentifizierung und die Zeiterfassungen, die Sie eingeben. Wir greifen nicht auf Kommentare, Anhänge oder andere private Jira-Daten zu. Für Jira Wrapped analysieren wir Zeitstempel und Ticket-Anzahlen (zugewiesen, gemeldet, teilgenommen), um Produktivitätseinblicke zu generieren, ohne sensible Ticketbeschreibungen zu lesen.">
+            Minimal data, only what’s needed for time tracking.
+        </p>
+
+        <h2 data-en="How We Use Data" data-fr="Comment nous utilisons les données" data-de="Wie wir Daten verwenden">
+            How We Use Data
+        </h2>
+        <ul>
+            <li data-en="Create time entries in Harvest linked to Jira issues."
+                data-fr="Créer des saisies de temps dans Harvest liées aux tickets Jira."
+                data-de="Erstellt Zeiteinträge in Harvest, die mit Jira-Issues verknüpft sind.">
+                Create time entries in Harvest linked to Jira issues.
+            </li>
+            <li data-en="Log work directly in Jira." data-fr="Enregistrer le travail directement dans Jira."
+                data-de="Arbeitsprotokolle direkt in Jira speichern.">
+                Log work directly in Jira if enabled.
+            </li>
+            <li data-en="We never sell or share your data with third parties, and we do not use your data for marketing."
+                data-fr="Nous ne vendons ni ne partageons jamais vos données avec des tiers, et nous n’utilisons pas vos données à des fins de marketing."
+                data-de="Wir verkaufen oder teilen Ihre Daten niemals mit Dritten und verwenden Ihre Daten nicht für Marketingzwecke.">
+                No sharing, no marketing use.
+            </li>
+            <li data-en="No data is permanently stored outside Jira or Harvest. Jira Wrapped data is calculated on-demand."
+                data-fr="Aucune donnée n’est stockée de façon permanente en dehors de Jira ou Harvest. Les données Jira Wrapped sont calculées à la demande."
+                data-de="Keine Daten werden dauerhaft außerhalb von Jira oder Harvest gespeichert. Jira Wrapped-Daten werden auf Abruf berechnet.">
+                No permanent storage outside Jira & Harvest.
+            </li>
+            <li data-en="Generate productivity insights and 'Wrapped' visualizations using your Jira activity."
+                data-fr="Générer des aperçus de productivité et des visualisations 'Wrapped' basés sur votre activité Jira."
+                data-de="Erstellung von Produktivitätseinblicken und 'Wrapped'-Visualisierungen basierend auf Ihrer Jira-Aktivität.">
+                Generate Jira Wrapped insights.
+            </li>
+        </ul>
+
+        <h2 data-en="Security & Storage" data-fr="Sécurité & Stockage" data-de="Sicherheit & Speicherung">
+            Security & Storage
+        </h2>
+        <p class="muted"
+            data-en="The app is built on Atlassian Forge, which provides a secure sandbox environment. Authentication with Harvest uses OAuth 2.0. We do not run any external servers or databases. This means your data never leaves Atlassian or Harvest systems."
+            data-fr="L’application est construite sur Atlassian Forge, qui offre un environnement sécurisé. L’authentification avec Harvest utilise OAuth 2.0. Nous n’exploitons aucun serveur ou base de données externe. Cela signifie que vos données ne quittent jamais les systèmes Atlassian ou Harvest."
+            data-de="Die App basiert auf Atlassian Forge, einer sicheren Sandbox-Umgebung. Die Authentifizierung mit Harvest verwendet OAuth 2.0. Wir betreiben keine externen Server oder Datenbanken. Das bedeutet, dass Ihre Daten Atlassian- oder Harvest-Systeme nie verlassen.">
+            Secure by design: no external storage, OAuth-based authentication.
+        </p>
+
+        <h2 data-en="Your Rights" data-fr="Vos droits" data-de="Ihre Rechte">
+            Your Rights
+        </h2>
+        <p class="muted"
+            data-en="You remain in control. You can uninstall the app at any time from Jira Cloud, which instantly revokes all access. You also manage your own data directly in Jira and Harvest, and you can contact us for questions about data use."
+            data-fr="Vous gardez le contrôle. Vous pouvez désinstaller l’application à tout moment depuis Jira Cloud, ce qui révoque instantanément tout accès. Vous gérez également vos propres données directement dans Jira et Harvest, et vous pouvez nous contacter pour toute question sur l’utilisation des données."
+            data-de="Sie behalten die Kontrolle. Sie können die App jederzeit in Jira Cloud deinstallieren, wodurch der Zugriff sofort widerrufen wird. Sie verwalten Ihre Daten direkt in Jira und Harvest und können uns bei Fragen zur Datennutzung kontaktieren.">
+            You stay in control uninstall anytime, ask anytime.
+        </p>
+
+        <h2 data-en="Contact Us" data-fr="Nous contacter" data-de="Kontakt">
+            Contact Us
+        </h2>
+        <p class="muted"
+    data-en='If you have questions about this Privacy Policy or how we handle your data, contact us at: <a href="mailto:marcelbag44@gmail.com">marcelbag44@gmail.com</a><br>Or raise a Jira ticket to our service below: <a href="https://marcelbag44.atlassian.net/servicedesk/customer/portal/1/group/1/create/5">Our Support</a>'
+    data-fr='Pour toute question concernant cette Politique de Confidentialité ou la manière dont nous traitons vos données, contactez-nous : <a href="mailto:marcelbag44@gmail.com">marcelbag44@gmail.com</a><br>Ou créez un ticket Jira via notre service ci-dessous : <a href="https://marcelbag44.atlassian.net/servicedesk/customer/portal/1/group/1/create/5">Notre support</a>'
+    data-de='Wenn Sie Fragen zu dieser Datenschutzerklärung oder zum Umgang mit Ihren Daten haben, erreichen Sie uns unter: <a href="mailto:marcelbag44@gmail.com">marcelbag44@gmail.com</a><br>Oder erstellen Sie ein Jira-Ticket über unseren Service unten: <a href="https://marcelbag44.atlassian.net/servicedesk/customer/portal/1/group/1/create/5">Unser Support</a>'>
+
+    Email: <a href="mailto:marcelbag44@gmail.com">marcelbag44@gmail.com</a><br>
+    Or raise a Jira ticket to our service below:
+    <a href="https://marcelbag44.atlassian.net/servicedesk/customer/portal/1/group/1/create/5">Our Support</a>
+
+</p>
+
+
     </div>
-  </footer>
+    <!-- ================= FOOTER ================= -->
+    <footer class=" footer glass">
+                <div class="container">
+                    <p>© 2025 Tuunganes. All rights reserved.</p>
+                </div>
+                </footer>
 
-  <!-- ================= Scripts ================= -->
-  <script>
-    // Theme init (use saved or OS)
-    (function(){
-      const saved = localStorage.getItem('tuunganes-theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
-    })();
+                <!-- ================= Scripts ================= -->
+                <script>
+                    // Theme init (use saved or OS)
+                    (function () {
+                        const saved = localStorage.getItem('tuunganes-theme');
+                        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+                        document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
+                    })();
 
-    // Theme toggle
-    document.getElementById('themeBtn').addEventListener('click', function(){
-      const root = document.documentElement;
-      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      localStorage.setItem('tuunganes-theme', next);
-    });
+                    // Theme toggle
+                    document.getElementById('themeBtn').addEventListener('click', function () {
+                        const root = document.documentElement;
+                        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+                        root.setAttribute('data-theme', next);
+                        localStorage.setItem('tuunganes-theme', next);
+                    });
 
-    // Mobile nav
-    const navToggle = document.getElementById('navToggle');
-    const mainNav = document.getElementById('mainNav');
-    navToggle.addEventListener('click', () => {
-      const open = mainNav.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', String(open));
-    });
+                    // Mobile nav
+                    const navToggle = document.getElementById('navToggle');
+                    const mainNav = document.getElementById('mainNav');
+                    navToggle.addEventListener('click', () => {
+                        const open = mainNav.classList.toggle('open');
+                        navToggle.setAttribute('aria-expanded', String(open));
+                    });
 
-    // Language switching (expects route/lang.js too, but keeping a safe fallback)
-    document.querySelectorAll('.lang-switch [data-lang]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const lang = btn.dataset.lang;
-        document.querySelectorAll('[data-' + lang + ']').forEach(el => {
-          el.textContent = el.getAttribute('data-' + lang);
-        });
-      });
-    });
+                    // Language switching (expects route/lang.js too, but keeping a safe fallback)
+                    document.querySelectorAll('.lang-switch [data-lang]').forEach(btn => {
+                        btn.addEventListener('click', () => {
+                            const lang = btn.dataset.lang;
+                            document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+                                el.textContent = el.getAttribute('data-' + lang);
+                            });
+                        });
+                    });
 
-    // Simple reveal on scroll
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-      })
-    },{threshold:0.15});
-    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-  </script>
-  <script src="route/lang.js" defer></script>
-  <script src="route/animations.js" defer></script>
+                    // Simple reveal on scroll
+                    const io = new IntersectionObserver((entries) => {
+                        entries.forEach(e => {
+                            if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+                        })
+                    }, { threshold: 0.15 });
+                    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+                </script>
+                <script src="route/lang.js" defer></script>
+                <script src="route/animations.js" defer></script>
 </body>
+
 </html>
