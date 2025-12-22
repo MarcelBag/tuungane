@@ -282,7 +282,6 @@
       const open = mainNav.classList.toggle('open');
       navToggle.setAttribute('aria-expanded', String(open));
     });
-
     // Language switching (expects route/lang.js too, but keep a safe fallback)
     document.querySelectorAll('.lang-switch [data-lang]').forEach(btn => {
       btn.addEventListener('click', () => {
