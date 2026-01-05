@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title data-en="Documentation | Time Wrap for Jira by MarcelBag"
+        data-fr="Documentation | Time Wrap pour Jira par MarcelBag"
+        data-de="Dokumentation | Time Wrap für Jira von MarcelBag">
+        Documentation | Time Wrap for Jira by MarcelBag
+    </title>
+
+    <link rel="icon" href="assets/fevicon.png" type="image/png" />
+    <link rel="stylesheet" href="css/styles.css" />
+
+    <style>
+        body {
+            font-family: sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 850px;
+            margin: auto;
+            padding: 2rem;
+        }
+
+        h1,
+        h2,
+        h3 {
+            margin-top: 1.5rem;
+        }
+
+        p,
+        li {
+            margin-top: 0.75rem;
+        }
+
+        ul {
+            padding-left: 1.25rem;
+        }
+
+        code {
+            background: #f5f5f5;
+            padding: 2px 5px;
+            border-radius: 4px;
+        }
+
+        .muted {
+            color: gray;
+        }
+
+        .support-link {
+            display: inline-block;
+            margin-top: 1rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #7c4dff;
+            text-decoration: none;
+            border-bottom: 2px solid transparent;
+            transition: border-color 0.2s;
+        }
+
+        .support-link:hover {
+            border-bottom-color: #7c4dff;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- ================= NAVBAR ================= -->
+    <header class="nav glass">
+        <div class="container nav-inner">
+            <a href="index.html" class="logo">
+                <img src="assets/fevicon.png" alt="Tuunganes" width="32" height="32" />
+                <span>Tuunganes</span>
+            </a>
+            <button id="navToggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <nav class="main-nav" id="mainNav">
+                <a href="about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+                <a href="#setup" data-en="Setup" data-fr="Installation" data-de="Einrichtung">Setup</a>
+                <a href="#support" data-en="Support" data-fr="Assistance" data-de="Support">Support</a>
+                <div class="nav-right">
+                    <div class="lang-switch">
+                        <button type="button" data-lang="en">EN</button>
+                        <button type="button" data-lang="fr">FR</button>
+                        <button type="button" data-lang="de">DE</button>
+                    </div>
+                    <button id="themeBtn" class="theme-switcher" title="Toggle theme" aria-label="Toggle theme">
+                        <span class="knob"></span>
+                        <span class="moon" aria-hidden>🌙</span>
+                        <span class="sun" aria-hidden>☀️</span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <h1 data-en="Time Wrap for Jira Documentation" data-fr="Documentation Time Wrap pour Jira"
+            data-de="Time Wrap für Jira Dokumentation">
+            Time Wrap for Jira Documentation
+        </h1>
+
+        <p class="muted"
+            data-en="This guide explains how to install and use the Time Wrap for Jira by MarcelBag app to visualize your productivity patterns."
+            data-fr="Ce guide explique comment installer et utiliser l'application Time Wrap pour Jira par MarcelBag pour visualiser vos modèles de productivité."
+            data-de="Diese Anleitung erklärt, wie Sie die App Time Wrap für Jira von MarcelBag installieren und verwenden, um Ihre Produktivitätsmuster zu visualisieren.">
+            This guide helps you get started.
+        </p>
+
+        <h2 id="setup" data-en="1. Installation" data-fr="1. Installation" data-de="1. Installation">
+            1. Installation
+        </h2>
+        <ol>
+            <li data-en="Go to the Atlassian Marketplace and search for 'Time Wrap for Jira by MarcelBag'."
+                data-fr="Allez sur Atlassian Marketplace et recherchez 'Time Wrap pour Jira par MarcelBag'."
+                data-de="Gehen Sie zum Atlassian Marketplace und suchen Sie nach 'Time Wrap für Jira von MarcelBag'.">
+                Install the app from the Atlassian Marketplace.
+            </li>
+            <li data-en="Click 'Get it now' and follow the prompts to install it on your Jira Cloud instance."
+                data-fr="Cliquez sur 'Obtenez-le maintenant' et suivez les instructions pour l'installer sur votre instance Jira Cloud."
+                data-de="Klicken Sie auf 'Jetzt holen' und folgen Sie den Anweisungen, um es auf Ihrer Jira Cloud-Instanz zu installieren.">
+                Install the app on your Jira Cloud instance.
+            </li>
+        </ol>
+
+        <h2 id="authorize" data-en="2. Accessing the App" data-fr="2. Accéder à l'application"
+            data-de="2. Zugriff auf die App">
+            2. Accessing the App
+        </h2>
+        <p data-en="Once installed, navigate to the top-level 'Apps' menu in your Jira navigation bar and select 'Time Wrap'. The first time you open it, Jira will ask you to authorize the app to read your issue activity. This is required to generate your personalized wrap."
+            data-fr="Une fois installé, accédez au menu 'Applications' dans votre barre de navigation Jira et sélectionnez 'Time Wrap'. La première fois que vous l'ouvrirez, Jira vous demandera d'autoriser l'application à lire votre activité. Cela est nécessaire pour générer votre résumé personnalisé."
+            data-de="Nach der Installation navigieren Sie zum Menü 'Apps' in Ihrer Jira-Navigationsleiste und wählen Sie 'Time Wrap'. Beim ersten Öffnen wird Jira Sie bitten, die App zu autorisieren, Ihre Ticket-Aktivität zu lesen. Dies ist erforderlich, um Ihren persönlichen Wrap zu erstellen.">
+            Find Time Wrap under the Apps menu and authorize permissions.
+        </p>
+
+        <h2 id="usage" data-en="3. Your Productivity Journey" data-fr="3. Votre parcours de productivité"
+            data-de="3. Ihre Produktivitätsreise">
+            3. Your Productivity Journey
+        </h2>
+        <ul>
+            <li data-en="Choose your time frame (Yearly, Monthly, Weekly, or Daily) from the selector at the top."
+                data-fr="Choisissez votre période (Annuelle, Mensuelle, Hebdomadaire ou Quotidienne) dans le sélecteur en haut."
+                data-de="Wählen Sie Ihren Zeitraum (Jährlich, Monatlich, Wöchentlich oder Täglich) aus dem Selektor oben.">
+                Select your preferred time period.
+            </li>
+            <li data-en="Click 'Generate Wrapped' to see your personalized metrics, activity trends, and compassionate messages."
+                data-fr="Cliquez sur 'Générer le Wrap' pour voir vos métriques personnalisées, vos tendances d'activité et vos messages de motivation."
+                data-de="Klicken Sie auf 'Wrap generieren', um Ihre persönlichen Metriken, Aktivitätstrends und motivierenden Nachrichten zu sehen.">
+                Visualize your data instantly.
+            </li>
+            <li data-en="Use the 'Share Image' or 'Download PDF' buttons to save your productivity milestones."
+                data-fr="Utilisez les boutons 'Partager l'image' ou 'Télécharger le PDF' pour sauvegarder vos jalons de productivité."
+                data-de="Verwenden Sie die Schaltflächen 'Bild teilen' oder 'PDF herunterladen', um Ihre Produktivitätsmeilensteine zu speichern.">
+                Export and share your achievements.
+            </li>
+        </ul>
+
+        <h2 id="troubleshooting" data-en="4. Common Questions" data-fr="4. Questions fréquentes"
+            data-de="4. Häufige Fragen">
+            4. Common Questions
+        </h2>
+        <ul>
+            <li data-en="Don't see any data? Make sure you have activity (assigned or reported issues) during the selected period."
+                data-fr="Vous ne voyez aucune donnée ? Assurez-vous d'avoir une activité (tickets assignés ou signalés) au cours de la période sélectionnée."
+                data-de="Keine Daten vorhanden? Vergewissern Sie sich, dass Sie im ausgewählten Zeitraum aktiv waren (zugewiesene oder gemeldete Tickets).">
+                Check your activity for the selected time range.
+            </li>
+            <li data-en="Layout issues? The app is optimized for the Jira standard page view; ensure your browser window is wide enough."
+                data-fr="Problèmes de mise en page ? L'application est optimisée pour la vue standard de Jira ; assurez-vous que la fenêtre de votre navigateur est assez large."
+                data-de="Layout-Probleme? Die App ist für die Standard-Jira-Seitenansicht optimiert; stellen Sie sicher, dass Ihr Browserfenster breit genug ist.">
+                Optimize your viewing experience.
+            </li>
+        </ul>
+
+        <h2 id="support" data-en="5. Support" data-fr="5. Assistance" data-de="5. Support">
+            5. Support
+        </h2>
+        <p class="muted"
+            data-en='For support or feature requests, contact <a href="mailto:support@tuunganes.com">support@tuunganes.com</a>.<br/><br/><a href="https://marcelbag44.atlassian.net/servicedesk/customer/portal/1/group/4" class="support-link">Raise a ticket in our Service Desk Portal</a>'
+            data-fr='Pour toute assistance ou demande de fonctionnalité, contactez <a href="mailto:support@tuunganes.com">support@tuunganes.com</a>.<br/><br/><a href="https://marcelbag44.atlassian.net/servicedesk/customer/portal/1/group/4" class="support-link">Créer un ticket dans notre Portail Service Desk</a>'
+            data-de='Für Support oder Funktionsanfragen wenden Sie sich an <a href="mailto:support@tuunganes.com">support@tuunganes.com</a>.<br/><br/><a href="https://marcelbag44.atlassian.net/servicedesk/customer/portal/1/group/4" class="support-link">Erstellen Sie ein Ticket in unserem Service Desk Portal</a>'>
+            For support or feature requests, contact <a
+                href="mailto:support@tuunganes.com">support@tuunganes.com</a>.<br /><br />
+            <a href="https://marcelbag44.atlassian.net/servicedesk/customer/portal/1/group/4" class="support-link">Raise
+                a ticket in our Service Desk Portal</a>
+        </p>
+    </div>
+
+    <!-- ================= FOOTER ================= -->
+    <footer class="footer glass">
+        <div class="container">
+            <p>© 2025 Tuunganes. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- ================= Scripts ================= -->
+    <script>
+        const themeBtn = document.getElementById('themeBtn');
+        const navToggle = document.getElementById('navToggle');
+        const mainNav = document.getElementById('mainNav');
+
+        // Theme toggle
+        themeBtn.addEventListener('click', function () {
+            const root = document.documentElement;
+            const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+            root.setAttribute('data-theme', next);
+            localStorage.setItem('tuunganes-theme', next);
+        });
+
+        // Nav toggle
+        navToggle.addEventListener('click', () => {
+            const open = mainNav.classList.toggle('open');
+            navToggle.setAttribute('aria-expanded', String(open));
+        });
+
+        // Language switching
+        document.querySelectorAll('.lang-switch [data-lang]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                const lang = btn.dataset.lang;
+                document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+                    el.innerHTML = el.getAttribute('data-' + lang);
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>
