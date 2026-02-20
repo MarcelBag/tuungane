@@ -1,368 +1,462 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title
-    data-en="IT Consultancy & Digital Solutions | Tuunganes"
-    data-fr="Conseil IT & Solutions numériques | Tuunganes"
-    data-de="IT-Beratung & Digitale Lösungen | Tuunganes">
-    IT Consultancy & Digital Solutions | Tuunganes
-  </title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="color-scheme" content="light dark"/>
+<title data-en="IT Consultancy & Digital Solutions | Tuunganes" data-fr="Conseil IT & Solutions numériques | Tuunganes" data-de="IT-Beratung & Digitale Lösungen | Tuunganes">IT Consultancy & Digital Solutions | Tuunganes</title>
+<link rel="icon" href="../assets/fevicon.png" type="image/png"/>
+<link rel="stylesheet" href="../css/styles.css"/>
+<style>
+:root{--blue:#2196f3;--blue-d:#1565c0;--blue-pale:rgba(33,150,243,.10);--blue-ring:rgba(33,150,243,.28);--radius:18px;--radius-sm:10px;--ease:cubic-bezier(.4,0,.2,1)}
+[data-theme="light"]{--bg:#f4f8ff;--bg2:#eaf2fe;--surf:#ffffff;--tx:#0d1b2e;--tx2:#2c4058;--muted:#5e7a96;--bdr:#c8ddf4;--sh:0 1px 3px rgba(0,0,0,.06),0 6px 24px rgba(0,0,0,.07);--sh-lg:0 4px 28px rgba(0,0,0,.10);--glow:0 0 0 3px rgba(33,150,243,.18)}
+[data-theme="dark"]{--bg:#060e1a;--bg2:#0c1726;--surf:#101e30;--tx:#e8f2ff;--tx2:#a8c4e0;--muted:#5c7b98;--bdr:rgba(255,255,255,.07);--sh:0 2px 8px rgba(0,0,0,.4),0 10px 36px rgba(0,0,0,.3);--sh-lg:0 6px 36px rgba(0,0,0,.35);--glow:0 0 0 3px rgba(33,150,243,.25)}
 
-  <link rel="icon" href="../assets/fevicon.png" type="image/png" />
-  <link rel="stylesheet" href="../css/styles.css" />
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--tx);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .25s var(--ease),color .25s var(--ease)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font-family:inherit}
+ul{list-style:none;padding:0;margin:0}
 
-  <style>
-    /* Local enhancements */
-    .hero .eyebrow { font-weight: 800; letter-spacing: .04em; text-transform: uppercase; color: var(--text-muted); }
-    .pillars-grid { grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); }
-    .pillar.card { background: var(--surface); color: var(--text); padding: 1rem; }
-    .partner-chips { display:flex; flex-wrap:wrap; gap:.5rem; margin-top:.5rem; }
-    .chip {
-      display:inline-flex; align-items:center; gap:.4rem;
-      border:1px solid var(--border); padding:.45rem .7rem; border-radius:999px;
-      background: color-mix(in hsl, var(--surface) 92%, transparent);
-      font-weight:600; font-size:.92rem;
-    }
-    .steps { display:grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap:1rem; }
-    .step { background: var(--surface); border:1px solid var(--border); border-radius:14px; padding:1rem; text-align:center; }
-    .step b { display:block; font-size:1.1rem; margin-bottom:.25rem; }
-    .cta-band { background: color-mix(in hsl, var(--surface) 92%, transparent); border:1px solid var(--border); border-radius:16px; padding:1.1rem; display:flex; gap:.8rem; flex-wrap:wrap; align-items:center; justify-content:space-between; }
-    .faqs { width:min(860px, 92%); margin:0 auto; }
-    details { background: var(--surface); border:1px solid var(--border); border-radius:12px; padding:.8rem 1rem; }
-    details + details { margin-top:.6rem; }
-    summary { cursor:pointer; font-weight:700; }
-  </style>
+.frame{width:min(1200px,94vw);margin:0 auto}
+
+/* ── NAV ── */
+.nav{position:fixed;top:1rem;left:50%;transform:translateX(-50%);width:min(1100px,90vw);background:color-mix(in srgb,var(--surf) 82%,transparent);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--bdr);border-radius:999px;padding:.5rem .5rem .5rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;z-index:1000;box-shadow:var(--sh)}
+.nav-logo{display:flex;align-items:center;gap:.55rem;font-size:.95rem;font-weight:800;color:var(--tx);flex-shrink:0}
+.nav-logo img{width:30px;height:30px;border-radius:8px}
+.nav-links{display:flex;align-items:center;gap:.15rem;flex:1;justify-content:center}
+.nav-links a{padding:.42rem .85rem;border-radius:999px;font-size:.82rem;font-weight:600;color:var(--tx2);transition:color .15s,background .15s}
+.nav-links a:hover,.nav-links a.active{color:var(--blue);background:var(--blue-pale)}
+.nav-end{display:flex;align-items:center;gap:.45rem;flex-shrink:0}
+.lang-pills{display:flex;gap:.18rem;background:var(--bg2);border:1px solid var(--bdr);border-radius:999px;padding:.22rem .28rem}
+.lang-pills button{border:none;background:transparent;border-radius:999px;padding:.22rem .55rem;font-size:.74rem;font-weight:700;cursor:pointer;color:var(--muted);transition:background .15s,color .15s}
+.lang-pills button.on{background:var(--blue);color:#fff}
+.theme-pill{width:36px;height:36px;border-radius:999px;border:1px solid var(--bdr);background:var(--bg2);display:grid;place-items:center;cursor:pointer;font-size:.95rem;transition:border-color .15s,transform .2s}
+.theme-pill:hover{border-color:var(--blue);transform:rotate(20deg)}
+.nav-cta{background:var(--blue);color:#fff;border:none;padding:.48rem 1.15rem;border-radius:999px;font-size:.82rem;font-weight:700;cursor:pointer;transition:background .15s,transform .15s;white-space:nowrap}
+.nav-cta:hover{background:var(--blue-d);transform:translateY(-1px)}
+.ham{display:none;flex-direction:column;gap:4px;cursor:pointer;background:var(--bg2);border:1px solid var(--bdr);border-radius:999px;padding:.55rem .75rem}
+.ham span{display:block;width:18px;height:2px;background:var(--tx);border-radius:2px}
+.nav-drawer{display:none;position:fixed;inset:0;background:var(--surf);z-index:999;flex-direction:column;padding:2rem 1.75rem;gap:1.25rem;border-right:1px solid var(--bdr)}
+.nav-drawer.open{display:flex}
+.nav-drawer a{font-size:1.1rem;font-weight:700;color:var(--tx2);padding:.5rem 0;border-bottom:1px solid var(--bdr)}
+.nav-drawer a:hover{color:var(--blue)}
+@media(max-width:720px){.ham{display:flex}.nav-links,.nav-end{display:none}}
+
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.7rem 1.55rem;border-radius:999px;border:none;cursor:pointer;font-size:.88rem;font-weight:700;transition:all .2s var(--ease);white-space:nowrap;font-family:inherit}
+.btn-solid{background:var(--blue);color:#fff;box-shadow:0 4px 16px rgba(33,150,243,.32)}
+.btn-solid:hover{background:var(--blue-d);transform:translateY(-2px);box-shadow:0 8px 24px rgba(33,150,243,.4)}
+.btn-ghost{background:var(--bg2);color:var(--tx);border:1.5px solid var(--bdr)}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-1px)}
+.btn-w{background:#fff;color:var(--blue);font-weight:800}
+.btn-w:hover{background:#e3f2fd;transform:translateY(-1px)}
+.btn-wg{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}
+.btn-wg:hover{background:rgba(255,255,255,.1);border-color:#fff}
+
+/* ── HERO ── */
+.page-hero{padding:9rem 0 0;background:var(--surf);border-bottom:1px solid var(--bdr);position:relative;overflow:hidden}
+.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 70% at 85% 35%,rgba(33,150,243,.09) 0%,transparent 65%);pointer-events:none}
+[data-theme="dark"] .page-hero::before{background:radial-gradient(ellipse 55% 70% at 85% 35%,rgba(33,150,243,.15) 0%,transparent 65%)}
+.hero-tag{display:inline-flex;align-items:center;gap:.45rem;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);border:1.5px solid var(--blue-ring);border-radius:999px;padding:.35rem .9rem;margin-bottom:1.2rem}
+.hero-tag::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--blue);flex-shrink:0}
+.page-hero h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:800;letter-spacing:-.03em;line-height:1.06;color:var(--tx);margin-bottom:.9rem}
+.page-hero h1 em{font-style:normal;color:var(--blue);position:relative}
+.page-hero h1 em::after{content:'';position:absolute;left:0;bottom:-.06em;width:100%;height:.07em;background:var(--blue);border-radius:4px;opacity:.3;transform:scaleX(0);transform-origin:left;animation:uline .7s .6s var(--ease) forwards}
+@keyframes uline{to{transform:scaleX(1)}}
+.page-hero>div>p{color:var(--tx2);font-size:1.07rem;max-width:560px;line-height:1.65;margin-bottom:1.75rem}
+.hero-btns{display:flex;gap:.75rem;flex-wrap:wrap;margin-bottom:3.5rem}
+
+/* Stats bar */
+.stat-bar{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--bdr)}
+@media(max-width:640px){.stat-bar{grid-template-columns:1fr 1fr}}
+.stat-cell{padding:1.5rem 1.25rem;border-right:1px solid var(--bdr)}
+.stat-cell:last-child{border-right:none}
+.stat-cell b{display:block;font-size:1.75rem;font-weight:800;color:var(--blue);letter-spacing:-.03em;line-height:1;margin-bottom:.3rem}
+.stat-cell span{font-size:.82rem;color:var(--muted)}
+
+/* ── SERVICE ROWS ── */
+.svc-section{padding:1px 0}
+.svc-item{border-top:1px solid var(--bdr);padding:3rem 0}
+.svc-item:last-child{border-bottom:1px solid var(--bdr)}
+.svc-top{display:grid;grid-template-columns:52px 1fr;gap:0 2rem;margin-bottom:1.5rem}
+@media(max-width:640px){.svc-top{grid-template-columns:1fr;gap:.3rem}}
+.svc-n{font-size:.95rem;font-weight:800;color:var(--blue);opacity:.5;padding-top:.15rem}
+.svc-head{display:flex;align-items:flex-start;justify-content:space-between;gap:.75rem;flex-wrap:wrap;margin-bottom:.6rem}
+.svc-head h2{font-size:1.35rem;font-weight:800;letter-spacing:-.02em;color:var(--tx)}
+.svc-head .ico{font-size:1.6rem;line-height:1;margin-top:.1rem}
+.svc-desc{color:var(--tx2);font-size:.97rem;max-width:700px;line-height:1.65}
+.cards-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:.75rem;padding-left:calc(52px + 2rem)}
+@media(max-width:640px){.cards-grid{padding-left:0}}
+.svc-card{background:var(--bg);border:1px solid var(--bdr);border-radius:var(--radius-sm);padding:1rem 1.1rem;transition:border-color .18s,transform .18s}
+.svc-card:hover{border-color:var(--blue-ring);transform:translateY(-2px)}
+.svc-card strong{display:block;font-size:.88rem;font-weight:800;color:var(--tx);margin-bottom:.25rem}
+.svc-card p{font-size:.82rem;color:var(--tx2);line-height:1.5}
+
+/* Radio featured */
+.radio-feature{background:var(--blue-pale);border:1px solid var(--blue-ring);border-radius:var(--radius);padding:1.5rem 1.75rem;margin-bottom:.75rem;margin-left:calc(52px + 2rem)}
+@media(max-width:640px){.radio-feature{margin-left:0}}
+.radio-head{display:flex;align-items:center;gap:.75rem;margin-bottom:.5rem}
+.radio-head h3{font-size:1rem;font-weight:800;color:var(--tx)}
+.wave{display:flex;align-items:flex-end;gap:3px;height:18px}
+.wave span{display:block;width:3px;background:var(--blue);border-radius:2px;animation:wv 1s ease-in-out infinite}
+.wave span:nth-child(1){height:7px;animation-delay:0s}
+.wave span:nth-child(2){height:14px;animation-delay:.15s}
+.wave span:nth-child(3){height:18px;animation-delay:.3s}
+.wave span:nth-child(4){height:11px;animation-delay:.45s}
+.wave span:nth-child(5){height:5px;animation-delay:.6s}
+@keyframes wv{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.3)}}
+.radio-feature>p{font-size:.88rem;color:var(--tx2);margin-bottom:1rem}
+.radio-pts{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.4rem}
+.radio-pt{display:flex;align-items:flex-start;gap:.5rem;font-size:.83rem;color:var(--tx2)}
+.radio-pt::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--blue);flex-shrink:0;margin-top:.45rem}
+
+/* ── TECH STRIP ── */
+.tech-strip{background:var(--surf);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr);padding:3rem 0}
+.tech-label{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1.1rem}
+.chips{display:flex;flex-wrap:wrap;gap:.5rem}
+.chip{font-size:.82rem;color:var(--tx2);background:var(--bg);border:1px solid var(--bdr);padding:.32rem .85rem;border-radius:999px;transition:border-color .15s,color .15s;cursor:default}
+.chip:hover{border-color:var(--blue-ring);color:var(--blue)}
+
+/* ── PROCESS ── */
+.process-sec{padding:5rem 0}
+.s-label{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:.4rem}
+.s-title{font-size:clamp(1.4rem,3vw,2rem);font-weight:800;letter-spacing:-.02em;color:var(--tx);margin-bottom:2.25rem}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--bdr);border:1px solid var(--bdr);border-radius:var(--radius);overflow:hidden}
+@media(max-width:640px){.steps{grid-template-columns:1fr 1fr}}
+.step{background:var(--surf);padding:1.75rem 1.4rem}
+.step-n{font-size:2.2rem;font-weight:800;color:var(--blue);opacity:.25;line-height:1;margin-bottom:.65rem;letter-spacing:-.05em}
+.step h4{font-size:1rem;font-weight:800;color:var(--tx);margin-bottom:.4rem}
+.step p{font-size:.83rem;color:var(--tx2);line-height:1.55}
+
+/* ── FAQ ── */
+.faq-sec{padding:5rem 0;border-top:1px solid var(--bdr)}
+.faq-list{max-width:800px}
+details.faq-item{border-bottom:1px solid var(--bdr)}
+details.faq-item summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:1.15rem 0;font-weight:700;font-size:.97rem;color:var(--tx);gap:1rem}
+details.faq-item summary::-webkit-details-marker{display:none}
+.faq-tog{flex-shrink:0;width:26px;height:26px;border-radius:50%;border:1.5px solid var(--bdr);display:grid;place-items:center;font-size:1.15rem;color:var(--blue);transition:background .2s,border-color .2s}
+details.faq-item[open] .faq-tog{background:var(--blue);color:#fff;border-color:var(--blue)}
+.faq-item .m{display:none}
+details.faq-item[open] .p{display:none}
+details.faq-item[open] .m{display:block}
+details.faq-item .ans{font-size:.93rem;color:var(--tx2);padding-bottom:1.25rem;line-height:1.65}
+
+/* ── CTA BAND ── */
+.cta-sec{padding:5rem 0}
+.cta-band{background:var(--blue);border-radius:24px;padding:3.5rem 3rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;box-shadow:0 8px 40px rgba(33,150,243,.35);position:relative;overflow:hidden}
+.cta-band::before{content:'';position:absolute;right:-60px;top:-80px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06)}
+.cta-band::after{content:'';position:absolute;right:60px;bottom:-100px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.04)}
+@media(max-width:720px){.cta-band{grid-template-columns:1fr;padding:2.5rem 1.75rem}}
+.cta-band h2{font-size:clamp(1.3rem,3vw,1.75rem);color:#fff;margin-bottom:.45rem;letter-spacing:-.02em}
+.cta-band p{color:rgba(255,255,255,.82);font-size:.95rem;max-width:480px;margin:0}
+.cta-btns{display:flex;gap:.65rem;flex-wrap:wrap;flex-shrink:0}
+
+/* ── FOOTER ── */
+.foot{padding:2.25rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:1px solid var(--bdr)}
+.foot-logo{display:flex;align-items:center;gap:.5rem;font-weight:800;font-size:.95rem;color:var(--tx)}
+.foot-logo img{width:28px;height:28px;border-radius:7px}
+.foot p{font-size:.8rem;color:var(--muted)}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.page-hero .hero-tag{animation:fadeUp .7s var(--ease) both}
+.page-hero h1{animation:fadeUp .8s .1s var(--ease) both}
+.page-hero>div>p{animation:fadeUp .8s .2s var(--ease) both}
+.hero-btns{animation:fadeUp .8s .3s var(--ease) both}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal.in{opacity:1;transform:translateY(0)}
+</style>
 </head>
 <body>
-  <!-- Header injected by base.js -->
-  <div id="site-header"></div>
 
-  <!-- HERO -->
-  <section class="hero reveal">
-    <div class="container hero-content">
-      <div class="eyebrow"
-           data-en="Advisory • Engineering • Enablement"
-           data-fr="Conseil • Ingénierie • Accompagnement"
-           data-de="Beratung • Engineering • Enablement">
-        Advisory • Engineering • Enablement
-      </div>
-      <h1
-        data-en="IT Consultancy & Digital Solutions"
-        data-fr="Conseil IT & Solutions numériques"
-        data-de="IT-Beratung & Digitale Lösungen">
-        IT Consultancy & Digital Solutions
-      </h1>
-      <p
-        data-en="We help NGOs, schools and businesses in the DRC plan, build and run secure, reliable and modern technology  fast."
-        data-fr="Nous aidons les ONG, les écoles et les entreprises en RDC à planifier, déployer et exploiter des technologies modernes, fiables et sécurisées    rapidement."
-        data-de="Wir helfen NGOs, Schulen und Unternehmen in der DR Kongo, moderne, zuverlässige und sichere Technologie schnell zu planen, aufzubauen und zu betreiben.">
-        We help NGOs, schools and businesses in the DRC plan, build and run secure, reliable and modern technology  fast.
-      </p>
-      <div class="hero-ctas">
-        <a href="../contact.html" class="btn btn-primary"
-           data-en="Book a consultation"
-           data-fr="Réserver une consultation"
-           data-de="Beratung anfragen">Book a consultation</a>
-        <a href="../services/services.html" class="btn btn-ghost"
-           data-en="See all services"
-           data-fr="Voir tous les services"
-           data-de="Alle Services ansehen">See all services</a>
-      </div>
+<!-- DRAWER -->
+<nav class="nav-drawer" id="drawer">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+    <span style="font-weight:800;font-size:1rem">Tuunganes</span>
+    <button id="drawerClose" style="background:transparent;border:none;font-size:1.4rem;cursor:pointer;color:var(--tx)">✕</button>
+  </div>
+  <a href="../index.html" data-en="Home" data-fr="Accueil" data-de="Start">Home</a>
+  <a href="../about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+  <a href="services.html" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+  <a href="../contact.html" class="btn btn-solid" style="justify-content:center;margin-top:.5rem" data-en="Contact us" data-fr="Contact" data-de="Kontakt">Contact us</a>
+</nav>
+
+<!-- FLOATING NAV -->
+<header class="nav">
+  <a href="../index.html" class="nav-logo">
+    <img src="../assets/fevicon.png" alt="Tuunganes"/>
+    <span>Tuunganes</span>
+  </a>
+  <nav class="nav-links">
+    <a href="../about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+    <a href="services.html" class="active" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+    <a href="../index.html#impact" data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
+    <a href="../index.html#join" data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</a>
+  </nav>
+  <div class="nav-end">
+    <div class="lang-pills" role="group">
+      <button type="button" data-lang="en" class="on">EN</button>
+      <button type="button" data-lang="fr">FR</button>
+      <button type="button" data-lang="de">DE</button>
     </div>
-  </section>
+    <button id="themeBtn" class="theme-pill" aria-label="Toggle theme">🌙</button>
+    <a href="../contact.html" class="nav-cta" data-en="Contact" data-fr="Contact" data-de="Kontakt">Contact</a>
+    <button class="ham" id="hamBtn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
 
-  <!-- INTRO / WHY -->
-  <section class="about reveal">
-    <div class="container about-grid">
-      <div class="about-image">
-        <img src="../assets/pro.jpg" alt="Consultants collaborating on modern IT solutions" />
-      </div>
-      <div class="about-text card">
-        <h2
-          data-en="We turn challenges into digital results"
-          data-fr="Nous transformons vos défis en résultats numériques"
-          data-de="Wir verwandeln Herausforderungen in digitale Ergebnisse">
-          We turn challenges into digital results
-        </h2>
-        <p
-          data-en="Unreliable connectivity, legacy systems and limited capacity can slow teams down. Our young, professional engineers bring practical experience across infrastructure, cloud and AI to modernize what you have and build what you need."
-          data-fr="La connectivité instable, les systèmes hérités et le manque de ressources freinent les équipes. Nos ingénieurs jeunes et professionnels apportent une expérience concrète en infrastructure, cloud et IA pour moderniser l’existant et construire ce dont vous avez besoin."
-          data-de="Unzuverlässige Konnektivität, Altsysteme und fehlende Kapazitäten bremsen Teams aus. Unsere jungen, professionellen Engineers bringen Praxis in Infrastruktur, Cloud und KI mit, um Ihr Bestehendes zu modernisieren und Neues aufzubauen.">
-          Unreliable connectivity, legacy systems and limited capacity can slow teams down. Our young, professional engineers bring practical experience across infrastructure, cloud and AI to modernize what you have and build what you need.
-        </p>
+<!-- HERO -->
+<section class="page-hero">
+  <div class="frame">
+    <div class="hero-tag" data-en="IT Consultancy & Digital Solutions" data-fr="Conseil IT & Solutions numériques" data-de="IT-Beratung & Digitale Lösungen">IT Consultancy &amp; Digital Solutions</div>
+    <h1 data-en="We help you<br><em>go digital,</em><br>step by step." data-fr="Nous vous aidons à<br><em>passer au numérique,</em><br>étape par étape." data-de="Wir helfen Ihnen,<br><em>digital zu werden,</em><br>Schritt für Schritt.">We help you<br><em>go digital,</em><br>step by step.</h1>
+    <p data-en="Our certified team accompanies schools, NGOs, businesses, and radio stations from the first consultation to full deployment and ongoing support built for the realities of the DRC." data-fr="Notre équipe certifiée accompagne les écoles, ONG, entreprises et stations radio de la première consultation au déploiement complet adapté aux réalités de la RDC." data-de="Unser zertifiziertes Team begleitet Schulen, NGOs, Unternehmen und Radiosender von der ersten Beratung bis zur vollständigen Bereitstellung.">Our certified team accompanies schools, NGOs, businesses, and radio stations from the first consultation to full deployment and ongoing support built for the realities of the DRC.</p>
+    <div class="hero-btns">
+      <a href="../contact.html" class="btn btn-solid" data-en="Book a free consultation" data-fr="Réserver une consultation gratuite" data-de="Kostenlose Beratung anfragen">Book a free consultation</a>
+      <a href="services.html" class="btn btn-ghost" data-en="All services" data-fr="Tous les services" data-de="Alle Leistungen">All services</a>
+    </div>
+    <div class="stat-bar">
+      <div class="stat-cell"><b>8+</b><span data-en="Service areas" data-fr="Domaines de service" data-de="Servicebereiche">Service areas</span></div>
+      <div class="stat-cell"><b>24/7</b><span data-en="Ongoing support" data-fr="Support continu" data-de="Laufender Support">Ongoing support</span></div>
+      <div class="stat-cell"><b>EN/FR</b><span data-en="Bilingual team" data-fr="Équipe bilingue" data-de="Zweisprachiges Team">Bilingual team</span></div>
+      <div class="stat-cell"><b>DRC</b><span data-en="Local expertise, global reach" data-fr="Expertise locale, portée mondiale" data-de="Lokale Expertise, globale Reichweite">Local expertise, global reach</span></div>
+    </div>
+  </div>
+</section>
 
-        <div class="cta-band">
-          <div
-            data-en="Vendors & platforms we work with:"
-            data-fr="Fournisseurs & plateformes maîtrisés :"
-            data-de="Anbieter & Plattformen, mit denen wir arbeiten:">
-            Vendors & platforms we work with:
+<!-- SERVICES -->
+<section class="svc-section reveal" style="padding:0 0 2rem">
+  <div class="frame" style="padding-top:3.5rem">
+
+    <div class="svc-item">
+      <div class="svc-top">
+        <div class="svc-n">01</div>
+        <div>
+          <div class="svc-head">
+            <h2 data-en="Digital Transformation &amp; Audits" data-fr="Transformation numérique &amp; Audits" data-de="Digitale Transformation &amp; Audits">Digital Transformation &amp; Audits</h2>
+            <span class="ico">🔍</span>
           </div>
-          <div class="partner-chips" aria-label="Technology partners">
-            <span class="chip">Microsoft 365</span>
-            <span class="chip">Azure</span>
-            <span class="chip">AWS</span>
-            <span class="chip">Google Meet</span>
-            <span class="chip">Google Workspace</span>
-            <span class="chip">Cisco</span>
-            <span class="chip">Linux/Ubuntu</span>
-            <span class="chip">Power BI</span>
+          <p class="svc-desc" data-en="We assess where you are today, define where you want to go, and build a practical roadmap without jargon or wasted budget." data-fr="Nous évaluons votre situation actuelle, définissons vos objectifs et construisons une feuille de route pratique, sans jargon ni budget gaspillé." data-de="Wir beurteilen Ihren Stand, definieren Ihre Ziele und erstellen eine praktische Roadmap, ohne Fachjargon.">We assess where you are today, define where you want to go, and build a practical roadmap without jargon or wasted budget.</p>
+        </div>
+      </div>
+      <div class="cards-grid">
+        <div class="svc-card"><strong data-en="IT Audit &amp; Diagnosis" data-fr="Audit &amp; diagnostic IT" data-de="IT-Audit &amp; Diagnose">IT Audit &amp; Diagnosis</strong><p data-en="Complete review of your systems, security, and infrastructure gaps with a clear action report." data-fr="Révision complète de vos systèmes, sécurité et lacunes d'infrastructure avec un rapport d'action clair." data-de="Vollständige Überprüfung Ihrer Systeme, Sicherheit und Infrastrukturlücken.">Complete review of your systems, security, and infrastructure gaps with a clear action report.</p></div>
+        <div class="svc-card"><strong data-en="Digital Strategy &amp; Planning" data-fr="Stratégie &amp; planification numérique" data-de="Digitalstrategie &amp; Planung">Digital Strategy &amp; Planning</strong><p data-en="Tailor-made roadmaps with realistic timelines, clear budgets, and defined milestones." data-fr="Feuilles de route sur mesure avec délais réalistes, budgets clairs et jalons définis." data-de="Maßgeschneiderte Roadmaps mit realistischen Zeitplänen und klaren Budgets.">Tailor-made roadmaps with realistic timelines, clear budgets, and defined milestones.</p></div>
+        <div class="svc-card"><strong data-en="Cybersecurity &amp; Compliance" data-fr="Cybersécurité &amp; conformité" data-de="Cybersecurity &amp; Compliance">Cybersecurity &amp; Compliance</strong><p data-en="Identity management, mail security, endpoint hardening, and zero-trust foundations." data-fr="Gestion des identités, sécurité mail, durcissement et bases zero-trust." data-de="Identitäten, Mail-Security, Härtung und Zero-Trust-Grundlagen.">Identity management, mail security, endpoint hardening, and zero-trust foundations.</p></div>
+        <div class="svc-card"><strong data-en="AI &amp; Workflow Automation" data-fr="IA &amp; automatisation" data-de="KI &amp; Automatisierung">AI &amp; Workflow Automation</strong><p data-en="Document search, internal chatbots, OCR and automation tools applied safely and privately." data-fr="Recherche documentaire, chatbots internes, OCR et automatisation, de façon sécurisée." data-de="Dokumentsuche, Chatbots, OCR und Automatisierungstools, sicher eingesetzt.">Document search, internal chatbots, OCR and automation tools applied safely and privately.</p></div>
+      </div>
+    </div>
+
+    <div class="svc-item">
+      <div class="svc-top">
+        <div class="svc-n">02</div>
+        <div>
+          <div class="svc-head">
+            <h2 data-en="Internet &amp; Connectivity" data-fr="Internet &amp; Connectivité" data-de="Internet &amp; Konnektivität">Internet &amp; Connectivity</h2>
+            <span class="ico">📡</span>
           </div>
+          <p class="svc-desc" data-en="Fast and reliable internet for schools, offices, clinics, and communities including remote areas through Starlink satellite technology." data-fr="Internet rapide et fiable pour les écoles, bureaux, cliniques et communautés, y compris dans les zones reculées via Starlink." data-de="Schnelles Internet für Schulen, Büros, Kliniken und Gemeinden, auch in abgelegenen Gebieten durch Starlink.">Fast and reliable internet for schools, offices, clinics, and communities including remote areas through Starlink satellite technology.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- WHAT WE DO -->
-  <section class="pillars reveal">
-    <div class="container">
-      <h2
-        data-en="What we do"
-        data-fr="Ce que nous faisons"
-        data-de="Was wir tun">
-        What we do
-      </h2>
-
-      <div class="pillars-grid">
-        <article class="pillar card">
-          <h3 data-en="IT Consultancy & Audits" data-fr="Conseil & audits IT" data-de="IT-Beratung & Audits">IT Consultancy & Audits</h3>
-          <p data-en="Assess your current environment and define a practical roadmap for reliability, security and growth."
-             data-fr="Évaluer votre environnement et définir une feuille de route pragmatique pour la fiabilité, la sécurité et la croissance."
-             data-de="Bestandsaufnahme und praxisnahe Roadmap für Zuverlässigkeit, Sicherheit und Wachstum.">
-            Assess your current environment and define a practical roadmap for reliability, security and growth.
-          </p>
-        </article>
-
-        <article class="pillar card">
-          <h3 data-en="Cloud Architecture & Migration" data-fr="Architecture & migration Cloud" data-de="Cloud-Architektur & Migration">Cloud Architecture & Migration</h3>
-          <p data-en="Azure, AWS or Google  design, migrate and optimize cloud services with cost and performance in mind."
-             data-fr="Azure, AWS ou Google    concevoir, migrer et optimiser vos services cloud avec maîtrise des coûts et des performances."
-             data-de="Azure, AWS oder Google    Services mit Blick auf Kosten und Performance planen, migrieren und optimieren.">
-            Azure, AWS or Google  design, migrate and optimize cloud services with cost and performance in mind.
-          </p>
-        </article>
-
-        <article class="pillar card">
-          <h3 data-en="Infrastructure & Networking" data-fr="Infrastructure & Réseaux" data-de="Infrastruktur & Netzwerke">Infrastructure & Networking</h3>
-          <p data-en="LAN/Wi-Fi design, switching/routing (incl. Cisco), servers, backups and disaster recovery tuned for the DRC."
-             data-fr="Conception LAN/Wi-Fi, commutation/routage (incl. Cisco), serveurs, sauvegardes et PRA adaptés au contexte RDC."
-             data-de="LAN/WLAN-Design, Switching/Routing (inkl. Cisco), Server, Backups und Desaster-Recovery für die DRK.">
-            LAN/Wi-Fi design, switching/routing (incl. Cisco), servers, backups and disaster recovery tuned for the DRC.
-          </p>
-        </article>
-
-        <article class="pillar card">
-          <h3 data-en="Internet Connectivity & Optimization" data-fr="Connectivité Internet & optimisation" data-de="Internet-Anbindung & Optimierung">Internet Connectivity & Optimization</h3>
-          <p data-en="From last-mile options to SD-WAN and failover  we make your connection stable, fast and visible."
-             data-fr="Du dernier kilomètre au SD-WAN et au basculement    rendre votre connexion stable, rapide et observable."
-             data-de="Von Last-Mile bis SD-WAN und Failover    wir machen Ihre Verbindung stabil, schnell und transparent.">
-            From last-mile options to SD-WAN and failover  we make your connection stable, fast and visible.
-          </p>
-        </article>
-
-        <article class="pillar card">
-          <h3 data-en="Data Analysis & Dashboards" data-fr="Analyse de données & tableaux de bord" data-de="Datenanalyse & Dashboards">Data Analysis & Dashboards</h3>
-          <p data-en="From cleaning to modeling to dashboards (Power BI/Looker)  turn raw data into decisions."
-             data-fr="Du nettoyage à la modélisation jusqu’aux tableaux de bord (Power BI/Looker)    transformer vos données en décisions."
-             data-de="Von Aufbereitung über Modellierung bis Dashboards (Power BI/Looker)    Rohdaten in Entscheidungen verwandeln.">
-            From cleaning to modeling to dashboards (Power BI/Looker)  turn raw data into decisions.
-          </p>
-        </article>
-
-        <article class="pillar card">
-          <h3 data-en="Cybersecurity & Compliance" data-fr="Cybersécurité & conformité" data-de="Cybersecurity & Compliance">Cybersecurity & Compliance</h3>
-          <p data-en="Identity & access, endpoint hardening, mail security, zero-trust basics and awareness for your teams."
-             data-fr="Gestion des identités/accès, durcissement postes, sécurité mail, principes zero-trust et sensibilisation des équipes."
-             data-de="Identitäten & Zugriffe, Härtung, Mail-Security, Zero-Trust-Grundlagen und Awareness für Ihre Teams.">
-            Identity & access, endpoint hardening, mail security, zero-trust basics and awareness for your teams.
-          </p>
-        </article>
-
-        <article class="pillar card">
-          <h3 data-en="Hardware & Licensing" data-fr="Matériel & licences" data-de="Hardware & Lizenzen">Hardware & Licensing</h3>
-          <p data-en="Right-sizing devices, servers and software  procurement support for Microsoft, Windows, security and more."
-             data-fr="Dimensionnement de matériels, serveurs et logiciels    accompagnement d’achat (Microsoft, Windows, sécurité, etc.)."
-             data-de="Passende Geräte, Server und Software    Beschaffung für Microsoft, Windows, Security u. a.">
-            Right-sizing devices, servers and software  procurement support for Microsoft, Windows, security and more.
-          </p>
-        </article>
-
-        <article class="pillar card">
-          <h3 data-en="AI & Automation" data-fr="IA & automatisation" data-de="KI & Automatisierung">AI & Automation</h3>
-          <p data-en="Apply AI safely: document search, chatbots, RAG, OCR, and workflow automation to save time at scale."
-             data-fr="Appliquer l’IA en sécurité : recherche documentaire, chatbots, RAG, OCR et automatisation pour gagner du temps."
-             data-de="KI sicher nutzen: Dokumentsuche, Chatbots, RAG, OCR und Workflow-Automatisierung für spürbare Effizienz.">
-            Apply AI safely: document search, chatbots, RAG, OCR, and workflow automation to save time at scale.
-          </p>
-        </article>
+      <div class="cards-grid">
+        <div class="svc-card"><strong data-en="Starlink Installation &amp; Support" data-fr="Installation Starlink &amp; support" data-de="Starlink-Installation &amp; Support">Starlink Installation &amp; Support</strong><p data-en="Full setup, activation, dish positioning, and ongoing support for satellite internet at any location." data-fr="Installation complète, activation, positionnement de l'antenne et support technique continu." data-de="Vollständige Einrichtung, Aktivierung und Support für Satelliteninternet.">Full setup, activation, dish positioning, and ongoing support for satellite internet at any location.</p></div>
+        <div class="svc-card"><strong data-en="Network &amp; Wi-Fi Design" data-fr="Conception réseau &amp; Wi-Fi" data-de="Netzwerk &amp; WLAN-Design">Network &amp; Wi-Fi Design</strong><p data-en="LAN and Wi-Fi architecture, switching, routing, and campus-wide coverage for any space." data-fr="Architecture LAN et Wi-Fi, commutation, routage et couverture campus pour tout espace." data-de="LAN- und WLAN-Architektur, Switching, Routing und Campus-Abdeckung.">LAN and Wi-Fi architecture, switching, routing, and campus-wide coverage for any space.</p></div>
+        <div class="svc-card"><strong data-en="Connection Optimization" data-fr="Optimisation de la connexion" data-de="Verbindungsoptimierung">Connection Optimization</strong><p data-en="Bandwidth management, SD-WAN, failover configuration, and monitoring to keep your connection stable." data-fr="Gestion de bande passante, SD-WAN, bascule et monitoring pour une connexion stable." data-de="Bandbreitenverwaltung, SD-WAN, Failover und Monitoring.">Bandwidth management, SD-WAN, failover configuration, and monitoring to keep your connection stable.</p></div>
+        <div class="svc-card"><strong data-en="Servers, Backups &amp; Recovery" data-fr="Serveurs, sauvegardes &amp; récupération" data-de="Server, Backups &amp; Recovery">Servers, Backups &amp; Recovery</strong><p data-en="On-premise and hybrid server setup, automated backups, and disaster recovery plans for the DRC context." data-fr="Configuration serveur sur site et hybride, sauvegardes automatisées adaptées à la RDC." data-de="On-Premise- und Hybrid-Server, automatisierte Backups und Disaster-Recovery.">On-premise and hybrid server setup, automated backups, and disaster recovery plans for the DRC context.</p></div>
       </div>
     </div>
-  </section>
 
-  <!-- HOW WE WORK -->
-  <section class="page-section reveal">
-    <div class="container">
-      <h2
-        data-en="How we work"
-        data-fr="Notre méthode"
-        data-de="So arbeiten wir">
-        How we work
-      </h2>
-      <div class="steps">
-        <div class="step">
-          <b data-en="Discover" data-fr="Découvrir" data-de="Entdecken">Discover</b>
-          <span data-en="Workshops and a quick audit to understand goals and gaps."
-                data-fr="Ateliers et audit rapide pour comprendre objectifs et écarts."
-                data-de="Workshops und Kurz-Audit, um Ziele und Lücken zu verstehen.">
-            Workshops and a quick audit to understand goals and gaps.
-          </span>
-        </div>
-        <div class="step">
-          <b data-en="Design" data-fr="Concevoir" data-de="Gestalten">Design</b>
-          <span data-en="An actionable plan with costs, timeline and clear responsibilities."
-                data-fr="Un plan actionnable avec coûts, délais et responsabilités claires."
-                data-de="Ein umsetzbarer Plan mit Kosten, Zeitplan und Verantwortlichkeiten.">
-            An actionable plan with costs, timeline and clear responsibilities.
-          </span>
-        </div>
-        <div class="step">
-          <b data-en="Deliver" data-fr="Déployer" data-de="Liefern">Deliver</b>
-          <span data-en="We implement, migrate and document  without disrupting your work."
-                data-fr="Nous implémentons, migrons et documentons    sans perturber vos activités."
-                data-de="Wir implementieren, migrieren und dokumentieren    ohne Ihren Betrieb zu stören.">
-            We implement, migrate and document  without disrupting your work.
-          </span>
-        </div>
-        <div class="step">
-          <b data-en="Grow" data-fr="Faire grandir" data-de="Wachsen">Grow</b>
-          <span data-en="Training, handover and optional managed support to keep you moving."
-                data-fr="Formation, transfert et support managé en option pour avancer sereinement."
-                data-de="Training, Übergabe und optionales Managed Support, damit es vorangeht.">
-            Training, handover and optional managed support to keep you moving.
-          </span>
+    <div class="svc-item">
+      <div class="svc-top">
+        <div class="svc-n">03</div>
+        <div>
+          <div class="svc-head">
+            <h2 data-en="Cloud, Storage &amp; Email" data-fr="Cloud, stockage &amp; email" data-de="Cloud, Speicher &amp; E-Mail">Cloud, Storage &amp; Email</h2>
+            <span class="ico">☁️</span>
+          </div>
+          <p class="svc-desc" data-en="We help you purchase, set up, and manage the right cloud and email tools so your data is safe, accessible, and well organized at all times." data-fr="Nous vous aidons à acheter, configurer et gérer les bons outils cloud et email pour que vos données soient sécurisées et bien organisées." data-de="Wir helfen Ihnen, die richtigen Cloud- und E-Mail-Tools zu kaufen, einzurichten und zu verwalten.">We help you purchase, set up, and manage the right cloud and email tools so your data is safe, accessible, and well organized at all times.</p>
         </div>
       </div>
-    </div>
-  </section>
-
-  <!-- CTA BAND -->
-  <section class="join reveal">
-    <div class="container cta-band">
-      <p
-        data-en="Ready to modernize your IT? Tell us what you need and we’ll propose the fastest path."
-        data-fr="Prêt à moderniser votre IT ? Dites-nous vos besoins, nous proposerons la voie la plus rapide."
-        data-de="Bereit, Ihre IT zu modernisieren? Sagen Sie uns, was Sie brauchen wir schlagen den schnellsten Weg vor.">
-        Ready to modernize your IT? Tell us what you need and we’ll propose the fastest path.
-      </p>
-      <div class="hero-ctas">
-        <a href="../contact.html" class="btn btn-primary"
-           data-en="Request a proposal"
-           data-fr="Demander une proposition"
-           data-de="Vorschlag anfordern">Request a proposal</a>
-        <a href="../contact.html#form" class="btn btn-ghost"
-           data-en="Contact our team"
-           data-fr="Contacter notre équipe"
-           data-de="Team kontaktieren">Contact our team</a>
+      <div class="cards-grid">
+        <div class="svc-card"><strong data-en="Cloud Storage Procurement" data-fr="Achat d'espaces cloud" data-de="Cloud-Speicher-Beschaffung">Cloud Storage Procurement</strong><p data-en="Google Drive, Microsoft OneDrive, Apple iCloud and others sized for your organization's needs." data-fr="Google Drive, OneDrive, Apple iCloud et autres, adaptés aux besoins de votre organisation." data-de="Google Drive, OneDrive, Apple iCloud u. a., passend für Ihre Organisation.">Google Drive, Microsoft OneDrive, Apple iCloud and others sized for your organization's needs.</p></div>
+        <div class="svc-card"><strong data-en="Cloud Migration &amp; Architecture" data-fr="Migration &amp; architecture cloud" data-de="Cloud-Migration &amp; Architektur">Cloud Migration &amp; Architecture</strong><p data-en="Azure, AWS, or Google Cloud: we design, migrate, and optimize with cost and performance in mind." data-fr="Azure, AWS ou Google Cloud: conception, migration et optimisation avec maîtrise des coûts." data-de="Azure, AWS oder Google Cloud: Planung, Migration und Optimierung.">Azure, AWS, or Google Cloud: we design, migrate, and optimize with cost and performance in mind.</p></div>
+        <div class="svc-card"><strong data-en="Professional Email Setup" data-fr="Configuration email professionnelle" data-de="Professionelle E-Mail-Einrichtung">Professional Email Setup</strong><p data-en="Microsoft 365, Google Workspace, custom domain email with spam filters, anti-phishing, and encryption." data-fr="Microsoft 365, Google Workspace, email sur domaine personnalisé, avec filtres anti-spam et chiffrement." data-de="Microsoft 365, Google Workspace und benutzerdefinierte E-Mails mit Sicherheitsfiltern.">Microsoft 365, Google Workspace, custom domain email with spam filters, anti-phishing, and encryption.</p></div>
+        <div class="svc-card"><strong data-en="Backup &amp; Data Security" data-fr="Sauvegarde &amp; sécurité des données" data-de="Backup &amp; Datensicherheit">Backup &amp; Data Security</strong><p data-en="Automated backup schedules, encrypted storage, retention policies, and regular recovery testing." data-fr="Sauvegardes automatisées, stockage chiffré, politiques de rétention et tests de récupération." data-de="Automatisierte Backups, verschlüsselter Speicher und Recovery-Tests.">Automated backup schedules, encrypted storage, retention policies, and regular recovery testing.</p></div>
       </div>
     </div>
-  </section>
-  <!-- FAQs -->
-  <section class="page-section reveal">
-    <div class="container faqs">
-      <h2 data-en="IT Consultancy    FAQs" data-fr="Conseil IT    FAQs" data-de="IT-Beratung    FAQs">IT Consultancy    FAQs</h2>
-      <details>
-        <summary data-en="How do you price projects?"
-                 data-fr="Comment tarifez-vous les projets ?"
-                 data-de="Wie kalkuliert ihr Projekte?">
-          How do you price projects?
-        </summary>
-        <p class="subtle"
-           data-en="Most work is fixed-scope/fixed-fee based on an initial discovery. We also offer day-rates and monthly retainers for ongoing support."
-           data-fr="La plupart des missions sont au forfait (périmètre défini) après une découverte initiale. Nous proposons aussi des journées et des abonnements mensuels."
-           data-de="Meist arbeiten wir mit Festpreis/Festumfang nach einer Discovery. Für laufende Hilfe bieten wir Tagessätze und monatliche Retainer.">
-           Most work is fixed-scope/fixed-fee based on an initial discovery. We also offer day-rates and monthly retainers for ongoing support.
-        </p>
-      </details>
-      <details>
-        <summary data-en="Can you work on-site outside Bukavu?"
-                 data-fr="Pouvez-vous intervenir sur site hors de Bukavu ?"
-                 data-de="Arbeitet ihr auch vor Ort außerhalb von Bukavu?">
-          Can you work on-site outside Bukavu?
-        </summary>
-        <p class="subtle"
-           data-en="Yes. We combine remote delivery with on-site visits when needed. Travel is planned transparently in the proposal."
-           data-fr="Oui. Nous combinons le travail à distance avec des visites sur site selon besoin. Les déplacements sont planifiés de façon transparente dans la proposition."
-           data-de="Ja. Remote-Leistung kombiniert mit Vor-Ort-Besuchen bei Bedarf. Reisen werden transparent im Angebot geplant.">
-           Yes. We combine remote delivery with on-site visits when needed. Travel is planned transparently in the proposal.
-        </p>
-      </details>
 
-      <details>
-        <summary data-en="What if our internet is unreliable?"
-                 data-fr="Et si notre connexion est instable ?"
-                 data-de="Was, wenn unser Internet unzuverlässig ist?">
-          What if our internet is unreliable?
-        </summary>
-        <p class="subtle"
-           data-en="We design with constraints in mind: offline-first options, bandwidth-aware tools, caching and multi-link failover."
-           data-fr="Nous concevons avec vos contraintes : options « offline-first », outils sobres en bande passante, cache et bascule multi-liens."
-           data-de="Wir planen mit Ihren Randbedingungen: Offline-First-Optionen, bandbreitenarme Tools, Caching und Multi-Link-Failover.">
-           We design with constraints in mind: offline-first options, bandwidth-aware tools, caching and multi-link failover.
-        </p>
-      </details>
-
-      <details>
-        <summary data-en="How do you handle security?"
-                 data-fr="Comment gérez-vous la sécurité ?"
-                 data-de="Wie geht ihr mit Sicherheit um?">
-          How do you handle security?
-        </summary>
-        <p class="subtle"
-           data-en="Security is baked into every step: identity & access, email security, device hardening, backups and clear incident playbooks."
-           data-fr="La sécurité est intégrée à chaque étape : identités & accès, sécurité mail, durcissement des postes, sauvegardes et procédures d’incident."
-           data-de="Security ist in jeder Phase enthalten: Identitäten & Zugriffe, Mail-Security, Härtung, Backups und klare Incident-Playbooks.">
-           Security is baked into every step: identity & access, email security, device hardening, backups and clear incident playbooks.
-        </p>
-      </details>
-
-      <details>
-        <summary data-en="Do you supply hardware and licenses?"
-                 data-fr="Fournissez-vous matériel et licences ?"
-                 data-de="Liefern Sie Hardware und Lizenzen?">
-          Do you supply hardware and licenses?
-        </summary>
-        <p class="subtle"
-           data-en="Yes  through trusted partners. We help you select the right devices and procure Microsoft, Windows and security licenses."
-           data-fr="Oui    via des partenaires de confiance. Nous aidons à choisir le matériel adéquat et à obtenir les licences Microsoft, Windows et sécurité."
-           data-de="Ja    über vertrauenswürdige Partner. Wir helfen bei Auswahl und Beschaffung von Geräten sowie Microsoft-, Windows- und Security-Lizenzen.">
-           Yes  through trusted partners. We help you select the right devices and procure Microsoft, Windows and security licenses.
-        </p>
-      </details>
-
-      <details>
-        <summary data-en="Can you use AI safely in our org?"
-                 data-fr="Pouvez-vous utiliser l’IA en sécurité dans notre organisation ?"
-                 data-de="Könnt ihr KI sicher in unserer Organisation einsetzen?">
-          Can you use AI safely in our org?
-        </summary>
-        <p class="subtle"
-           data-en="We start small  private document search, internal chat/FAQ and workflow automation  while keeping data private and access controlled."
-           data-fr="Nous commençons simplement    recherche documentaire privée, chat/FAQ interne et automatisations    tout en protégeant les données et les accès."
-           data-de="Wir starten klein    private Dokumentsuche, internes Chat/FAQ und Automatisierungen    mit Datenschutz und Zugriffskontrolle.">
-           We start small  private document search, internal chat/FAQ and workflow automation  while keeping data private and access controlled.
-        </p>
-      </details>
+    <div class="svc-item">
+      <div class="svc-top">
+        <div class="svc-n">04</div>
+        <div>
+          <div class="svc-head">
+            <h2 data-en="Online Payments &amp; E-Commerce" data-fr="Paiements en ligne &amp; E-Commerce" data-de="Online-Zahlungen &amp; E-Commerce">Online Payments &amp; E-Commerce</h2>
+            <span class="ico">💳</span>
+          </div>
+          <p class="svc-desc" data-en="We integrate secure payment solutions into your website, platform, or mobile app supporting both local mobile money and international card gateways." data-fr="Nous intégrons des solutions de paiement sécurisées dans votre site ou application, prenant en charge le mobile money et les passerelles internationales." data-de="Wir integrieren sichere Zahlungslösungen in Ihre Website oder App, für Mobile Money und internationale Gateways.">We integrate secure payment solutions into your website, platform, or mobile app supporting both local mobile money and international card gateways.</p>
+        </div>
+      </div>
+      <div class="cards-grid">
+        <div class="svc-card"><strong data-en="Mobile Money Integration" data-fr="Intégration mobile money" data-de="Mobile Money Integration">Mobile Money Integration</strong><p data-en="M-Pesa, Airtel Money, and other regional mobile payment gateways integrated into your platform." data-fr="M-Pesa, Airtel Money et autres passerelles mobiles intégrées à votre plateforme." data-de="M-Pesa, Airtel Money und weitere Mobile-Payment-Gateways.">M-Pesa, Airtel Money, and other regional mobile payment gateways integrated into your platform.</p></div>
+        <div class="svc-card"><strong data-en="Card &amp; International Gateways" data-fr="Cartes &amp; passerelles internationales" data-de="Karten &amp; internationale Gateways">Card &amp; International Gateways</strong><p data-en="Visa, Mastercard, PayPal, and international transfer integrations to accept payments from anywhere." data-fr="Visa, Mastercard, PayPal et transferts internationaux pour accepter des paiements du monde entier." data-de="Visa, Mastercard, PayPal und internationale Transfers.">Visa, Mastercard, PayPal, and international transfer integrations to accept payments from anywhere.</p></div>
+        <div class="svc-card"><strong data-en="Online Stores &amp; Invoicing" data-fr="Boutiques en ligne &amp; facturation" data-de="Online-Shops &amp; Rechnungen">Online Stores &amp; Invoicing</strong><p data-en="Full online store setup, product catalogs, invoicing systems, and subscription billing." data-fr="Configuration de boutiques en ligne, catalogues, facturation et abonnements." data-de="Online-Shop, Produktkataloge, Rechnungssysteme und Abonnements.">Full online store setup, product catalogs, invoicing systems, and subscription billing.</p></div>
+        <div class="svc-card"><strong data-en="Payment Security" data-fr="Sécurité des paiements" data-de="Zahlungssicherheit">Payment Security</strong><p data-en="SSL certificates, PCI-DSS best practices, fraud detection, and secure checkout flows." data-fr="Certificats SSL, meilleures pratiques PCI-DSS, détection des fraudes et paiements sécurisés." data-de="SSL-Zertifikate, PCI-DSS-Best-Practices, Betrugserkennung und sichere Checkouts.">SSL certificates, PCI-DSS best practices, fraud detection, and secure checkout flows.</p></div>
+      </div>
     </div>
-  </section>
 
-  <!-- Footer injected by base.js -->
-  <div id="site-footer"></div>
+    <div class="svc-item">
+      <div class="svc-top">
+        <div class="svc-n">05</div>
+        <div>
+          <div class="svc-head">
+            <h2 data-en="Online Radio Broadcasting" data-fr="Diffusion radio en ligne" data-de="Online-Radioausstrahlung">Online Radio Broadcasting</h2>
+            <span class="ico">📻</span>
+          </div>
+          <p class="svc-desc" data-en="Take your radio station to the world. We set up everything so your listeners can tune in live from your website, from any device, anywhere on the planet." data-fr="Faites rayonner votre radio dans le monde entier. Nous configurons tout pour que vos auditeurs écoutent en direct depuis votre site, partout dans le monde." data-de="Bringen Sie Ihr Radio in die Welt. Wir richten alles so ein, dass Zuhörer live von Ihrer Website zuhören können.">Take your radio station to the world. We set up everything so your listeners can tune in live from your website, from any device, anywhere on the planet.</p>
+        </div>
+      </div>
+      <div class="radio-feature">
+        <div class="radio-head">
+          <div class="wave"><span></span><span></span><span></span><span></span><span></span></div>
+          <h3 data-en="Live streaming and global reach" data-fr="Streaming en direct et portée mondiale" data-de="Live-Streaming und globale Reichweite">Live streaming and global reach</h3>
+        </div>
+        <p data-en="We integrate a radio player directly into your website so listeners worldwide can tune in with a single click no app required." data-fr="Nous intégrons un lecteur radio directement sur votre site pour que les auditeurs du monde entier écoutent en un seul clic, sans application." data-de="Wir integrieren einen Radio-Player in Ihre Website, damit Zuhörer weltweit mit einem Klick zuhören können.">We integrate a radio player directly into your website so listeners worldwide can tune in with a single click no app required.</p>
+        <div class="radio-pts">
+          <div class="radio-pt" data-en="Streaming server: Icecast, Shoutcast" data-fr="Serveur streaming: Icecast, Shoutcast" data-de="Streaming-Server: Icecast, Shoutcast">Streaming server: Icecast, Shoutcast</div>
+          <div class="radio-pt" data-en="Embedded web player on your website" data-fr="Lecteur web intégré sur votre site" data-de="Eingebetteter Web-Player auf Ihrer Website">Embedded web player on your website</div>
+          <div class="radio-pt" data-en="CDN optimization for global broadcasting" data-fr="Optimisation CDN pour diffusion mondiale" data-de="CDN-Optimierung für globales Senden">CDN optimization for global broadcasting</div>
+          <div class="radio-pt" data-en="Directory listing: TuneIn, Radio Garden, Online Radio Box" data-fr="Annuaires: TuneIn, Radio Garden, Online Radio Box" data-de="Einreichung: TuneIn, Radio Garden, Online Radio Box">Directory listing: TuneIn, Radio Garden, Online Radio Box</div>
+          <div class="radio-pt" data-en="Team training on broadcast software" data-fr="Formation des équipes aux logiciels de diffusion" data-de="Team-Schulung in Broadcast-Software">Team training on broadcast software</div>
+          <div class="radio-pt" data-en="Monetization: ads, donations, sponsorships" data-fr="Monétisation: publicités, dons, sponsors" data-de="Monetarisierung: Werbung, Spenden, Sponsoren">Monetization: ads, donations, sponsorships</div>
+        </div>
+      </div>
+      <div class="cards-grid">
+        <div class="svc-card"><strong data-en="Studio &amp; Equipment Guidance" data-fr="Conseils studio &amp; équipement" data-de="Studio- &amp; Ausrüstungsberatung">Studio &amp; Equipment Guidance</strong><p data-en="Microphones, mixers, encoders, and software recommendations for a professional setup on any budget." data-fr="Recommandations de microphones, consoles, encodeurs et logiciels pour un setup professionnel." data-de="Empfehlungen zu Mikrofonen, Mischpulten, Encodern und Software.">Microphones, mixers, encoders, and software recommendations for a professional setup on any budget.</p></div>
+        <div class="svc-card"><strong data-en="Listener Analytics" data-fr="Analytiques d'audience" data-de="Zuhörer-Analysen">Listener Analytics</strong><p data-en="Track audience size, location, and engagement in real time to grow your station." data-fr="Suivez votre audience, sa localisation et son engagement en temps réel pour développer votre station." data-de="Verfolgen Sie Zuhörerzahl, Standorte und Engagement in Echtzeit.">Track audience size, location, and engagement in real time to grow your station.</p></div>
+      </div>
+    </div>
 
-  <!-- Scripts -->
-  <script src="../route/base.js" defer></script>
-  <script src="../route/lang.js" defer></script>
-  <script src="../route/animations.js" defer></script>
+  </div>
+</section>
+
+<!-- TECH STRIP -->
+<div class="tech-strip reveal">
+  <div class="frame">
+    <div class="tech-label" data-en="Platforms &amp; technologies we work with" data-fr="Plateformes &amp; technologies avec lesquelles nous travaillons" data-de="Plattformen &amp; Technologien, mit denen wir arbeiten">Platforms &amp; technologies we work with</div>
+    <div class="chips">
+      <span class="chip">Microsoft 365</span><span class="chip">Azure</span><span class="chip">AWS</span>
+      <span class="chip">Google Workspace</span><span class="chip">Apple iCloud</span><span class="chip">OneDrive</span>
+      <span class="chip">Starlink</span><span class="chip">Cisco</span><span class="chip">Linux / Ubuntu</span>
+      <span class="chip">Power BI</span><span class="chip">Icecast</span><span class="chip">Shoutcast</span>
+      <span class="chip">TuneIn</span><span class="chip">Radio Garden</span>
+    </div>
+  </div>
+</div>
+
+<!-- PROCESS -->
+<section class="process-sec reveal">
+  <div class="frame">
+    <div class="s-label" data-en="Our approach" data-fr="Notre approche" data-de="Unser Ansatz">Our approach</div>
+    <div class="s-title" data-en="How we work" data-fr="Notre méthode" data-de="So arbeiten wir">How we work</div>
+    <div class="steps">
+      <div class="step"><div class="step-n">01</div><h4 data-en="Discover" data-fr="Découvrir" data-de="Entdecken">Discover</h4><p data-en="We listen, audit, and understand your goals, gaps, and constraints." data-fr="Nous écoutons, auditons et comprenons vos objectifs, lacunes et contraintes." data-de="Wir hören zu und verstehen Ihre Ziele, Lücken und Einschränkungen.">We listen, audit, and understand your goals, gaps, and constraints.</p></div>
+      <div class="step"><div class="step-n">02</div><h4 data-en="Design" data-fr="Concevoir" data-de="Gestalten">Design</h4><p data-en="We build a clear, costed, actionable plan with defined milestones." data-fr="Nous construisons un plan clair, chiffré et actionnable avec des jalons définis." data-de="Wir erstellen einen klaren, kostenbasierten und umsetzbaren Plan.">We build a clear, costed, actionable plan with defined milestones.</p></div>
+      <div class="step"><div class="step-n">03</div><h4 data-en="Deploy" data-fr="Déployer" data-de="Bereitstellen">Deploy</h4><p data-en="We implement and configure without disrupting your operations." data-fr="Nous implémentons et configurons sans perturber vos opérations." data-de="Wir implementieren ohne Unterbrechung Ihres Betriebs.">We implement and configure without disrupting your operations.</p></div>
+      <div class="step"><div class="step-n">04</div><h4 data-en="Grow" data-fr="Faire grandir" data-de="Wachsen">Grow</h4><p data-en="Training, handover, documentation, and optional ongoing managed support." data-fr="Formation, transfert, documentation et support managé en option." data-de="Training, Übergabe, Dokumentation und optionaler Managed Support.">Training, handover, documentation, and optional ongoing managed support.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq-sec reveal">
+  <div class="frame">
+    <div class="s-label" data-en="FAQ" data-fr="FAQ" data-de="FAQ">FAQ</div>
+    <div class="s-title" data-en="Frequently asked questions" data-fr="Questions fréquentes" data-de="Häufig gestellte Fragen">Frequently asked questions</div>
+    <div class="faq-list">
+      <details class="faq-item"><summary><span data-en="How do you price your services?" data-fr="Comment tarifez-vous vos services ?" data-de="Wie kalkuliert ihr eure Leistungen?">How do you price your services?</span><div class="faq-tog"><span class="p">+</span><span class="m">−</span></div></summary><p class="ans" data-en="Most projects are fixed-scope and fixed-fee after an initial discovery session. We also offer day-rates and monthly retainers for ongoing support." data-fr="La plupart des projets sont au forfait après une session de découverte. Nous proposons aussi des journées et des abonnements mensuels." data-de="Die meisten Projekte haben einen Festpreis nach einer Discovery-Session. Wir bieten auch Tagessätze und Retainer an.">Most projects are fixed-scope and fixed-fee after an initial discovery session. We also offer day-rates and monthly retainers for ongoing support.</p></details>
+      <details class="faq-item"><summary><span data-en="Can you work on-site outside of Bukavu?" data-fr="Pouvez-vous intervenir hors de Bukavu ?" data-de="Arbeitet ihr auch vor Ort außerhalb von Bukavu?">Can you work on-site outside of Bukavu?</span><div class="faq-tog"><span class="p">+</span><span class="m">−</span></div></summary><p class="ans" data-en="Yes. We combine remote delivery with on-site visits when needed. Travel is planned transparently in every proposal." data-fr="Oui. Nous combinons le travail à distance avec des visites sur site si nécessaire." data-de="Ja. Remote-Leistung kombiniert mit Vor-Ort-Besuchen, transparent geplant.">Yes. We combine remote delivery with on-site visits when needed. Travel is planned transparently in every proposal.</p></details>
+      <details class="faq-item"><summary><span data-en="What if our internet is very slow or unreliable?" data-fr="Et si notre connexion est instable ?" data-de="Was, wenn unser Internet unzuverlässig ist?">What if our internet is very slow or unreliable?</span><div class="faq-tog"><span class="p">+</span><span class="m">−</span></div></summary><p class="ans" data-en="We design solutions with your constraints in mind including offline-first options, bandwidth-aware tools, local caching, and multi-link failover." data-fr="Nous concevons des solutions adaptées à vos contraintes: offline-first, outils légers, cache local, bascule multi-liens." data-de="Wir planen mit Ihren Einschränkungen: Offline-First, bandbreitenarme Tools, lokales Caching, Multi-Link-Failover.">We design solutions with your constraints in mind including offline-first options, bandwidth-aware tools, local caching, and multi-link failover.</p></details>
+      <details class="faq-item"><summary><span data-en="Can you help us broadcast our radio online?" data-fr="Pouvez-vous nous aider à diffuser notre radio en ligne ?" data-de="Können Sie uns helfen, unser Radio online auszustrahlen?">Can you help us broadcast our radio online?</span><div class="faq-tog"><span class="p">+</span><span class="m">−</span></div></summary><p class="ans" data-en="Absolutely. We handle the full setup: streaming server, embedded player on your website, submission to global directories like TuneIn and Radio Garden, and training for your team." data-fr="Absolument. Nous gérons tout: serveur streaming, lecteur intégré, soumission aux annuaires mondiaux comme TuneIn et Radio Garden, et formation de votre équipe." data-de="Absolut. Wir kümmern uns um alles: Streaming-Server, eingebetteter Player, Verzeichnis-Einreichung und Team-Schulung.">Absolutely. We handle the full setup: streaming server, embedded player on your website, submission to global directories like TuneIn and Radio Garden, and training for your team.</p></details>
+      <details class="faq-item"><summary><span data-en="Do you supply hardware and software licenses?" data-fr="Fournissez-vous matériel et licences ?" data-de="Liefern Sie Hardware und Lizenzen?">Do you supply hardware and software licenses?</span><div class="faq-tog"><span class="p">+</span><span class="m">−</span></div></summary><p class="ans" data-en="Yes, through trusted partners. We help you select, procure, and configure devices, servers, and software licenses including Microsoft 365, Windows, and security tools." data-fr="Oui, via des partenaires de confiance. Nous vous aidons à sélectionner, acquérir et configurer appareils et licences." data-de="Ja, über vertrauenswürdige Partner. Wir helfen bei Auswahl und Beschaffung von Geräten und Lizenzen.">Yes, through trusted partners. We help you select, procure, and configure devices, servers, and software licenses including Microsoft 365, Windows, and security tools.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec reveal">
+  <div class="frame">
+    <div class="cta-band">
+      <div>
+        <h2 data-en="Ready to get started?" data-fr="Prêt à commencer ?" data-de="Bereit loszulegen?">Ready to get started?</h2>
+        <p data-en="Tell us what you need. Our team will get back to you quickly with a practical proposal suited to your organization and budget." data-fr="Dites-nous ce dont vous avez besoin. Notre équipe vous répondra rapidement avec une proposition pratique adaptée à votre organisation." data-de="Sagen Sie uns, was Sie brauchen. Unser Team meldet sich schnell mit einem praktischen Vorschlag.">Tell us what you need. Our team will get back to you quickly with a practical proposal suited to your organization and budget.</p>
+      </div>
+      <div class="cta-btns">
+        <a href="../contact.html" class="btn btn-w" data-en="Book a free consultation" data-fr="Consultation gratuite" data-de="Kostenlose Beratung">Book a free consultation</a>
+        <a href="services.html" class="btn btn-wg" data-en="All services" data-fr="Tous les services" data-de="Alle Leistungen">All services</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="frame foot">
+    <a href="../index.html" class="foot-logo"><img src="../assets/fevicon.png" alt="Tuunganes"/><span>Tuunganes</span></a>
+    <p>&copy; 2025 Tuunganes &nbsp;·&nbsp; Bukavu &amp; Goma, DRC</p>
+    <div style="display:flex;gap:1rem">
+      <a href="../about.html" style="font-size:.82rem;color:var(--muted)" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+      <a href="services.html" style="font-size:.82rem;color:var(--muted)" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+      <a href="../contact.html" style="font-size:.82rem;color:var(--muted)" data-en="Contact" data-fr="Contact" data-de="Kontakt">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const s=localStorage.getItem('tuunganes-theme');
+  const dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  document.documentElement.setAttribute('data-theme',s||(dark?'dark':'light'));
+})();
+document.addEventListener('DOMContentLoaded',function(){
+  const root=document.documentElement;
+  const themeBtn=document.getElementById('themeBtn');
+  function syncIcon(){themeBtn.textContent=root.getAttribute('data-theme')==='dark'?'☀️':'🌙'}
+  syncIcon();
+  themeBtn.addEventListener('click',function(){
+    const next=root.getAttribute('data-theme')==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);localStorage.setItem('tuunganes-theme',next);syncIcon();
+  });
+  const hamBtn=document.getElementById('hamBtn');
+  const drawer=document.getElementById('drawer');
+  const drawerClose=document.getElementById('drawerClose');
+  hamBtn.addEventListener('click',()=>{const o=drawer.classList.toggle('open');hamBtn.setAttribute('aria-expanded',String(o))});
+  drawerClose.addEventListener('click',()=>{drawer.classList.remove('open');hamBtn.setAttribute('aria-expanded','false')});
+  document.addEventListener('click',e=>{if(!drawer.contains(e.target)&&!hamBtn.contains(e.target)){drawer.classList.remove('open');hamBtn.setAttribute('aria-expanded','false')}});
+  function applyLang(lang){
+    localStorage.setItem('siteLang',lang);
+    document.querySelectorAll('.lang-pills button').forEach(b=>b.classList.toggle('on',b.dataset.lang===lang));
+    document.querySelectorAll('[data-'+lang+']').forEach(el=>{
+      const val=el.getAttribute('data-'+lang);if(!val)return;
+      if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){el.placeholder=val;}
+      else if(el.tagName==='H1'||el.tagName==='H2'){el.innerHTML=val;}
+      else if(!el.querySelector('[data-'+lang+']:not(script)')){el.textContent=val;}
+    });
+  }
+  const saved=localStorage.getItem('siteLang')||'en';
+  document.querySelectorAll('.lang-pills [data-lang]').forEach(btn=>{
+    btn.addEventListener('click',()=>applyLang(btn.dataset.lang));
+    if(btn.dataset.lang===saved)btn.classList.add('on');
+  });
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+  },{threshold:0.07});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+});
+</script>
+<script src="../route/base.js" defer></script>
+<script src="../route/lang.js" defer></script>
+<script src="../route/animations.js" defer></script>
 </body>
 </html>

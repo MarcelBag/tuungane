@@ -1,335 +1,761 @@
-<!--services/about.html-->
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="light dark" />
-  <title
-    data-en="About Tuunganes"
-    data-fr="À propos de Tuunganes"
-    data-de="Über Tuunganes">
-    About Tuunganes
-  </title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="color-scheme" content="light dark"/>
+<title data-en="About Tuunganes" data-fr="À propos de Tuunganes" data-de="Über Tuunganes">About Tuunganes</title>
+<link rel="icon" href="assets/fevicon.png" type="image/png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/styles.css"/>
+<style>
+/* ── TOKENS ─────────────────────────────────────── */
+:root{
+  --blue:#2196f3;--blue-d:#1565c0;
+  --blue-pale:rgba(33,150,243,.10);--blue-ring:rgba(33,150,243,.28);
+  --ease:cubic-bezier(.4,0,.2,1);
+  --display:'Playfair Display',Georgia,serif;
+  --body:'DM Sans',system-ui,sans-serif;
+}
+[data-theme="light"]{
+  --bg:#f5f8ff;--bg2:#e8f2fe;--surf:#fff;
+  --tx:#0a1628;--tx2:#253650;--muted:#5e7a96;
+  --bdr:#c5daf2;
+  --sh:0 1px 4px rgba(0,0,0,.05),0 8px 28px rgba(0,0,0,.07);
+  --sh-lg:0 4px 40px rgba(0,0,0,.11);
+}
+[data-theme="dark"]{
+  --bg:#050d1a;--bg2:#0b1725;--surf:#0f1c2e;
+  --tx:#ecf3ff;--tx2:#a5c2de;--muted:#5a7898;
+  --bdr:rgba(255,255,255,.07);
+  --sh:0 2px 10px rgba(0,0,0,.45),0 12px 40px rgba(0,0,0,.3);
+  --sh-lg:0 8px 48px rgba(0,0,0,.4);
+}
 
-  <link rel="icon" href="assets/fevicon.png" type="image/png" />
-  <link rel="stylesheet" href="css/styles.css" />
+/* ── RESET ───────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:var(--body);background:var(--bg);color:var(--tx);
+  font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;
+  overflow-x:hidden;transition:background .28s var(--ease),color .28s var(--ease)
+}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font-family:inherit}
+ul{list-style:none;padding:0;margin:0}
 
-  <style>
-    /* layout helpers */
-    .section{padding-block:clamp(2.25rem,5vw,3.5rem)}
-    .center{max-width:960px;margin-inline:auto}
-    .grid-2{display:grid;grid-template-columns:1.05fr .95fr;gap:1.25rem;align-items:center}
-    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
-    @media (max-width:960px){.grid-2{grid-template-columns:1fr;gap:1rem}}
+/* ── LAYOUT ─────────────────────────────────────── */
+.frame{width:min(1200px,94vw);margin:0 auto}
 
-    /* hero */
-    .hero--compact{padding-block:clamp(3rem,6vw,5rem)}
-    .eyebrow{letter-spacing:.06em;text-transform:uppercase;color:var(--text-muted);font-weight:800}
-    .lede{font-size:clamp(1rem,1.8vw,1.05rem);color:var(--text-2);max-width:66ch}
+/* ── NAV ─────────────────────────────────────────── */
+.nav{
+  position:fixed;top:1rem;left:50%;transform:translateX(-50%);
+  width:min(1100px,90vw);
+  background:color-mix(in srgb,var(--surf) 82%,transparent);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid var(--bdr);border-radius:999px;
+  padding:.5rem .5rem .5rem 1.4rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  z-index:1000;box-shadow:var(--sh);
+}
+.nav-logo{display:flex;align-items:center;gap:.55rem;font-size:.95rem;font-weight:700;color:var(--tx);flex-shrink:0;font-family:var(--body)}
+.nav-logo img{width:30px;height:30px;border-radius:8px}
+.nav-links{display:flex;align-items:center;gap:.15rem;flex:1;justify-content:center}
+.nav-links a{padding:.42rem .85rem;border-radius:999px;font-size:.82rem;font-weight:600;color:var(--tx2);transition:color .15s,background .15s}
+.nav-links a:hover,.nav-links a.active{color:var(--blue);background:var(--blue-pale)}
+.nav-end{display:flex;align-items:center;gap:.45rem;flex-shrink:0}
+.lang-pills{display:flex;gap:.18rem;background:var(--bg2);border:1px solid var(--bdr);border-radius:999px;padding:.22rem .28rem}
+.lang-pills button{border:none;background:transparent;border-radius:999px;padding:.22rem .55rem;font-size:.74rem;font-weight:700;cursor:pointer;color:var(--muted);transition:background .15s,color .15s}
+.lang-pills button.on{background:var(--blue);color:#fff}
+.theme-pill{width:36px;height:36px;border-radius:999px;border:1px solid var(--bdr);background:var(--bg2);display:grid;place-items:center;cursor:pointer;font-size:.95rem;transition:border-color .15s,transform .2s}
+.theme-pill:hover{border-color:var(--blue);transform:rotate(20deg)}
+.nav-cta{background:var(--blue);color:#fff;border:none;padding:.48rem 1.15rem;border-radius:999px;font-size:.82rem;font-weight:600;cursor:pointer;transition:background .15s,transform .15s;white-space:nowrap}
+.nav-cta:hover{background:var(--blue-d);transform:translateY(-1px)}
+.ham{display:none;flex-direction:column;gap:4px;cursor:pointer;background:var(--bg2);border:1px solid var(--bdr);border-radius:999px;padding:.55rem .75rem}
+.ham span{display:block;width:18px;height:2px;background:var(--tx);border-radius:2px}
+.nav-drawer{display:none;position:fixed;inset:0;background:var(--surf);z-index:999;flex-direction:column;padding:2rem 1.75rem;gap:1.25rem;border-right:1px solid var(--bdr)}
+.nav-drawer.open{display:flex}
+.nav-drawer a{font-size:1.1rem;font-weight:600;color:var(--tx2);padding:.5rem 0;border-bottom:1px solid var(--bdr)}
+@media(max-width:720px){.ham{display:flex}.nav-links,.nav-end{display:none}}
 
-    /* content emphasis */
-    .measure{max-width:70ch}
-    .accent-left{position:relative;padding-left:1rem}
-    .accent-left::before{content:"";position:absolute;inset-inline-start:0;inset-block:4px auto;width:4px;height:1.15em;border-radius:4px;background:var(--grad-primary)}
-    .muted{color:var(--text-muted)}
+/* ── BUTTONS ─────────────────────────────────────── */
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.72rem 1.65rem;border-radius:999px;border:none;cursor:pointer;font-size:.88rem;font-weight:600;transition:all .2s var(--ease);white-space:nowrap;font-family:var(--body);letter-spacing:.01em}
+.btn-solid{background:var(--blue);color:#fff;box-shadow:0 4px 16px rgba(33,150,243,.3)}
+.btn-solid:hover{background:var(--blue-d);transform:translateY(-2px);box-shadow:0 8px 24px rgba(33,150,243,.4)}
+.btn-ghost{background:transparent;color:var(--tx);border:1.5px solid var(--bdr)}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-1px)}
+.btn-w{background:#fff;color:var(--blue);font-weight:700}
+.btn-w:hover{background:#e3f2fd;transform:translateY(-1px)}
+.btn-wg{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}
+.btn-wg:hover{background:rgba(255,255,255,.1);border-color:#fff}
 
-    /* media/card polish */
-    .imgframe{border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
-    .imgframe img{display:block;width:100%;height:auto;object-fit:cover}
-    .card.pad{padding:1rem 1.1rem}
-    .list{margin:.5rem 0 0 1.1rem}
-    .list li{margin:.35rem 0}
+/* ── HERO ────────────────────────────────────────── */
+.hero{
+  min-height:100svh;display:grid;place-items:center;
+  padding:8rem 0 5rem;position:relative;overflow:hidden;
+  background:var(--surf);border-bottom:1px solid var(--bdr);
+}
+/* big ambient circle */
+.hero::before{
+  content:'';position:absolute;
+  width:700px;height:700px;border-radius:50%;
+  right:-120px;top:-140px;
+  background:radial-gradient(circle,rgba(33,150,243,.10) 0%,transparent 70%);
+  pointer-events:none;
+}
+[data-theme="dark"] .hero::before{background:radial-gradient(circle,rgba(33,150,243,.18) 0%,transparent 70%)}
+/* decorative large "A" watermark */
+.hero-wm{
+  position:absolute;right:-2rem;bottom:-3rem;
+  font-family:var(--display);font-size:38vw;font-weight:900;line-height:.8;
+  color:var(--blue);opacity:.03;pointer-events:none;user-select:none;
+  letter-spacing:-.05em;
+}
+[data-theme="dark"] .hero-wm{opacity:.05}
+.hero-inner{
+  display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:center;
+  position:relative;z-index:1;
+}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr}.hero-right{display:none}}
+.hero-pill{
+  display:inline-flex;align-items:center;gap:.5rem;
+  font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--blue);border:1.5px solid var(--blue-ring);border-radius:999px;
+  padding:.35rem .9rem;margin-bottom:1.5rem;
+}
+.hero-pill::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--blue)}
+.hero h1{
+  font-family:var(--display);font-size:clamp(2.8rem,7vw,5.5rem);
+  font-weight:900;line-height:1.0;letter-spacing:-.02em;color:var(--tx);
+  margin-bottom:1.1rem;
+}
+.hero h1 em{font-style:italic;color:var(--blue)}
+.hero-sub{font-size:1.05rem;color:var(--tx2);max-width:460px;line-height:1.75;margin-bottom:2rem}
+.hero-btns{display:flex;gap:.7rem;flex-wrap:wrap}
 
-    /* timeline */
-    .numbers{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:.75rem}
-    .stat{display:flex;flex-direction:column;gap:.35rem;align-items:flex-start;padding:1rem;border:1px solid var(--border);background:var(--surface);border-radius:14px;box-shadow:var(--shadow)}
-    .stat strong{font-size:1.2rem;color:var(--brand)}
+/* right side stacked photos */
+.hero-right{position:relative;height:500px}
+.himg{position:absolute;border-radius:20px;overflow:hidden;box-shadow:var(--sh-lg);border:1px solid var(--bdr)}
+.himg img{width:100%;height:100%;object-fit:cover;display:block}
+.himg-a{width:62%;top:0;right:0;height:300px}
+.himg-b{width:52%;bottom:0;left:0;height:260px}
+/* overlapping tag */
+.hero-tag-badge{
+  position:absolute;bottom:80px;right:-10px;z-index:2;
+  background:var(--blue);color:#fff;border-radius:14px;
+  padding:.8rem 1.1rem;box-shadow:0 8px 28px rgba(33,150,243,.4);
+}
+.hero-tag-badge strong{display:block;font-size:1.5rem;font-weight:900;line-height:1;font-family:var(--display)}
+.hero-tag-badge span{font-size:.72rem;opacity:.85;font-weight:500}
 
-    /* CTA row */
-    .cta{display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;margin-top:1rem}
-  </style>
+/* ── SECTION HELPERS ─────────────────────────────── */
+.sec{padding:7rem 0}
+.sec-dark{padding:7rem 0;background:var(--surf);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr)}
+.eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:.6rem}
+.display-h{font-family:var(--display);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;line-height:1.1;letter-spacing:-.02em;color:var(--tx);margin-bottom:.85rem}
+.display-h em{font-style:italic;color:var(--blue)}
+.body-text{color:var(--tx2);font-size:.97rem;line-height:1.75}
+
+/* ── WHO WE ARE ──────────────────────────────────── */
+.who-grid{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  border:1px solid var(--bdr);border-radius:24px;overflow:hidden;
+  box-shadow:var(--sh-lg);
+}
+@media(max-width:820px){.who-grid{grid-template-columns:1fr}}
+.who-photo{position:relative;min-height:480px}
+.who-photo img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.who-photo::after{
+  content:'';position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(33,150,243,.3) 0%,transparent 60%);
+}
+/* quote floating on photo */
+.who-quote{
+  position:absolute;bottom:1.5rem;left:1.5rem;right:1.5rem;z-index:2;
+  background:rgba(255,255,255,.12);backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.25);border-radius:14px;
+  padding:1.1rem 1.25rem;color:#fff;font-size:.88rem;line-height:1.6;
+  font-family:var(--display);font-style:italic;font-weight:700;
+}
+.who-quote cite{
+  display:block;margin-top:.5rem;font-size:.72rem;
+  font-family:var(--body);font-style:normal;opacity:.8;font-weight:500
+}
+.who-copy{padding:3.5rem 3rem;background:var(--surf);display:flex;flex-direction:column;justify-content:center}
+@media(max-width:820px){.who-copy{padding:2.25rem 1.75rem}}
+.who-copy p{color:var(--tx2);font-size:.96rem;line-height:1.75;margin-bottom:.85rem}
+.who-copy .btn-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.25rem}
+
+/* ── MISSION / VISION ────────────────────────────── */
+.mv-row{
+  display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;
+}
+@media(max-width:720px){.mv-row{grid-template-columns:1fr}}
+.mv-tile{
+  border-radius:20px;padding:2.25rem 2rem;border:1px solid var(--bdr);
+  box-shadow:var(--sh);position:relative;overflow:hidden;
+  background:var(--bg);
+}
+.mv-tile.blue-tile{
+  background:var(--blue);border-color:var(--blue);color:#fff;
+}
+.mv-tile.blue-tile .mv-label{color:rgba(255,255,255,.65)}
+.mv-tile.blue-tile h3{color:#fff}
+.mv-tile.blue-tile p{color:rgba(255,255,255,.82)}
+.mv-tile::before{
+  content:'';position:absolute;bottom:-30px;right:-30px;
+  width:120px;height:120px;border-radius:50%;
+  background:rgba(255,255,255,.05);pointer-events:none;
+}
+.mv-label{font-size:.68rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--blue);margin-bottom:.6rem;display:block}
+.mv-tile h3{font-family:var(--display);font-size:1.4rem;font-weight:900;color:var(--tx);margin-bottom:.7rem;letter-spacing:-.01em}
+.mv-tile p{font-size:.92rem;color:var(--tx2);line-height:1.7}
+.mv-tile ul{display:flex;flex-direction:column;gap:.55rem}
+.mv-tile ul li{
+  display:flex;align-items:flex-start;gap:.6rem;
+  font-size:.88rem;color:rgba(255,255,255,.85);line-height:1.55;
+}
+.mv-tile ul li::before{
+  content:'';width:16px;height:16px;border-radius:50%;flex-shrink:0;
+  background:rgba(255,255,255,.2);border:1.5px solid rgba(255,255,255,.4);
+  margin-top:.12em;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%23ffffff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size:9px;background-position:center;background-repeat:no-repeat;
+}
+
+/* ── WHAT WE DO (editorial numbered list) ────────── */
+.wwd-list{margin-top:1rem}
+.wwd-item{
+  display:grid;grid-template-columns:72px 1fr auto;
+  gap:0 2rem;align-items:start;
+  padding:2rem 0;border-top:1px solid var(--bdr);
+  transition:background .2s;
+}
+.wwd-item:last-child{border-bottom:1px solid var(--bdr)}
+.wwd-item:hover .wwd-num{color:var(--blue);opacity:1}
+@media(max-width:640px){
+  .wwd-item{grid-template-columns:48px 1fr;gap:0 1rem}
+  .wwd-arrow{display:none}
+}
+.wwd-num{
+  font-family:var(--display);font-size:2.5rem;font-weight:900;
+  color:var(--tx);opacity:.12;line-height:1;transition:color .2s,opacity .2s;
+  letter-spacing:-.04em;padding-top:.1rem;
+}
+.wwd-body{}
+.wwd-body h3{
+  font-family:var(--display);font-size:1.15rem;font-weight:700;
+  color:var(--tx);margin-bottom:.35rem;letter-spacing:-.01em;
+}
+.wwd-body p{font-size:.88rem;color:var(--tx2);line-height:1.6;max-width:540px}
+.wwd-icon-wrap{
+  width:44px;height:44px;border-radius:12px;flex-shrink:0;
+  background:var(--blue-pale);border:1px solid var(--blue-ring);
+  display:grid;place-items:center;font-size:1.1rem;margin-top:.2rem;
+}
+.wwd-arrow{
+  font-size:1.25rem;color:var(--muted);align-self:center;
+  transition:color .2s,transform .2s;
+}
+.wwd-item:hover .wwd-arrow{color:var(--blue);transform:translateX(4px)}
+
+/* ── JOURNEY TIMELINE ────────────────────────────── */
+.journey-wrap{padding:7rem 0;background:var(--surf);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr)}
+
+.journey-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:4rem;flex-wrap:wrap;gap:1rem}
+
+/* horizontal line + dots */
+.timeline-rail{
+  position:relative;padding-top:2rem;
+}
+.rail-line{
+  position:absolute;top:2rem;left:0;right:0;height:2px;
+  background:var(--bdr);
+}
+.rail-progress{
+  position:absolute;top:0;left:0;height:2px;
+  background:var(--blue);border-radius:2px;
+  width:100%;
+  animation:progress-in 1.4s 0.3s var(--ease) both;
+}
+@keyframes progress-in{from{width:0}to{width:100%}}
+
+.timeline-nodes{
+  display:grid;grid-template-columns:repeat(4,1fr);
+  position:relative;z-index:1;
+}
+@media(max-width:640px){
+  .timeline-nodes{grid-template-columns:1fr 1fr;row-gap:3rem}
+  .rail-line,.rail-progress{display:none}
+}
+
+.t-node{padding-top:0;display:flex;flex-direction:column;align-items:flex-start;padding-right:1.5rem}
+.t-dot-wrap{margin-bottom:1.25rem;position:relative}
+.t-dot{
+  width:14px;height:14px;border-radius:50%;
+  background:var(--blue);border:3px solid var(--surf);
+  box-shadow:0 0 0 2px var(--blue);
+  transition:transform .25s var(--ease);
+}
+.t-node:hover .t-dot{transform:scale(1.4)}
+.t-year{
+  font-family:var(--display);font-size:2.6rem;font-weight:900;
+  color:var(--blue);line-height:1;letter-spacing:-.04em;
+  margin-bottom:.5rem;
+}
+.t-title{font-size:.88rem;font-weight:700;color:var(--tx);margin-bottom:.4rem;letter-spacing:-.005em}
+.t-desc{font-size:.82rem;color:var(--muted);line-height:1.55;max-width:220px}
+
+/* ── IMPACT NUMBERS ──────────────────────────────── */
+.impact-strip{
+  background:var(--blue);padding:5rem 0;
+  position:relative;overflow:hidden;
+}
+.impact-strip::before{
+  content:'';position:absolute;
+  width:600px;height:600px;border-radius:50%;
+  top:-200px;left:-100px;
+  background:rgba(255,255,255,.04);pointer-events:none;
+}
+.impact-strip::after{
+  content:'';position:absolute;
+  width:400px;height:400px;border-radius:50%;
+  bottom:-150px;right:-80px;
+  background:rgba(255,255,255,.04);pointer-events:none;
+}
+.impact-inner{
+  display:grid;grid-template-columns:1fr 3fr;gap:4rem;align-items:center;
+  position:relative;z-index:1;
+}
+@media(max-width:820px){.impact-inner{grid-template-columns:1fr}}
+.impact-label{font-family:var(--display);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:#fff;line-height:1.15}
+.impact-label em{display:block;font-style:italic;opacity:.65;font-size:.75em}
+.impact-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.15);border-radius:16px;overflow:hidden}
+@media(max-width:640px){.impact-stats{grid-template-columns:1fr 1fr}}
+.i-stat{background:rgba(255,255,255,.06);padding:1.75rem 1.25rem;text-align:center}
+.i-stat b{display:block;font-family:var(--display);font-size:2.8rem;font-weight:900;color:#fff;line-height:1;margin-bottom:.3rem;letter-spacing:-.04em}
+.i-stat span{font-size:.78rem;color:rgba(255,255,255,.7);line-height:1.4}
+
+/* ── CTA BAND ────────────────────────────────────── */
+.cta-sec{padding:7rem 0}
+.cta-band{
+  background:var(--tx);
+  border-radius:28px;overflow:hidden;
+  display:grid;grid-template-columns:1fr 1fr;
+  box-shadow:var(--sh-lg);
+  min-height:320px;
+}
+@media(max-width:820px){.cta-band{grid-template-columns:1fr}}
+.cta-left{
+  padding:3.5rem 3rem;display:flex;flex-direction:column;justify-content:center;
+}
+.cta-left .eyebrow{color:rgba(255,255,255,.5)}
+.cta-left h2{font-family:var(--display);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:.75rem;letter-spacing:-.025em}
+.cta-left p{color:rgba(255,255,255,.65);font-size:.93rem;line-height:1.7;margin-bottom:1.75rem;max-width:400px}
+.cta-btns{display:flex;gap:.65rem;flex-wrap:wrap}
+.cta-right{
+  background:var(--blue);position:relative;overflow:hidden;
+  min-height:240px;
+}
+.cta-right::before{
+  content:'';position:absolute;bottom:-80px;right:-80px;
+  width:320px;height:320px;border-radius:50%;
+  background:rgba(255,255,255,.1);
+}
+.cta-right::after{
+  content:'';position:absolute;top:-60px;left:-60px;
+  width:200px;height:200px;border-radius:50%;
+  background:rgba(255,255,255,.07);
+}
+.cta-right-inner{
+  position:relative;z-index:1;
+  display:flex;flex-direction:column;justify-content:center;
+  align-items:center;text-align:center;height:100%;padding:3rem 2.5rem;
+}
+.cta-big-text{
+  font-family:var(--display);font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;
+  color:#fff;line-height:.95;letter-spacing:-.04em;margin-bottom:1rem;
+}
+.cta-right-inner p{color:rgba(255,255,255,.75);font-size:.88rem;margin-bottom:1.25rem}
+
+/* ── FOOTER ──────────────────────────────────────── */
+.foot{padding:2.25rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:1px solid var(--bdr)}
+.foot-logo{display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:.95rem;color:var(--tx);font-family:var(--body)}
+.foot-logo img{width:28px;height:28px;border-radius:7px}
+.foot p{font-size:.8rem;color:var(--muted)}
+
+/* ── ANIMATIONS ──────────────────────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.hero .hero-pill{animation:fadeUp .7s var(--ease) both}
+.hero h1{animation:fadeUp .8s .1s var(--ease) both}
+.hero .hero-sub{animation:fadeUp .8s .2s var(--ease) both}
+.hero .hero-btns{animation:fadeUp .8s .3s var(--ease) both}
+.hero-right{animation:fadeUp .9s .15s var(--ease) both}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.reveal-fade{opacity:0;transition:opacity .8s var(--ease)}
+.reveal-fade.in{opacity:1}
+</style>
 </head>
 <body>
-  <!-- Header injected by base.js -->
-  <div id="site-header"></div>
 
-  <!-- ===== HERO ===== -->
-  <section class="hero hero--compact reveal in">
-    <div class="container center">
-      <div class="eyebrow"
-           data-en="Established 2023 • Bukavu & Goma"
-           data-fr="Fondé en 2023 • Bukavu & Goma"
-           data-de="Gegründet 2023 • Bukavu & Goma">Established 2023 • Bukavu & Goma</div>
+<!-- DRAWER -->
+<nav class="nav-drawer" id="drawer">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+    <span style="font-weight:700;font-size:1rem;font-family:var(--body)">Tuunganes</span>
+    <button id="drawerClose" style="background:transparent;border:none;font-size:1.4rem;cursor:pointer;color:var(--tx)">✕</button>
+  </div>
+  <a href="index.html" data-en="Home" data-fr="Accueil" data-de="Start">Home</a>
+  <a href="about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+  <a href="services/services.html" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+  <a href="contact.html" class="btn btn-solid" style="justify-content:center;margin-top:.5rem" data-en="Contact us" data-fr="Contact" data-de="Kontakt">Contact us</a>
+</nav>
 
-      <h1 data-en="About Tuunganes" data-fr="À propos de Tuunganes" data-de="Über Tuunganes">About Tuunganes</h1>
-
-      <p class="lede"
-         data-en="A community-driven initiative using technology, innovation, and social action to transform lives across the DRC and Africa."
-         data-fr="Une initiative portée par la communauté qui utilise la technologie, l’innovation et l’action sociale pour transformer des vies en RDC et en Afrique."
-         data-de="Eine gemeinschaftsgetragene Initiative, die Technologie, Innovation und soziales Engagement nutzt, um Leben in der DR Kongo und Afrika zu verändern.">
-        A community-driven initiative using technology, innovation, and social action to transform lives across the DRC and Africa.
-      </p>
+<!-- FLOATING NAV -->
+<header class="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/fevicon.png" alt="Tuunganes"/>
+    <span>Tuunganes</span>
+  </a>
+  <nav class="nav-links">
+    <a href="about.html" class="active" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+    <a href="services/services.html" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+    <a href="index.html#impact" data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
+    <a href="index.html#join" data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</a>
+  </nav>
+  <div class="nav-end">
+    <div class="lang-pills" role="group">
+      <button type="button" data-lang="en" class="on">EN</button>
+      <button type="button" data-lang="fr">FR</button>
+      <button type="button" data-lang="de">DE</button>
     </div>
-  </section>
+    <button id="themeBtn" class="theme-pill" aria-label="Toggle theme">🌙</button>
+    <a href="contact.html" class="nav-cta" data-en="Contact" data-fr="Contact" data-de="Kontakt">Contact</a>
+    <button class="ham" id="hamBtn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
 
-  <!-- ===== WHO WE ARE ===== -->
-  <section class="section reveal in">
-    <div class="container grid-2">
-      <div class="card pad">
-        <h2 class="accent-left"
-            data-en="Who we are"
-            data-fr="Qui nous sommes"
-            data-de="Wer wir sind">Who we are</h2>
-
-        <p class="measure"
-           data-en="Tuunganes is dedicated to using technology, innovation, and social action to transform lives in the Democratic Republic of Congo  starting from Bukavu and Goma  and across Africa."
-           data-fr="Tuunganes s’engage à utiliser la technologie, l’innovation et l’action sociale pour transformer des vies en République Démocratique du Congo  à partir de Bukavu et Goma  et à travers l’Afrique."
-           data-de="Tuunganes setzt Technologie, Innovation und soziales Handeln ein, um Leben in der DR Kongo  ausgehend von Bukavu und Goma  und in ganz Afrika zu verändern.">
-          Tuunganes is dedicated to using technology, innovation, and social action to transform lives in the Democratic Republic of Congo  starting from Bukavu and Goma  and across Africa.
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-wm" aria-hidden="true">A</div>
+  <div class="frame">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-pill" data-en="Founded 2023 · Bukavu & Goma, DRC" data-fr="Fondé en 2023 · Bukavu & Goma, RDC" data-de="Gegründet 2023 · Bukavu & Goma">Founded 2023 · Bukavu &amp; Goma, DRC</div>
+        <h1
+          data-en="Not a startup.<br>A <em>movement.</em>"
+          data-fr="Pas une startup.<br>Un <em>mouvement.</em>"
+          data-de="Kein Startup.<br>Eine <em>Bewegung.</em>">
+          Not a startup.<br>A <em>movement.</em>
+        </h1>
+        <p class="hero-sub"
+          data-en="Tuunganes was born in the heart of Eastern DRC to prove that technology, when placed in the right hands, can transform communities devastated by conflict, poverty, and exclusion."
+          data-fr="Tuunganes est né au cœur de l'Est de la RDC pour prouver que la technologie, entre les bonnes mains, peut transformer des communautés dévastées par les conflits, la pauvreté et l'exclusion."
+          data-de="Tuunganes wurde im Herzen des Ostens der DR Kongo gegründet, um zu beweisen, dass Technologie in den richtigen Händen Gemeinschaften transformieren kann.">
+          Tuunganes was born in the heart of Eastern DRC to prove that technology, when placed in the right hands, can transform communities devastated by conflict, poverty, and exclusion.
         </p>
-
-        <p class="measure muted"
-           data-en="We believe technology is more than tools; it is a bridge to opportunity, education, and dignity. We help schools, communities, and organizations embrace digital transformation, build resilience, and improve quality of life."
-           data-fr="Nous croyons que la technologie est plus que des outils : c’est un pont vers l’opportunité, l’éducation et la dignité. Nous aidons écoles, communautés et organisations à adopter la transformation numérique, renforcer la résilience et améliorer la qualité de vie."
-           data-de="Technologie ist mehr als Werkzeuge; sie ist eine Brücke zu Chancen, Bildung und Würde. Wir unterstützen Schulen, Gemeinschaften und Organisationen bei digitaler Transformation, Resilienz und Lebensqualität.">
-          We believe technology is more than tools; it is a bridge to opportunity, education, and dignity…
-        </p>
-      </div>
-
-      <figure class="imgframe">
-        <img src="assets/pro.jpg" alt="Tuunganes community work" loading="lazy">
-      </figure>
-    </div>
-  </section>
-
-  <!-- ===== MISSION & VISION ===== -->
-  <section class="section reveal in">
-    <div class="container grid-2">
-      <article class="card pad">
-        <h3 class="accent-left" data-en="Our Mission" data-fr="Notre mission" data-de="Unsere Mission">Our Mission</h3>
-        <p class="measure"
-           data-en="To empower communities through technology, education, and health innovation  bridging the digital divide and creating opportunities for all."
-           data-fr="Autonomiser les communautés grâce à la technologie, l’éducation et l’innovation en santé  combler la fracture numérique et créer des opportunités pour tous."
-           data-de="Gemeinschaften durch Technologie, Bildung und Gesundheitsinnovationen befähigen  die digitale Kluft überbrücken und Chancen für alle schaffen.">
-          To empower communities through technology, education, and health innovation  bridging the digital divide and creating opportunities for all.
-        </p>
-      </article>
-
-      <article class="card pad">
-        <h3 class="accent-left" data-en="Our Vision" data-fr="Notre vision" data-de="Unsere Vision">Our Vision</h3>
-        <ul class="list measure">
-          <li data-en="Every child has access to quality education powered by digital tools."
-              data-fr="Chaque enfant a accès à une éducation de qualité soutenue par des outils numériques."
-              data-de="Jedes Kind hat Zugang zu hochwertiger, digital unterstützter Bildung.">Every child has access to quality education powered by digital tools.</li>
-          <li data-en="Communities use data and technology to fight disease and improve health outcomes."
-              data-fr="Les communautés utilisent les données et la technologie pour lutter contre les maladies et améliorer la santé."
-              data-de="Gemeinschaften nutzen Daten und Technologie zur Bekämpfung von Krankheiten und zur Verbesserung der Gesundheit.">Communities use data and technology to fight disease and improve health outcomes.</li>
-          <li data-en="Farmers and local entrepreneurs are connected to markets and resources."
-              data-fr="Les agriculteurs et entrepreneurs locaux sont connectés aux marchés et aux ressources."
-              data-de="Landwirte und lokale Unternehmer sind mit Märkten und Ressourcen vernetzt.">Farmers and local entrepreneurs are connected to markets and resources.</li>
-          <li data-en="Youth are trained in digital skills, preparing them for the future of work."
-              data-fr="Les jeunes sont formés aux compétences numériques, les préparant au futur du travail."
-              data-de="Jugendliche erwerben Digitalkompetenzen für die Zukunft der Arbeit.">Youth are trained in digital skills, preparing them for the future of work.</li>
-          <li data-en="Technology drives peace, security, and development, even in conflict-affected regions."
-              data-fr="La technologie favorise la paix, la sécurité et le développement, même dans les régions touchées par les conflits."
-              data-de="Technologie fördert Frieden, Sicherheit und Entwicklung auch in Konfliktregionen.">Technology drives peace, security, and development, even in conflict-affected regions.</li>
-        </ul>
-      </article>
-    </div>
-  </section>
-  <!-- ===== WHAT WE DO ===== -->
-  <section class="section reveal in">
-    <div class="container">
-      <h2 class="accent-left"
-          data-en="What We Do"
-          data-fr="Ce que nous faisons"
-          data-de="Was wir tun">What We Do</h2>
-
-      <div class="grid-3">
-        <article class="card pad">
-          <h3 data-en="IT Consultancy & Digital Transformation" data-fr="Conseil IT & Transformation numérique" data-de="IT-Beratung & Digitale Transformation">IT Consultancy & Digital Transformation</h3>
-          <p class="measure muted"
-             data-en="Helping schools, NGOs, and businesses modernize their infrastructure and processes."
-             data-fr="Aider écoles, ONG et entreprises à moderniser leurs infrastructures et processus."
-             data-de="Schulen, NGOs und Unternehmen bei der Modernisierung von Infrastruktur und Prozessen unterstützen.">
-            Helping schools, NGOs, and businesses modernize their infrastructure and processes.
-          </p>
-        </article>
-
-        <article class="card pad">
-          <h3 data-en="eSchool School Management Systems" data-fr="eSchool Systèmes de gestion scolaire" data-de="eSchool Schulverwaltungssysteme">eSchool School Management Systems</h3>
-          <p class="measure muted"
-             data-en="Digitizing student records, streamlining operations, and improving communication between schools, teachers, parents, and students."
-             data-fr="Numériser les dossiers, simplifier les opérations et améliorer la communication entre écoles, enseignants, parents et élèves."
-             data-de="Schülerakten digitalisieren, Abläufe vereinfachen und die Kommunikation verbessern.">
-            Digitizing records, streamlining operations, improving communication.
-          </p>
-        </article>
-
-        <article class="card pad">
-          <h3 data-en="Afya Digital Health Tools" data-fr="Afya Outils de santé numérique" data-de="Afya Digitale Gesundheitstools">Afya Digital Health Tools</h3>
-          <p class="measure muted"
-             data-en="Data collection and AI-assisted solutions to address malaria, access to care, and early disease detection."
-             data-fr="Collecte de données et solutions assistées par IA pour lutter contre le paludisme, améliorer l’accès aux soins et la détection précoce."
-             data-de="Datenerhebung und KI-gestützte Lösungen gegen Malaria, für Versorgung und Früherkennung.">
-            Data collection and AI-assisted solutions for better health outcomes.
-          </p>
-        </article>
-
-        <article class="card pad">
-          <h3 data-en="Agriculture & Food Security" data-fr="Agriculture & sécurité alimentaire" data-de="Landwirtschaft & Ernährungssicherheit">Agriculture & Food Security</h3>
-          <p class="measure muted"
-             data-en="Training, data, and tools to help farmers increase productivity and market access."
-             data-fr="Formations, données et outils pour aider les agriculteurs à accroître leur productivité et l’accès au marché."
-             data-de="Schulungen, Daten und Tools für Produktivität und Marktzugang.">
-            Training, data, and tools to improve productivity and market access.
-          </p>
-        </article>
-
-        <article class="card pad">
-          <h3 data-en="Advocacy & Social Programs" data-fr="Plaidoyer & programmes sociaux" data-de="Advocacy & Soziale Programme">Advocacy & Social Programs</h3>
-          <p class="measure muted"
-             data-en="Promoting education, peace, and digital literacy for youth and marginalized communities."
-             data-fr="Promouvoir l’éducation, la paix et la culture numérique pour les jeunes et les communautés marginalisées."
-             data-de="Bildung, Frieden und Digitalkompetenz für Jugendliche und marginalisierte Gruppen fördern.">
-            Promoting education, peace, and digital literacy.
-          </p>
-        </article>
-
-        <article class="card pad">
-          <h3 data-en="Aid & Donations" data-fr="Aide & dons" data-de="Hilfe & Spenden">Aid & Donations</h3>
-          <p class="measure muted"
-             data-en="Collecting and refurbishing old computers and devices to equip schools and training centers  reducing e-waste and bridging the digital divide."
-             data-fr="Collecte et reconditionnement d’ordinateurs et appareils pour équiper écoles et centres de formation  réduire les déchets électroniques et combler la fracture numérique."
-             data-de="Sammeln und Aufbereiten alter Geräte für Schulen und Trainingszentren  E-Waste reduzieren und digitale Kluft überbrücken.">
-            Refurbishing donated devices to equip schools and labs.
-          </p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== WHY IT MATTERS ===== -->
-  <section class="section reveal in">
-    <div class="container center">
-      <h2 class="accent-left"
-          data-en="Why Tuunganes Matters"
-          data-fr="Pourquoi Tuunganes est important"
-          data-de="Warum Tuunganes wichtig ist">Why Tuunganes Matters</h2>
-
-      <p class="measure"
-         data-en="Eastern DRC faces unique challenges  from political instability to child trafficking  that hinder access to education and safety. Tuunganes addresses these challenges by combining digital innovation with community-driven solutions."
-         data-fr="L’Est de la RDC fait face à des défis uniques  de l’instabilité politique à la traite des enfants  qui freinent l’accès à l’éducation et à la sécurité. Tuunganes y répond en alliant innovation numérique et solutions portées par la communauté."
-         data-de="Der Osten der DRK steht vor besonderen Herausforderungen  von politischer Instabilität bis Kinderhandel  die Zugang zu Bildung und Sicherheit erschweren. Tuunganes begegnet dem mit digitaler Innovation und Community-Lösungen.">
-        Eastern DRC faces unique challenges… Tuunganes combines digital innovation with community-driven solutions.
-      </p>
-
-      <h3 class="accent-left" style="margin-top:.9rem"
-          data-en="Our initiatives are designed to:"
-          data-fr="Nos initiatives visent à :"
-          data-de="Unsere Initiativen sollen:">Our initiatives are designed to:</h3>
-
-      <ul class="list measure">
-        <li data-en="Make education transparent, secure, and inclusive."
-            data-fr="Rendre l’éducation transparente, sûre et inclusive."
-            data-de="Bildung transparent, sicher und inklusiv gestalten.">Make education transparent, secure, and inclusive.</li>
-        <li data-en="Strengthen healthcare systems using data-driven approaches."
-            data-fr="Renforcer les systèmes de santé grâce aux approches fondées sur les données."
-            data-de="Gesundheitssysteme datenbasiert stärken.">Strengthen healthcare systems using data-driven approaches.</li>
-        <li data-en="Provide hope and tools for families affected by war and poverty."
-            data-fr="Offrir espoir et outils aux familles touchées par la guerre et la pauvreté."
-            data-de="Hoffnung und Werkzeuge für von Krieg und Armut betroffene Familien.">Provide hope and tools for families affected by war and poverty.</li>
-        <li data-en="Build a generation of skilled youth ready to lead Africa into the digital future."
-            data-fr="Former une génération de jeunes compétents prêts à mener l’Afrique vers l’avenir numérique."
-            data-de="Eine Generation kompetenter Jugendlicher für Afrikas digitale Zukunft aufbauen.">Build a generation of skilled youth ready to lead Africa into the digital future.</li>
-      </ul>
-
-      <div class="cta">
-        <a href="services/services.html" class="btn btn-ghost"
-           data-en="Explore our services"
-           data-fr="Voir nos services"
-           data-de="Unsere Services ansehen">Explore our services</a>
-        <a href="contact.html" class="btn btn-primary"
-           data-en="Partner with us"
-           data-fr="Devenir partenaire"
-           data-de="Mit uns partnern">Partner with us</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ===== JOURNEY ===== -->
-  <section class="section reveal in">
-    <div class="container center">
-      <h2 class="accent-left" data-en="Our Journey" data-fr="Notre parcours" data-de="Unser Weg">Our Journey</h2>
-
-      <div class="numbers">
-        <div class="stat card">
-          <strong>2021</strong>
-          <span class="muted"
-                data-en="Idea & pilot in Bukavu"
-                data-fr="Idée & pilote à Bukavu"
-                data-de="Idee & Pilot in Bukavu">Idea & pilot in Bukavu</span>
+        <div class="hero-btns">
+          <a href="#who" class="btn btn-solid" data-en="Our story" data-fr="Notre histoire" data-de="Unsere Geschichte">Our story</a>
+          <a href="services/services.html" class="btn btn-ghost" data-en="What we do" data-fr="Ce que nous faisons" data-de="Was wir tun">What we do</a>
         </div>
-        <div class="stat card">
+      </div>
+      <div class="hero-right" aria-hidden="true">
+        <div class="himg himg-a">
+          <img src="assets/pro.jpg" alt=""/>
+        </div>
+        <div class="himg himg-b">
+          <img src="assets/learnit.jpg" alt=""/>
+        </div>
+        <div class="hero-tag-badge">
           <strong>2023</strong>
-          <span class="muted"
-                data-en="Tuunganes formally established"
-                data-fr="Création officielle de Tuunganes"
-                data-de="Tuunganes offiziell gegründet">Tuunganes formally established</span>
-        </div>
-        <div class="stat card">
-          <strong>2024</strong>
-          <span class="muted"
-                data-en="eSchool (Masomo) system alpha"
-                data-fr="Système eSchool (Masomo) alpha"
-                data-de="eSchool (Masomo) Alpha">eSchool (Masomo) system alpha</span>
-        </div>
-        <div class="stat card">
-          <strong>2025</strong>
-          <span class="muted"
-                data-en="Community partnerships & scale-up"
-                data-fr="Partenariats communautaires & montée en charge"
-                data-de="Community-Partnerschaften & Skalierung">Community partnerships & scale-up</span>
+          <span data-en="Year founded" data-fr="Année de création" data-de="Gründungsjahr">Year founded</span>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ===== CTA ===== -->
-  <section class="section reveal in">
-    <div class="container center">
-      <h2 class="accent-left"
-          data-en="Join the movement"
-          data-fr="Rejoindre le mouvement"
-          data-de="Bewegung mitgestalten">Join the movement</h2>
-
-      <p class="measure muted"
-         data-en="We collaborate with volunteers, educators, clinicians and engineers across Bukavu, Goma and the diaspora. Your skills or support can change lives."
-         data-fr="Nous collaborons avec des bénévoles, éducateurs, cliniciens et ingénieurs à Bukavu, Goma et dans la diaspora. Vos compétences ou votre soutien peuvent changer des vies."
-         data-de="Wir arbeiten mit Freiwilligen, Pädagog:innen, Kliniker:innen und Ingenieur:innen in Bukavu, Goma und der Diaspora. Ihre Unterstützung kann Leben verändern.">
-        We collaborate with volunteers, educators, clinicians and engineers across Bukavu, Goma and the diaspora. Your skills or support can change lives.
-      </p>
-
-      <div class="cta">
-        <a href="index.html#join" class="btn btn-ghost"
-           data-en="Volunteer / Donate devices"
-           data-fr="Bénévolat / Donner des appareils"
-           data-de="Ehrenamt / Geräte spenden">Volunteer / Donate devices</a>
-        <a href="contact.html" class="btn btn-primary"
-           data-en="Contact us"
-           data-fr="Nous contacter"
-           data-de="Kontakt aufnehmen">Contact us</a>
+<!-- ═══ WHO WE ARE ═══ -->
+<section class="sec reveal" id="who">
+  <div class="frame">
+    <div class="who-grid">
+      <div class="who-photo">
+        <img src="assets/pro.jpg" alt="Tuunganes community work" loading="lazy"/>
+        <div class="who-quote" data-en="&ldquo;Technology is more than tools it is a bridge to opportunity, education, and dignity.&rdquo;" data-fr="&ldquo;La technologie est plus que des outils c'est un pont vers l'opportunité, l'éducation et la dignité.&rdquo;" data-de="&ldquo;Technologie ist mehr als Werkzeuge sie ist eine Brücke zu Chancen, Bildung und Würde.&rdquo;">
+          &ldquo;Technology is more than tools it is a bridge to opportunity, education, and dignity.&rdquo;
+          <cite>Tuunganes, 2023</cite>
+        </div>
+      </div>
+      <div class="who-copy">
+        <span class="eyebrow" data-en="Who we are" data-fr="Qui nous sommes" data-de="Wer wir sind">Who we are</span>
+        <h2 class="display-h" data-en="Born in Bukavu.<br><em>Built for Congo.</em>" data-fr="Né à Bukavu.<br><em>Construit pour le Congo.</em>" data-de="In Bukavu geboren.<br><em>Für Kongo gebaut.</em>">Born in Bukavu.<br><em>Built for Congo.</em></h2>
+        <p class="body-text" data-en="Tuunganes is dedicated to using technology, innovation, and social action to transform lives in the Democratic Republic of Congo starting from Bukavu and Goma and across Africa." data-fr="Tuunganes s'engage à utiliser la technologie, l'innovation et l'action sociale pour transformer des vies en République Démocratique du Congo, à partir de Bukavu et Goma, et à travers l'Afrique." data-de="Tuunganes setzt Technologie, Innovation und soziales Handeln ein, um Leben in der DR Kongo und in ganz Afrika zu verändern.">Tuunganes is dedicated to using technology, innovation, and social action to transform lives in the Democratic Republic of Congo starting from Bukavu and Goma and across Africa.</p>
+        <p class="body-text" data-en="We help schools, communities, and organizations embrace digital transformation, build resilience, and improve quality of life even in some of the world's most challenging environments." data-fr="Nous aidons écoles, communautés et organisations à adopter la transformation numérique, renforcer la résilience et améliorer la qualité de vie, même dans les environnements les plus difficiles au monde." data-de="Wir unterstützen Schulen, Gemeinschaften und Organisationen bei der digitalen Transformation und Verbesserung der Lebensqualität, auch in schwierigsten Umgebungen.">We help schools, communities, and organizations embrace digital transformation, build resilience, and improve quality of life even in some of the world's most challenging environments.</p>
+        <div class="btn-row">
+          <a href="contact.html" class="btn btn-solid" data-en="Partner with us" data-fr="Devenir partenaire" data-de="Mit uns partnern">Partner with us</a>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Footer injected by base.js -->
-  <div id="site-footer"></div>
+<!-- ═══ MISSION & VISION ═══ -->
+<section class="sec-dark reveal" id="mission">
+  <div class="frame">
+    <span class="eyebrow" data-en="Our foundation" data-fr="Notre fondation" data-de="Unser Fundament">Our foundation</span>
+    <h2 class="display-h" style="margin-bottom:2rem" data-en="Mission &amp; Vision" data-fr="Mission &amp; Vision" data-de="Mission &amp; Vision">Mission &amp; Vision</h2>
+    <div class="mv-row">
+      <div class="mv-tile">
+        <span class="mv-label" data-en="Mission" data-fr="Mission" data-de="Mission">Mission</span>
+        <h3 data-en="Bridging the digital divide." data-fr="Combler la fracture numérique." data-de="Die digitale Kluft überbrücken.">Bridging the digital divide.</h3>
+        <p data-en="To empower communities through technology, education, and health innovation creating opportunities for all, especially those left behind by conflict, poverty, and marginalization in Eastern DRC and across Africa." data-fr="Autonomiser les communautés grâce à la technologie, l'éducation et l'innovation en santé créer des opportunités pour tous, surtout ceux laissés pour compte par les conflits, la pauvreté et la marginalisation." data-de="Gemeinschaften durch Technologie, Bildung und Gesundheitsinnovationen befähigen Chancen für alle schaffen, besonders für die von Konflikten, Armut und Marginalisierung Betroffenen.">To empower communities through technology, education, and health innovation creating opportunities for all, especially those left behind by conflict, poverty, and marginalization in Eastern DRC and across Africa.</p>
+      </div>
+      <div class="mv-tile blue-tile">
+        <span class="mv-label" data-en="Vision" data-fr="Vision" data-de="Vision">Vision</span>
+        <h3 data-en="An Africa where no one is left behind." data-fr="Une Afrique où personne n'est laissé pour compte." data-de="Ein Afrika, in dem niemand zurückgelassen wird.">An Africa where no one is left behind.</h3>
+        <ul>
+          <li data-en="Every child has access to digital education." data-fr="Chaque enfant a accès à une éducation numérique." data-de="Jedes Kind hat Zugang zu digitaler Bildung.">Every child has access to digital education.</li>
+          <li data-en="Communities use data to fight disease and poverty." data-fr="Les communautés utilisent les données pour lutter contre les maladies et la pauvreté." data-de="Gemeinschaften nutzen Daten gegen Krankheit und Armut.">Communities use data to fight disease and poverty.</li>
+          <li data-en="Farmers and entrepreneurs are connected to markets." data-fr="Agriculteurs et entrepreneurs sont connectés aux marchés." data-de="Landwirte und Unternehmer sind mit Märkten verbunden.">Farmers and entrepreneurs are connected to markets.</li>
+          <li data-en="Technology drives peace, even in conflict zones." data-fr="La technologie favorise la paix, même dans les zones de conflit." data-de="Technologie fördert Frieden, auch in Konfliktgebieten.">Technology drives peace, even in conflict zones.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-  <!-- Global scripts -->
-  <script src="route/base.js" defer></script>
-  <script src="route/lang.js" defer></script>
-  <script src="route/animations.js" defer></script>
+<!-- ═══ WHAT WE DO ═══ -->
+<section class="sec reveal" id="services">
+  <div class="frame">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:.5rem;flex-wrap:wrap;gap:1rem">
+      <div>
+        <span class="eyebrow" data-en="Our programs" data-fr="Nos programmes" data-de="Unsere Programme">Our programs</span>
+        <h2 class="display-h" style="margin-bottom:0" data-en="What we do." data-fr="Ce que nous faisons." data-de="Was wir tun.">What we do.</h2>
+      </div>
+      <a href="services/services.html" class="btn btn-ghost" style="margin-bottom:.2rem" data-en="All services →" data-fr="Tous les services →" data-de="Alle Leistungen →">All services →</a>
+    </div>
+    <div class="wwd-list">
+      <div class="wwd-item">
+        <div class="wwd-num">01</div>
+        <div class="wwd-body">
+          <h3 data-en="IT Consultancy and Digital Transformation" data-fr="Conseil IT &amp; Transformation numérique" data-de="IT-Beratung &amp; Digitale Transformation">IT Consultancy &amp; Digital Transformation</h3>
+          <p data-en="Helping schools, NGOs, and businesses modernize their infrastructure through cloud, Starlink, cybersecurity, and strategic planning." data-fr="Aider les écoles, ONG et entreprises à moderniser leur infrastructure via le cloud, Starlink, la cybersécurité et la planification stratégique." data-de="Schulen, NGOs und Unternehmen bei der Modernisierung durch Cloud, Starlink und Cybersecurity unterstützen.">Helping schools, NGOs, and businesses modernize their infrastructure through cloud, Starlink, cybersecurity, and strategic planning.</p>
+        </div>
+        <div class="wwd-icon-wrap">💻</div>
+      </div>
+      <div class="wwd-item">
+        <div class="wwd-num">02</div>
+        <div class="wwd-body">
+          <h3 data-en="Masomo School Management Platform" data-fr="Masomo Plateforme de gestion scolaire" data-de="Masomo Schulverwaltungsplattform">Masomo School Management Platform</h3>
+          <p data-en="Digitizing student records, automating grades, tracking school fees, and connecting schools, teachers, and parents in one secure system." data-fr="Numériser les dossiers scolaires, automatiser les notes, suivre les frais et connecter écoles, enseignants et parents dans un système sécurisé." data-de="Schülerakten digitalisieren, Noten automatisieren und alle Beteiligten in einem sicheren System verbinden.">Digitizing student records, automating grades, tracking school fees, and connecting schools, teachers, and parents in one secure system.</p>
+        </div>
+        <div class="wwd-icon-wrap">🎓</div>
+      </div>
+      <div class="wwd-item">
+        <div class="wwd-num">03</div>
+        <div class="wwd-body">
+          <h3 data-en="Afya Digital Health for All" data-fr="Afya Santé numérique pour tous" data-de="Afya Digitale Gesundheit für alle">Afya Digital Health for All</h3>
+          <p data-en="Telehealth, mobile health education, and data-driven tools to improve access to care for rural and underserved communities." data-fr="Télésanté, éducation sanitaire mobile et outils basés sur les données pour améliorer l'accès aux soins des communautés rurales." data-de="Telemedizin, mobile Gesundheitsaufklärung und datengestützte Tools für ländliche Gemeinschaften.">Telehealth, mobile health education, and data-driven tools to improve access to care for rural and underserved communities.</p>
+        </div>
+        <div class="wwd-icon-wrap">🏥</div>
+      </div>
+      <div class="wwd-item">
+        <div class="wwd-num">04</div>
+        <div class="wwd-body">
+          <h3 data-en="Agriculture  and Food Security" data-fr="Agriculture et Sécurité alimentaire" data-de="Landwirtschaft &amp; Ernährungssicherheit">Agriculture &amp; Food Security</h3>
+          <p data-en="Training, digital crop planning tools, and direct market access for smallholder farmers across Eastern DRC." data-fr="Formation, outils numériques de planification agricole et accès direct au marché pour les petits agriculteurs de l'Est de la RDC." data-de="Schulungen, digitale Tools und Marktzugang für Kleinbäuer:innen.">Training, digital crop planning tools, and direct market access for smallholder farmers across Eastern DRC.</p>
+        </div>
+        <div class="wwd-icon-wrap">🌱</div>
+      </div>
+      <div class="wwd-item">
+        <div class="wwd-num">05</div>
+        <div class="wwd-body">
+          <h3 data-en="Legal Clinic and Community Advocacy" data-fr="Clinique juridique &amp; Plaidoyer communautaire" data-de="Rechtsklinik &amp; Gemeinschafts-Advocacy">Legal Clinic &amp; Community Advocacy</h3>
+          <p data-en="Free legal aid, child protection, mediation, and rights awareness programs for vulnerable populations in Bukavu and Goma." data-fr="Aide juridique gratuite, protection de l'enfance, médiation et sensibilisation aux droits pour les populations vulnérables de Bukavu et Goma." data-de="Kostenlose Rechtshilfe, Kinderschutz, Mediation und Rechtsaufklärung für gefährdete Bevölkerungen.">Free legal aid, child protection, mediation, and rights awareness programs for vulnerable populations in Bukavu and Goma.</p>
+        </div>
+        <div class="wwd-icon-wrap">⚖️</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ JOURNEY ═══ -->
+<section class="journey-wrap reveal" id="journey">
+  <div class="frame">
+    <div class="journey-head">
+      <div>
+        <span class="eyebrow" data-en="Our milestones" data-fr="Nos jalons" data-de="Unsere Meilensteine">Our milestones</span>
+        <h2 class="display-h" style="margin-bottom:0" data-en="Four years of<br><em>growing roots.</em>" data-fr="Quatre ans à<br><em>prendre racine.</em>" data-de="Vier Jahre<br><em>Wurzeln schlagen.</em>">Four years of<br><em>growing roots.</em></h2>
+      </div>
+    </div>
+
+    <div class="timeline-rail">
+      <div class="rail-line">
+        <div class="rail-progress"></div>
+      </div>
+      <div class="timeline-nodes" style="grid-template-columns:repeat(5,1fr)">
+
+        <div class="t-node">
+          <div class="t-dot-wrap"><div class="t-dot"></div></div>
+          <div class="t-year">2021</div>
+          <div class="t-title" data-en="The spark" data-fr="L'étincelle" data-de="Der Funke">The spark</div>
+          <p class="t-desc" data-en="A pilot idea emerges in Bukavu connect communities through technology and compassion." data-fr="Une idée pilote émerge à Bukavu connecter les communautés par la technologie et la compassion." data-de="Eine Pilotidee entsteht in Bukavu Gemeinschaften durch Technologie und Mitgefühl verbinden.">A pilot idea emerges in Bukavu connect communities through technology and compassion.</p>
+        </div>
+
+        <div class="t-node">
+          <div class="t-dot-wrap"><div class="t-dot"></div></div>
+          <div class="t-year">2023</div>
+          <div class="t-title" data-en="Founded" data-fr="Fondation" data-de="Gründung">Founded</div>
+          <p class="t-desc" data-en="Tuunganes is formally established. IT consulting launches. First community partnerships formed." data-fr="Tuunganes est officiellement créé. Le conseil IT est lancé. Premiers partenariats communautaires." data-de="Tuunganes offiziell gegründet. IT-Beratung startet. Erste Community-Partnerschaften.">Tuunganes is formally established. IT consulting launches. First community partnerships formed.</p>
+        </div>
+
+        <div class="t-node">
+          <div class="t-dot-wrap"><div class="t-dot"></div></div>
+          <div class="t-year">2024</div>
+          <div class="t-title" data-en="TuChati born" data-fr="Naissance de TuChati" data-de="TuChati entsteht">TuChati born</div>
+          <p class="t-desc" data-en="Masomo enters alpha. Legal clinic opens. And <a href='https://tuchati.tuunganes.com/' target='_blank' rel='noopener' style='color:var(--blue);font-weight:600;text-decoration:underline'>TuChati</a> a proudly Congolese chat app is designed and launched with a bold new identity." data-fr="Masomo entre en alpha. La clinique juridique ouvre. Et <a href='https://tuchati.tuunganes.com/' target='_blank' rel='noopener' style='color:var(--blue);font-weight:600;text-decoration:underline'>TuChati</a> une application de chat congolaise est conçue et lancée avec une nouvelle identité audacieuse." data-de="Masomo startet in Alpha. Rechtsklinik öffnet. Und <a href='https://tuchati.tuunganes.com/' target='_blank' rel='noopener' style='color:var(--blue);font-weight:600;text-decoration:underline'>TuChati</a> eine kongolesische Chat-App wird mit einem kühnen neuen Design entworfen und gestartet.">Masomo enters alpha. Legal clinic opens. And <a href="https://tuchati.tuunganes.com/" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600;text-decoration:underline">TuChati</a> a proudly Congolese chat app is designed and launched with a bold new identity.</p>
+        </div>
+
+        <div class="t-node">
+          <div class="t-dot-wrap"><div class="t-dot"></div></div>
+          <div class="t-year">2025</div>
+          <div class="t-title" data-en="Scale-up" data-fr="Montée en charge" data-de="Skalierung">Scale-up</div>
+          <p class="t-desc" data-en="Agricultural programs, international outreach, and new community partnerships across Bukavu and Goma." data-fr="Programmes agricoles, portée internationale et nouveaux partenariats communautaires à Bukavu et Goma." data-de="Agrarprogramme, internationale Reichweite und neue Partnerschaften in Bukavu und Goma.">Agricultural programs, international outreach, and new community partnerships across Bukavu and Goma.</p>
+        </div>
+
+        <div class="t-node">
+          <div class="t-dot-wrap"><div class="t-dot" style="background:#fff;border:3px solid var(--surf);box-shadow:0 0 0 2px var(--blue),0 0 0 5px rgba(33,150,243,.25)"></div></div>
+          <div class="t-year" style="font-style:italic">2026</div>
+          <div class="t-title" data-en="Next chapter" data-fr="Prochain chapitre" data-de="Nächstes Kapitel">Next chapter</div>
+          <p class="t-desc" data-en="Schools across the DRC adopt Masomo for modern school management. <a href='https://tuchati.tuunganes.com/' target='_blank' rel='noopener' style='color:var(--blue);font-weight:600;text-decoration:underline'>TuChati</a> gains video &amp; audio calls on web and launches on iOS &amp; Android." data-fr="Les écoles de RDC adoptent Masomo pour moderniser leur gestion scolaire. <a href='https://tuchati.tuunganes.com/' target='_blank' rel='noopener' style='color:var(--blue);font-weight:600;text-decoration:underline'>TuChati</a> intègre les appels vidéo &amp; audio sur le web et sort sur iOS &amp; Android." data-de="Schulen in der DRK übernehmen Masomo. <a href='https://tuchati.tuunganes.com/' target='_blank' rel='noopener' style='color:var(--blue);font-weight:600;text-decoration:underline'>TuChati</a> erhält Video- &amp; Audioanrufe im Web und erscheint für iOS &amp; Android.">Schools across the DRC adopt Masomo for modern school management. <a href="https://tuchati.tuunganes.com/" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600;text-decoration:underline">TuChati</a> gains video &amp; audio calls on web and launches on iOS &amp; Android.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ IMPACT NUMBERS ═══ -->
+<section class="impact-strip reveal-fade">
+  <div class="frame">
+    <div class="impact-inner">
+      <div class="impact-label">
+        One life<br>at a time.
+        <em data-en="Our impact so far." data-fr="Notre impact jusqu'ici." data-de="Unser bisheriger Einfluss.">Our impact so far.</em>
+      </div>
+      <div class="impact-stats">
+        <div class="i-stat"><b>11+</b><span data-en="Students reached" data-fr="Étudiants touchés" data-de="Schüler erreicht">Students reached</span></div>
+        <div class="i-stat"><b>5</b><span data-en="Farmers supported" data-fr="Agriculteurs soutenus" data-de="Landwirte unterstützt">Farmers supported</span></div>
+        <div class="i-stat"><b>15</b><span data-en="Youth connected" data-fr="Jeunes reliés" data-de="Jugend vernetzt">Youth connected</span></div>
+        <div class="i-stat"><b>4</b><span data-en="Women &amp; children" data-fr="Femmes &amp; enfants" data-de="Frauen &amp; Kinder">Women &amp; children</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="cta-sec reveal">
+  <div class="frame">
+    <div class="cta-band">
+      <div class="cta-left">
+        <span class="eyebrow" data-en="Get involved" data-fr="S'impliquer" data-de="Mitmachen">Get involved</span>
+        <h2 data-en="Join the movement." data-fr="Rejoignez le mouvement." data-de="Werden Sie Teil der Bewegung.">Join the movement.</h2>
+        <p data-en="We collaborate with volunteers, educators, clinicians, and engineers across Bukavu, Goma, and the diaspora. Your skills or support can change lives." data-fr="Nous collaborons avec des bénévoles, éducateurs, cliniciens et ingénieurs à Bukavu, Goma et dans la diaspora. Vos compétences peuvent changer des vies." data-de="Wir arbeiten mit Freiwilligen, Pädagog:innen, Kliniker:innen und Ingenieur:innen zusammen. Ihre Unterstützung kann Leben verändern.">We collaborate with volunteers, educators, clinicians, and engineers across Bukavu, Goma, and the diaspora. Your skills or support can change lives.</p>
+        <div class="cta-btns">
+          <a href="index.html#join" class="btn btn-w" data-en="Volunteer / Donate devices" data-fr="Bénévolat / Donner des appareils" data-de="Ehrenamt / Geräte spenden">Volunteer / Donate devices</a>
+          <a href="contact.html" class="btn btn-wg" data-en="Contact us" data-fr="Nous contacter" data-de="Kontakt aufnehmen">Contact us</a>
+        </div>
+      </div>
+      <div class="cta-right">
+        <div class="cta-right-inner">
+          <div class="cta-big-text" aria-hidden="true">Tuu<br>nga<br>nes.</div>
+          <p data-en="&ldquo;Uniting communities.&rdquo;" data-fr="&ldquo;Unir les communautés.&rdquo;" data-de="&ldquo;Gemeinschaften vereinen.&rdquo;">&ldquo;Uniting communities.&rdquo;</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="frame foot">
+    <a href="index.html" class="foot-logo"><img src="assets/fevicon.png" alt="Tuunganes"/><span>Tuunganes</span></a>
+    <p>&copy; 2025 Tuunganes &nbsp;·&nbsp; Bukavu &amp; Goma, DRC</p>
+    <div style="display:flex;gap:1rem">
+      <a href="about.html" style="font-size:.82rem;color:var(--muted)" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+      <a href="services/services.html" style="font-size:.82rem;color:var(--muted)" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+      <a href="contact.html" style="font-size:.82rem;color:var(--muted)" data-en="Contact" data-fr="Contact" data-de="Kontakt">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<!-- SCRIPTS -->
+<script>
+(function(){
+  const s=localStorage.getItem('tuunganes-theme');
+  const dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  document.documentElement.setAttribute('data-theme',s||(dark?'dark':'light'));
+})();
+
+document.addEventListener('DOMContentLoaded',function(){
+  const root=document.documentElement;
+  const themeBtn=document.getElementById('themeBtn');
+
+  function syncIcon(){themeBtn.textContent=root.getAttribute('data-theme')==='dark'?'☀️':'🌙'}
+  syncIcon();
+  themeBtn.addEventListener('click',function(){
+    const next=root.getAttribute('data-theme')==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    localStorage.setItem('tuunganes-theme',next);
+    syncIcon();
+  });
+
+  // Mobile nav
+  const hamBtn=document.getElementById('hamBtn');
+  const drawer=document.getElementById('drawer');
+  document.getElementById('drawerClose').addEventListener('click',()=>{drawer.classList.remove('open');hamBtn.setAttribute('aria-expanded','false')});
+  hamBtn.addEventListener('click',()=>{const o=drawer.classList.toggle('open');hamBtn.setAttribute('aria-expanded',String(o))});
+  document.addEventListener('click',e=>{if(!drawer.contains(e.target)&&!hamBtn.contains(e.target)){drawer.classList.remove('open');hamBtn.setAttribute('aria-expanded','false')}});
+
+  // Language
+  function applyLang(lang){
+    localStorage.setItem('siteLang',lang);
+    document.querySelectorAll('.lang-pills button').forEach(b=>b.classList.toggle('on',b.dataset.lang===lang));
+    document.querySelectorAll('[data-'+lang+']').forEach(el=>{
+      const val=el.getAttribute('data-'+lang);
+      if(!val)return;
+      if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){el.placeholder=val;}
+      else if(['H1','H2','H3'].includes(el.tagName)){el.innerHTML=val;}
+      else if(!el.querySelector('[data-'+lang+']:not(script)')){el.textContent=val;}
+    });
+  }
+  const saved=localStorage.getItem('siteLang')||'en';
+  document.querySelectorAll('.lang-pills [data-lang]').forEach(btn=>{
+    btn.addEventListener('click',()=>applyLang(btn.dataset.lang));
+    if(btn.dataset.lang===saved)btn.classList.add('on');
+  });
+
+  // Scroll reveal
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+  },{threshold:0.07});
+  document.querySelectorAll('.reveal,.reveal-fade').forEach(el=>io.observe(el));
+
+  // Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const t=document.querySelector(a.getAttribute('href'));
+      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});drawer.classList.remove('open');}
+    });
+  });
+});
+</script>
+<script src="route/base.js" defer></script>
+<script src="route/lang.js" defer></script>
+<script src="route/animations.js" defer></script>
 </body>
 </html>

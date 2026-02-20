@@ -1,220 +1,450 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title data-en="Our Services | Tuunganes"
-          data-fr="Nos services | Tuunganes"
-          data-de="Unsere Leistungen | Tuunganes">
-    Our Services | Tuunganes
-  </title>
-  <link rel="icon" href="../assets/fevicon.png" type="image/png">
-  <link rel="stylesheet" href="../css/styles.css">
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="color-scheme" content="light dark"/>
+<title data-en="Our Services | Tuunganes" data-fr="Nos services | Tuunganes" data-de="Unsere Leistungen | Tuunganes">Our Services | Tuunganes</title>
+<link rel="icon" href="../assets/fevicon.png" type="image/png"/>
+<link rel="stylesheet" href="../css/styles.css"/>
+<style>
+/* ─── TOKENS ─────────────────────────────────────────── */
+:root {
+  --blue:#2196f3; --blue-d:#1565c0;
+  --blue-pale:rgba(33,150,243,.10); --blue-ring:rgba(33,150,243,.28);
+  --radius:18px; --radius-sm:10px;
+  --ease:cubic-bezier(.4,0,.2,1);
+}
+[data-theme="light"] {
+  --bg:#f4f8ff; --bg2:#eaf2fe; --surf:#ffffff;
+  --tx:#0d1b2e; --tx2:#2c4058; --muted:#5e7a96;
+  --bdr:#c8ddf4;
+  --sh:0 1px 3px rgba(0,0,0,.06),0 6px 24px rgba(0,0,0,.07);
+  --sh-lg:0 4px 28px rgba(0,0,0,.10);
+  --glow:0 0 0 3px rgba(33,150,243,.18);
+}
+[data-theme="dark"] {
+  --bg:#060e1a; --bg2:#0c1726; --surf:#101e30;
+  --tx:#e8f2ff; --tx2:#a8c4e0; --muted:#5c7b98;
+  --bdr:rgba(255,255,255,.07);
+  --sh:0 2px 8px rgba(0,0,0,.4),0 10px 36px rgba(0,0,0,.3);
+  --sh-lg:0 6px 36px rgba(0,0,0,.35);
+  --glow:0 0 0 3px rgba(33,150,243,.25);
+}
+
+/* ─── RESET ──────────────────────────────────────────── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Helvetica Neue',Arial,sans-serif;background:var(--bg);color:var(--tx);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .25s var(--ease),color .25s var(--ease)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font-family:inherit}
+ul{list-style:none;padding:0;margin:0}
+
+/* ─── LAYOUT ─────────────────────────────────────────── */
+.frame{width:min(1200px,94vw);margin:0 auto}
+
+/* ─── FLOATING NAV ───────────────────────────────────── */
+.nav{
+  position:fixed;top:1rem;left:50%;transform:translateX(-50%);
+  width:min(1100px,90vw);
+  background:color-mix(in srgb,var(--surf) 82%,transparent);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  border:1px solid var(--bdr);border-radius:999px;
+  padding:.5rem .5rem .5rem 1.4rem;
+  display:flex;align-items:center;justify-content:space-between;gap:1rem;
+  z-index:1000;box-shadow:var(--sh);
+}
+.nav-logo{display:flex;align-items:center;gap:.55rem;font-size:.95rem;font-weight:800;letter-spacing:-.01em;color:var(--tx);flex-shrink:0}
+.nav-logo img{width:30px;height:30px;border-radius:8px}
+.nav-links{display:flex;align-items:center;gap:.15rem;flex:1;justify-content:center}
+.nav-links a{padding:.42rem .85rem;border-radius:999px;font-size:.82rem;font-weight:600;color:var(--tx2);transition:color .15s,background .15s}
+.nav-links a:hover,.nav-links a.active{color:var(--blue);background:var(--blue-pale)}
+.nav-end{display:flex;align-items:center;gap:.45rem;flex-shrink:0}
+.lang-pills{display:flex;gap:.18rem;background:var(--bg2);border:1px solid var(--bdr);border-radius:999px;padding:.22rem .28rem}
+.lang-pills button{border:none;background:transparent;border-radius:999px;padding:.22rem .55rem;font-size:.74rem;font-weight:700;cursor:pointer;color:var(--muted);transition:background .15s,color .15s}
+.lang-pills button.on{background:var(--blue);color:#fff}
+.theme-pill{width:36px;height:36px;border-radius:999px;border:1px solid var(--bdr);background:var(--bg2);display:grid;place-items:center;cursor:pointer;font-size:.95rem;transition:border-color .15s,transform .2s}
+.theme-pill:hover{border-color:var(--blue);transform:rotate(20deg)}
+.nav-cta{background:var(--blue);color:#fff;border:none;padding:.48rem 1.15rem;border-radius:999px;font-size:.82rem;font-weight:700;cursor:pointer;transition:background .15s,transform .15s;white-space:nowrap}
+.nav-cta:hover{background:var(--blue-d);transform:translateY(-1px)}
+.ham{display:none;flex-direction:column;gap:4px;cursor:pointer;background:var(--bg2);border:1px solid var(--bdr);border-radius:999px;padding:.55rem .75rem}
+.ham span{display:block;width:18px;height:2px;background:var(--tx);border-radius:2px;transition:.2s}
+.nav-drawer{display:none;position:fixed;inset:0;background:var(--surf);z-index:999;flex-direction:column;padding:2rem 1.75rem;gap:1.25rem;border-right:1px solid var(--bdr)}
+.nav-drawer.open{display:flex}
+.nav-drawer a{font-size:1.1rem;font-weight:700;color:var(--tx2);padding:.5rem 0;border-bottom:1px solid var(--bdr)}
+.nav-drawer a:hover{color:var(--blue)}
+@media(max-width:720px){.ham{display:flex}.nav-links,.nav-end{display:none}}
+
+/* ─── BUTTONS ────────────────────────────────────────── */
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.7rem 1.55rem;border-radius:999px;border:none;cursor:pointer;font-size:.88rem;font-weight:700;letter-spacing:-.005em;transition:all .2s var(--ease);white-space:nowrap;font-family:inherit}
+.btn-solid{background:var(--blue);color:#fff;box-shadow:0 4px 16px rgba(33,150,243,.32)}
+.btn-solid:hover{background:var(--blue-d);transform:translateY(-2px);box-shadow:0 8px 24px rgba(33,150,243,.4)}
+.btn-ghost{background:var(--bg2);color:var(--tx);border:1.5px solid var(--bdr)}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-1px)}
+.btn-w{background:#fff;color:var(--blue);font-weight:800}
+.btn-w:hover{background:#e3f2fd;transform:translateY(-1px)}
+.btn-wg{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}
+.btn-wg:hover{background:rgba(255,255,255,.1);border-color:#fff}
+
+/* ─── PAGE HERO ──────────────────────────────────────── */
+.page-hero{
+  padding:9rem 0 5rem;position:relative;overflow:hidden;
+  background:var(--surf);border-bottom:1px solid var(--bdr);
+}
+.page-hero::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse 60% 80% at 80% 40%,rgba(33,150,243,.09) 0%,transparent 65%);
+  pointer-events:none
+}
+[data-theme="dark"] .page-hero::before{background:radial-gradient(ellipse 60% 80% at 80% 40%,rgba(33,150,243,.15) 0%,transparent 65%)}
+.hero-tag{
+  display:inline-flex;align-items:center;gap:.45rem;
+  font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--blue);border:1.5px solid var(--blue-ring);border-radius:999px;
+  padding:.35rem .9rem;margin-bottom:1.2rem;
+}
+.hero-tag::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--blue);flex-shrink:0}
+.page-hero h1{font-size:clamp(2.2rem,6vw,4rem);font-weight:800;letter-spacing:-.03em;line-height:1.05;color:var(--tx);margin-bottom:.9rem}
+.page-hero p{color:var(--tx2);font-size:1.07rem;max-width:560px;line-height:1.65}
+
+/* ─── SECTION LABELS ─────────────────────────────────── */
+.s-label{display:inline-block;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:.4rem}
+
+/* ─── NUMBERED SERVICE LIST ──────────────────────────── */
+.services-body{padding:5rem 0}
+.svc-row{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+  border-top:1px solid var(--bdr);
+  position:relative;
+}
+.svc-row:last-child{border-bottom:1px solid var(--bdr)}
+/* alternate image position */
+.svc-row:nth-child(even) .svc-img-col{order:2}
+.svc-row:nth-child(even) .svc-text-col{order:1}
+@media(max-width:860px){
+  .svc-row{grid-template-columns:1fr}
+  .svc-row:nth-child(even) .svc-img-col{order:0}
+  .svc-row:nth-child(even) .svc-text-col{order:0}
+}
+
+.svc-img-col{
+  position:relative;overflow:hidden;min-height:380px;
+}
+.svc-img-col img{
+  width:100%;height:100%;object-fit:cover;display:block;
+  transition:transform .6s var(--ease);
+}
+.svc-row:hover .svc-img-col img{transform:scale(1.03)}
+/* number badge over image */
+.svc-num{
+  position:absolute;top:1.5rem;left:1.5rem;
+  font-size:3rem;font-weight:800;letter-spacing:-.05em;
+  color:rgba(255,255,255,.9);line-height:1;
+  text-shadow:0 2px 12px rgba(0,0,0,.4);
+  pointer-events:none;
+}
+.svc-row:nth-child(even) .svc-num{left:auto;right:1.5rem}
+
+.svc-text-col{
+  padding:3rem 3.5rem;display:flex;flex-direction:column;justify-content:center;
+  background:var(--surf);
+}
+@media(max-width:1024px){.svc-text-col{padding:2.25rem 2rem}}
+@media(max-width:860px){.svc-text-col{padding:2rem 1.5rem}}
+
+.svc-eyebrow{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem}
+.svc-text-col h2{font-size:clamp(1.3rem,2.5vw,1.75rem);font-weight:800;letter-spacing:-.02em;color:var(--tx);margin-bottom:.75rem;line-height:1.2}
+.svc-text-col>p{color:var(--tx2);font-size:.96rem;margin-bottom:1.25rem;line-height:1.65}
+.svc-list{display:flex;flex-direction:column;gap:.45rem;margin-bottom:1.75rem}
+.svc-list li{
+  display:flex;align-items:flex-start;gap:.65rem;
+  font-size:.88rem;color:var(--tx2);line-height:1.5;
+}
+.svc-list li::before{
+  content:'';width:18px;height:18px;border-radius:50%;flex-shrink:0;
+  background:var(--blue-pale);border:1.5px solid var(--blue-ring);
+  display:grid;place-items:center;font-size:.65rem;color:var(--blue);
+  margin-top:.05em;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%232196f3' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size:10px;background-position:center;background-repeat:no-repeat;
+}
+
+/* ─── CTA BAND ───────────────────────────────────────── */
+.cta-sec{padding:5rem 0}
+.cta-band{
+  background:var(--blue);border-radius:24px;
+  padding:3.5rem 3rem;
+  display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:center;
+  box-shadow:0 8px 40px rgba(33,150,243,.35);
+  position:relative;overflow:hidden;
+}
+.cta-band::before{content:'';position:absolute;right:-60px;top:-80px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06);pointer-events:none}
+.cta-band::after{content:'';position:absolute;right:60px;bottom:-100px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.04);pointer-events:none}
+@media(max-width:720px){.cta-band{grid-template-columns:1fr;padding:2.5rem 1.75rem}}
+.cta-band h2{font-size:clamp(1.3rem,3vw,1.75rem);color:#fff;margin-bottom:.45rem;letter-spacing:-.02em}
+.cta-band p{color:rgba(255,255,255,.82);font-size:.95rem;max-width:480px;margin:0}
+.cta-btns{display:flex;gap:.65rem;flex-wrap:wrap;flex-shrink:0}
+
+/* ─── FOOTER ─────────────────────────────────────────── */
+.foot{padding:2.25rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:1px solid var(--bdr)}
+.foot-logo{display:flex;align-items:center;gap:.5rem;font-weight:800;font-size:.95rem;color:var(--tx)}
+.foot-logo img{width:28px;height:28px;border-radius:7px}
+.foot p{font-size:.8rem;color:var(--muted)}
+
+/* ─── REVEAL ─────────────────────────────────────────── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
+.reveal.in{opacity:1;transform:translateY(0)}
+.page-hero .hero-tag{animation:fadeUp .7s var(--ease) both}
+.page-hero h1{animation:fadeUp .8s .1s var(--ease) both}
+.page-hero p{animation:fadeUp .8s .2s var(--ease) both}
+</style>
 </head>
 <body>
-  <!-- Header injected by base.js -->
-  <div id="site-header"></div>
-  <!-- HERO -->
-  <section class="hero reveal">
-    <div class="container hero-content">
-      <h1 data-en="Our Services"
-          data-fr="Nos services"
-          data-de="Unsere Leistungen">
-        Our Services
-      </h1>
-      <p data-en="At Tuunganes, we believe technology and innovation can transform lives. Our services empower schools, communities, and organizations to thrive in an increasingly digital world."
-         data-fr="Chez Tuunganes, nous croyons que la technologie et l'innovation peuvent transformer des vies. Nos services permettent aux écoles, aux communautés et aux organisations de prospérer dans un monde de plus en plus numérique."
-         data-de="Bei Tuunganes glauben wir, dass Technologie und Innovation Leben verändern können. Unsere Dienstleistungen befähigen Schulen, Gemeinschaften und Organisationen, in einer zunehmend digitalen Welt erfolgreich zu sein.">
-        At Tuunganes, we believe technology and innovation can transform lives. Our services empower schools, communities, and organizations to thrive in an increasingly digital world.
-      </p>
+
+<!-- ══ MOBILE DRAWER ══ -->
+<nav class="nav-drawer" id="drawer">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+    <span style="font-weight:800;font-size:1rem">Tuunganes</span>
+    <button id="drawerClose" style="background:transparent;border:none;font-size:1.4rem;cursor:pointer;color:var(--tx)">✕</button>
+  </div>
+  <a href="../index.html" data-en="Home" data-fr="Accueil" data-de="Start">Home</a>
+  <a href="../about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+  <a href="services.html" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+  <a href="../contact.html" class="btn btn-solid" style="justify-content:center;margin-top:.5rem" data-en="Contact us" data-fr="Contact" data-de="Kontakt">Contact us</a>
+</nav>
+
+<!-- ══ FLOATING NAV ══ -->
+<header class="nav">
+  <a href="../index.html" class="nav-logo">
+    <img src="../assets/fevicon.png" alt="Tuunganes"/>
+    <span>Tuunganes</span>
+  </a>
+  <nav class="nav-links">
+    <a href="../about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+    <a href="services.html" class="active" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+    <a href="../index.html#impact" data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
+    <a href="../index.html#join" data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</a>
+  </nav>
+  <div class="nav-end">
+    <div class="lang-pills" role="group">
+      <button type="button" data-lang="en" class="on">EN</button>
+      <button type="button" data-lang="fr">FR</button>
+      <button type="button" data-lang="de">DE</button>
     </div>
-  </section>
-  <!-- SERVICES GRID -->
-  <section class="pillars reveal">
-    <div class="container pillars-grid">
-      <!-- IT Consultancy -->
-      <article class="pillar card">
-        <div class="pillar-media"><img src="../assets/pro.jpg" alt="IT Consultancy"></div>
-        <div class="pillar-content">
-          <h3 data-en="IT Consultancy & Support"
-              data-fr="Conseil & support informatique"
-              data-de="IT-Beratung & Support">IT Consultancy & Support</h3>
-          <p data-en="We provide expert IT consulting to schools, NGOs, and companies seeking to modernize their infrastructure."
-             data-fr="Nous offrons des services de conseil informatique aux écoles, ONG et entreprises qui souhaitent moderniser leur infrastructure."
-             data-de="Wir bieten IT-Beratung für Schulen, NGOs und Unternehmen, die ihre Infrastruktur modernisieren möchten.">
-             We provide expert IT consulting to schools, NGOs, and companies seeking to modernize their infrastructure.
-          </p>
-          <ul>
-            <li data-en="Digital transformation strategy & planning"
-                data-fr="Stratégie et planification de transformation numérique"
-                data-de="Strategie & Planung der digitalen Transformation">Digital transformation strategy & planning</li>
-            <li data-en="Internet setup and optimization"
-                data-fr="Mise en place et optimisation d'internet"
-                data-de="Internet-Einrichtung & Optimierung">Internet setup and optimization</li>
-            <li data-en="Cloud infrastructure guidance"
-                data-fr="Conseils sur l'infrastructure cloud"
-                data-de="Cloud-Infrastruktur-Beratung">Cloud infrastructure guidance</li>
-            <li data-en="IT system audits and security reviews"
-                data-fr="Audits et évaluations de sécurité des systèmes"
-                data-de="Systemaudits & Sicherheitsprüfungen">IT system audits and security reviews</li>
-            <li data-en="Ongoing technical support & staff training"
-                data-fr="Support technique continu et formation du personnel"
-                data-de="Laufender technischer Support & Schulung">Ongoing technical support & staff training</li>
-          </ul>
-          <p><a href="../services/it-consultancy.html" class="btn btn-primary"
-                data-en="Contact us to discuss your IT needs"
-                data-fr="Contactez-nous pour discuter de vos besoins IT"
-                data-de="Kontaktieren Sie uns für Ihre IT-Bedürfnisse">
-                Contact us to discuss your IT needs</a></p>
-        </div>
-      </article>
+    <button id="themeBtn" class="theme-pill" aria-label="Toggle theme">🌙</button>
+    <a href="../contact.html" class="nav-cta" data-en="Contact" data-fr="Contact" data-de="Kontakt">Contact</a>
+    <button class="ham" id="hamBtn" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
 
-      <!-- School Management -->
-      <article class="pillar card">
-        <div class="pillar-media"><img src="../assets/kidlearn.jpg" alt="School Management"></div>
-        <div class="pillar-content">
-          <h3 data-en="School Management Systems (eSchool)"
-              data-fr="Systèmes de gestion scolaire (eSchool)"
-              data-de="Schulverwaltungssysteme (eSchool)">School Management Systems (eSchool)</h3>
-          <p data-en="Our multi-tenancy school management system helps institutions streamline operations and stay organized."
-             data-fr="Notre système de gestion scolaire multi-locataires aide les établissements à rationaliser leurs opérations et à rester organisés."
-             data-de="Unser Multi-Tenant-Schulverwaltungssystem unterstützt Schulen bei der Optimierung ihrer Abläufe.">
-             Our multi-tenancy school management system helps institutions streamline operations and stay organized.
-          </p>
-          <ul>
-            <li data-en="Student registration & profiles"
-                data-fr="Inscription des élèves & profils"
-                data-de="Schülerregistrierung & Profile">Student registration & profiles</li>
-            <li data-en="Class, subject & timetable management"
-                data-fr="Gestion des classes, matières & horaires"
-                data-de="Klassen-, Fach- & Stundenplanverwaltung">Class, subject & timetable management</li>
-            <li data-en="Grades and report card automation"
-                data-fr="Automatisation des notes et bulletins"
-                data-de="Automatisierte Noten & Zeugnisse">Grades and report card automation</li>
-            <li data-en="Subscription & school fee tracking"
-                data-fr="Suivi des abonnements et frais scolaires"
-                data-de="Verfolgung von Abonnements & Schulgebühren">Subscription & school fee tracking</li>
-            <li data-en="Multi-school support with secure data isolation"
-                data-fr="Support multi-écoles avec isolement sécurisé des données"
-                data-de="Unterstützung mehrerer Schulen mit sicherer Datenisolation">Multi-school support with secure data isolation</li>
-          </ul>
-          <p>
-                <a href="school-management.html" target="_blank" class="btn btn-primary"
-                    data-en="Learn more about this system"
-                    data-fr="En savoir plus sur ce système"
-                    data-de="Erfahren Sie mehr über dieses System">
-                    Learn more about this system
-                </a>
-            </p>
+<!-- ══ PAGE HERO ══ -->
+<section class="page-hero">
+  <div class="frame">
+    <div class="hero-tag" data-en="What we offer" data-fr="Ce que nous offrons" data-de="Was wir anbieten">What we offer</div>
+    <h1
+      data-en="Services that<br>transform lives."
+      data-fr="Des services qui<br>transforment des vies."
+      data-de="Leistungen, die<br>Leben verändern.">
+      Services that<br>transform lives.
+    </h1>
+    <p data-en="Technology, legal protection, health innovation, and agricultural empowerment everything we do is designed for the realities of the Democratic Republic of Congo." data-fr="Technologie, protection juridique, innovation en santé et autonomisation agricole tout ce que nous faisons est conçu pour les réalités de la République Démocratique du Congo." data-de="Technologie, rechtlicher Schutz, Gesundheitsinnovation und landwirtschaftliche Stärkung alles, was wir tun, ist für die Realitäten der DR Kongo gestaltet.">Technology, legal protection, health innovation, and agricultural empowerment everything we do is designed for the realities of the Democratic Republic of Congo.</p>
+  </div>
+</section>
 
-        </div>
-      </article>
+<!-- ══ SERVICES ══ -->
+<main class="services-body">
 
-      <!-- Afya Digital Health -->
-      <article class="pillar card">
-        <div class="pillar-media"><img src="../assets/all.jpeg" alt="Afya Digital Health"></div>
-        <div class="pillar-content">
-          <h3 data-en="Afya Digital Health Tools"
-              data-fr="Afya Outils de santé numérique"
-              data-de="Afya Digitale Gesundheitstools">Afya Digital Health Tools</h3>
-          <p data-en="Healthcare should be accessible and data-driven. Afya uses digital tools to improve public health."
-             data-fr="Les soins de santé doivent être accessibles et basés sur les données. Afya utilise des outils numériques pour améliorer la santé publique."
-             data-de="Gesundheitsversorgung sollte zugänglich und datenbasiert sein. Afya nutzt digitale Werkzeuge, um die öffentliche Gesundheit zu verbessern.">
-             Healthcare should be accessible and data-driven. Afya uses digital tools to improve public health.
-          </p>
-          <ul>
-            <li data-en="Community health surveys via KoboToolbox"
-                data-fr="Enquêtes de santé communautaire via KoboToolbox"
-                data-de="Gesundheitsumfragen mit KoboToolbox">Community health surveys via KoboToolbox</li>
-            <li data-en="Data analysis for malaria prevention & health campaigns"
-                data-fr="Analyse de données pour la prévention du paludisme & campagnes de santé"
-                data-de="Datenanalyse zur Malariaprävention & Gesundheitskampagnen">Data analysis for malaria prevention & health campaigns</li>
-            <li data-en="AI-assisted decision support for early disease detection"
-                data-fr="Aide à la décision assistée par IA pour la détection précoce des maladies"
-                data-de="KI-gestützte Entscheidungsunterstützung zur Früherkennung von Krankheiten">AI-assisted decision support for early disease detection</li>
-            <li data-en="Digital platform for pharmacy and clinic directories"
-                data-fr="Plateforme numérique pour répertoires de pharmacies et cliniques"
-                data-de="Digitale Plattform für Apotheken- & Klinikverzeichnisse">Digital platform for pharmacy and clinic directories</li>
-          </ul>
-          <p><a href="../services/digital-health.html" class="btn btn-primary"
-                data-en="Join us in making healthcare smarter"
-                data-fr="Rejoignez-nous pour rendre la santé plus intelligente"
-                data-de="Machen Sie mit, um die Gesundheitsversorgung intelligenter zu gestalten">
-                Join us in making healthcare smarter</a></p>
-        </div>
-      </article>
-
-      <!-- Agriculture -->
-      <article class="pillar card">
-        <div class="pillar-media"><img src="../assets/agri1.jpg" alt="Agriculture"></div>
-        <div class="pillar-content">
-          <h3 data-en="Agriculture & Food Security"
-              data-fr="Agriculture & sécurité alimentaire"
-              data-de="Landwirtschaft & Ernährungssicherheit">Agriculture & Food Security</h3>
-          <p data-en="We empower farmers with knowledge, markets, and data tools for sustainable agriculture."
-             data-fr="Nous donnons aux agriculteurs les moyens grâce aux connaissances, aux marchés et aux outils de données pour une agriculture durable."
-             data-de="Wir unterstützen Landwirte mit Wissen, Märkten und Datentools für eine nachhaltige Landwirtschaft.">
-             We empower farmers with knowledge, markets, and data tools for sustainable agriculture.
-          </p>
-          <ul>
-            <li data-en="Connecting farmers to local and regional markets"
-                data-fr="Relier les agriculteurs aux marchés locaux et régionaux"
-                data-de="Vernetzung von Landwirten mit lokalen & regionalen Märkten">Connecting farmers to local and regional markets</li>
-            <li data-en="Providing training materials and best practices"
-                data-fr="Fournir des supports de formation et des bonnes pratiques"
-                data-de="Bereitstellung von Schulungsmaterialien & Best Practices">Providing training materials and best practices</li>
-            <li data-en="Using data to support crop planning and management"
-                data-fr="Utiliser les données pour soutenir la planification et la gestion des cultures"
-                data-de="Daten zur Unterstützung der Anbauplanung & -verwaltung">Using data to support crop planning and management</li>
-          </ul>
-          <p><a href="agtech.html" class="btn btn-primary"
-                data-en="Learn how you can support our projects"
-                data-fr="Découvrez comment soutenir nos projets"
-                data-de="Erfahren Sie, wie Sie unsere Projekte unterstützen können">
-             Learn how you can support our projects</a></p>
-        </div>
-      </article>
-
-      <!-- Advocacy -->
-      <article class="pillar card">
-        <div class="pillar-media"><img src="../assets/learnit.jpg" alt="Advocacy"></div>
-        <div class="pillar-content">
-          <h3 data-en="Advocacy & Social Impact"
-              data-fr="Plaidoyer & impact social"
-              data-de="Advocacy & sozialer Impact">Advocacy & Social Impact</h3>
-          <p data-en="We advocate for education, digital equity, and peace in Eastern DRC."
-             data-fr="Nous plaidons pour l'éducation, l'équité numérique et la paix en RDC orientale."
-             data-de="Wir setzen uns für Bildung, digitale Gerechtigkeit und Frieden im Osten der DRK ein.">
-             We advocate for education, digital equity, and peace in Eastern DRC.
-          </p>
-          <ul>
-            <li data-en="Youth digital literacy programs"
-                data-fr="Programmes d'alphabétisation numérique pour les jeunes"
-                data-de="Programme zur digitalen Bildung von Jugendlichen">Youth digital literacy programs</li>
-            <li data-en="Awareness campaigns for peace and justice"
-                data-fr="Campagnes de sensibilisation pour la paix et la justice"
-                data-de="Sensibilisierungskampagnen für Frieden & Gerechtigkeit">Awareness campaigns for peace and justice</li>
-            <li data-en="Partnerships promoting education for marginalized children"
-                data-fr="Partenariats promouvant l'éducation des enfants marginalisés"
-                data-de="Partnerschaften zur Förderung der Bildung benachteiligter Kinder">Partnerships promoting education for marginalized children</li>
-          </ul>
-          <p><a href="../legal-clinic.html" class="btn btn-primary"
-                data-en="Partner with us to make a difference"
-                data-fr="Participez avec nous pour faire la différence"
-                data-de="Arbeiten Sie mit uns zusammen, um einen Unterschied zu machen">
-                Partner with us to make a difference</a></p>
-        </div>
-      </article>
-
+  <!-- 01 IT Consultancy -->
+  <div class="svc-row reveal">
+    <div class="svc-img-col">
+      <img src="../assets/pro.jpg" alt="IT Consultancy & Digital Solutions" loading="lazy"/>
+      <div class="svc-num">01</div>
     </div>
-  </section>
+    <div class="svc-text-col">
+      <div class="svc-eyebrow" data-en="Technology" data-fr="Technologie" data-de="Technologie">Technology</div>
+      <h2 data-en="IT Consultancy &amp; Digital Solutions" data-fr="Conseil IT &amp; Solutions numériques" data-de="IT-Beratung &amp; Digitale Lösungen">IT Consultancy &amp; Digital Solutions</h2>
+      <p data-en="We provide expert IT consulting to schools, NGOs, and companies seeking to modernize their infrastructure and embrace the digital future." data-fr="Nous offrons des services de conseil informatique aux écoles, ONG et entreprises souhaitant moderniser leur infrastructure et embrasser l'avenir numérique." data-de="Wir bieten IT-Beratung für Schulen, NGOs und Unternehmen, die ihre Infrastruktur modernisieren und die digitale Zukunft gestalten möchten.">We provide expert IT consulting to schools, NGOs, and companies seeking to modernize their infrastructure and embrace the digital future.</p>
+      <ul class="svc-list">
+        <li data-en="Digital transformation strategy &amp; planning" data-fr="Stratégie et planification de transformation numérique" data-de="Strategie &amp; Planung der digitalen Transformation">Digital transformation strategy &amp; planning</li>
+        <li data-en="Internet setup, optimization &amp; Starlink satellite support" data-fr="Mise en place, optimisation internet &amp; support Starlink" data-de="Internet-Einrichtung, Optimierung &amp; Starlink-Unterstützung">Internet setup, optimization &amp; Starlink satellite support</li>
+        <li data-en="Cloud infrastructure, storage &amp; email management" data-fr="Infrastructure cloud, stockage &amp; gestion des emails" data-de="Cloud-Infrastruktur, Speicher &amp; E-Mail-Verwaltung">Cloud infrastructure, storage &amp; email management</li>
+        <li data-en="IT system audits and security reviews" data-fr="Audits et évaluations de sécurité des systèmes" data-de="Systemaudits &amp; Sicherheitsprüfungen">IT system audits and security reviews</li>
+        <li data-en="Ongoing technical support &amp; staff training" data-fr="Support technique continu et formation du personnel" data-de="Laufender technischer Support &amp; Schulung">Ongoing technical support &amp; staff training</li>
+        <li data-en="Online payment systems &amp; e-commerce setup" data-fr="Systèmes de paiement en ligne &amp; e-commerce" data-de="Online-Zahlungssysteme &amp; E-Commerce-Einrichtung">Online payment systems &amp; e-commerce setup</li>
+      </ul>
+      <div><a href="../contact.html" class="btn btn-solid" data-en="Discuss your IT needs" data-fr="Discuter de vos besoins IT" data-de="IT-Bedürfnisse besprechen">Discuss your IT needs</a></div>
+    </div>
+  </div>
 
-  <!-- Footer injected by base.js -->
-  <div id="site-footer"></div>
+  <!-- 02 School Management -->
+  <div class="svc-row reveal">
+    <div class="svc-img-col">
+      <img src="../assets/kidlearn.jpg" alt="School Management" loading="lazy"/>
+      <div class="svc-num">02</div>
+    </div>
+    <div class="svc-text-col">
+      <div class="svc-eyebrow" data-en="Education" data-fr="Éducation" data-de="Bildung">Education</div>
+      <h2 data-en="School Management Systems (Masomo)" data-fr="Gestion scolaire (Masomo)" data-de="Schulverwaltungssysteme (Masomo)">School Management Systems (Masomo)</h2>
+      <p data-en="Our multi-tenancy platform helps schools in the DRC streamline operations, track fees, automate grades and connect parents with teachers all in one secure place." data-fr="Notre plateforme multi-établissements aide les écoles en RDC à simplifier les opérations, suivre les frais, automatiser les notes et connecter parents et enseignants en un seul endroit sécurisé." data-de="Unsere Multi-Tenant-Plattform hilft Schulen in der DRK, Abläufe zu optimieren, Gebühren zu verfolgen, Noten zu automatisieren und Eltern mit Lehrern zu verbinden alles an einem sicheren Ort.">Our multi-tenancy platform helps schools in the DRC streamline operations, track fees, automate grades and connect parents with teachers all in one secure place.</p>
+      <ul class="svc-list">
+        <li data-en="Student registration &amp; profiles" data-fr="Inscription des élèves &amp; profils" data-de="Schülerregistrierung &amp; Profile">Student registration &amp; profiles</li>
+        <li data-en="Class, subject &amp; timetable management" data-fr="Gestion des classes, matières &amp; horaires" data-de="Klassen-, Fach- &amp; Stundenplanverwaltung">Class, subject &amp; timetable management</li>
+        <li data-en="Automated grades and report cards" data-fr="Notes et bulletins automatisés" data-de="Automatisierte Noten &amp; Zeugnisse">Automated grades and report cards</li>
+        <li data-en="Subscription &amp; school fee tracking" data-fr="Suivi des abonnements et frais scolaires" data-de="Verfolgung von Abonnements &amp; Schulgebühren">Subscription &amp; school fee tracking</li>
+        <li data-en="Multi-school support with secure data isolation" data-fr="Support multi-écoles avec isolement sécurisé" data-de="Unterstützung mehrerer Schulen mit sicherer Datenisolation">Multi-school support with secure data isolation</li>
+      </ul>
+      <div><a href="school-management.html" class="btn btn-solid" data-en="Explore Masomo" data-fr="Explorer Masomo" data-de="Masomo entdecken">Explore Masomo</a></div>
+    </div>
+  </div>
 
-  <!-- Scripts -->
-  <script src="../route/base.js" defer></script>
-  <script src="../route/lang.js" defer></script>
-  <script src="../route/animations.js" defer></script>
+  <!-- 03 Afya Digital Health -->
+  <div class="svc-row reveal">
+    <div class="svc-img-col">
+      <img src="../assets/all.jpeg" alt="Afya Digital Health" loading="lazy"/>
+      <div class="svc-num">03</div>
+    </div>
+    <div class="svc-text-col">
+      <div class="svc-eyebrow" data-en="Health" data-fr="Santé" data-de="Gesundheit">Health</div>
+      <h2 data-en="Afya Digital Health for All" data-fr="Afya Santé numérique pour tous" data-de="Afya Digitale Gesundheit für alle">Afya Digital Health for All</h2>
+      <p data-en="Healthcare should be accessible and data-driven. Afya connects rural families to clinicians through telehealth, mobile education and offline-first tools designed for low-connectivity environments." data-fr="Les soins de santé doivent être accessibles et guidés par les données. Afya connecte les familles rurales aux cliniciens via la télémédecine, l'éducation mobile et des outils conçus pour les environnements à faible connectivité." data-de="Gesundheitsversorgung sollte zugänglich und datengestützt sein. Afya verbindet ländliche Familien per Telemedizin, mobiler Aufklärung und Offline-Tools mit Kliniker:innen.">Healthcare should be accessible and data-driven. Afya connects rural families to clinicians through telehealth, mobile education and offline-first tools designed for low-connectivity environments.</p>
+      <ul class="svc-list">
+        <li data-en="Community health surveys via KoboToolbox" data-fr="Enquêtes de santé communautaire via KoboToolbox" data-de="Gesundheitsumfragen mit KoboToolbox">Community health surveys via KoboToolbox</li>
+        <li data-en="Data analysis for malaria prevention &amp; health campaigns" data-fr="Analyse de données pour la prévention du paludisme" data-de="Datenanalyse zur Malariaprävention &amp; Gesundheitskampagnen">Data analysis for malaria prevention &amp; health campaigns</li>
+        <li data-en="AI-assisted decision support for early disease detection" data-fr="Aide à la décision IA pour la détection précoce" data-de="KI-Entscheidungsunterstützung zur Früherkennung">AI-assisted decision support for early disease detection</li>
+        <li data-en="Telehealth &amp; mobile education for rural communities" data-fr="Télésanté &amp; éducation mobile pour les communautés rurales" data-de="Telemedizin &amp; mobile Aufklärung für ländliche Gemeinschaften">Telehealth &amp; mobile education for rural communities</li>
+      </ul>
+      <div><a href="digital-health.html" class="btn btn-solid" data-en="Explore Afya" data-fr="Explorer Afya" data-de="Afya entdecken">Explore Afya</a></div>
+    </div>
+  </div>
+
+  <!-- 04 Agriculture -->
+  <div class="svc-row reveal">
+    <div class="svc-img-col">
+      <img src="../assets/agri1.jpg" alt="Agriculture &amp; Food Security" loading="lazy"/>
+      <div class="svc-num">04</div>
+    </div>
+    <div class="svc-text-col">
+      <div class="svc-eyebrow" data-en="Agriculture" data-fr="Agriculture" data-de="Landwirtschaft">Agriculture</div>
+      <h2 data-en="Agriculture &amp; Food Security" data-fr="Agriculture &amp; Sécurité alimentaire" data-de="Landwirtschaft &amp; Ernährungssicherheit">Agriculture &amp; Food Security</h2>
+      <p data-en="We empower smallholder farmers across Eastern DRC with modern training, digital planning tools, and direct connections to local and regional markets." data-fr="Nous autonomisons les petits agriculteurs de l'Est de la RDC grâce à des formations modernes, des outils de planification numérique et des connexions directes aux marchés locaux et régionaux." data-de="Wir stärken Kleinbäuer:innen im Osten der DRK mit moderner Schulung, digitalen Planungstools und direkten Verbindungen zu lokalen und regionalen Märkten.">We empower smallholder farmers across Eastern DRC with modern training, digital planning tools, and direct connections to local and regional markets.</p>
+      <ul class="svc-list">
+        <li data-en="Connecting farmers to local and regional markets" data-fr="Relier les agriculteurs aux marchés locaux et régionaux" data-de="Vernetzung von Landwirten mit Märkten">Connecting farmers to local and regional markets</li>
+        <li data-en="Climate-smart training materials and best practices" data-fr="Supports de formation climato-intelligents et bonnes pratiques" data-de="Klimaintelligente Schulungsmaterialien und Best Practices">Climate-smart training materials and best practices</li>
+        <li data-en="Digital tools for crop planning and yield tracking" data-fr="Outils numériques pour la planification et le suivi des rendements" data-de="Digitale Tools für Anbauplanung und Ertragsverfolgung">Digital tools for crop planning and yield tracking</li>
+      </ul>
+      <div><a href="AgTech.html" class="btn btn-solid" data-en="Explore AgTech" data-fr="Explorer AgTech" data-de="AgTech entdecken">Explore AgTech</a></div>
+    </div>
+  </div>
+
+  <!-- 05 Legal Clinic -->
+  <div class="svc-row reveal">
+    <div class="svc-img-col">
+      <img src="../assets/sup.jpg" alt="Legal Clinic &amp; Advocacy" loading="lazy"/>
+      <div class="svc-num">05</div>
+    </div>
+    <div class="svc-text-col">
+      <div class="svc-eyebrow" data-en="Justice" data-fr="Justice" data-de="Gerechtigkeit">Justice</div>
+      <h2 data-en="Legal Clinic &amp; Advocacy" data-fr="Clinique juridique &amp; Plaidoyer" data-de="Rechtsklinik &amp; Advocacy">Legal Clinic &amp; Advocacy</h2>
+      <p data-en="Free, confidential legal assistance for vulnerable people in Eastern DRC with a focus on women, children, displaced families and survivors of violence." data-fr="Assistance juridique gratuite et confidentielle pour les personnes vulnérables à l'Est de la RDC avec un focus sur les femmes, les enfants, les familles déplacées et les survivant·e·s de violences." data-de="Kostenlose, vertrauliche Rechtshilfe für schutzbedürftige Menschen im Osten der DR Kongo mit Fokus auf Frauen, Kinder, vertriebene Familien und Gewaltüberlebende.">Free, confidential legal assistance for vulnerable people in Eastern DRC with a focus on women, children, displaced families and survivors of violence.</p>
+      <ul class="svc-list">
+        <li data-en="Youth digital literacy programs" data-fr="Programmes d'alphabétisation numérique pour les jeunes" data-de="Programme zur digitalen Bildung von Jugendlichen">Youth digital literacy programs</li>
+        <li data-en="Awareness campaigns for peace and justice" data-fr="Campagnes de sensibilisation pour la paix et la justice" data-de="Sensibilisierungskampagnen für Frieden &amp; Gerechtigkeit">Awareness campaigns for peace and justice</li>
+        <li data-en="Free legal aid for women, children and displaced families" data-fr="Aide juridique gratuite pour femmes, enfants et familles déplacées" data-de="Kostenlose Rechtshilfe für Frauen, Kinder und vertriebene Familien">Free legal aid for women, children and displaced families</li>
+        <li data-en="Community mediation and civil registry support" data-fr="Médiation communautaire et appui à l'état civil" data-de="Gemeindemediation und Unterstützung beim Meldewesen">Community mediation and civil registry support</li>
+      </ul>
+      <div><a href="legal-clinic.html" class="btn btn-solid" data-en="Explore Legal Clinic" data-fr="Explorer la Clinique juridique" data-de="Rechtsklinik entdecken">Explore Legal Clinic</a></div>
+    </div>
+  </div>
+
+</main>
+
+<!-- ══ CTA ══ -->
+<section class="cta-sec reveal">
+  <div class="frame">
+    <div class="cta-band">
+      <div>
+        <h2 data-en="Not sure where to start?" data-fr="Vous ne savez pas par où commencer ?" data-de="Nicht sicher, wo Sie anfangen sollen?">Not sure where to start?</h2>
+        <p data-en="Tell us about your school, NGO or community we'll help you find the right service and next steps." data-fr="Parlez-nous de votre école, ONG ou communauté nous vous aiderons à trouver le bon service et les prochaines étapes." data-de="Erzählen Sie uns von Ihrer Schule, NGO oder Gemeinschaft wir helfen Ihnen, den richtigen Service und nächste Schritte zu finden.">Tell us about your school, NGO or community we'll help you find the right service and next steps.</p>
+      </div>
+      <div class="cta-btns">
+        <a href="../contact.html" class="btn btn-w" data-en="Contact us" data-fr="Nous contacter" data-de="Kontakt aufnehmen">Contact us</a>
+        <a href="../about.html" class="btn btn-wg" data-en="About Tuunganes" data-fr="À propos" data-de="Über Tuunganes">About Tuunganes</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ FOOTER ══ -->
+<footer>
+  <div class="frame foot">
+    <a href="../index.html" class="foot-logo">
+      <img src="../assets/fevicon.png" alt="Tuunganes"/>
+      <span>Tuunganes</span>
+    </a>
+    <p>&copy; 2025 Tuunganes &nbsp;·&nbsp; Bukavu &amp; Goma, DRC</p>
+    <div style="display:flex;gap:1rem">
+      <a href="../about.html" style="font-size:.82rem;color:var(--muted)" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+      <a href="services.html" style="font-size:.82rem;color:var(--muted)" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+      <a href="../contact.html" style="font-size:.82rem;color:var(--muted)" data-en="Contact" data-fr="Contact" data-de="Kontakt">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ══ SCRIPTS ══ -->
+<script>
+(function(){
+  const s=localStorage.getItem('tuunganes-theme');
+  const dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  document.documentElement.setAttribute('data-theme',s||(dark?'dark':'light'));
+})();
+
+document.addEventListener('DOMContentLoaded',function(){
+  const root=document.documentElement;
+  const themeBtn=document.getElementById('themeBtn');
+  function syncIcon(){themeBtn.textContent=root.getAttribute('data-theme')==='dark'?'☀️':'🌙'}
+  syncIcon();
+  themeBtn.addEventListener('click',function(){
+    const next=root.getAttribute('data-theme')==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);
+    localStorage.setItem('tuunganes-theme',next);
+    syncIcon();
+  });
+
+  const hamBtn=document.getElementById('hamBtn');
+  const drawer=document.getElementById('drawer');
+  const drawerClose=document.getElementById('drawerClose');
+  hamBtn.addEventListener('click',()=>{const o=drawer.classList.toggle('open');hamBtn.setAttribute('aria-expanded',String(o))});
+  drawerClose.addEventListener('click',()=>{drawer.classList.remove('open');hamBtn.setAttribute('aria-expanded','false')});
+  document.addEventListener('click',e=>{if(!drawer.contains(e.target)&&!hamBtn.contains(e.target)){drawer.classList.remove('open');hamBtn.setAttribute('aria-expanded','false')}});
+
+  function applyLang(lang){
+    localStorage.setItem('siteLang',lang);
+    document.querySelectorAll('.lang-pills button').forEach(b=>b.classList.toggle('on',b.dataset.lang===lang));
+    document.querySelectorAll('[data-'+lang+']').forEach(el=>{
+      const val=el.getAttribute('data-'+lang);
+      if(!val)return;
+      if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){el.placeholder=val;}
+      else if(el.tagName==='H1'||el.tagName==='H2'){el.innerHTML=val;}
+      else if(!el.querySelector('[data-'+lang+']:not(script)')){el.textContent=val;}
+    });
+  }
+  const saved=localStorage.getItem('siteLang')||'en';
+  document.querySelectorAll('.lang-pills [data-lang]').forEach(btn=>{
+    btn.addEventListener('click',()=>applyLang(btn.dataset.lang));
+    if(btn.dataset.lang===saved)btn.classList.add('on');
+  });
+
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+  },{threshold:0.07});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+});
+</script>
+<script src="../route/base.js" defer></script>
+<script src="../route/lang.js" defer></script>
+<script src="../route/animations.js" defer></script>
 </body>
 </html>

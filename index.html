@@ -1,303 +1,759 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="light dark" />
-  <title data-en="Tuunganes Uniting Communities"
-          data-fr="Tuunganes Unir les communautés"
-          data-de="Tuunganes Gemeinschaft vereinen">Tuunganes Uniting Communities</title>
-  <link rel="icon" href="assets/fevicon.png" type="image/png" />
-  <link rel="stylesheet" href="css/styles.css" />
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="color-scheme" content="light dark"/>
+<title>Tuunganes Uniting Communities</title>
+<link rel="icon" href="assets/fevicon.png" type="image/png"/>
+<link rel="stylesheet" href="css/styles.css"/>
+<style>
+/* ─── TOKENS ────────────────────────────────────────────────── */
+:root {
+  --blue: #2196f3;
+  --blue-d: #1565c0;
+  --blue-pale: rgba(33,150,243,.10);
+  --blue-ring: rgba(33,150,243,.30);
+  --radius: 18px;
+  --radius-sm: 10px;
+  --ease: cubic-bezier(.4,0,.2,1);
+}
+[data-theme="light"] {
+  --bg:    #f4f8ff;
+  --bg2:   #eaf2fe;
+  --surf:  #ffffff;
+  --tx:    #0d1b2e;
+  --tx2:   #2c4058;
+  --muted: #5e7a96;
+  --bdr:   #c8ddf4;
+  --sh:    0 1px 3px rgba(0,0,0,.06), 0 6px 24px rgba(0,0,0,.07);
+  --glow:  0 0 0 3px rgba(33,150,243,.18);
+}
+[data-theme="dark"] {
+  --bg:    #060e1a;
+  --bg2:   #0c1726;
+  --surf:  #101e30;
+  --tx:    #e8f2ff;
+  --tx2:   #a8c4e0;
+  --muted: #5c7b98;
+  --bdr:   rgba(255,255,255,.07);
+  --sh:    0 2px 8px rgba(0,0,0,.4), 0 10px 36px rgba(0,0,0,.3);
+  --glow:  0 0 0 3px rgba(33,150,243,.25);
+}
+
+/* ─── RESET ─────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+  background: var(--bg);
+  color: var(--tx);
+  font-size: 16px;
+  line-height: 1.65;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+  transition: background .25s var(--ease), color .25s var(--ease);
+}
+a { color: inherit; text-decoration: none; }
+img { display: block; max-width: 100%; }
+button { font-family: inherit; }
+
+/* ─── LAYOUT ─────────────────────────────────────────────────── */
+.frame { width: min(1200px, 94vw); margin: 0 auto; }
+
+/* ─── FLOATING NAV ───────────────────────────────────────────── */
+.nav {
+  position: fixed; top: 1rem; left: 50%; transform: translateX(-50%);
+  width: min(1100px, 90vw);
+  background: color-mix(in srgb, var(--surf) 82%, transparent);
+  backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+  border: 1px solid var(--bdr);
+  border-radius: 999px;
+  padding: .5rem .5rem .5rem 1.4rem;
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  z-index: 1000;
+  box-shadow: var(--sh);
+  transition: box-shadow .25s;
+}
+.nav-logo {
+  display: flex; align-items: center; gap: .55rem;
+  font-size: .95rem; font-weight: 800; letter-spacing: -.01em; color: var(--tx);
+  flex-shrink: 0;
+}
+.nav-logo img { width: 30px; height: 30px; border-radius: 8px; }
+.nav-links {
+  display: flex; align-items: center; gap: .15rem; flex: 1; justify-content: center;
+}
+.nav-links a {
+  padding: .42rem .85rem; border-radius: 999px; font-size: .82rem; font-weight: 600;
+  color: var(--tx2); transition: color .15s, background .15s;
+}
+.nav-links a:hover { color: var(--blue); background: var(--blue-pale); }
+.nav-end { display: flex; align-items: center; gap: .45rem; flex-shrink: 0; }
+.lang-pills {
+  display: flex; gap: .18rem;
+  background: var(--bg2); border: 1px solid var(--bdr);
+  border-radius: 999px; padding: .22rem .28rem;
+}
+.lang-pills button {
+  border: none; background: transparent; border-radius: 999px;
+  padding: .22rem .55rem; font-size: .74rem; font-weight: 700; cursor: pointer;
+  color: var(--muted); transition: background .15s, color .15s;
+}
+.lang-pills button.on { background: var(--blue); color: #fff; }
+.theme-pill {
+  width: 36px; height: 36px; border-radius: 999px;
+  border: 1px solid var(--bdr); background: var(--bg2);
+  display: grid; place-items: center; cursor: pointer;
+  font-size: .95rem; transition: border-color .15s, transform .2s;
+}
+.theme-pill:hover { border-color: var(--blue); transform: rotate(20deg); }
+.nav-cta {
+  background: var(--blue); color: #fff; border: none;
+  padding: .48rem 1.15rem; border-radius: 999px; font-size: .82rem; font-weight: 700;
+  cursor: pointer; transition: background .15s, transform .15s;
+  white-space: nowrap;
+}
+.nav-cta:hover { background: var(--blue-d); transform: translateY(-1px); }
+/* hamburger */
+.ham {
+  display: none; flex-direction: column; gap: 4px; cursor: pointer;
+  background: var(--bg2); border: 1px solid var(--bdr); border-radius: 999px;
+  padding: .55rem .75rem;
+}
+.ham span { display: block; width: 18px; height: 2px; background: var(--tx); border-radius: 2px; transition: .2s; }
+.nav-drawer {
+  display: none; position: fixed; inset: 0; background: var(--surf);
+  z-index: 999; flex-direction: column; padding: 2rem 1.75rem; gap: 1.25rem;
+  border-right: 1px solid var(--bdr);
+}
+.nav-drawer.open { display: flex; }
+.nav-drawer a { font-size: 1.1rem; font-weight: 700; color: var(--tx2); padding: .5rem 0; border-bottom: 1px solid var(--bdr); }
+.nav-drawer a:hover { color: var(--blue); }
+@media (max-width: 720px) {
+  .ham { display: flex; }
+  .nav-links, .nav-end { display: none; }
+}
+
+/* ─── HERO ───────────────────────────────────────────────────── */
+.hero {
+  min-height: 100svh;
+  display: grid; place-items: center;
+  padding: 8rem 0 5rem; position: relative; overflow: hidden;
+}
+/* background orbs */
+.hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background:
+    radial-gradient(ellipse 55% 65% at 75% 35%, rgba(33,150,243,.13) 0%, transparent 60%),
+    radial-gradient(ellipse 35% 40% at 15% 75%, rgba(33,150,243,.07) 0%, transparent 60%);
+  pointer-events: none;
+}
+[data-theme="dark"] .hero::before {
+  background:
+    radial-gradient(ellipse 55% 65% at 75% 35%, rgba(33,150,243,.18) 0%, transparent 60%),
+    radial-gradient(ellipse 35% 40% at 15% 75%, rgba(33,150,243,.10) 0%, transparent 60%);
+}
+.hero-inner {
+  position: relative; z-index: 1;
+  display: grid; grid-template-columns: 1.05fr .95fr; gap: 3rem; align-items: center;
+}
+@media (max-width: 900px) { .hero-inner { grid-template-columns: 1fr; } .hero-vis { display: none; } }
+
+.hero-tag {
+  display: inline-flex; align-items: center; gap: .45rem;
+  font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--blue); border: 1.5px solid var(--blue-ring); border-radius: 999px;
+  padding: .35rem .9rem; margin-bottom: 1.4rem;
+  animation: fadeUp .7s var(--ease) both;
+}
+.hero-tag::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: var(--blue); flex-shrink: 0; }
+
+.hero-h1 {
+  font-size: clamp(2.4rem, 6.5vw, 5rem);
+  font-weight: 800; letter-spacing: -.03em; line-height: 1.05;
+  color: var(--tx); margin-bottom: 1.25rem;
+  animation: fadeUp .8s .1s var(--ease) both;
+}
+.hero-h1 em {
+  font-style: normal; color: var(--blue);
+  position: relative; display: inline-block;
+}
+/* animated underline on the brand name */
+.hero-h1 em::after {
+  content: '';
+  position: absolute; left: 0; bottom: -.1em; width: 100%; height: .08em;
+  background: var(--blue); border-radius: 4px; opacity: .35;
+  transform: scaleX(0); transform-origin: left;
+  animation: underlineIn .7s .8s var(--ease) forwards;
+}
+@keyframes underlineIn { to { transform: scaleX(1); } }
+
+.hero-sub {
+  font-size: 1.05rem; color: var(--tx2); max-width: 460px;
+  margin-bottom: 2rem; line-height: 1.65;
+  animation: fadeUp .8s .2s var(--ease) both;
+}
+.hero-btns {
+  display: flex; gap: .75rem; flex-wrap: wrap;
+  animation: fadeUp .8s .3s var(--ease) both;
+}
+
+/* floating image mosaic */
+.hero-vis {
+  position: relative; height: 420px;
+  animation: fadeUp .9s .15s var(--ease) both;
+}
+.vi {
+  position: absolute; border-radius: var(--radius); overflow: hidden;
+  box-shadow: var(--sh); border: 1px solid var(--bdr);
+}
+.vi img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.vi1 { width: 55%; top: 0; right: 0; height: 58%; }
+.vi2 { width: 43%; top: 12%; left: 0; height: 46%; }
+.vi3 { width: 45%; bottom: 0; right: 8%; height: 40%; }
+.vi4 { width: 30%; bottom: 10%; left: 2%; height: 30%; border-radius: 999px; }
+
+/* ─── SCROLL PILL ─── */
+.scroll-hint {
+  position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%);
+  display: flex; flex-direction: column; align-items: center; gap: .4rem;
+  font-size: .7rem; font-weight: 600; letter-spacing: .08em; text-transform: uppercase;
+  color: var(--muted); animation: fadeUp 1s .6s var(--ease) both;
+}
+.scroll-dot {
+  width: 24px; height: 36px; border-radius: 999px; border: 1.5px solid var(--bdr);
+  display: grid; place-items: start center; padding-top: 5px;
+}
+.scroll-dot::after {
+  content: ''; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--blue); animation: scrollBounce 1.6s infinite var(--ease);
+}
+@keyframes scrollBounce { 0%,100%{transform:translateY(0)} 50%{transform:translateY(12px)} }
+
+/* ─── SECTION LABELS ─────────────────────────────────────────── */
+.s-label {
+  display: inline-block; font-size: .7rem; font-weight: 700;
+  letter-spacing: .12em; text-transform: uppercase; color: var(--blue);
+  margin-bottom: .5rem;
+}
+.s-title {
+  font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 800;
+  letter-spacing: -.02em; color: var(--tx); margin-bottom: .5rem;
+}
+.s-sub { color: var(--tx2); font-size: .97rem; max-width: 560px; }
+
+/* ─── BUTTONS ────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; gap: .4rem;
+  padding: .72rem 1.6rem; border-radius: 999px; border: none; cursor: pointer;
+  font-size: .88rem; font-weight: 700; letter-spacing: -.005em;
+  transition: all .2s var(--ease); white-space: nowrap; font-family: inherit;
+}
+.btn-solid { background: var(--blue); color: #fff; box-shadow: 0 4px 16px rgba(33,150,243,.32); }
+.btn-solid:hover { background: var(--blue-d); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(33,150,243,.4); }
+.btn-ghost { background: var(--bg2); color: var(--tx); border: 1.5px solid var(--bdr); }
+.btn-ghost:hover { border-color: var(--blue); color: var(--blue); transform: translateY(-1px); }
+.btn-w { background: #fff; color: var(--blue); font-weight: 800; }
+.btn-w:hover { background: #e3f2fd; transform: translateY(-1px); }
+.btn-wg { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.4); }
+.btn-wg:hover { background: rgba(255,255,255,.1); border-color: #fff; }
+
+/* ─── ABOUT ──────────────────────────────────────────────────── */
+.about-sec { padding: 7rem 0; }
+.about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: center; }
+@media (max-width: 820px) { .about-grid { grid-template-columns: 1fr; } }
+.about-photo {
+  position: relative; border-radius: 24px; overflow: hidden;
+  box-shadow: var(--sh); border: 1px solid var(--bdr);
+  aspect-ratio: 4/3;
+}
+.about-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.about-photo::after {
+  content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 50%;
+  background: linear-gradient(to top, rgba(33,150,243,.15), transparent);
+  pointer-events: none;
+}
+.about-text { padding-left: 1rem; }
+.about-text h2 { font-size: clamp(1.4rem, 3vw, 2rem); letter-spacing: -.02em; margin-bottom: .85rem; }
+.about-text p { color: var(--tx2); margin-bottom: .85rem; font-size: .97rem; }
+.about-cta { margin-top: 1.5rem; display: flex; gap: .75rem; flex-wrap: wrap; }
+
+/* ─── SERVICES / BENTO ───────────────────────────────────────── */
+.services-sec {
+  padding: 7rem 0;
+  background: var(--surf);
+  border-top: 1px solid var(--bdr); border-bottom: 1px solid var(--bdr);
+}
+.svc-header { margin-bottom: 2.5rem; display: flex; align-items: flex-end; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+.bento {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-rows: auto;
+  gap: 1rem;
+}
+.bcard {
+  background: var(--bg); border: 1px solid var(--bdr);
+  border-radius: var(--radius); overflow: hidden;
+  position: relative; display: flex; flex-direction: column;
+  transition: transform .22s var(--ease), box-shadow .22s var(--ease), border-color .22s;
+  box-shadow: var(--sh);
+}
+.bcard:hover { transform: translateY(-4px); box-shadow: 0 12px 36px rgba(0,0,0,.12); border-color: var(--blue-ring); }
+.bcard.wide  { grid-column: span 7; }
+.bcard.tall  { grid-column: span 5; grid-row: span 2; }
+.bcard.mid   { grid-column: span 4; }
+.bcard.rest  { grid-column: span 3; }
+@media (max-width: 900px)  { .bcard.wide,.bcard.tall,.bcard.mid,.bcard.rest { grid-column: span 12; } }
+@media (min-width: 901px) and (max-width: 1100px) { .bcard.wide{grid-column:span 8}.bcard.tall{grid-column:span 4}.bcard.mid{grid-column:span 6}.bcard.rest{grid-column:span 6} }
+.bcard-img { width: 100%; height: 200px; object-fit: cover; display: block; flex-shrink: 0; }
+.bcard.tall .bcard-img { height: 260px; }
+.bcard-body { padding: 1.25rem 1.3rem 1.4rem; flex: 1; display: flex; flex-direction: column; }
+.bcard-icon {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: var(--blue-pale); border: 1px solid var(--blue-ring);
+  display: grid; place-items: center; font-size: 1rem; margin-bottom: .75rem; flex-shrink: 0;
+}
+.bcard-body h3 { font-size: .97rem; font-weight: 800; color: var(--tx); margin-bottom: .35rem; letter-spacing: -.01em; }
+.bcard-body p { font-size: .84rem; color: var(--tx2); line-height: 1.55; flex: 1; }
+.bcard-arrow {
+  margin-top: .85rem; align-self: flex-start;
+  font-size: .78rem; font-weight: 700; color: var(--blue);
+  display: flex; align-items: center; gap: .3rem;
+  border-bottom: 1.5px solid transparent; transition: border-color .15s;
+}
+.bcard:hover .bcard-arrow { border-color: var(--blue); }
+.bcard-link { position: absolute; inset: 0; z-index: 1; }
+
+/* ─── IMPACT ─────────────────────────────────────────────────── */
+.impact-sec { padding: 7rem 0; }
+.impact-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+@media (max-width: 820px) { .impact-inner { grid-template-columns: 1fr; } }
+.stats-wall { display: grid; grid-template-columns: 1fr 1fr; gap: .85rem; }
+.stat-tile {
+  background: var(--surf); border: 1px solid var(--bdr);
+  border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--sh);
+  display: flex; flex-direction: column; gap: .2rem;
+}
+.stat-tile b { font-size: 2.6rem; font-weight: 800; color: var(--blue); letter-spacing: -.04em; line-height: 1; }
+.stat-tile span { font-size: .83rem; color: var(--muted); font-weight: 600; }
+.impact-copy h2 { font-size: clamp(1.5rem, 3vw, 2rem); letter-spacing: -.02em; margin-bottom: .75rem; }
+.impact-copy p { color: var(--tx2); font-size: .97rem; margin-bottom: 1.5rem; }
+
+/* ─── BIG CTA BAND ───────────────────────────────────────────── */
+.cta-band {
+  margin: 0 0 7rem;
+  background: var(--blue);
+  border-radius: 24px; padding: 3.5rem 3rem;
+  display: grid; grid-template-columns: 1fr auto; gap: 2rem; align-items: center;
+  box-shadow: 0 8px 40px rgba(33,150,243,.35);
+  position: relative; overflow: hidden;
+}
+.cta-band::before {
+  content: ''; position: absolute; right: -60px; top: -80px;
+  width: 260px; height: 260px; border-radius: 50%;
+  background: rgba(255,255,255,.06); pointer-events: none;
+}
+.cta-band::after {
+  content: ''; position: absolute; right: 60px; bottom: -100px;
+  width: 180px; height: 180px; border-radius: 50%;
+  background: rgba(255,255,255,.04); pointer-events: none;
+}
+@media (max-width: 720px) { .cta-band { grid-template-columns: 1fr; padding: 2.5rem 1.75rem; } }
+.cta-band h2 { font-size: clamp(1.3rem, 3vw, 1.75rem); color: #fff; margin-bottom: .5rem; letter-spacing: -.02em; }
+.cta-band p { color: rgba(255,255,255,.82); font-size: .95rem; max-width: 500px; }
+.cta-btns { display: flex; gap: .75rem; flex-wrap: wrap; flex-shrink: 0; }
+
+/* ─── JOIN ───────────────────────────────────────────────────── */
+.join-sec {
+  padding: 7rem 0;
+  background: var(--surf);
+  border-top: 1px solid var(--bdr); border-bottom: 1px solid var(--bdr);
+}
+.join-grid { display: grid; grid-template-columns: 1fr 1.1fr; gap: 3rem; align-items: start; }
+@media (max-width: 820px) { .join-grid { grid-template-columns: 1fr; } }
+.join-left h2 { font-size: clamp(1.4rem, 3vw, 1.9rem); letter-spacing: -.02em; margin-bottom: .75rem; }
+.join-left p { color: var(--tx2); font-size: .97rem; margin-bottom: 1.75rem; }
+.join-pills { display: flex; flex-wrap: wrap; gap: .5rem; margin-bottom: 1.75rem; }
+.jpill {
+  border: 1px solid var(--bdr); border-radius: 999px;
+  padding: .3rem .85rem; font-size: .8rem; font-weight: 600; color: var(--tx2);
+  background: var(--bg2);
+}
+.form-box {
+  background: var(--bg); border: 1px solid var(--bdr);
+  border-radius: var(--radius); padding: 2rem; box-shadow: var(--sh);
+}
+.form-box h3 { font-size: 1rem; font-weight: 800; margin-bottom: 1.25rem; color: var(--tx); }
+.ff { margin-bottom: .75rem; }
+.ff input, .ff textarea {
+  width: 100%; background: var(--surf); border: 1.5px solid var(--bdr);
+  border-radius: var(--radius-sm); padding: .68rem .9rem;
+  font-size: .92rem; color: var(--tx); font-family: inherit; outline: none;
+  transition: border-color .15s, box-shadow .15s;
+}
+.ff input:focus, .ff textarea:focus { border-color: var(--blue); box-shadow: var(--glow); }
+.ff input::placeholder, .ff textarea::placeholder { color: var(--muted); }
+.ff textarea { min-height: 100px; resize: vertical; }
+.btn-fw { width: 100%; justify-content: center; margin-top: .25rem; }
+
+/* ─── FOOTER ─────────────────────────────────────────────────── */
+.foot {
+  padding: 2.25rem 0;
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 1rem; flex-wrap: wrap;
+  border-top: 1px solid var(--bdr);
+}
+.foot-logo { display: flex; align-items: center; gap: .5rem; font-weight: 800; font-size: .95rem; color: var(--tx); }
+.foot-logo img { width: 28px; height: 28px; border-radius: 7px; }
+.foot p { font-size: .8rem; color: var(--muted); }
+
+/* ─── ANIMATIONS ─────────────────────────────────────────────── */
+@keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
+.reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s var(--ease), transform .65s var(--ease); }
+.reveal.in { opacity: 1; transform: translateY(0); }
+</style>
 </head>
 <body>
-  <!-- ================= NAVBAR ================= -->
-  <header class="nav glass">
-    <div class="container nav-inner">
-      <a href="index.html" class="logo">
-        <img src="assets/fevicon.png" alt="Tuunganes" width="32" height="32" />
-        <span>Tuunganes</span>
-      </a>
-      <button id="navToggle" class="nav-toggle" aria-label="Open menu" aria-expanded="false">
-        <span></span><span></span><span></span>
-      </button>
-      <nav class="main-nav" id="mainNav">
-        <a href="about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
-        <a href="#impact" data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
-        <a href="#join" data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</a>
-        <div class="nav-right">
-          <div class="lang-switch">
-            <button type="button" data-lang="en">EN</button>
-            <button type="button" data-lang="fr">FR</button>
-            <button type="button" data-lang="de">DE</button>
-          </div>
-          <button id="themeBtn" class="theme-switcher" title="Toggle theme" aria-label="Toggle theme">
-            <span class="knob"></span>
-            <span class="moon" aria-hidden>🌙</span>
-            <span class="sun" aria-hidden>☀️</span>
-          </button>
+
+<!-- ══════════ MOBILE DRAWER ══════════ -->
+<nav class="nav-drawer" id="drawer">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+    <span style="font-weight:800;font-size:1rem">Tuunganes</span>
+    <button id="drawerClose" style="background:transparent;border:none;font-size:1.4rem;cursor:pointer;color:var(--tx)">✕</button>
+  </div>
+  <a href="about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+  <a href="services/services.html" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+  <a href="#impact" data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
+  <a href="#join" data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</a>
+  <a href="contact.html" class="btn btn-solid" style="justify-content:center;margin-top:.5rem" data-en="Contact us" data-fr="Contact" data-de="Kontakt">Contact us</a>
+</nav>
+
+<!-- ══════════ FLOATING NAV ══════════ -->
+<header class="nav">
+  <a href="index.html" class="nav-logo">
+    <img src="assets/fevicon.png" alt="Tuunganes"/>
+    <span>Tuunganes</span>
+  </a>
+  <nav class="nav-links">
+    <a href="about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+    <a href="services/services.html" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+    <a href="#impact" data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
+    <a href="#join" data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</a>
+  </nav>
+  <div class="nav-end">
+    <div class="lang-pills" role="group">
+      <button type="button" data-lang="en" class="on">EN</button>
+      <button type="button" data-lang="fr">FR</button>
+      <button type="button" data-lang="de">DE</button>
+    </div>
+    <button id="themeBtn" class="theme-pill" aria-label="Toggle theme" title="Toggle theme">🌙</button>
+    <a href="contact.html" class="nav-cta" data-en="Contact" data-fr="Contact" data-de="Kontakt">Contact</a>
+    <button class="ham" id="hamBtn" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ══════════ HERO ══════════ -->
+<section class="hero" id="top">
+  <div class="frame">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-tag" data-en="Bukavu · Goma · Eastern DRC" data-fr="Bukavu · Goma · Est de la RDC" data-de="Bukavu · Goma · Osten der DRK">
+          Bukavu · Goma · Eastern DRC
         </div>
-      </nav>
-    </div>
-  </header>
-  <!-- ================= HERO ================= -->
-  <section id="hero" class="hero reveal">
-    <div class="hero-overlay"></div>
-    <div class="container hero-content">
-      <h1 data-en="Welcome to Tuunganes"
-          data-fr="Bienvenue à Tuunganes"
-          data-de="Willkommen bei Tuunganes">Welcome to Tuunganes</h1>
-      <p data-en="Uniting communities. Driving digital transformation. Empowering lives."
-         data-fr="Unir les communautés. Accélérer la transformation numérique. Autonomiser les vies."
-         data-de="Gemeinschaften vereinen. Digitale Transformation vorantreiben. Leben stärken.">
-         Uniting communities. Driving digital transformation. Empowering lives.
-      </p>
-      <div class="hero-ctas">
-        <a href="#join" class="btn btn-primary" data-en="Get involved" data-fr="S'impliquer" data-de="Mitmachen">Get involved</a>
-        <a href="services/services.html" class="btn btn-ghost" data-en="Our services" data-fr="Nos services" data-de="Unsere Leistungen">Our services</a>
-      </div>
-    </div>
-  </section>
-
-  <!-- ================= ABOUT (Split) ================= -->
-  <section id="about" class="about reveal">
-    <div class="container about-grid">
-      <div class="about-image">
-        <img src="assets/learnit.jpg" alt="Community and technology" loading="lazy" />
-      </div>
-      <div class="about-text card">
-        <h2 data-en="About Tuunganes" data-fr="À propos de Tuunganes" data-de="Über Tuunganes">About Tuunganes</h2>
-        <p data-en="Tuunganes is a grassroots-driven initiative born in Bukavu, Eastern DRC. Our mission is to create community-led change through technology, innovation, education, and compassion especially for those affected by war, poverty, and marginalization in Bukavu and Goma."
-           data-fr="Tuunganes est une initiative communautaire née à Bukavu, dans l’est de la RDC. Notre mission est de créer un changement communautaire grâce à la technologie, l’innovation, l’éducation et la compassion surtout pour ceux touchés par la guerre, la pauvreté et la marginalisation à Bukavu et Goma."
-           data-de="Tuunganes ist eine von der Basis getragene Initiative aus Bukavu in Ostkongo. Unsere Mission ist es, gemeinschaftsgeführten Wandel durch Technologie, Innovation, Bildung und Mitgefühl zu schaffen  insbesondere für Betroffene von Krieg, Armut und Marginalisierung in Bukavu und Goma.">
-          Tuunganes is a grassroots-driven initiative born in Bukavu, Eastern DRC...
+        <h1 class="hero-h1"
+          data-en="Uniting<br>communities,<br>one <em>Tuunganes</em><br>at a time."
+          data-fr="Unir<br>les communautés,<br>un <em>Tuunganes</em><br>à la fois."
+          data-de="Gemeinden<br>verbinden,<br>ein <em>Tuunganes</em><br>nach dem anderen.">
+          Uniting<br>communities,<br>one <em>Tuunganes</em><br>at a time.
+        </h1>
+        <p class="hero-sub"
+          data-en="We drive digital transformation, legal protection, health innovation, and agricultural empowerment across the Democratic Republic of Congo."
+          data-fr="Nous accélérons la transformation numérique, la protection juridique, l'innovation en santé et l'autonomisation agricole en République Démocratique du Congo."
+          data-de="Wir treiben digitale Transformation, rechtlichen Schutz, Gesundheitsinnovation und landwirtschaftliche Stärkung in der DR Kongo voran.">
+          We drive digital transformation, legal protection, health innovation, and agricultural empowerment across the Democratic Republic of Congo.
         </p>
-        <a href="about.html" class="btn btn-primary" data-en="Learn more" data-fr="En savoir plus" data-de="Mehr erfahren">Learn more</a>
+        <div class="hero-btns">
+          <a href="#join" class="btn btn-solid" data-en="Get involved" data-fr="S'impliquer" data-de="Mitmachen">Get involved</a>
+          <a href="services/services.html" class="btn btn-ghost" data-en="Our services →" data-fr="Nos services →" data-de="Unsere Leistungen →">Our services →</a>
+        </div>
+      </div>
+      <div class="hero-vis" aria-hidden="true">
+        <div class="vi vi1"><img src="assets/learnit.jpg" alt=""/></div>
+        <div class="vi vi2"><img src="assets/all.jpeg" alt=""/></div>
+        <div class="vi vi3"><img src="assets/agri1.jpg" alt=""/></div>
+        <div class="vi vi4"><img src="assets/sup.jpg" alt=""/></div>
       </div>
     </div>
-  </section>
-  <!-- ================= PILLARS / SERVICES ================= -->
-<section id="services" class="pillars">
-  <div class="container pillars-grid">
-    <!-- Pillar IT -->
-    <article class="pillar card reveal">
-      <a class="stretch-link" href="services/it-consultancy.html" aria-label="IT Consultancy & Digital Solutions"></a>
-      <div class="pillar-media">
-        <img src="assets/pro.jpg" alt="IT & Digital" loading="lazy" />
-      </div>
-      <div class="pillar-content">
-        <h3 data-en="IT Consultancy & Digital Solutions"
-            data-fr="Conseil & solutions numériques"
-            data-de="IT-Beratung & Digitale Lösungen">
-            IT Consultancy & Digital Solutions
-        </h3>
-        <ul>
-          <li data-en="Digital Transformation Strategies: Helping businesses modernize and innovate."
-              data-fr="Stratégies de transformation numérique : aider les entreprises à moderniser et innover."
-              data-de="Strategien zur digitalen Transformation: Unternehmen bei der Modernisierung und Innovation unterstützen.">
-              Digital Transformation Strategies: Helping businesses modernize and innovate.
-          </li>
-          <li data-en="Internet & Infrastructure Consulting: Advising on connectivity, platforms, and tools."
-              data-fr="Conseil en infrastructures et Internet : accompagnement sur la connectivité, les plateformes et les outils."
-              data-de="Beratung zu Internet & Infrastruktur: Beratung zu Konnektivität, Plattformen und Tools.">
-              Internet & Infrastructure Consulting: Advising on connectivity, platforms, and tools.
-          </li>
-          <li data-en="Training & Capacity Building: Empowering local teams to adopt new technologies."
-              data-fr="Formation & renforcement des capacités : outiller les équipes locales à adopter les nouvelles technologies."
-              data-de="Schulung & Kapazitätsaufbau: Lokale Teams befähigen, neue Technologien einzuführen.">
-              Training & Capacity Building: Empowering local teams to adopt new technologies.
-          </li>
-        </ul>
-      </div>
-    </article>
-
-    <!-- Pillar Legal clinic -->
-    <article class="pillar card reveal">
-      <a class="stretch-link" href="services/legal-clinic.html" aria-label="Legal and Judicial Assistance"></a>
-      <div class="pillar-media">
-        <img src="assets/sup.jpg" alt="Legal Clinic" loading="lazy" />
-      </div>
-      <div class="pillar-content">
-        <h3 data-en="Legal and judicial advice and assistance"
-            data-fr="Conseil et assistance juridique et judiciaire"
-            data-de="Rechtsberatung und gerichtliche Unterstützung">
-            Legal and judicial advice and assistance
-        </h3>
-        <ul>
-          <li data-en="Providing free legal advice to vulnerable populations (women, children, displaced persons)."
-              data-fr="Fournir des conseils juridiques gratuits aux populations vulnérables (femmes, enfants, déplacés)."
-              data-de="Kostenlose Rechtsberatung für vulnerable Gruppen (Frauen, Kinder, Vertriebene).">
-              Providing free legal advice to vulnerable populations (women, children, displaced persons).
-          </li>
-          <li data-en="Judicial support: Accompanying victims of violence through legal processes."
-              data-fr="Assistance judiciaire : accompagner les victimes de violences dans les démarches légales."
-              data-de="Gerichtliche Unterstützung: Opfer von Gewalt durch rechtliche Verfahren begleiten.">
-              Judicial support: Accompanying victims of violence through legal processes.
-          </li>
-          <li data-en="Community mediation: Promoting peaceful resolution of minor conflicts."
-              data-fr="Médiation communautaire : promouvoir la résolution pacifique des conflits mineurs."
-              data-de="Gemeindemediation: Förderung der friedlichen Lösung kleinerer Konflikte.">
-              Community mediation: Promoting peaceful resolution of minor conflicts.
-          </li>
-          <li data-en="Awareness & training: Educating communities on rights and access to justice."
-              data-fr="Sensibilisation & formation : éduquer les communautés sur les droits et l’accès à la justice."
-              data-de="Aufklärung & Schulung: Gemeinschaften über Rechte und Zugang zur Justiz informieren.">
-              Awareness & training: Educating communities on rights and access to justice.
-          </li>
-        </ul>
-      </div>
-    </article>
-
-    <!-- Pillar Afya digital -->
-    <article class="pillar card reveal">
-      <a class="stretch-link" href="https://afya.tuunganes.com/" aria-label="Afya Digital Health for All"></a>
-      <div class="pillar-media">
-        <img src="assets/all.jpeg" alt="Afya Digital Health" loading="lazy" />
-      </div>
-      <div class="pillar-content">
-        <h3 data-en="Afya Digital Health for All"
-            data-fr="Afya Santé numérique pour tous"
-            data-de="Afya Digitale Gesundheit für alle">
-            Afya Digital Health for All
-        </h3>
-        <ul>
-          <li data-en="Mobile health education: SMS and WhatsApp tips for families."
-              data-fr="Éducation sanitaire mobile : conseils SMS et WhatsApp pour les familles."
-              data-de="Mobile Gesundheitsbildung: SMS- und WhatsApp-Tipps für Familien.">
-              Mobile health education: SMS and WhatsApp tips for families.
-          </li>
-          <li data-en="Digital clinics: Teleconsultation to reach rural and underserved patients."
-              data-fr="Cliniques numériques : téléconsultations pour atteindre les patients ruraux et vulnérables."
-              data-de="Digitale Kliniken: Telekonsultationen für ländliche und benachteiligte Patienten.">
-              Digital clinics: Teleconsultation to reach rural and underserved patients.
-          </li>
-          <li data-en="Maternal & child health: Community programs and digital reminders."
-              data-fr="Santé maternelle & infantile : programmes communautaires et rappels numériques."
-              data-de="Mütter- & Kindergesundheit: Gemeinschaftsprogramme und digitale Erinnerungen.">
-              Maternal & child health: Community programs and digital reminders.
-          </li>
-        </ul>
-      </div>
-    </article>
-
-    <!-- Pillar Agriculture -->
-    <article class="pillar card reveal">
-      <div class="pillar-media">
-        <img src="assets/agri1.jpg" alt="Sustainable Agriculture" loading="lazy" />
-      </div>
-      <div class="pillar-content">
-        <h3 data-en="Sustainable Agriculture & Farmer Support"
-            data-fr="Agriculture durable & appui aux agriculteurs"
-            data-de="Nachhaltige Landwirtschaft & Unterstützung der Bauern">
-            Sustainable Agriculture & Farmer Support
-        </h3>
-        <ul>
-          <li data-en="Training farmers in modern and climate-resilient techniques."
-              data-fr="Former les agriculteurs aux techniques modernes et résilientes au climat."
-              data-de="Bauern in modernen, klimaresistenten Techniken schulen.">
-              Training farmers in modern and climate-resilient techniques.
-          </li>
-          <li data-en="Digitally connecting farmers with local and global buyers."
-              data-fr="Connecter les agriculteurs avec des acheteurs locaux et internationaux via le numérique."
-              data-de="Bauern digital mit lokalen und globalen Käufern vernetzen.">
-              Digitally connecting farmers with local and global buyers.
-          </li>
-          <li data-en="Promoting eco-friendly and sustainable farming practices."
-              data-fr="Promouvoir des pratiques agricoles durables et respectueuses de l’environnement."
-              data-de="Förderung umweltfreundlicher und nachhaltiger landwirtschaftlicher Praktiken.">
-              Promoting eco-friendly and sustainable farming practices.
-          </li>
-        </ul>
-      </div>
-    </article>
-
+  </div>
+  <div class="scroll-hint" aria-hidden="true">
+    <div class="scroll-dot"></div>
+    <span>scroll</span>
   </div>
 </section>
 
-
-  <!-- ================= IMPACT ================= -->
-  <section id="impact" class="impact reveal">
-    <div class="container">
-      <h2 data-en="Our Impact One Life at a Time" data-fr="Notre impact Une vie à la fois" data-de="Unsere Wirkung Leben für Leben">Our Impact One Life at a Time</h2>
-      <div class="numbers">
-        <div class="stat card"><strong>11+</strong><span data-en="Students" data-fr="Étudiants" data-de="Schüler">Students</span></div>
-        <div class="stat card"><strong>5</strong><span data-en="Farmers" data-fr="Agriculteurs" data-de="Landwirte">Farmers</span></div>
-        <div class="stat card"><strong>15</strong><span data-en="Youth connected" data-fr="Jeunes reliés" data-de="Jugend vernetzt">Youth connected</span></div>
-        <div class="stat card"><strong>4</strong><span data-en="Women & children" data-fr="Femmes & enfants" data-de="Frauen & Kinder">Women & children</span></div>
+<!-- ══════════ ABOUT ══════════ -->
+<section class="about-sec reveal" id="about">
+  <div class="frame">
+    <div class="about-grid">
+      <div class="about-photo">
+        <img src="assets/learnit.jpg" alt="Community work in Eastern DRC" loading="lazy"/>
+      </div>
+      <div class="about-text">
+        <div class="s-label" data-en="Our story" data-fr="Notre histoire" data-de="Unsere Geschichte">Our story</div>
+        <h2
+          data-en="Born in Bukavu. Built for Congo."
+          data-fr="Né à Bukavu. Construit pour le Congo."
+          data-de="In Bukavu geboren. Für Kongo gebaut.">
+          Born in Bukavu. Built for Congo.
+        </h2>
+        <p data-en="Tuunganes is a grassroots initiative using technology, innovation, and compassion to create community-led change especially for those affected by war, poverty, and marginalization in Bukavu and Goma." data-fr="Tuunganes est une initiative communautaire utilisant la technologie, l'innovation et la compassion pour créer un changement communautaire, notamment pour ceux touchés par la guerre, la pauvreté et la marginalisation à Bukavu et Goma." data-de="Tuunganes ist eine Basisinitiative, die Technologie, Innovation und Mitgefühl nutzt, um gemeinschaftsgeführten Wandel zu schaffen, insbesondere für Betroffene von Krieg, Armut und Marginalisierung.">Tuunganes is a grassroots initiative using technology, innovation, and compassion to create community-led change especially for those affected by war, poverty, and marginalization in Bukavu and Goma.</p>
+        <p data-en="We believe technology is more than tools it is a bridge to opportunity, education, and dignity." data-fr="Nous croyons que la technologie est plus que des outils : c'est un pont vers l'opportunité, l'éducation et la dignité." data-de="Wir glauben, Technologie ist mehr als Werkzeuge sie ist eine Brücke zu Chancen, Bildung und Würde.">We believe technology is more than tools it is a bridge to opportunity, education, and dignity.</p>
+        <div class="about-cta">
+          <a href="about.html" class="btn btn-solid" data-en="About Tuunganes" data-fr="À propos de Tuunganes" data-de="Über Tuunganes">About Tuunganes</a>
+          <a href="contact.html" class="btn btn-ghost" data-en="Partner with us" data-fr="Devenir partenaire" data-de="Mit uns partnern">Partner with us</a>
+        </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ================= JOIN ================= -->
-  <section id="join" class="join reveal">
-    <div class="container join-grid">
-      <div class="join-text">
-        <h2 data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</h2>
-        <p data-en="Whether you’re a business looking for IT consulting, a donor interested in grassroots innovation, or a passionate individual ready to make change there’s a place for you in Tuunganes."
-           data-fr="Que vous soyez une entreprise, un donateur ou un bénévole prêt à agir  vous avez votre place chez Tuunganes."
-           data-de="Ob Unternehmen, Spender oder engagierte Person  bei Tuunganes findet jeder seinen Platz.">Whether you’re a business looking for IT consulting, a donor interested in grassroots innovation, or a passionate individual ready to make change  there’s a place for you in Tuunganes.</p>
+<!-- ══════════ SERVICES BENTO ══════════ -->
+<section class="services-sec reveal" id="services">
+  <div class="frame">
+    <div class="svc-header">
+      <div>
+        <div class="s-label" data-en="What we do" data-fr="Ce que nous faisons" data-de="Was wir tun">What we do</div>
+        <div class="s-title" data-en="Our Services" data-fr="Nos services" data-de="Unsere Leistungen">Our Services</div>
       </div>
-      <form class="contact-form card" action="https://formsubmit.co/el/figive" method="POST">
-        <input type="hidden" name="_captcha" value="false" />
-        <input type="text" name="name" required placeholder="Your Name"
-               data-en="Your Name" data-fr="Votre nom" data-de="Ihr Name" />
-        <input type="email" name="email" required placeholder="Your Email"
-               data-en="Your Email" data-fr="Votre e-mail" data-de="Ihre E-Mail" />
-        <textarea name="message" rows="4" required placeholder="Your Message"
-                  data-en="Your Message" data-fr="Votre message" data-de="Ihre Nachricht"></textarea>
-        <button type="submit" class="btn btn-primary" data-en="Get in Touch" data-fr="Nous contacter" data-de="Kontakt aufnehmen">Get in Touch</button>
-      </form>
+      <a href="services/services.html" class="btn btn-ghost" style="font-size:.83rem" data-en="All services →" data-fr="Tous les services →" data-de="Alle Leistungen →">All services →</a>
     </div>
-  </section>
 
-  <!-- ================= FOOTER ================= -->
-  <footer class="footer glass">
-    <div class="container">
-      <p>© 2025 Tuunganes. All rights reserved.</p>
+    <div class="bento">
+      <!-- IT (wide) -->
+      <article class="bcard wide">
+        <a class="bcard-link" href="services/it-consultancy.html" aria-label="IT Consultancy"></a>
+        <img class="bcard-img" src="assets/pro.jpg" alt="IT Consultancy" loading="lazy"/>
+        <div class="bcard-body">
+          <div class="bcard-icon">💻</div>
+          <h3 data-en="IT Consultancy &amp; Digital Solutions" data-fr="Conseil &amp; solutions numériques" data-de="IT-Beratung &amp; Digitale Lösungen">IT Consultancy &amp; Digital Solutions</h3>
+          <p data-en="Modernizing schools, NGOs and businesses with cloud, Starlink, security audits and digital transformation strategy." data-fr="Modernisation des écoles, ONG et entreprises avec le cloud, Starlink, audits de sécurité et stratégie de transformation numérique." data-de="Modernisierung von Schulen, NGOs und Unternehmen mit Cloud, Starlink, Sicherheitsaudits und digitaler Transformationsstrategie.">Modernizing schools, NGOs and businesses with cloud, Starlink, security audits and digital transformation strategy.</p>
+          <span class="bcard-arrow">Learn more →</span>
+        </div>
+      </article>
+
+      <!-- Legal (tall) -->
+      <article class="bcard tall">
+        <a class="bcard-link" href="services/legal-clinic.html" aria-label="Legal Clinic"></a>
+        <img class="bcard-img" src="assets/sup.jpg" alt="Legal Clinic" loading="lazy"/>
+        <div class="bcard-body">
+          <div class="bcard-icon">⚖️</div>
+          <h3 data-en="Legal Clinic &amp; Advocacy" data-fr="Clinique juridique &amp; Plaidoyer" data-de="Rechtsklinik &amp; Advocacy">Legal Clinic &amp; Advocacy</h3>
+          <p data-en="Free legal aid, child protection, community mediation, and rights awareness for vulnerable communities in Eastern DRC." data-fr="Aide juridique gratuite, protection de l'enfance, médiation communautaire et sensibilisation aux droits pour les communautés vulnérables." data-de="Kostenlose Rechtsberatung, Kinderschutz, Gemeindemediation und Rechtsaufklärung für gefährdete Gemeinschaften.">Free legal aid, child protection, community mediation, and rights awareness for vulnerable communities in Eastern DRC.</p>
+          <span class="bcard-arrow">Learn more →</span>
+        </div>
+      </article>
+
+      <!-- Afya (mid) -->
+      <article class="bcard mid">
+        <a class="bcard-link" href="services/digital-health.html" aria-label="Afya Digital Health"></a>
+        <img class="bcard-img" src="assets/all.jpeg" alt="Afya Digital Health" loading="lazy"/>
+        <div class="bcard-body">
+          <div class="bcard-icon">🏥</div>
+          <h3 data-en="Afya Digital Health" data-fr="Afya Santé numérique" data-de="Afya Digitale Gesundheit">Afya Digital Health</h3>
+          <p data-en="Telehealth, mobile education and data-driven tools for rural communities." data-fr="Télésanté, éducation mobile et outils basés sur les données pour les communautés rurales." data-de="Telemedizin, mobile Aufklärung und datengestützte Tools für ländliche Gemeinschaften.">Telehealth, mobile education and data-driven tools for rural communities.</p>
+          <span class="bcard-arrow">Explore Afya →</span>
+        </div>
+      </article>
+
+      <!-- AgTech (rest) -->
+      <article class="bcard mid">
+        <a class="bcard-link" href="services/AgTech.html" aria-label="AgTech"></a>
+        <img class="bcard-img" src="assets/agri1.jpg" alt="Agriculture" loading="lazy"/>
+        <div class="bcard-body">
+          <div class="bcard-icon">🌱</div>
+          <h3 data-en="Agriculture &amp; Food Security" data-fr="Agriculture &amp; Sécurité alimentaire" data-de="Landwirtschaft &amp; Ernährungssicherheit">Agriculture &amp; Food Security</h3>
+          <p data-en="Training, digital tools and market access for smallholder farmers." data-fr="Formation, outils numériques et accès au marché pour les petits agriculteurs." data-de="Schulungen, digitale Tools und Marktzugang für Kleinbäuer:innen.">Training, digital tools and market access for smallholder farmers.</p>
+          <span class="bcard-arrow">Explore AgTech →</span>
+        </div>
+      </article>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <!-- ================= Scripts ================= -->
-  <script>
-    // Theme init (use saved or OS)
-    (function(){
-      const saved = localStorage.getItem('tuunganes-theme');
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      document.documentElement.setAttribute('data-theme', saved || (prefersDark ? 'dark' : 'light'));
-    })();
+<!-- ══════════ IMPACT ══════════ -->
+<section class="impact-sec reveal" id="impact">
+  <div class="frame">
+    <div class="impact-inner">
+      <div class="stats-wall">
+        <div class="stat-tile"><b>11+</b><span data-en="Students reached" data-fr="Étudiants touchés" data-de="Schüler erreicht">Students reached</span></div>
+        <div class="stat-tile"><b>5</b><span data-en="Farmers supported" data-fr="Agriculteurs soutenus" data-de="Landwirte unterstützt">Farmers supported</span></div>
+        <div class="stat-tile"><b>15</b><span data-en="Youth connected" data-fr="Jeunes reliés" data-de="Jugend vernetzt">Youth connected</span></div>
+        <div class="stat-tile"><b>4</b><span data-en="Women &amp; children" data-fr="Femmes &amp; enfants" data-de="Frauen &amp; Kinder">Women &amp; children</span></div>
+      </div>
+      <div class="impact-copy">
+        <div class="s-label" data-en="Our impact" data-fr="Notre impact" data-de="Unsere Wirkung">Our impact</div>
+        <h2 data-en="One life at a time." data-fr="Une vie à la fois." data-de="Leben für Leben.">One life at a time.</h2>
+        <p data-en="Every number here is a person whose life we've touched a student who now has digital tools, a farmer connected to markets, a woman who received free legal aid. We're just getting started." data-fr="Chaque chiffre ici représente une personne dont nous avons touché la vie un étudiant qui a maintenant des outils numériques, un agriculteur connecté aux marchés, une femme qui a reçu une aide juridique gratuite. Nous ne faisons que commencer." data-de="Jede Zahl hier ist ein Mensch, dessen Leben wir berührt haben ein Schüler, der jetzt digitale Tools hat, ein Landwirt mit Marktzugang, eine Frau, die kostenlose Rechtshilfe erhalten hat. Wir fangen gerade erst an.">Every number here is a person whose life we've touched a student who now has digital tools, a farmer connected to markets, a woman who received free legal aid. We're just getting started.</p>
+        <a href="about.html" class="btn btn-solid" data-en="Our full story →" data-fr="Notre histoire complète →" data-de="Unsere Geschichte →">Our full story →</a>
+      </div>
+    </div>
+  </div>
+</section>
 
-    // Theme toggle
-    document.getElementById('themeBtn').addEventListener('click', function(){
-      const root = document.documentElement;
-      const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-      root.setAttribute('data-theme', next);
-      localStorage.setItem('tuunganes-theme', next);
+<!-- ══════════ CTA BAND ══════════ -->
+<div class="frame reveal">
+  <div class="cta-band">
+    <div>
+      <h2 data-en="Ready to make a difference?" data-fr="Prêt à faire la différence ?" data-de="Bereit, einen Unterschied zu machen?">Ready to make a difference?</h2>
+      <p data-en="Partner with us, volunteer your skills, or donate devices to equip schools across the DRC." data-fr="Devenez partenaire, offrez vos compétences en bénévolat ou donnez des appareils pour équiper des écoles en RDC." data-de="Werden Sie Partner, bieten Sie Ihre Fähigkeiten an oder spenden Sie Geräte für Schulen in der DRK.">Partner with us, volunteer your skills, or donate devices to equip schools across the DRC.</p>
+    </div>
+    <div class="cta-btns">
+      <a href="#join" class="btn btn-w" data-en="Join us" data-fr="Nous rejoindre" data-de="Mitmachen">Join us</a>
+      <a href="contact.html" class="btn btn-wg" data-en="Contact" data-fr="Contact" data-de="Kontakt">Contact</a>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ JOIN ══════════ -->
+<section class="join-sec reveal" id="join">
+  <div class="frame">
+    <div class="join-grid">
+      <div class="join-left">
+        <div class="s-label" data-en="Get involved" data-fr="S'impliquer" data-de="Mitmachen">Get involved</div>
+        <h2 data-en="Join Tuunganes" data-fr="Rejoindre Tuunganes" data-de="Tuunganes beitreten">Join Tuunganes</h2>
+        <p data-en="Whether you're a business seeking IT consulting, a donor interested in grassroots innovation, or a passionate person ready to drive change there is a place for you here." data-fr="Que vous soyez une entreprise cherchant du conseil IT, un donateur intéressé par l'innovation de terrain, ou une personne prête à conduire le changement il y a une place pour vous ici." data-de="Ob Unternehmen auf der Suche nach IT-Beratung, Spender mit Interesse an Graswurzel-Innovation oder engagierte Person hier ist ein Platz für Sie.">Whether you're a business seeking IT consulting, a donor interested in grassroots innovation, or a passionate person ready to drive change there is a place for you here.</p>
+        <div class="join-pills">
+          <span class="jpill" data-en="🤝 Partner" data-fr="🤝 Partenaire" data-de="🤝 Partner">🤝 Partner</span>
+          <span class="jpill" data-en="💻 Volunteer skills" data-fr="💻 Bénévole" data-de="💻 Skills einbringen">💻 Volunteer skills</span>
+          <span class="jpill" data-en="🖥 Donate devices" data-fr="🖥 Donner des appareils" data-de="🖥 Geräte spenden">🖥 Donate devices</span>
+          <span class="jpill" data-en="💙 Support" data-fr="💙 Soutenir" data-de="💙 Unterstützen">💙 Support</span>
+        </div>
+        <div style="display:flex;gap:.65rem;flex-wrap:wrap">
+          <a href="contact.html" class="btn btn-solid" data-en="Contact us" data-fr="Nous contacter" data-de="Kontakt aufnehmen">Contact us</a>
+          <a href="about.html" class="btn btn-ghost" data-en="About us" data-fr="À propos" data-de="Über uns">About us</a>
+        </div>
+      </div>
+      <div class="form-box">
+        <h3 data-en="Send us a message" data-fr="Envoyez-nous un message" data-de="Schreiben Sie uns">Send us a message</h3>
+        <form action="https://formsubmit.co/el/figive" method="POST">
+          <input type="hidden" name="_captcha" value="false"/>
+          <div class="ff"><input type="text" name="name" required placeholder="Your Name" data-en="Your Name" data-fr="Votre nom" data-de="Ihr Name"/></div>
+          <div class="ff"><input type="email" name="email" required placeholder="Your Email" data-en="Your Email" data-fr="Votre e-mail" data-de="Ihre E-Mail"/></div>
+          <div class="ff"><textarea name="message" rows="4" required placeholder="Your Message" data-en="Your Message" data-fr="Votre message" data-de="Ihre Nachricht"></textarea></div>
+          <button type="submit" class="btn btn-solid btn-fw" data-en="Send message" data-fr="Envoyer le message" data-de="Nachricht senden">Send message</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ FOOTER ══════════ -->
+<footer>
+  <div class="frame foot">
+    <a href="index.html" class="foot-logo">
+      <img src="assets/fevicon.png" alt="Tuunganes"/>
+      <span>Tuunganes</span>
+    </a>
+    <p>&copy; 2025 Tuunganes &nbsp;·&nbsp; Bukavu &amp; Goma, DRC</p>
+    <div style="display:flex;gap:1rem">
+      <a href="about.html" style="font-size:.82rem;color:var(--muted)" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+      <a href="services/services.html" style="font-size:.82rem;color:var(--muted)" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+      <a href="contact.html" style="font-size:.82rem;color:var(--muted)" data-en="Contact" data-fr="Contact" data-de="Kontakt">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<!-- ══════════ SCRIPTS ══════════ -->
+<script>
+// ── 1. Theme init (before paint)
+(function(){
+  const s = localStorage.getItem('tuunganes-theme');
+  const dark = window.matchMedia('(prefers-color-scheme:dark)').matches;
+  const t = s || (dark ? 'dark' : 'light');
+  document.documentElement.setAttribute('data-theme', t);
+})();
+
+document.addEventListener('DOMContentLoaded', function() {
+  // ── 2. Set correct theme icon after DOM ready
+  const root = document.documentElement;
+  const themeBtn = document.getElementById('themeBtn');
+  function syncIcon() {
+    themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙';
+  }
+  syncIcon();
+  themeBtn.addEventListener('click', function() {
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('tuunganes-theme', next);
+    syncIcon();
+  });
+
+  // ── 3. Mobile nav
+  const hamBtn = document.getElementById('hamBtn');
+  const drawer = document.getElementById('drawer');
+  const drawerClose = document.getElementById('drawerClose');
+  hamBtn.addEventListener('click', () => {
+    const open = drawer.classList.toggle('open');
+    hamBtn.setAttribute('aria-expanded', String(open));
+  });
+  drawerClose.addEventListener('click', () => {
+    drawer.classList.remove('open');
+    hamBtn.setAttribute('aria-expanded', 'false');
+  });
+  document.addEventListener('click', e => {
+    if (!drawer.contains(e.target) && !hamBtn.contains(e.target)) {
+      drawer.classList.remove('open');
+      hamBtn.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // ── 4. Language switching
+  let currentLang = localStorage.getItem('siteLang') || 'en';
+  function applyLang(lang) {
+    currentLang = lang;
+    localStorage.setItem('siteLang', lang);
+    document.querySelectorAll('.lang-pills button').forEach(b => b.classList.toggle('on', b.dataset.lang === lang));
+    document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+      const val = el.getAttribute('data-' + lang);
+      if (!val) return;
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = val;
+      } else if (el.tagName === 'H1' || el.dataset.rawHtml) {
+        el.innerHTML = val;
+      } else if (!el.querySelector('[data-' + lang + ']:not(script)')) {
+        el.textContent = val;
+      }
     });
-    // Mobile nav
-    const navToggle = document.getElementById('navToggle');
-    const mainNav = document.getElementById('mainNav');
-    navToggle.addEventListener('click', () => {
-      const open = mainNav.classList.toggle('open');
-      navToggle.setAttribute('aria-expanded', String(open));
+  }
+  document.querySelectorAll('.lang-pills [data-lang]').forEach(btn => {
+    btn.addEventListener('click', () => applyLang(btn.dataset.lang));
+  });
+  // sync drawer lang buttons if any
+  document.querySelectorAll('[data-lang]').forEach(btn => {
+    if (!btn.classList.contains('on') && btn.dataset.lang === currentLang) btn.classList.add('on');
+  });
+
+  // ── 5. Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
     });
-    // Language switching (expects route/lang.js too, but keep a safe fallback)
-    document.querySelectorAll('.lang-switch [data-lang]').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const lang = btn.dataset.lang;
-        document.querySelectorAll('[data-' + lang + ']').forEach(el => {
-          el.textContent = el.getAttribute('data-' + lang);
-        });
-      });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+  // ── 6. Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); drawer.classList.remove('open'); }
     });
-    // Simple reveal on scroll
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-      })
-    },{threshold:0.15});
-    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
-  </script>
-  <script src="route/lang.js" defer></script>
-  <script src="route/animations.js" defer></script>
+  });
+});
+</script>
+<script src="route/lang.js" defer></script>
+<script src="route/animations.js" defer></script>
 </body>
 </html>
