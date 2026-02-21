@@ -1,616 +1,590 @@
-<script type="text/javascript">
-        var gk_isXlsx = false;
-        var gk_xlsxFileLookup = {};
-        var gk_fileData = {};
-        function filledCell(cell) {
-          return cell !== '' && cell != null;
-        }
-        function loadFileData(filename) {
-        if (gk_isXlsx && gk_xlsxFileLookup[filename]) {
-            try {
-                var workbook = XLSX.read(gk_fileData[filename], { type: 'base64' });
-                var firstSheetName = workbook.SheetNames[0];
-                var worksheet = workbook.Sheets[firstSheetName];
-
-                // Convert sheet to JSON to filter blank rows
-                var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1, blankrows: false, defval: '' });
-                // Filter out blank rows (rows where all cells are empty, null, or undefined)
-                var filteredData = jsonData.filter(row => row.some(filledCell));
-
-                // Heuristic to find the header row by ignoring rows with fewer filled cells than the next row
-                var headerRowIndex = filteredData.findIndex((row, index) =>
-                  row.filter(filledCell).length >= filteredData[index + 1]?.filter(filledCell).length
-                );
-                // Fallback
-                if (headerRowIndex === -1 || headerRowIndex > 25) {
-                  headerRowIndex = 0;
-                }
-
-                // Convert filtered JSON back to CSV
-                var csv = XLSX.utils.aoa_to_sheet(filteredData.slice(headerRowIndex)); // Create a new sheet from filtered array of arrays
-                csv = XLSX.utils.sheet_to_csv(csv, { header: 1 });
-                return csv;
-            } catch (e) {
-                console.error(e);
-                return "";
-            }
-        }
-        return gk_fileData[filename] || "";
-        }
-        </script><!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title data-en="School Management Pricing | Tuunganes"
-          data-fr="Tarifs de gestion scolaire | Tuunganes"
-          data-de="Schulverwaltungs-Preise | Tuunganes">
-    School Management Pricing | Tuunganes
-  </title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="color-scheme" content="light dark"/>
+<title data-en="Masomo School Management | Tuunganes" data-fr="Masomo Gestion scolaire | Tuunganes" data-de="Masomo Schulverwaltung | Tuunganes">Masomo School Management | Tuunganes</title>
+<link rel="icon" href="../assets/fevicon.png" type="image/png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../css/styles.css"/>
+<style>
+:root{--blue:#2196f3;--blue-d:#1565c0;--blue-pale:rgba(33,150,243,.10);--blue-ring:rgba(33,150,243,.28);--ease:cubic-bezier(.4,0,.2,1);--display:'Playfair Display',Georgia,serif;--body:'DM Sans',system-ui,sans-serif}
+[data-theme="light"]{--bg:#f5f8ff;--bg2:#e8f2fe;--surf:#fff;--tx:#0a1628;--tx2:#253650;--muted:#5e7a96;--bdr:#c5daf2;--sh:0 1px 4px rgba(0,0,0,.05),0 8px 28px rgba(0,0,0,.07);--sh-lg:0 4px 40px rgba(0,0,0,.11)}
+[data-theme="dark"]{--bg:#050d1a;--bg2:#0b1725;--surf:#0f1c2e;--tx:#ecf3ff;--tx2:#a5c2de;--muted:#5a7898;--bdr:rgba(255,255,255,.07);--sh:0 2px 10px rgba(0,0,0,.45),0 12px 40px rgba(0,0,0,.3);--sh-lg:0 8px 48px rgba(0,0,0,.4)}
 
-  <link rel="icon" href="../assets/fevicon.png" type="image/png" />
-  <link rel="stylesheet" href="../css/styles.css" />
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--tx);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .28s var(--ease),color .28s var(--ease)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font-family:inherit}
+ul{list-style:none;padding:0;margin:0}
+.frame{width:min(1200px,94vw);margin:0 auto}
 
-  <style>
-    /* ===== Local styles for this page ===== */
-    .subtle { color: var(--text-muted); }
+/* ── NAV ── */
+.nav{position:fixed;top:1rem;left:50%;transform:translateX(-50%);width:min(1100px,90vw);background:color-mix(in srgb,var(--surf) 82%,transparent);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--bdr);border-radius:999px;padding:.5rem .5rem .5rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;z-index:1000;box-shadow:var(--sh)}
+.nav-logo{display:flex;align-items:center;gap:.55rem;font-size:.95rem;font-weight:700;color:var(--tx);flex-shrink:0}
+.nav-logo img{width:30px;height:30px;border-radius:8px}
+.nav-links{display:flex;align-items:center;gap:.15rem;flex:1;justify-content:center}
+.nav-links a{padding:.42rem .85rem;border-radius:999px;font-size:.82rem;font-weight:600;color:var(--tx2);transition:color .15s,background .15s}
+.nav-links a:hover,.nav-links a.active{color:var(--blue);background:var(--blue-pale)}
+.nav-end{display:flex;align-items:center;gap:.45rem;flex-shrink:0}
+.lang-pills{display:flex;gap:.18rem;background:var(--bg2);border:1px solid var(--bdr);border-radius:999px;padding:.22rem .28rem}
+.lang-pills button{border:none;background:transparent;border-radius:999px;padding:.22rem .55rem;font-size:.74rem;font-weight:700;cursor:pointer;color:var(--muted);transition:background .15s,color .15s}
+.lang-pills button.on{background:var(--blue);color:#fff}
+.theme-pill{width:36px;height:36px;border-radius:999px;border:1px solid var(--bdr);background:var(--bg2);display:grid;place-items:center;cursor:pointer;font-size:.95rem;transition:border-color .15s,transform .2s}
+.theme-pill:hover{border-color:var(--blue);transform:rotate(20deg)}
+.nav-cta{background:var(--blue);color:#fff;border:none;padding:.48rem 1.15rem;border-radius:999px;font-size:.82rem;font-weight:600;cursor:pointer;transition:background .15s,transform .15s;white-space:nowrap}
+.nav-cta:hover{background:var(--blue-d);transform:translateY(-1px)}
+.ham{display:none;flex-direction:column;gap:4px;cursor:pointer;background:var(--bg2);border:1px solid var(--bdr);border-radius:999px;padding:.55rem .75rem}
+.ham span{display:block;width:18px;height:2px;background:var(--tx);border-radius:2px}
+.nav-drawer{display:none;position:fixed;inset:0;background:var(--surf);z-index:999;flex-direction:column;padding:2rem 1.75rem;gap:1.25rem}
+.nav-drawer.open{display:flex}
+.nav-drawer a{font-size:1.1rem;font-weight:600;color:var(--tx2);padding:.5rem 0;border-bottom:1px solid var(--bdr)}
+@media(max-width:720px){.ham{display:flex}.nav-links,.nav-end{display:none}}
 
-    /* Why section */
-    .why { padding: clamp(2.5rem, 5vw, 4rem) 0; }
-    .why-grid {
-      display: grid;
-      grid-template-columns: 1.15fr 1fr;
-      gap: 1.2rem;
-      align-items: stretch;
-    }
-    .why-media img {
-      width: 100%; height: 100%; object-fit: cover;
-      border-radius: var(--radius); box-shadow: var(--shadow);
-    }
-    .why-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      box-shadow: var(--shadow);
-      padding: clamp(1rem, 3vw, 1.5rem);
-      display: flex; flex-direction: column; justify-content: center;
-    }
-    .why-card h2 { margin: 0 0 .6rem; font-size: clamp(1.4rem, 2.6vw, 2rem); }
-    .why-card p { margin: 0 0 .8rem; color: var(--text-2); }
-    .why-actions { display:flex; gap:.6rem; flex-wrap:wrap; margin-top:.5rem; }
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.72rem 1.65rem;border-radius:999px;border:none;cursor:pointer;font-size:.88rem;font-weight:600;transition:all .2s var(--ease);white-space:nowrap;font-family:var(--body)}
+.btn-solid{background:var(--blue);color:#fff;box-shadow:0 4px 16px rgba(33,150,243,.3)}
+.btn-solid:hover{background:var(--blue-d);transform:translateY(-2px)}
+.btn-ghost{background:transparent;color:var(--tx);border:1.5px solid var(--bdr)}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-1px)}
+.btn-w{background:#fff;color:var(--blue);font-weight:700}
+.btn-w:hover{background:#e3f2fd;transform:translateY(-1px)}
+.btn-wg{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}
+.btn-wg:hover{background:rgba(255,255,255,.1);border-color:#fff}
 
-    @media (max-width: 980px) {
-      .why-grid { grid-template-columns: 1fr; }
-    }
+/* ── HERO ── */
+.hero{min-height:100svh;display:grid;place-items:center;padding:8rem 0 5rem;background:var(--surf);border-bottom:1px solid var(--bdr);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 70% at 80% 35%,rgba(33,150,243,.09) 0%,transparent 65%);pointer-events:none}
+[data-theme="dark"] .hero::before{background:radial-gradient(ellipse 60% 70% at 80% 35%,rgba(33,150,243,.16) 0%,transparent 65%)}
+.hero-wm{position:absolute;right:-2rem;bottom:-3rem;font-family:var(--display);font-size:42vw;font-weight:900;line-height:.8;color:var(--blue);opacity:.03;pointer-events:none;user-select:none}
+[data-theme="dark"] .hero-wm{opacity:.055}
+.hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:center;position:relative;z-index:1}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr}.hero-right{display:none}}
+.hero-pill{display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);border:1.5px solid var(--blue-ring);border-radius:999px;padding:.35rem .9rem;margin-bottom:1.5rem}
+.hero-pill::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--blue)}
+.hero h1{font-family:var(--display);font-size:clamp(2.8rem,6.5vw,5rem);font-weight:900;line-height:1.02;letter-spacing:-.025em;color:var(--tx);margin-bottom:1.1rem}
+.hero h1 em{font-style:italic;color:var(--blue)}
+.hero-sub{font-size:1.05rem;color:var(--tx2);max-width:460px;line-height:1.75;margin-bottom:2rem}
+.hero-btns{display:flex;gap:.7rem;flex-wrap:wrap}
+.hero-right{position:relative;height:440px}
+.screen{position:absolute;border-radius:18px;box-shadow:var(--sh-lg);border:1px solid var(--bdr);overflow:hidden}
+.screen img{width:100%;height:100%;object-fit:cover;display:block}
+.sc-a{width:64%;top:0;right:0;height:270px}
+.sc-b{width:50%;bottom:0;left:0;height:230px}
+.sc-badge{position:absolute;top:170px;right:-14px;z-index:2;background:var(--blue);color:#fff;border-radius:14px;padding:.9rem 1.2rem;box-shadow:0 8px 28px rgba(33,150,243,.4)}
+.sc-badge strong{display:block;font-family:var(--display);font-size:1.6rem;font-weight:900;line-height:1}
+.sc-badge span{font-size:.72rem;opacity:.85}
 
-    /* Billing card */
-    .billing-card {
-      width: min(920px, 96%);
-      margin: 0 auto 1.25rem;
-      padding: 1rem;
-      background: color-mix(in hsl, var(--surface) 85%, transparent);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      box-shadow: var(--shadow);
-    }
-    .billing-inner {
-      display: grid;
-      grid-template-columns: 1fr auto 1fr;
-      gap: .8rem;
-      align-items: center;
-    }
-    .billing-note { text-align: right; font-weight: 600; }
-    @media (max-width: 720px) {
-      .billing-inner { grid-template-columns: 1fr; text-align: center; }
-      .billing-note { text-align: center; }
-    }
-    .seg { display:inline-flex; gap:.4rem; padding:.35rem; background:var(--surface);
-           border:1px solid var(--border); border-radius:999px; }
-    .seg button{ border:0; padding:.5rem 1rem; border-radius:999px; cursor:pointer;
-                 background:transparent; color:var(--text-2); font-weight:700; }
-    .seg button.active{ background:var(--grad-primary); color:#fff;
-                        box-shadow:0 6px 20px rgba(102,126,234,.35); }
-    .badge{ display:inline-block; margin-left:.5rem; padding:.15rem .5rem; font-size:.75rem;
-            border:1px solid var(--border); border-radius:999px; }
+/* ── SHARED ── */
+.sec{padding:7rem 0}
+.sec-dark{padding:7rem 0;background:var(--surf);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr)}
+.eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:.6rem}
+.display-h{font-family:var(--display);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;line-height:1.1;letter-spacing:-.02em;color:var(--tx);margin-bottom:.85rem}
+.display-h em{font-style:italic;color:var(--blue)}
 
-    /* Pricing cards */
-    .pricing { padding: clamp(2.5rem, 5vw, 4rem) 0; }
-    .plans { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-             gap:1.2rem; margin-top:1.2rem; }
-    .plan {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 1.5rem 1.25rem;
-      text-align: center;
-      box-shadow: var(--shadow);
-      transition: transform var(--transition), box-shadow var(--transition);
-    }
-    .plan:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,.12); }
-    .price {
-      font-size: 2rem; font-weight: 800; margin:.25rem 0 0;
-      background: var(--grad-accent); -webkit-background-clip: text; background-clip:text; color:transparent;
-    }
-    .per { display:block; margin-top:.15rem; font-size:.9rem; color:var(--text-muted); }
-    .cap { margin:.2rem 0 .9rem; color: var(--text-2); }
+/* ── WHY SPLIT ── */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--bdr);border-radius:24px;overflow:hidden;box-shadow:var(--sh-lg)}
+@media(max-width:820px){.why-grid{grid-template-columns:1fr}}
+.why-photo{position:relative;min-height:440px}
+.why-photo img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.why-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(33,150,243,.25) 0%,transparent 55%)}
+.why-stat{position:absolute;bottom:1.5rem;left:1.5rem;z-index:2;background:rgba(255,255,255,.13);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:1rem 1.3rem;color:#fff}
+.why-stat strong{font-family:var(--display);font-size:2rem;font-weight:900;display:block;line-height:1}
+.why-stat span{font-size:.75rem;opacity:.85}
+.why-copy{padding:3.5rem 3rem;background:var(--surf);display:flex;flex-direction:column;justify-content:center}
+@media(max-width:820px){.why-copy{padding:2.25rem 1.75rem}}
+.why-copy p{color:var(--tx2);font-size:.96rem;line-height:1.75;margin-bottom:.85rem}
 
-    .plan ul { text-align:left; margin: .9rem 0 1.1rem; padding-left: 1.1rem; color: var(--text-2); }
-    .plan li { margin:.35rem 0; }
+/* ── BILLING TOGGLE ── */
+.billing-wrap{display:flex;justify-content:center;align-items:center;gap:1rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.seg{display:inline-flex;gap:.25rem;padding:.3rem;background:var(--bg2);border:1px solid var(--bdr);border-radius:999px}
+.seg button{border:none;padding:.48rem 1.1rem;border-radius:999px;cursor:pointer;background:transparent;color:var(--muted);font-weight:700;font-size:.84rem;transition:background .15s,color .15s,box-shadow .15s;font-family:var(--body)}
+.seg button.on{background:var(--blue);color:#fff;box-shadow:0 4px 14px rgba(33,150,243,.3)}
+.save-badge{display:inline-flex;align-items:center;gap:.3rem;font-size:.75rem;font-weight:700;color:var(--blue);background:var(--blue-pale);border:1px solid var(--blue-ring);border-radius:999px;padding:.28rem .75rem}
 
-    /* Features / Safety sections */
-    .section { padding: clamp(2.5rem, 5vw, 4rem) 0; }
-    .section h2 { text-align:center; margin:0 0 .75rem; }
-    .center-stack { width:min(860px, 92%); margin:0 auto; }
-    .feature-list, .safety-list { list-style: disc; padding-left: 1.2rem; }
-    .feature-list li, .safety-list li { margin:.35rem 0; }
+/* ── PLAN CARDS ── */
+.plans-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+@media(max-width:820px){.plans-grid{grid-template-columns:1fr}}
+.plan-card{
+  background:var(--surf);border:1px solid var(--bdr);border-radius:22px;
+  padding:2rem 1.75rem;box-shadow:var(--sh);
+  display:flex;flex-direction:column;
+  transition:transform .2s var(--ease),border-color .2s,box-shadow .2s;
+  position:relative;overflow:hidden;
+}
+.plan-card:hover{transform:translateY(-4px);border-color:var(--blue-ring);box-shadow:var(--sh-lg)}
+.plan-card.featured{background:var(--blue);border-color:var(--blue)}
+.plan-card.featured .plan-name{color:rgba(255,255,255,.65)}
+.plan-card.featured .plan-price{color:#fff}
+.plan-card.featured .plan-per{color:rgba(255,255,255,.65)}
+.plan-card.featured .plan-cap{color:rgba(255,255,255,.75)}
+.plan-card.featured .plan-sep{border-color:rgba(255,255,255,.2)}
+.plan-card.featured li{color:rgba(255,255,255,.85)}
+.plan-card.featured li::before{border-color:rgba(255,255,255,.35);
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%23ffffff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E")}
+.plan-card.featured .plan-tag{display:inline-block}
+/* decorative orb */
+.plan-card.featured::before{content:'';position:absolute;right:-40px;top:-40px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.08);pointer-events:none}
 
-    /* Comparison table */
-    .compare {
-      width:min(1100px, 96%); margin:0 auto; overflow-x:auto;
-      background:var(--surface); border:1px solid var(--border); border-radius:16px; box-shadow:var(--shadow);
-    }
-    table.price-compare { width:100%; border-collapse:collapse; }
-    table.price-compare th, table.price-compare td {
-      padding: .8rem .75rem; border-bottom:1px solid var(--border); text-align:center;
-    }
-    table.price-compare thead th {
-      position: sticky; top: 0; background: color-mix(in hsl, var(--surface) 96%, transparent);
-      z-index:1; font-size:1rem;
-    }
-    table.price-compare td:first-child, table.price-compare th:first-child { text-align:left; font-weight:600; }
-    .tick { font-weight:900; }
-    .muted { color: var(--text-muted); }
+.plan-tag{display:none;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:rgba(255,255,255,.2);color:#fff;border-radius:999px;padding:.22rem .7rem;margin-bottom:.6rem;width:fit-content}
+.plan-name{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);margin-bottom:.5rem;display:block}
+.plan-price{font-family:var(--display);font-size:3rem;font-weight:900;color:var(--tx);line-height:1;letter-spacing:-.04em;transition:all .3s var(--ease)}
+.plan-per{font-size:.82rem;color:var(--muted);margin-top:.25rem;margin-bottom:.6rem;display:block}
+.plan-cap{font-size:.88rem;color:var(--tx2);line-height:1.55;margin-bottom:1rem}
+.plan-sep{border:none;border-top:1px solid var(--bdr);margin:1rem 0}
+.plan-card ul{display:flex;flex-direction:column;gap:.55rem;margin-bottom:1.5rem;flex:1}
+.plan-card li{display:flex;align-items:flex-start;gap:.55rem;font-size:.88rem;color:var(--tx2);line-height:1.5}
+.plan-card li::before{
+  content:'';width:16px;height:16px;border-radius:50%;flex-shrink:0;margin-top:.1em;
+  background:var(--blue-pale);border:1.5px solid var(--blue-ring);
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%232196f3' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size:9px;background-position:center;background-repeat:no-repeat;
+}
+.plan-card .plan-btn{margin-top:auto}
 
-    /* FAQs */
-    .faqs { width:min(860px, 92%); margin:0 auto; }
-    details {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: .8rem 1rem;
-    }
-    details + details { margin-top: .6rem; }
-    summary { cursor:pointer; font-weight:700; }
-  </style>
+/* ── FEATURES numbered ── */
+.feat-list{margin-top:.25rem}
+.feat-item{display:grid;grid-template-columns:60px 1fr auto;gap:0 1.75rem;align-items:start;padding:1.75rem 0;border-top:1px solid var(--bdr)}
+.feat-item:last-child{border-bottom:1px solid var(--bdr)}
+.feat-item:hover .feat-n{color:var(--blue);opacity:1}
+@media(max-width:620px){.feat-item{grid-template-columns:44px 1fr;gap:0 1rem}.feat-icon{display:none}}
+.feat-n{font-family:var(--display);font-size:2.2rem;font-weight:900;color:var(--tx);opacity:.1;line-height:1;letter-spacing:-.04em;padding-top:.1rem;transition:color .2s,opacity .2s}
+.feat-body h3{font-family:var(--display);font-size:1.08rem;font-weight:700;color:var(--tx);margin-bottom:.35rem}
+.feat-body p{font-size:.88rem;color:var(--tx2);line-height:1.6;max-width:520px}
+.feat-icon{width:44px;height:44px;border-radius:12px;background:var(--blue-pale);border:1px solid var(--blue-ring);display:grid;place-items:center;font-size:1.15rem;flex-shrink:0;margin-top:.15rem}
+
+/* ── SAFETY BAND ── */
+.safety-band{background:var(--blue);padding:5rem 0;position:relative;overflow:hidden}
+.safety-band::before{content:'';position:absolute;right:-80px;top:-100px;width:360px;height:360px;border-radius:50%;background:rgba(255,255,255,.06)}
+.safety-band::after{content:'';position:absolute;left:-60px;bottom:-80px;width:240px;height:240px;border-radius:50%;background:rgba(255,255,255,.04)}
+.safety-inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;position:relative;z-index:1}
+@media(max-width:820px){.safety-inner{grid-template-columns:1fr}}
+.safety-left h2{font-family:var(--display);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:.75rem}
+.safety-left h2 em{font-style:italic;opacity:.7}
+.safety-left p{color:rgba(255,255,255,.78);font-size:.96rem;line-height:1.75;margin-bottom:1.75rem;max-width:440px}
+.safety-cards{display:flex;flex-direction:column;gap:.85rem}
+.s-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:1.1rem 1.25rem;display:flex;align-items:flex-start;gap:.9rem}
+.s-card-icon{width:38px;height:38px;border-radius:10px;background:rgba(255,255,255,.15);display:grid;place-items:center;font-size:1rem;flex-shrink:0}
+.s-card h4{font-size:.9rem;font-weight:700;color:#fff;margin-bottom:.25rem}
+.s-card p{font-size:.82rem;color:rgba(255,255,255,.72);line-height:1.55}
+
+/* ── COMPARE TABLE ── */
+.compare-wrap{overflow-x:auto;border:1px solid var(--bdr);border-radius:20px;box-shadow:var(--sh)}
+table.cmp{width:100%;border-collapse:collapse;font-size:.9rem}
+table.cmp th,table.cmp td{padding:.9rem 1rem;border-bottom:1px solid var(--bdr);text-align:center}
+table.cmp tr:last-child td{border-bottom:none}
+table.cmp thead th{background:var(--surf);font-family:var(--display);font-size:1rem;font-weight:700;position:sticky;top:0;z-index:1}
+table.cmp td:first-child,table.cmp th:first-child{text-align:left;font-weight:600;color:var(--tx);padding-left:1.25rem}
+table.cmp th:first-child{padding-left:1.25rem}
+table.cmp td{color:var(--tx2)}
+.tick{color:var(--blue);font-weight:900;font-size:1.1rem}
+.dash{color:var(--muted)}
+table.cmp tbody tr:hover td{background:var(--blue-pale)}
+
+/* ── FAQ ── */
+.faq-list{max-width:800px;margin:0 auto}
+details.faq{border-bottom:1px solid var(--bdr)}
+details.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 0;font-weight:700;font-size:.97rem;color:var(--tx);gap:1rem}
+details.faq summary::-webkit-details-marker{display:none}
+.faq-tog{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--bdr);display:grid;place-items:center;font-size:1.15rem;color:var(--blue);flex-shrink:0;transition:background .2s}
+details.faq[open] .faq-tog{background:var(--blue);color:#fff;border-color:var(--blue)}
+.pm{display:none}
+details.faq:not([open]) .p-icon{display:block}
+details.faq:not([open]) .m-icon{display:none}
+details.faq[open] .p-icon{display:none}
+details.faq[open] .m-icon{display:block}
+details.faq .ans{font-size:.93rem;color:var(--tx2);padding-bottom:1.25rem;line-height:1.7}
+
+/* ── CTA ── */
+.cta-band{background:var(--tx);border-radius:28px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;box-shadow:var(--sh-lg);min-height:300px}
+@media(max-width:820px){.cta-band{grid-template-columns:1fr}}
+.cta-left{padding:3.5rem 3rem;display:flex;flex-direction:column;justify-content:center}
+.cta-left .eyebrow{color:rgba(255,255,255,.45)}
+.cta-left h2{font-family:var(--display);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:.7rem;letter-spacing:-.02em}
+.cta-left p{color:rgba(255,255,255,.62);font-size:.93rem;line-height:1.7;margin-bottom:1.75rem;max-width:400px}
+.cta-btns{display:flex;gap:.65rem;flex-wrap:wrap}
+.cta-right{background:var(--blue);position:relative;overflow:hidden;min-height:220px}
+.cta-right::before{content:'';position:absolute;bottom:-70px;right:-70px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.09)}
+.cta-right::after{content:'';position:absolute;top:-50px;left:-50px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.06)}
+.cta-right-inner{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:3rem 2.5rem;gap:.75rem}
+.cta-big{font-family:var(--display);font-size:clamp(3rem,7vw,5.5rem);font-weight:900;color:#fff;line-height:.9;letter-spacing:-.04em}
+.cta-right-inner p{color:rgba(255,255,255,.72);font-size:.88rem}
+
+/* ── FOOTER ── */
+.foot{padding:2.25rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:1px solid var(--bdr)}
+.foot-logo{display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:.95rem;color:var(--tx)}
+.foot-logo img{width:28px;height:28px;border-radius:7px}
+.foot p{font-size:.8rem;color:var(--muted)}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero .hero-pill{animation:fadeUp .7s var(--ease) both}
+.hero h1{animation:fadeUp .8s .1s var(--ease) both}
+.hero .hero-sub{animation:fadeUp .8s .2s var(--ease) both}
+.hero .hero-btns{animation:fadeUp .8s .3s var(--ease) both}
+.hero-right{animation:fadeUp .9s .15s var(--ease) both}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.reveal.in{opacity:1;transform:translateY(0)}
+</style>
 </head>
 <body>
-  <!-- Header injected by base.js -->
-  <div id="site-header"></div>
 
-  <!-- HERO -->
-  <section class="hero reveal in">
-    <div class="container hero-content">
-      <h1 data-en="Masomo School Management"
-          data-fr="Gestion scolaire Masomo"
-          data-de="Masomo Schulverwaltung">
-        Masomo School Management
-      </h1>
-      <p data-en="Modern tools for students, teachers and parents in the DRC. Choose a plan that fits your school."
-         data-fr="Des outils modernes pour les élèves, les enseignants et les parents en RDC. Choisissez l’offre adaptée à votre école."
-         data-de="Moderne Werkzeuge für Schüler, Lehrkräfte und Eltern in der DR Kongo. Wählen Sie den passenden Tarif für Ihre Schule.">
-        Modern tools for students, teachers and parents in the DRC. Choose a plan that fits your school.
-      </p>
+<!-- DRAWER -->
+<nav class="nav-drawer" id="drawer">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+    <span style="font-weight:700;font-size:1rem">Tuunganes</span>
+    <button id="drawerClose" style="background:transparent;border:none;font-size:1.4rem;cursor:pointer;color:var(--tx)">✕</button>
+  </div>
+  <a href="../index.html" data-en="Home" data-fr="Accueil" data-de="Start">Home</a>
+  <a href="../about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+  <a href="services.html" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+  <a href="../contact.html" class="btn btn-solid" style="justify-content:center;margin-top:.5rem">Contact us</a>
+</nav>
+
+<!-- NAV -->
+<header class="nav">
+  <a href="../index.html" class="nav-logo"><img src="../assets/fevicon.png" alt="Tuunganes"/><span>Tuunganes</span></a>
+  <nav class="nav-links">
+    <a href="../about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+    <a href="services.html" class="active" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+    <a href="../index.html#impact" data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
+    <a href="../index.html#join" data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</a>
+  </nav>
+  <div class="nav-end">
+    <div class="lang-pills" role="group">
+      <button type="button" data-lang="en" class="on">EN</button>
+      <button type="button" data-lang="fr">FR</button>
+      <button type="button" data-lang="de">DE</button>
     </div>
-  </section>
+    <button id="themeBtn" class="theme-pill" aria-label="Toggle theme">🌙</button>
+    <a href="../contact.html" class="nav-cta" data-en="Contact" data-fr="Contact" data-de="Kontakt">Contact</a>
+    <button class="ham" id="hamBtn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
 
-  <!-- WHY it matters (image + card) -->
-  <section class="why reveal in">
-    <div class="container why-grid">
-      <div class="why-media">
-        <img src="../assets/kids.jpg" alt="Students and community in the DRC" />
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-wm" aria-hidden="true">M</div>
+  <div class="frame">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-pill" data-en="Education · DRC" data-fr="Éducation · RDC" data-de="Bildung · DRK">Education · DRC</div>
+        <h1 data-en="The school<br>that runs<br><em>itself.</em>" data-fr="L'école qui<br>se gère<br><em>toute seule.</em>" data-de="Die Schule,<br>die sich<br><em>selbst verwaltet.</em>">The school<br>that runs<br><em>itself.</em></h1>
+        <p class="hero-sub" data-en="Masomo is Tuunganes's secure, offline-first school management platform — designed for Congo's realities and built to transform how schools operate." data-fr="Masomo est la plateforme de gestion scolaire sécurisée et offline-first de Tuunganes — conçue pour les réalités du Congo et construite pour transformer le fonctionnement des écoles." data-de="Masomo ist Tuunganes's sichere, Offline-First-Schulverwaltungsplattform — für Kongos Realitäten konzipiert.">Masomo is Tuunganes's secure, offline-first school management platform — designed for Congo's realities and built to transform how schools operate.</p>
+        <div class="hero-btns">
+          <a href="https://masomos.tuunganes.com" target="_blank" rel="noopener" class="btn btn-solid" data-en="Explore Masomo" data-fr="Explorer Masomo" data-de="Masomo entdecken">Explore Masomo</a>
+          <a href="../contact.html?demo=masomo" class="btn btn-ghost" data-en="Request a demo" data-fr="Demander une démo" data-de="Demo anfragen">Request a demo</a>
+        </div>
       </div>
-      <aside class="why-card">
-        <h2
-          data-en="Why a School Management System matters in Congo"
-          data-fr="Pourquoi un système de gestion scolaire est important au Congo"
-          data-de="Warum ein Schulverwaltungssystem im Kongo wichtig ist"
-        >
-          Why a School Management System matters in Congo
-        </h2>
-
-        <p
-          data-en="Education is the backbone of every community yet in many parts of the DRC, especially in the East, schools are still mostly non-digital. Records live on paper, fee payments are tracked manually, and communication between teachers, parents, and administrators is slow or unreliable."
-          data-fr="L’éducation est l’épine dorsale de toute communauté pourtant, dans de nombreuses régions de la RDC, en particulier à l’Est, les écoles restent largement non numériques. Les dossiers sont sur papier, les frais sont suivis manuellement, et la communication entre enseignants, parents et administrateurs est lente ou peu fiable."
-          data-de="Bildung ist das Rückgrat jeder Gemeinschaft doch in vielen Teilen der DR Kongo, insbesondere im Osten, sind Schulen noch weitgehend nicht digital. Unterlagen liegen auf Papier, Gebühren werden manuell erfasst und die Kommunikation zwischen Lehrkräften, Eltern und Verwaltung ist langsam oder unzuverlässig."
-        >
-          Education is the backbone of every community yet in many parts of the DRC, especially in the East, schools are still mostly non-digital. Records live on paper, fee payments are tracked manually, and communication between teachers, parents, and administrators is slow or unreliable.
-        </p>
-
-        <p
-          data-en="Masomo by Tuunganes modernizes how schools operate with a secure, multi-tenancy platform designed for Congo’s realities reliable offline-first workflows, clear finance tracking, and simple, mobile-friendly tools."
-          data-fr="Masomo par Tuunganes modernise le fonctionnement des écoles grâce à une plateforme sécurisée, multi-établissements, conçue pour les réalités du Congo des flux de travail fiables, pensés hors-ligne d’abord, un suivi financier clair et des outils simples adaptés au mobile."
-          data-de="Masomo von Tuunganes modernisiert Schulabläufe mit einer sicheren Multi-Tenant-Plattform für die Realitäten des Kongo zuverlässige Offline-Workflows, transparente Finanzverfolgung und einfache, mobilfreundliche Tools."
-        >
-          Masomo by Tuunganes modernizes how schools operate with a secure, multi-tenancy platform designed for Congo’s realities reliable offline-first workflows, clear finance tracking, and simple, mobile-friendly tools.
-        </p>
-
-        <div class="why-actions">
-          <a href="https://masomos.tuunganes.com" target="_blank" class="btn btn-primary"
-             data-en="Explore Masomo" data-fr="Explorer Masomo" data-de="Masomo entdecken">Explore Masomo</a>
-          <a href="../contact.html?demo=masomo" class="btn btn-ghost"
-             data-en="Request a demo" data-fr="Demander une démo" data-de="Demo anfragen">Request a demo</a>
-        </div>
-      </aside>
+      <div class="hero-right" aria-hidden="true">
+        <div class="screen sc-a"><img src="../assets/kidlearn.jpg" alt=""/></div>
+        <div class="screen sc-b"><img src="../assets/kids.jpg" alt=""/></div>
+        <div class="sc-badge"><strong>DRC</strong><span data-en="Built for Congo" data-fr="Construit pour le Congo" data-de="Für Kongo">Built for Congo</span></div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- BILLING CARD (Monthly / Annual) 
-  <section class="reveal in" aria-label="Billing options">
-    <div class="billing-card">
-      <div class="billing-inner">
-        <div class="subtle" data-en="All prices in USD."
-             data-fr="Tous les prix en USD."
-             data-de="Alle Preise in USD.">All prices in USD.</div>
-
-        <div class="seg" role="tablist" aria-label="Billing period">
-          <button id="monthlyBtn" class="active" role="tab" aria-selected="true"
-                  data-en="Monthly" data-fr="Mensuel" data-de="Monatlich">
-            Monthly
-          </button>
-          <button id="annualBtn" role="tab" aria-selected="false"
-                  data-en="Annual" data-fr="Annuel" data-de="Jährlich">
-            Annual
-          </button>
-        </div>
-
-        <div class="billing-note">
-          <span class="badge"
-                data-en="Save 20% annually"
-                data-fr="Économisez 20% par an"
-                data-de="Sparen Sie 20% jährlich">
-            Save 20% annually
-          </span>
+<!-- ═══ WHY ═══ -->
+<section class="sec reveal" id="why">
+  <div class="frame">
+    <div class="why-grid">
+      <div class="why-photo">
+        <img src="../assets/kids.jpg" alt="Students in the DRC" loading="lazy"/>
+        <div class="why-stat"><strong>70%+</strong><span data-en="DRC schools still non-digital" data-fr="Écoles RDC non numériques" data-de="DRK-Schulen nicht digital">DRC schools still non-digital</span></div>
+      </div>
+      <div class="why-copy">
+        <span class="eyebrow" data-en="The problem" data-fr="Le problème" data-de="Das Problem">The problem</span>
+        <h2 class="display-h" data-en="Schools in Congo<br>deserve <em>better.</em>" data-fr="Les écoles du Congo<br>méritent <em>mieux.</em>" data-de="Schulen im Kongo<br>verdienen <em>Besseres.</em>">Schools in Congo<br>deserve <em>better.</em></h2>
+        <p data-en="In many parts of the DRC, especially in the East, schools are still mostly non-digital. Records live on paper, fee payments are tracked manually, and communication between teachers, parents, and administrators is slow or unreliable." data-fr="Dans de nombreuses régions de la RDC, en particulier à l'Est, les écoles restent largement non numériques. Les dossiers sont sur papier, les frais sont suivis manuellement, et la communication entre enseignants, parents et administrateurs est lente." data-de="In vielen Teilen der DRK sind Schulen noch nicht digital. Unterlagen auf Papier, manuelle Gebühren und unzuverlässige Kommunikation sind der Alltag.">In many parts of the DRC, especially in the East, schools are still mostly non-digital. Records live on paper, fee payments are tracked manually, and communication between teachers, parents, and administrators is slow or unreliable.</p>
+        <p data-en="Masomo changes that — with a secure, multi-tenancy platform designed for Congo's realities: reliable offline-first workflows, clear finance tracking, and mobile-friendly tools that work on any device." data-fr="Masomo change cela — avec une plateforme sécurisée, multi-établissements, conçue pour les réalités du Congo : flux de travail hors ligne fiables, suivi financier clair et outils mobiles adaptés à tout appareil." data-de="Masomo ändert das — mit einer sicheren Multi-Tenant-Plattform für Kongos Realitäten: Offline-Workflows, transparente Finanzen und mobile Tools.">Masomo changes that — with a secure, multi-tenancy platform designed for Congo's realities: reliable offline-first workflows, clear finance tracking, and mobile-friendly tools that work on any device.</p>
+        <div style="display:flex;gap:.65rem;flex-wrap:wrap;margin-top:1.25rem">
+          <a href="https://masomos.tuunganes.com" target="_blank" rel="noopener" class="btn btn-solid" data-en="Try Masomo" data-fr="Essayer Masomo" data-de="Masomo ausprobieren">Try Masomo</a>
+          <a href="../contact.html" class="btn btn-ghost" data-en="Talk to our team" data-fr="Parler à notre équipe" data-de="Mit unserem Team">Talk to our team</a>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
+
+<!-- ═══ PRICING ═══ 
+<section class="sec-dark reveal" id="pricing">
+  <div class="frame">
+    <div style="text-align:center;margin-bottom:2.5rem">
+      <span class="eyebrow" data-en="Pricing" data-fr="Tarifs" data-de="Preise">Pricing</span>
+      <h2 class="display-h" style="margin-bottom:.5rem" data-en="Simple, transparent <em>plans.</em>" data-fr="Des offres simples et <em>transparentes.</em>" data-de="Einfache, transparente <em>Pläne.</em>">Simple, transparent <em>plans.</em></h2>
+      <p style="color:var(--tx2);font-size:.96rem;max-width:480px;margin:0 auto 2rem" data-en="All prices in USD. Choose monthly or save with annual billing." data-fr="Tous les prix en USD. Choisissez le mensuel ou économisez avec la facturation annuelle." data-de="Alle Preise in USD. Monatlich oder mit jährlicher Abrechnung sparen.">All prices in USD. Choose monthly or save with annual billing.</p>
+      <div class="billing-wrap">
+        <div class="seg" role="tablist">
+          <button type="button" id="btnMonthly" class="on" role="tab" aria-selected="true" data-en="Monthly" data-fr="Mensuel" data-de="Monatlich">Monthly</button>
+          <button type="button" id="btnAnnual" role="tab" aria-selected="false" data-en="Annual" data-fr="Annuel" data-de="Jährlich">Annual</button>
+        </div>
+        <span class="save-badge">🎉 <span data-en="Save 20% annually" data-fr="Économisez 20% par an" data-de="Sparen Sie 20% jährlich">Save 20% annually</span></span>
+      </div>
+    </div>
+
+    <div class="plans-grid">
+      <!-- BASIC 
+      <div class="plan-card">
+        <span class="plan-name" data-en="Basic" data-fr="Basique" data-de="Basic">Basic</span>
+        <div class="plan-price" id="price-basic">$60</div>
+        <span class="plan-per" id="per-basic" data-en="per month" data-fr="par mois" data-de="pro Monat">per month</span>
+        <p class="plan-cap" data-en="Up to 50 users — perfect for small schools." data-fr="Jusqu'à 50 utilisateurs — idéal pour les petites écoles." data-de="Bis zu 50 Nutzer — ideal für kleine Schulen.">Up to 50 users — perfect for small schools.</p>
+        <hr class="plan-sep"/>
+        <ul>
+          <li data-en="Basic student profiles &amp; attendance" data-fr="Profils d'élèves basiques &amp; présence" data-de="Einfache Schülerprofile &amp; Anwesenheit">Basic student profiles &amp; attendance</li>
+          <li data-en="Manual grade entry" data-fr="Saisie manuelle des notes" data-de="Manuelle Noteneingabe">Manual grade entry</li>
+          <li data-en="Parent portal &amp; messaging" data-fr="Portail parents &amp; messagerie" data-de="Elternportal &amp; Nachrichten">Parent portal &amp; messaging</li>
+        </ul>
+        <a href="../contact.html?plan=basic" class="btn btn-ghost plan-btn" data-en="Get started" data-fr="Commencer" data-de="Loslegen">Get started</a>
+      </div>
+
+      <!-- PRO (featured)
+      <div class="plan-card featured">
+        <span class="plan-tag" data-en="Most popular" data-fr="Plus populaire" data-de="Beliebteste">Most popular</span>
+        <span class="plan-name" style="color:rgba(255,255,255,.65)" data-en="Pro" data-fr="Pro" data-de="Pro">Pro</span>
+        <div class="plan-price" id="price-pro" style="color:#fff">$100</div>
+        <span class="plan-per" id="per-pro" data-en="per month" data-fr="par mois" data-de="pro Monat">per month</span>
+        <p class="plan-cap" data-en="Up to 100 users — with advanced academic tools." data-fr="Jusqu'à 100 utilisateurs — avec des outils académiques avancés." data-de="Bis zu 100 Nutzer — mit erweiterten Funktionen.">Up to 100 users — with advanced academic tools.</p>
+        <hr class="plan-sep"/>
+        <ul>
+          <li data-en="Everything in Basic" data-fr="Tout dans Basique" data-de="Alles aus Basic">Everything in Basic</li>
+          <li data-en="Automated grades &amp; report cards" data-fr="Notes et bulletins automatisés" data-de="Automatisierte Noten &amp; Zeugnisse">Automated grades &amp; report cards</li>
+          <li data-en="Fee tracking with digital receipts" data-fr="Suivi des frais avec reçus numériques" data-de="Gebührentracking mit Belegen">Fee tracking with digital receipts</li>
+          <li data-en="Class &amp; timetable management" data-fr="Gestion des classes &amp; emplois du temps" data-de="Klassen- &amp; Stundenpläne">Class &amp; timetable management</li>
+          <li data-en="Arrival &amp; departure alerts" data-fr="Alertes arrivée &amp; départ" data-de="Ankunft- &amp; Abgangs-Alarme">Arrival &amp; departure alerts</li>
+        </ul>
+        <a href="../contact.html?plan=pro" class="btn btn-w plan-btn" data-en="Start free trial" data-fr="Commencer l'essai gratuit" data-de="Kostenlos testen">Start free trial</a>
+      </div>
+
+      <!-- PREMIUM 
+      <div class="plan-card">
+        <span class="plan-name" data-en="Premium" data-fr="Premium" data-de="Premium">Premium</span>
+        <div class="plan-price" id="price-premium">$120</div>
+        <span class="plan-per" id="per-premium" data-en="per month" data-fr="par mois" data-de="pro Monat">per month</span>
+        <p class="plan-cap" data-en="Unlimited users — ideal for districts &amp; school networks." data-fr="Utilisateurs illimités — idéal pour les districts &amp; réseaux scolaires." data-de="Unbegrenzte Nutzer — für Bezirke &amp; Schulnetzwerke.">Unlimited users — ideal for districts &amp; school networks.</p>
+        <hr class="plan-sep"/>
+        <ul>
+          <li data-en="Everything in Pro" data-fr="Tout dans Pro" data-de="Alles aus Pro">Everything in Pro</li>
+          <li data-en="Multi-school management" data-fr="Gestion multi-écoles" data-de="Mehrere Schulen verwalten">Multi-school management</li>
+          <li data-en="Opt-in real-time location (safety)" data-fr="Localisation temps réel opt-in (sécurité)" data-de="Opt-in Echtzeit-Ortung (Sicherheit)">Opt-in real-time location (safety)</li>
+          <li data-en="Custom reports &amp; analytics" data-fr="Rapports &amp; analyses personnalisés" data-de="Individuelle Berichte &amp; Analysen">Custom reports &amp; analytics</li>
+        </ul>
+        <a href="../contact.html?plan=premium" class="btn btn-solid plan-btn" data-en="Start free trial" data-fr="Commencer l'essai gratuit" data-de="Kostenlos testen">Start free trial</a>
+      </div>
+    </div>
+  </div>
+</section>
 -->
-  <!-- PRICING PLANS 
-  <section class="pricing reveal in" aria-label="Pricing plans">
-    <div class="container plans">
-      <!-- Basic 
-      <article class="plan" aria-labelledby="plan-basic">
-        <h3 id="plan-basic" data-en="Basic" data-fr="Basique" data-de="Basic">Basic</h3>
-        <div class="price" id="basicPrice" data-en="$60" data-fr="60$" data-de="60€">$60</div>
-        <span class="per" data-en="per month" data-fr="par mois" data-de="pro Monat">per month</span>
-        <p class="cap"
-           data-en="Up to 50 users perfect for small schools."
-           data-fr="Jusqu’à 50 utilisateurs idéal pour les petites écoles."
-           data-de="Bis zu 50 Nutzer ideal für kleine Schulen.">
-           Up to 50 users perfect for small schools.
-        </p>
-        <ul>
-          <li data-en="Basic student profiles & attendance"
-              data-fr="Profils d’élèves basiques & présence"
-              data-de="Einfache Schülerprofile & Anwesenheit">Basic student profiles & attendance</li>
-          <li data-en="Manual grade entry"
-              data-fr="Saisie manuelle des notes"
-              data-de="Manuelle Noteneingabe">Manual grade entry</li>
-          <li data-en="Parent messaging"
-              data-fr="Messagerie parents"
-              data-de="Elternnachrichten">Parent messaging</li>
-        </ul>
-        <a href="#" class="btn btn-primary"
-           data-en="Get started" data-fr="Commencer" data-de="Loslegen">Get started</a>
-      </article>
-      <!-- Pro 
-      <article class="plan" aria-labelledby="plan-pro">
-        <h3 id="plan-pro" data-en="Pro" data-fr="Pro" data-de="Pro">Pro</h3>
-        <div class="price" id="proPrice" data-en="$100" data-fr="100$" data-de="100€">$100</div>
-        <span class="per" data-en="per month" data-fr="par mois" data-de="pro Monat">per month</span>
-        <p class="cap"
-           data-en="Up to 100 users with advanced academic tools."
-           data-fr="Jusqu’à 100 utilisateurs avec des outils académiques avancés."
-           data-de="Bis zu 100 Nutzer mit erweiterten Funktionen.">
-           Up to 100 users with advanced academic tools.
-        </p>
-        <ul>
-          <li data-en="Automated grades & report cards"
-              data-fr="Notes et bulletins automatisés"
-              data-de="Automatisierte Noten & Zeugnisse">Automated grades & report cards</li>
-          <li data-en="Fee tracking with digital receipts"
-              data-fr="Suivi des frais avec reçus numériques"
-              data-de="Gebührenverwaltung mit Quittungen">Fee tracking with digital receipts</li>
-          <li data-en="Class & timetable management"
-              data-fr="Gestion des classes & emplois du temps"
-              data-de="Klassen- & Stundenpläne">Class & timetable management</li>
-        </ul>
-        <a href="#" class="btn btn-primary"
-           data-en="Start free trial" data-fr="Commencer l’essai gratuit" data-de="Kostenlos testen">Start free trial</a>
-      </article>
-
-      <!-- Premium 
-      <article class="plan" aria-labelledby="plan-premium">
-        <h3 id="plan-premium" data-en="Premium" data-fr="Premium" data-de="Premium">Premium</h3>
-        <div class="price" id="premiumPrice" data-en="$120" data-fr="120$" data-de="120€">$120</div>
-        <span class="per" data-en="per month" data-fr="par mois" data-de="pro Monat">per month</span>
-        <p class="cap"
-           data-en="Unlimited users perfect for districts & networks."
-           data-fr="Utilisateurs illimités idéal pour les districts & réseaux."
-           data-de="Unbegrenzte Nutzer ideal für Bezirke & Netzwerke.">
-           Unlimited users perfect for districts & networks.
-        </p>
-        <ul>
-          <li data-en="Everything in Pro"
-              data-fr="Tout dans Pro"
-              data-de="Alles aus Pro">Everything in Pro</li>
-          <li data-en="Location tracking   for safety"
-              data-fr="Suivi de localisation   pour la sécurité"
-              data-de="Standortverfolgung   zur Sicherheit">Location tracking   for safety</li>
-          <li data-en="Custom reports & analytics"
-              data-fr="Rapports & analyses personnalisés"
-              data-de="Individuelle Berichte & Analysen">Custom reports & analytics</li>
-        </ul>
-        <a href="#" class="btn btn-primary"
-           data-en="Start free trial" data-fr="Commencer l’essai gratuit" data-de="Kostenlos testen">Start free trial</a>
-      </article>
+<!-- ═══ KEY FEATURES ═══ -->
+<section class="sec reveal" id="features">
+  <div class="frame">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:.5rem">
+      <div>
+        <span class="eyebrow" data-en="What's included" data-fr="Ce qui est inclus" data-de="Was enthalten ist">What's included</span>
+        <h2 class="display-h" style="margin-bottom:0" data-en="Every tool your<br>school <em>needs.</em>" data-fr="Tous les outils dont<br>votre école <em>a besoin.</em>" data-de="Alle Tools, die<br>Ihre Schule <em>braucht.</em>">Every tool your<br>school <em>needs.</em></h2>
+      </div>
+      <a href="https://masomos.tuunganes.com" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-bottom:.2rem" data-en="View live demo →" data-fr="Voir la démo →" data-de="Live-Demo →">View live demo →</a>
     </div>
-  </section>
--->
-  <!-- Key features -->
-  <section class="section reveal in">
-    <div class="center-stack">
-      <h2 data-en="Key features" data-fr="Fonctionnalités clés" data-de="Wichtige Funktionen">Key features</h2>
-      <ul class="feature-list">
-        <li data-en="Student profiles from enrollment to graduation"
-            data-fr="Profils d’élèves de l’inscription à la graduation"
-            data-de="Schülerprofile vom Eintritt bis zum Abschluss">Student profiles from enrollment to graduation</li>
-        <li data-en="Class, subject and timetable management"
-            data-fr="Gestion des classes, matières et emplois du temps"
-            data-de="Verwaltung von Klassen, Fächern und Stundenplänen">Class, subject and timetable management</li>
-        <li data-en="Automatic grade entry and report cards"
-            data-fr="Saisie automatique des notes et bulletins"
-            data-de="Automatische Noten & Zeugnisse">Automatic grade entry and report cards</li>
-        <li data-en="Subscription & fee tracking with digital receipts"
-            data-fr="Suivi des abonnements et frais avec reçus numériques"
-            data-de="Gebühren & Abos mit digitalen Belegen">Subscription & fee tracking with digital receipts</li>
-        <li data-en="Multi-school support with secure data isolation"
-            data-fr="Support multi-écoles avec isolement sécurisé des données"
-            data-de="Mehrschul-Support mit sicherer Datenisolierung">Multi-school support with secure data isolation</li>
-      </ul>
+    <div class="feat-list">
+      <div class="feat-item"><div class="feat-n">01</div><div class="feat-body"><h3 data-en="Student Profiles &amp; Enrollment" data-fr="Profils élèves &amp; Inscription" data-de="Schülerprofile &amp; Einschreibung">Student Profiles &amp; Enrollment</h3><p data-en="Complete student records from first enrollment to graduation — attendance history, documents, and parent contacts, all in one secure place." data-fr="Dossiers complets des élèves de l'inscription à la graduation — historique de présence, documents et contacts parents en un endroit sécurisé." data-de="Vollständige Schülerakten von der Einschreibung bis zum Abschluss — Anwesenheitshistorie, Dokumente und Elternkontakte an einem sicheren Ort.">Complete student records from first enrollment to graduation — attendance history, documents, and parent contacts, all in one secure place.</p></div><div class="feat-icon">📋</div></div>
+      <div class="feat-item"><div class="feat-n">02</div><div class="feat-body"><h3 data-en="Classes, Subjects &amp; Timetables" data-fr="Classes, Matières &amp; Emplois du temps" data-de="Klassen, Fächer &amp; Stundenpläne">Classes, Subjects &amp; Timetables</h3><p data-en="Build class lists, assign subjects, and generate printable timetables for teachers and students with a few clicks." data-fr="Créez des listes de classes, assignez des matières et générez des emplois du temps imprimables en quelques clics." data-de="Klassenlisten erstellen, Fächer zuweisen und druckbare Stundenpläne in wenigen Klicks generieren.">Build class lists, assign subjects, and generate printable timetables for teachers and students with a few clicks.</p></div><div class="feat-icon">🗓️</div></div>
+      <div class="feat-item"><div class="feat-n">03</div><div class="feat-body"><h3 data-en="Automated Grades &amp; Report Cards" data-fr="Notes automatisées &amp; Bulletins" data-de="Automatische Noten &amp; Zeugnisse">Automated Grades &amp; Report Cards</h3><p data-en="Teachers enter grades once — Masomo calculates averages, ranks, and generates formatted report cards ready to share with parents." data-fr="Les enseignants saisissent les notes une fois — Masomo calcule les moyennes et génère des bulletins formatés à partager avec les parents." data-de="Lehrer geben Noten einmal ein — Masomo berechnet Durchschnitte und erstellt Zeugnisse.">Teachers enter grades once — Masomo calculates averages, ranks, and generates formatted report cards ready to share with parents.</p></div><div class="feat-icon">📊</div></div>
+      <div class="feat-item"><div class="feat-n">04</div><div class="feat-body"><h3 data-en="Fee Tracking &amp; Digital Receipts" data-fr="Suivi des frais &amp; Reçus numériques" data-de="Gebührenverfolgung &amp; Digitale Belege">Fee Tracking &amp; Digital Receipts</h3><p data-en="Track school fees and payments with full transparency. Generate digital receipts and see at a glance who has paid and who hasn't." data-fr="Suivez les frais scolaires et paiements en toute transparence. Générez des reçus numériques et voyez en un coup d'œil qui a payé." data-de="Schulgebühren und Zahlungen transparent verfolgen. Digitale Belege erstellen und sofort sehen, wer bezahlt hat.">Track school fees and payments with full transparency. Generate digital receipts and see at a glance who has paid and who hasn't.</p></div><div class="feat-icon">💳</div></div>
+      <div class="feat-item"><div class="feat-n">05</div><div class="feat-body"><h3 data-en="Multi-School &amp; Secure Data Isolation" data-fr="Multi-écoles &amp; Isolation des données" data-de="Mehrere Schulen &amp; Datenisolierung">Multi-School &amp; Secure Data Isolation</h3><p data-en="Run multiple schools from one admin dashboard. Each school's data is fully isolated and secure — perfect for school networks and districts." data-fr="Gérez plusieurs écoles depuis un seul tableau de bord. Les données de chaque école sont entièrement isolées — idéal pour les réseaux scolaires." data-de="Mehrere Schulen von einem Dashboard aus verwalten. Vollständig isolierte Daten für jede Schule.">Run multiple schools from one admin dashboard. Each school's data is fully isolated and secure — perfect for school networks and districts.</p></div><div class="feat-icon">🏫</div></div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- Safety -->
-  <section class="section reveal in">
-    <div class="center-stack">
-      <h2 data-en="Safety & Security: our top priority"
-          data-fr="Sécurité & protection : notre priorité"
-          data-de="Sicherheit & Schutz: unsere Priorität">
-        Safety & Security: our top priority
-      </h2>
-      <p class="subtle" data-en="In Eastern DRC, child safety is critical. Masomo adds protective features while respecting privacy and consent."
-         data-fr="Dans l’Est de la RDC, la sécurité des enfants est essentielle. Masomo intègre des protections dans le respect de la vie privée et du consentement."
-         data-de="Im Osten der DR Kongo ist Kindersicherheit entscheidend. Masomo bietet Schutzfunktionen unter Wahrung von Privatsphäre und Einwilligung.">
-         In Eastern DRC, child safety is critical. Masomo adds protective features while respecting privacy and consent.
-      </p>
-      <ul class="safety-list">
-        <li data-en="Embedded map and optional real-time location for authorized parents"
-            data-fr="Carte intégrée et localisation temps réel en option pour les parents autorisés"
-            data-de="Eingebettete Karte und optionale Echtzeit-Ortung für berechtigte Eltern">Embedded map and optional real-time location for authorized parents</li>
-        <li data-en="Granular access control and audit logs"
-            data-fr="Contrôle d’accès granulaire et journaux d’audit"
-            data-de="Feingliedrige Zugriffskontrolle und Audit-Protokolle">Granular access control and audit logs</li>
-        <li data-en="Smart alerts when a child arrives or leaves school"
-            data-fr="Alertes intelligentes à l’arrivée/au départ de l’enfant"
-            data-de="Intelligente Benachrichtigungen beim Ankommen/Verlassen">Smart alerts when a child arrives or leaves school</li>
-      </ul>
-
-      <div style="margin-top:1rem; display:flex; gap:.6rem; flex-wrap:wrap;">
-        <a href="https://masomos.tuunganes.com" target="_blank" class="btn btn-primary"
-           data-en="Explore Masomo" data-fr="Explorer Masomo" data-de="Masomo entdecken">Explore Masomo</a>
-        <a href="../contact.html" class="btn btn-ghost"
-           data-en="Talk to our team" data-fr="Parler à notre équipe" data-de="Mit unserem Team sprechen">Talk to our team</a>
+<!-- ═══ SAFETY ═══ -->
+<section class="safety-band reveal">
+  <div class="frame">
+    <div class="safety-inner">
+      <div class="safety-left">
+        <span class="eyebrow" style="color:rgba(255,255,255,.55)" data-en="Child safety first" data-fr="La sécurité des enfants avant tout" data-de="Kindersicherheit zuerst">Child safety first</span>
+        <h2>Safety &amp; security.<br><em>Our top priority.</em></h2>
+        <p data-en="In Eastern DRC, child safety is critical. Masomo adds protective features that respect privacy and consent — giving parents peace of mind and schools the tools to act fast." data-fr="Dans l'Est de la RDC, la sécurité des enfants est essentielle. Masomo intègre des protections respectant la vie privée et le consentement, pour la tranquillité des parents." data-de="Im Osten der DRK ist Kindersicherheit entscheidend. Masomo bietet Schutzfunktionen, die Privatsphäre und Einwilligung respektieren.">In Eastern DRC, child safety is critical. Masomo adds protective features that respect privacy and consent — giving parents peace of mind and schools the tools to act fast.</p>
+        <a href="../contact.html" class="btn btn-w" data-en="Talk to our team" data-fr="Parler à notre équipe" data-de="Mit unserem Team">Talk to our team</a>
+      </div>
+      <div class="safety-cards">
+        <div class="s-card"><div class="s-card-icon">📍</div><div><h4 data-en="Optional real-time location" data-fr="Localisation temps réel optionnelle" data-de="Optionale Echtzeit-Ortung">Optional real-time location</h4><p data-en="Opt-in tracking visible only to authorized parents — with full consent and privacy controls." data-fr="Suivi opt-in visible uniquement par les parents autorisés, avec contrôles de consentement." data-de="Opt-in-Ortung nur für berechtigte Eltern sichtbar, mit vollem Datenschutz.">Opt-in tracking visible only to authorized parents — with full consent and privacy controls.</p></div></div>
+        <div class="s-card"><div class="s-card-icon">🔔</div><div><h4 data-en="Arrival &amp; departure alerts" data-fr="Alertes d'arrivée &amp; de départ" data-de="Ankunft- &amp; Abgangsmeldungen">Arrival &amp; departure alerts</h4><p data-en="Instant notifications when a child arrives at school or leaves — daily reassurance for every parent." data-fr="Notifications instantanées à l'arrivée ou au départ d'un enfant — réassurance quotidienne pour chaque parent." data-de="Sofortige Benachrichtigungen, wenn ein Kind ankommt oder geht — tägliche Beruhigung für alle Eltern.">Instant notifications when a child arrives at school or leaves — daily reassurance for every parent.</p></div></div>
+        <div class="s-card"><div class="s-card-icon">🔒</div><div><h4 data-en="Granular access control" data-fr="Contrôle d'accès granulaire" data-de="Feingliedrige Zugriffskontrolle">Granular access control</h4><p data-en="Role-based permissions and audit logs ensure only the right people see the right data — always." data-fr="Permissions basées sur les rôles et journaux d'audit pour garantir que seules les bonnes personnes voient les bonnes données." data-de="Rollenbasierte Berechtigungen und Audit-Logs für sichere Datenzugriffe.">Role-based permissions and audit logs ensure only the right people see the right data — always.</p></div></div>
       </div>
     </div>
-  </section>
-  <!-- Comparison table -->
-  <section class="section reveal in" aria-label="Feature comparison">
-    <div class="compare">
-      <table class="price-compare">
+  </div>
+</section>
+
+<!-- ═══ COMPARE TABLE ═══ -->
+<section class="sec reveal" id="compare">
+  <div class="frame">
+    <span class="eyebrow" data-en="Feature comparison" data-fr="Comparatif des fonctionnalités" data-de="Funktionsvergleich">Feature comparison</span>
+    <h2 class="display-h" data-en="Everything <em>in one place.</em>" data-fr="Tout <em>au même endroit.</em>" data-de="Alles <em>an einem Ort.</em>">Everything <em>in one place.</em></h2>
+    <div class="compare-wrap">
+      <table class="cmp">
         <thead>
-          <!--
           <tr>
-            <th data-en="Features" data-fr="Fonctionnalités" data-de="Funktionen">Features</th>
+            <th style="width:44%" data-en="Feature" data-fr="Fonctionnalité" data-de="Funktion">Feature</th>
             <th data-en="Basic" data-fr="Basique" data-de="Basic">Basic</th>
-            <th data-en="Pro" data-fr="Pro" data-de="Pro">Pro</th>
+            <th style="background:var(--blue-pale);color:var(--blue)" data-en="Pro" data-fr="Pro" data-de="Pro">Pro ★</th>
             <th data-en="Premium" data-fr="Premium" data-de="Premium">Premium</th>
           </tr>
-          -->
         </thead>
         <tbody>
-          <!--
-          <tr>
-            <td data-en="Users included" data-fr="Utilisateurs inclus" data-de="Inklusive Nutzer">Users included</td>
-            <td data-en="Up to 50" data-fr="Jusqu’à 50" data-de="Bis 50">Up to 50</td>
-            <td data-en="Up to 100" data-fr="Jusqu’à 100" data-de="Bis 100">Up to 100</td>
-            <td data-en="Unlimited" data-fr="Illimité" data-de="Unbegrenzt">Unlimited</td>
-          </tr>
-          -->
-          <tr>
-            <td data-en="Student profiles & attendance" data-fr="Profils & présence" data-de="Profile & Anwesenheit">Student profiles & attendance</td>
-            <td class="tick">✓</td><td class="tick">✓</td><td class="tick">✓</td>
-          </tr>
-          <tr>
-            <td data-en="Grade automation & report cards" data-fr="Automatisation des notes & bulletins" data-de="Noten-Automatisierung & Zeugnisse">Grade automation & report cards</td>
-            <td class="muted">  </td><td class="tick">✓</td><td class="tick">✓</td>
-          </tr>
-          <tr>
-            <td data-en="Fee tracking & digital receipts" data-fr="Suivi des frais & reçus numériques" data-de="Gebühren & digitale Belege">Fee tracking & digital receipts</td>
-            <td class="muted">  </td><td class="tick">✓</td><td class="tick">✓</td>
-          </tr>
-          <tr>
-            <td data-en="Class & timetable management" data-fr="Gestion des classes & emplois du temps" data-de="Klassen & Stundenpläne">Class & timetable management</td>
-            <td class="muted">  </td><td class="tick">✓</td><td class="tick">✓</td>
-          </tr>
-          <tr>
-            <td data-en="Parent portal & messaging" data-fr="Portail parents & messagerie" data-de="Elternportal & Nachrichten">Parent portal & messaging</td>
-            <td class="tick">✓</td><td class="tick">✓</td><td class="tick">✓</td>
-          </tr>
-          <tr>
-            <td data-en="Arrival/leave alerts" data-fr="Alertes arrivée/départ" data-de="Ankunft/Abgang-Alarme">Arrival/leave alerts</td>
-            <td class="muted">  </td><td class="tick">✓</td><td class="tick">✓</td>
-          </tr>
-          <tr>
-            <td data-en="Real-time location  " data-fr="Localisation temps réel  " data-de="Echtzeit-Ortung  ">Real-time location  </td>
-            <td class="muted">  </td><td class="muted">  </td><td class="tick">✓</td>
-          </tr>
-          <tr>
-            <td data-en="Custom reports & analytics" data-fr="Rapports & analyses personnalisés" data-de="Individuelle Berichte & Analysen">Custom reports & analytics</td>
-            <td class="muted">  </td><td class="muted">  </td><td class="tick">✓</td>
-          </tr>
+          <tr><td data-en="Student profiles &amp; attendance" data-fr="Profils &amp; présence" data-de="Profile &amp; Anwesenheit">Student profiles &amp; attendance</td><td class="tick">✓</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+          <tr><td data-en="Parent portal &amp; messaging" data-fr="Portail parents &amp; messagerie" data-de="Elternportal &amp; Nachrichten">Parent portal &amp; messaging</td><td class="tick">✓</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+          <tr><td data-en="Grade automation &amp; report cards" data-fr="Notes automatisées &amp; bulletins" data-de="Noten &amp; Zeugnisse">Grade automation &amp; report cards</td><td class="dash">—</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+          <tr><td data-en="Fee tracking &amp; digital receipts" data-fr="Suivi des frais &amp; reçus" data-de="Gebühren &amp; Belege">Fee tracking &amp; digital receipts</td><td class="dash">—</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+          <tr><td data-en="Class &amp; timetable management" data-fr="Classes &amp; emplois du temps" data-de="Klassen &amp; Stundenpläne">Class &amp; timetable management</td><td class="dash">—</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+          <tr><td data-en="Arrival / departure alerts" data-fr="Alertes arrivée / départ" data-de="Ankunft / Abgang">Arrival / departure alerts</td><td class="dash">—</td><td class="tick">✓</td><td class="tick">✓</td></tr>
+          <tr><td data-en="Multi-school support" data-fr="Support multi-écoles" data-de="Mehrere Schulen">Multi-school support</td><td class="dash">—</td><td class="dash">—</td><td class="tick">✓</td></tr>
+          <tr><td data-en="Real-time location (opt-in)" data-fr="Localisation temps réel (opt-in)" data-de="Echtzeit-Ortung (opt-in)">Real-time location (opt-in)</td><td class="dash">—</td><td class="dash">—</td><td class="tick">✓</td></tr>
+          <tr><td data-en="Custom reports &amp; analytics" data-fr="Rapports &amp; analyses personnalisés" data-de="Individuelle Berichte">Custom reports &amp; analytics</td><td class="dash">—</td><td class="dash">—</td><td class="tick">✓</td></tr>
         </tbody>
       </table>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FAQs 
-  <section class="section reveal in" aria-label="Pricing FAQs">
-    <div class="faqs">
-      <h2 data-en="Pricing FAQs" data-fr="FAQ Tarifs" data-de="Preise FAQ">Pricing FAQs</h2>
-
-      <details>
-        <summary data-en="What happens at the end of my trial?"
-                 data-fr="Que se passe-t-il à la fin de mon essai ?"
-                 data-de="Was passiert nach dem Testzeitraum?">
-          What happens at the end of my trial?
-        </summary>
-        <p class="subtle"
-           data-en="You can choose a plan and your data remains intact. If you do nothing, your account pauses until you pick a plan."
-           data-fr="Vous choisissez une offre et vos données restent intactes. Si vous ne faites rien, votre compte est en pause jusqu’à votre choix."
-           data-de="Sie wählen einen Tarif und Ihre Daten bleiben erhalten. Ohne Auswahl pausiert Ihr Konto, bis Sie sich entscheiden.">
-           You can choose a plan and your data remains intact. If you do nothing, your account pauses until you pick a plan.
-        </p>
-      </details>
-
-      <details>
-        <summary data-en="Do you offer discounts?"
-                 data-fr="Proposez-vous des réductions ?"
-                 data-de="Bieten Sie Rabatte an?">
-          Do you offer discounts?
-        </summary>
-        <p class="subtle"
-           data-en="Yes  annual billing saves 20%. For multi-school deployments, contact us."
-           data-fr="Oui la facturation annuelle économise 20%. Pour les déploiements multi-écoles, contactez-nous."
-           data-de="Ja mit jährlicher Abrechnung sparen Sie 20 %. Für Mehrschul-Rollouts kontaktieren Sie uns.">
-           Yes  annual billing saves 20%. For multi-school deployments, contact us.
-        </p>
-      </details>
-      <details>
-        <summary data-en="What are the payment options?"
-                 data-fr="Quels sont les moyens de paiement ?"
-                 data-de="Welche Zahlungsoptionen gibt es?">
-          What are the payment options?
-        </summary>
-        <p class="subtle"
-           data-en="We support major cards and mobile money partners in DRC where available."
-           data-fr="Nous acceptons les principales cartes et, en RDC, les partenaires mobile money disponibles."
-           data-de="Wir unterstützen gängige Karten und sofern verfügbar Mobile-Money-Partner in der DRK.">
-           We support major cards and mobile money partners in DRC where available.
-        </p>
-      </details>
-      <details>
-        <summary data-en="Can I change plans after subscribing?"
-                 data-fr="Puis-je changer d’offre après abonnement ?"
-                 data-de="Kann ich meinen Tarif später ändern?">
-          Can I change plans after subscribing?
-        </summary>
-        <p class="subtle"
-           data-en="Absolutely. Upgrade or downgrade anytime; prorated billing applies."
-           data-fr="Bien sûr. Montez ou descendez d’offre à tout moment; facturation au prorata."
-           data-de="Klar. Upgrade/Downgrade jederzeit; anteilige Abrechnung.">
-           Absolutely. Upgrade or downgrade anytime; prorated billing applies.
-        </p>
-      </details>
-      <details>
-        <summary data-en="Is location tracking optional?"
-                 data-fr="Le suivi de localisation est-il optionnel ?"
-                 data-de="Ist die Standortverfolgung optional?">
-          Is location tracking optional?
-        </summary>
-        <p class="subtle"
-           data-en="Yes. It’s opt-in, visible only to authorized parents/guardians, and respects consent."
-           data-fr="Oui. C’est opt-in, visible uniquement par les parents/tuteurs autorisés, et respecte le consentement."
-           data-de="Ja. Opt-in, nur für berechtigte Eltern/Erziehungsberechtigte sichtbar und einwilligungsbasiert.">
-           Yes. It’s opt-in, visible only to authorized parents/guardians, and respects consent.
-        </p>
-      </details>
+<!-- ═══ FAQ ═══ -->
+<section class="sec-dark reveal" id="faq">
+  <div class="frame">
+    <span class="eyebrow" data-en="FAQ" data-fr="FAQ" data-de="FAQ">FAQ</span>
+    <h2 class="display-h" style="margin-bottom:2rem" data-en="Common <em>questions.</em>" data-fr="Questions <em>fréquentes.</em>" data-de="Häufige <em>Fragen.</em>">Common <em>questions.</em></h2>
+    <div class="faq-list">
+      <details class="faq"><summary><span data-en="What happens after I sign up?" data-fr="Que se passe-t-il après l'inscription ?" data-de="Was passiert nach der Anmeldung?">What happens after I sign up?</span><div class="faq-tog"><span class="p-icon">+</span><span class="m-icon" style="display:none">−</span></div></summary><p class="ans" data-en="Our team contacts you to set up your school profile, import existing records, and train your staff. Most schools are live within 48 hours." data-fr="Notre équipe vous contacte pour configurer votre profil scolaire, importer vos données existantes et former votre personnel. La plupart des écoles sont opérationnelles en 48 heures." data-de="Unser Team meldet sich, um Ihr Schulprofil einzurichten, bestehende Daten zu importieren und Ihr Personal zu schulen. Die meisten Schulen sind innerhalb von 48 Stunden aktiv.">Our team contacts you to set up your school profile, import existing records, and train your staff. Most schools are live within 48 hours.</p></details>
+      <details class="faq"><summary><span data-en="Does Masomo work without internet?" data-fr="Masomo fonctionne-t-il sans internet ?" data-de="Funktioniert Masomo ohne Internet?">Does Masomo work without internet?</span><div class="faq-tog"><span class="p-icon">+</span><span class="m-icon" style="display:none">−</span></div></summary><p class="ans" data-en="Yes. Masomo is built offline-first. Teachers can enter grades, take attendance, and manage records without a connection. Everything syncs automatically when internet returns." data-fr="Oui. Masomo est conçu offline-first. Les enseignants peuvent saisir des notes et gérer les dossiers sans connexion. Tout se synchronise automatiquement au retour d'internet." data-de="Ja. Masomo ist Offline-First. Lehrer können auch ohne Verbindung arbeiten. Alles synchronisiert automatisch bei Rückkehr des Internets.">Yes. Masomo is built offline-first. Teachers can enter grades, take attendance, and manage records without a connection. Everything syncs automatically when internet returns.</p></details>
+      <details class="faq"><summary><span data-en="Do you offer discounts for multiple schools?" data-fr="Offrez-vous des réductions pour plusieurs écoles ?" data-de="Gibt es Rabatte für mehrere Schulen?">Do you offer discounts for multiple schools?</span><div class="faq-tog"><span class="p-icon">+</span><span class="m-icon" style="display:none">−</span></div></summary><p class="ans" data-en="Yes. Annual billing saves 20%. For multi-school district deployments, contact us directly and we'll build a custom package." data-fr="Oui. La facturation annuelle économise 20%. Pour les déploiements multi-écoles, contactez-nous pour un package personnalisé." data-de="Ja. Jährliche Abrechnung spart 20%. Für Multi-Schul-Deployments kontaktieren Sie uns für ein individuelles Paket.">Yes. Annual billing saves 20%. For multi-school district deployments, contact us directly and we'll build a custom package.</p></details>
+      <details class="faq"><summary><span data-en="Is location tracking mandatory?" data-fr="Le suivi de localisation est-il obligatoire ?" data-de="Ist die Standortverfolgung obligatorisch?">Is location tracking mandatory?</span><div class="faq-tog"><span class="p-icon">+</span><span class="m-icon" style="display:none">−</span></div></summary><p class="ans" data-en="Never. It's completely opt-in per family. Location data is only visible to the authorized parent of that specific child and can be turned off at any time." data-fr="Jamais. C'est entièrement opt-in par famille. Les données de localisation ne sont visibles que par le parent autorisé et peuvent être désactivées à tout moment." data-de="Niemals. Es ist vollständig opt-in pro Familie. Standortdaten sind nur für den autorisierten Elternteil sichtbar und können jederzeit deaktiviert werden.">Never. It's completely opt-in per family. Location data is only visible to the authorized parent of that specific child and can be turned off at any time.</p></details>
+      <details class="faq"><summary><span data-en="What languages does Masomo support?" data-fr="Quelles langues Masomo prend-il en charge ?" data-de="Welche Sprachen unterstützt Masomo?">What languages does Masomo support?</span><div class="faq-tog"><span class="p-icon">+</span><span class="m-icon" style="display:none">−</span></div></summary><p class="ans" data-en="French and English, with Swahili actively in development. The platform was designed for DRC teachers and administrators." data-fr="Français et anglais, avec le swahili en développement actif. La plateforme a été conçue pour les enseignants et administrateurs de la RDC." data-de="Französisch und Englisch, Swahili aktiv in Entwicklung. Die Plattform wurde für Lehrer und Administratoren der DRK konzipiert.">French and English, with Swahili actively in development. The platform was designed for DRC teachers and administrators.</p></details>
     </div>
-    -->
-  </section>
-  <!-- Footer injected by base.js -->
-  <div id="site-footer"></div>
-  <!-- Scripts -->
-  <script src="../route/base.js" defer></script>
-  <script src="../route/lang.js" defer></script>
-  <script src="../route/animations.js" defer></script>
-  <script>
-    // Monthly / Annual toggle with data-* sync for prices and period text
-    document.addEventListener("DOMContentLoaded", () => {
-      const monthlyBtn = document.getElementById("monthlyBtn");
-      const annualBtn = document.getElementById("annualBtn");
-      const basicPrice = document.getElementById("basicPrice");
-      const proPrice = document.getElementById("proPrice");
-      const premPrice = document.getElementById("premiumPrice");
-      const periodSpans = document.querySelectorAll(".per");
-      function setMonthly() {
-        monthlyBtn.classList.add("active");
-        monthlyBtn.setAttribute("aria-selected", "true");
-        annualBtn.classList.remove("active");
-        annualBtn.setAttribute("aria-selected", "false");
+  </div>
+</section>
 
-        // Set prices
-        basicPrice.textContent = "$60";
-        proPrice.textContent = "$100";
-        premPrice.textContent = "$120";
-        basicPrice.setAttribute("data-en", "$60");
-        basicPrice.setAttribute("data-fr", "60$");
-        basicPrice.setAttribute("data-de", "60€");
-        proPrice.setAttribute("data-en", "$100");
-        proPrice.setAttribute("data-fr", "100$");
-        proPrice.setAttribute("data-de", "100€");
-        premPrice.setAttribute("data-en", "$120");
-        premPrice.setAttribute("data-fr", "120$");
-        premPrice.setAttribute("data-de", "120€");
-        // Set period text to "per month"
-        periodSpans.forEach(span => {
-          span.textContent = "per month";
-          span.setAttribute("data-en", "per month");
-          span.setAttribute("data-fr", "par mois");
-          span.setAttribute("data-de", "pro Monat");
-        });
-      }
-      function setAnnual() {
-        annualBtn.classList.add("active");
-        annualBtn.setAttribute("aria-selected", "true");
-        monthlyBtn.classList.remove("active");
-        monthlyBtn.setAttribute("aria-selected", "false");
-        // Set prices
-        basicPrice.textContent = "$700";
-        proPrice.textContent = "$1000";
-        premPrice.textContent = "$1200";
-        basicPrice.setAttribute("data-en", "$700");
-        basicPrice.setAttribute("data-fr", "700$");
-        basicPrice.setAttribute("data-de", "700€");
-        proPrice.setAttribute("data-en", "$1000");
-        proPrice.setAttribute("data-fr", "1000$");
-        proPrice.setAttribute("data-de", "1000€");
-        premPrice.setAttribute("data-en", "$1200");
-        premPrice.setAttribute("data-fr", "1200$");
-        premPrice.setAttribute("data-de", "1200€");
-        // Set period text to "per year"
-        periodSpans.forEach(span => {
-          span.textContent = "per year";
-          span.setAttribute("data-en", "per year");
-          span.setAttribute("data-fr", "par an");
-          span.setAttribute("data-de", "pro Jahr");
-        });
-      }
-      monthlyBtn.addEventListener("click", setMonthly);
-      annualBtn.addEventListener("click", setAnnual);
-      // Initialize with monthly view
-      setMonthly();
+<!-- ═══ CTA ═══ -->
+<section class="sec reveal">
+  <div class="frame">
+    <div class="cta-band">
+      <div class="cta-left">
+        <span class="eyebrow" style="color:rgba(255,255,255,.45)" data-en="Get started" data-fr="Commencer" data-de="Loslegen">Get started</span>
+        <h2 data-en="Ready to modernize your school?" data-fr="Prêt à moderniser votre école ?" data-de="Bereit, Ihre Schule zu modernisieren?">Ready to modernize your school?</h2>
+        <p data-en="Whether you run one school or a whole district — Masomo is ready. Get set up in days, not months." data-fr="Que vous gériez une école ou tout un district — Masomo est prêt. Opérationnel en jours, pas en mois." data-de="Ob eine Schule oder ein ganzer Bezirk — Masomo ist bereit. In Tagen eingerichtet, nicht Monaten.">Whether you run one school or a whole district — Masomo is ready. Get set up in days, not months.</p>
+        <div class="cta-btns">
+          <a href="https://masomos.tuunganes.com" target="_blank" rel="noopener" class="btn btn-w" data-en="Explore Masomo" data-fr="Explorer Masomo" data-de="Masomo entdecken">Explore Masomo</a>
+          <a href="../contact.html?demo=masomo" class="btn btn-wg" data-en="Request a demo" data-fr="Demander une démo" data-de="Demo anfragen">Request a demo</a>
+        </div>
+      </div>
+      <div class="cta-right">
+        <div class="cta-right-inner">
+          <div class="cta-big" aria-hidden="true">Ma<br>so<br>mo.</div>
+          <p data-en="Modern schools,<br>modern Congo." data-fr="Écoles modernes,<br>Congo moderne." data-de="Moderne Schulen,<br>modernes Kongo.">Modern schools,<br>modern Congo.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="frame foot">
+    <a href="../index.html" class="foot-logo"><img src="../assets/fevicon.png" alt="Tuunganes"/><span>Tuunganes</span></a>
+    <p>&copy; 2025 Tuunganes &nbsp;·&nbsp; Bukavu &amp; Goma, DRC</p>
+    <div style="display:flex;gap:1rem">
+      <a href="../about.html" style="font-size:.82rem;color:var(--muted)" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+      <a href="services.html" style="font-size:.82rem;color:var(--muted)" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+      <a href="../contact.html" style="font-size:.82rem;color:var(--muted)" data-en="Contact" data-fr="Contact" data-de="Kontakt">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ── Theme ── */
+(function(){
+  const s=localStorage.getItem('tuunganes-theme');
+  const dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  document.documentElement.setAttribute('data-theme',s||(dark?'dark':'light'));
+})();
+
+document.addEventListener('DOMContentLoaded',function(){
+  const root=document.documentElement;
+  const themeBtn=document.getElementById('themeBtn');
+  function syncIcon(){themeBtn.textContent=root.getAttribute('data-theme')==='dark'?'☀️':'🌙'}
+  syncIcon();
+  themeBtn.addEventListener('click',function(){
+    const next=root.getAttribute('data-theme')==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);localStorage.setItem('tuunganes-theme',next);syncIcon();
+  });
+
+  /* ── Nav ── */
+  const hamBtn=document.getElementById('hamBtn');
+  const drawer=document.getElementById('drawer');
+  document.getElementById('drawerClose').addEventListener('click',()=>{drawer.classList.remove('open');hamBtn.setAttribute('aria-expanded','false')});
+  hamBtn.addEventListener('click',()=>{const o=drawer.classList.toggle('open');hamBtn.setAttribute('aria-expanded',String(o))});
+  document.addEventListener('click',e=>{if(!drawer.contains(e.target)&&!hamBtn.contains(e.target)){drawer.classList.remove('open');hamBtn.setAttribute('aria-expanded','false')}});
+
+  /* ── Language ── */
+  function applyLang(lang){
+    localStorage.setItem('siteLang',lang);
+    document.querySelectorAll('.lang-pills button').forEach(b=>b.classList.toggle('on',b.dataset.lang===lang));
+    document.querySelectorAll('[data-'+lang+']').forEach(el=>{
+      const val=el.getAttribute('data-'+lang);if(!val)return;
+      if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){el.placeholder=val;}
+      else if(['H1','H2','H3'].includes(el.tagName)){el.innerHTML=val;}
+      else if(!el.querySelector('[data-'+lang+']:not(script)')){el.textContent=val;}
     });
-  </script>
+  }
+  const saved=localStorage.getItem('siteLang')||'en';
+  document.querySelectorAll('.lang-pills [data-lang]').forEach(btn=>{
+    btn.addEventListener('click',()=>applyLang(btn.dataset.lang));
+    if(btn.dataset.lang===saved)btn.classList.add('on');
+  });
+
+  /* ── Billing toggle ── */
+  const monthly={basic:'$60',pro:'$100',premium:'$120'};
+  const annual={basic:'$700',pro:'$1,000',premium:'$1,200'};
+  const btnM=document.getElementById('btnMonthly');
+  const btnA=document.getElementById('btnAnnual');
+  function setPrices(data,period,periodFr,periodDe){
+    ['basic','pro','premium'].forEach(k=>{
+      const pe=document.getElementById('price-'+k);
+      const pp=document.getElementById('per-'+k);
+      if(pe)pe.textContent=data[k];
+      if(pp){pp.textContent=period;pp.setAttribute('data-en',period);pp.setAttribute('data-fr',periodFr);pp.setAttribute('data-de',periodDe);}
+    });
+  }
+  btnM.addEventListener('click',()=>{
+    btnM.classList.add('on');btnM.setAttribute('aria-selected','true');
+    btnA.classList.remove('on');btnA.setAttribute('aria-selected','false');
+    setPrices(monthly,'per month','par mois','pro Monat');
+  });
+  btnA.addEventListener('click',()=>{
+    btnA.classList.add('on');btnA.setAttribute('aria-selected','true');
+    btnM.classList.remove('on');btnM.setAttribute('aria-selected','false');
+    setPrices(annual,'per year','par an','pro Jahr');
+  });
+
+  /* ── Reveal ── */
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+  },{threshold:0.07});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  /* ── Smooth scroll ── */
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const t=document.querySelector(a.getAttribute('href'));
+      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}
+    });
+  });
+});
+</script>
+<script src="../route/base.js" defer></script>
+<script src="../route/lang.js" defer></script>
+<script src="../route/animations.js" defer></script>
 </body>
 </html>

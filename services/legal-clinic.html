@@ -1,425 +1,545 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="light dark" />
-  <title
-    data-en="Legal Clinic & Advocacy | Tuunganes"
-    data-fr="Clinique juridique & Plaidoyer | Tuunganes"
-    data-de="Rechtsklinik & Advocacy | Tuunganes">
-    Legal Clinic & Advocacy | Tuunganes
-  </title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="color-scheme" content="light dark"/>
+<title data-en="Legal Clinic & Advocacy | Tuunganes" data-fr="Clinique juridique & Plaidoyer | Tuunganes" data-de="Rechtsklinik & Advocacy | Tuunganes">Legal Clinic & Advocacy | Tuunganes</title>
+<link rel="icon" href="../assets/fevicon.png" type="image/png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../css/styles.css"/>
+<style>
+:root{--blue:#2196f3;--blue-d:#1565c0;--blue-pale:rgba(33,150,243,.10);--blue-ring:rgba(33,150,243,.28);--ease:cubic-bezier(.4,0,.2,1);--display:'Playfair Display',Georgia,serif;--body:'DM Sans',system-ui,sans-serif}
+[data-theme="light"]{--bg:#f5f8ff;--bg2:#e8f2fe;--surf:#fff;--tx:#0a1628;--tx2:#253650;--muted:#5e7a96;--bdr:#c5daf2;--sh:0 1px 4px rgba(0,0,0,.05),0 8px 28px rgba(0,0,0,.07);--sh-lg:0 4px 40px rgba(0,0,0,.11)}
+[data-theme="dark"]{--bg:#050d1a;--bg2:#0b1725;--surf:#0f1c2e;--tx:#ecf3ff;--tx2:#a5c2de;--muted:#5a7898;--bdr:rgba(255,255,255,.07);--sh:0 2px 10px rgba(0,0,0,.45),0 12px 40px rgba(0,0,0,.3);--sh-lg:0 8px 48px rgba(0,0,0,.4)}
 
-  <link rel="icon" href="../assets/fevicon.png" type="image/png" />
-  <link rel="stylesheet" href="../css/styles.css" />
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--tx);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .28s var(--ease),color .28s var(--ease)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font-family:inherit}
+ul{list-style:none;padding:0;margin:0}
+.frame{width:min(1200px,94vw);margin:0 auto}
 
-  <!-- Page-only polish using your design tokens -->
-  <style>
-    .section{padding-block:clamp(2.25rem,5vw,3.5rem)}
-    .center{max-width:980px;margin-inline:auto}
-    .grid-2{display:grid;grid-template-columns:1.05fr .95fr;gap:1.2rem;align-items:center}
-    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
-    @media (max-width:960px){.grid-2{grid-template-columns:1fr}}
+/* ── NAV ── */
+.nav{position:fixed;top:1rem;left:50%;transform:translateX(-50%);width:min(1100px,90vw);background:color-mix(in srgb,var(--surf) 82%,transparent);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--bdr);border-radius:999px;padding:.5rem .5rem .5rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;z-index:1000;box-shadow:var(--sh)}
+.nav-logo{display:flex;align-items:center;gap:.55rem;font-size:.95rem;font-weight:700;color:var(--tx);flex-shrink:0}
+.nav-logo img{width:30px;height:30px;border-radius:8px}
+.nav-links{display:flex;align-items:center;gap:.15rem;flex:1;justify-content:center}
+.nav-links a{padding:.42rem .85rem;border-radius:999px;font-size:.82rem;font-weight:600;color:var(--tx2);transition:color .15s,background .15s}
+.nav-links a:hover,.nav-links a.active{color:var(--blue);background:var(--blue-pale)}
+.nav-end{display:flex;align-items:center;gap:.45rem;flex-shrink:0}
+.lang-pills{display:flex;gap:.18rem;background:var(--bg2);border:1px solid var(--bdr);border-radius:999px;padding:.22rem .28rem}
+.lang-pills button{border:none;background:transparent;border-radius:999px;padding:.22rem .55rem;font-size:.74rem;font-weight:700;cursor:pointer;color:var(--muted);transition:background .15s,color .15s}
+.lang-pills button.on{background:var(--blue);color:#fff}
+.theme-pill{width:36px;height:36px;border-radius:999px;border:1px solid var(--bdr);background:var(--bg2);display:grid;place-items:center;cursor:pointer;font-size:.95rem;transition:border-color .15s,transform .2s}
+.theme-pill:hover{border-color:var(--blue);transform:rotate(20deg)}
+.nav-cta{background:var(--blue);color:#fff;border:none;padding:.48rem 1.15rem;border-radius:999px;font-size:.82rem;font-weight:600;cursor:pointer;transition:background .15s,transform .15s;white-space:nowrap}
+.nav-cta:hover{background:var(--blue-d);transform:translateY(-1px)}
+.ham{display:none;flex-direction:column;gap:4px;cursor:pointer;background:var(--bg2);border:1px solid var(--bdr);border-radius:999px;padding:.55rem .75rem}
+.ham span{display:block;width:18px;height:2px;background:var(--tx);border-radius:2px}
+.nav-drawer{display:none;position:fixed;inset:0;background:var(--surf);z-index:999;flex-direction:column;padding:2rem 1.75rem;gap:1.25rem}
+.nav-drawer.open{display:flex}
+.nav-drawer a{font-size:1.1rem;font-weight:600;color:var(--tx2);padding:.5rem 0;border-bottom:1px solid var(--bdr)}
+@media(max-width:720px){.ham{display:flex}.nav-links,.nav-end{display:none}}
 
-    .hero--legal{padding-block:clamp(3rem,6vw,5rem)}
-    .eyebrow{letter-spacing:.06em;text-transform:uppercase;font-weight:800;color:var(--text-muted)}
-    .lede{color:var(--text-2);max-width:70ch}
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.72rem 1.65rem;border-radius:999px;border:none;cursor:pointer;font-size:.88rem;font-weight:600;transition:all .2s var(--ease);white-space:nowrap;font-family:var(--body)}
+.btn-solid{background:var(--blue);color:#fff;box-shadow:0 4px 16px rgba(33,150,243,.3)}
+.btn-solid:hover{background:var(--blue-d);transform:translateY(-2px);box-shadow:0 8px 24px rgba(33,150,243,.4)}
+.btn-ghost{background:transparent;color:var(--tx);border:1.5px solid var(--bdr)}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-1px)}
+.btn-w{background:#fff;color:var(--blue);font-weight:700}
+.btn-w:hover{background:#e3f2fd;transform:translateY(-1px)}
+.btn-wg{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}
+.btn-wg:hover{background:rgba(255,255,255,.1);border-color:#fff}
+.btn-urgent{background:#fff;color:#b91c1c;font-weight:700;box-shadow:0 4px 16px rgba(185,28,28,.2)}
+.btn-urgent:hover{background:#fef2f2;transform:translateY(-2px)}
 
-    .imgframe{border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
-    .imgframe img{display:block;width:100%;height:auto;object-fit:cover}
+/* ── HERO ── */
+.hero{min-height:100svh;display:grid;place-items:center;padding:8rem 0 5rem;background:var(--surf);border-bottom:1px solid var(--bdr);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 70% at 85% 40%,rgba(33,150,243,.09) 0%,transparent 65%);pointer-events:none}
+[data-theme="dark"] .hero::before{background:radial-gradient(ellipse 55% 70% at 85% 40%,rgba(33,150,243,.16) 0%,transparent 65%)}
+.hero-wm{position:absolute;right:-2rem;bottom:-4rem;font-family:var(--display);font-size:40vw;font-weight:900;line-height:.8;color:var(--blue);opacity:.03;pointer-events:none;user-select:none}
+[data-theme="dark"] .hero-wm{opacity:.055}
+.hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:center;position:relative;z-index:1}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr}.hero-right{display:none}}
+.hero-pill{display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);border:1.5px solid var(--blue-ring);border-radius:999px;padding:.35rem .9rem;margin-bottom:1.5rem}
+.hero-pill::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--blue)}
+.hero h1{font-family:var(--display);font-size:clamp(2.8rem,6.5vw,5rem);font-weight:900;line-height:1.02;letter-spacing:-.025em;color:var(--tx);margin-bottom:1.1rem}
+.hero h1 em{font-style:italic;color:var(--blue)}
+.hero-sub{font-size:1.05rem;color:var(--tx2);max-width:460px;line-height:1.75;margin-bottom:1.5rem}
+.hero-btns{display:flex;gap:.7rem;flex-wrap:wrap;margin-bottom:1.25rem}
 
-    .card.pad{padding:1rem 1.1rem}
-    .list{margin:.5rem 0 0 1.1rem}
-    .list li{margin:.35rem 0}
-    .check{display:flex;gap:.5rem;align-items:flex-start}
-    .check::before{content:"✓";font-weight:900;line-height:1;transform:translateY(.15rem)}
+/* urgency strip under hero buttons */
+.hero-urgent{display:inline-flex;align-items:center;gap:.6rem;background:rgba(185,28,28,.07);border:1px solid rgba(185,28,28,.2);border-radius:999px;padding:.45rem 1rem;font-size:.78rem;font-weight:700;color:#b91c1c}
+.hero-urgent::before{content:'';width:7px;height:7px;border-radius:50%;background:#b91c1c;animation:pulse-red 1.6s ease infinite}
+@keyframes pulse-red{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.5;transform:scale(1.4)}}
 
-    .pillars-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
-    .muted{color:var(--text-muted)}
+/* hero right */
+.hero-right{position:relative;height:460px}
+.hph{position:absolute;border-radius:20px;overflow:hidden;box-shadow:var(--sh-lg);border:1px solid var(--bdr)}
+.hph img{width:100%;height:100%;object-fit:cover}
+.hph-a{width:65%;top:0;right:0;height:290px}
+.hph-b{width:52%;bottom:0;left:0;height:250px}
+.hph-badge{position:absolute;bottom:100px;right:-12px;z-index:2;background:var(--blue);color:#fff;border-radius:14px;padding:.9rem 1.1rem;box-shadow:0 8px 28px rgba(33,150,243,.4)}
+.hph-badge strong{font-family:var(--display);font-size:1.5rem;font-weight:900;display:block;line-height:1}
+.hph-badge span{font-size:.72rem;opacity:.85}
 
-    .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
-    .step .num{width:2rem;height:2rem;display:inline-grid;place-items:center;border-radius:999px;border:1px solid var(--border);font-weight:800;margin-bottom:.35rem}
+/* ── SHARED ── */
+.sec{padding:7rem 0}
+.sec-dark{padding:7rem 0;background:var(--surf);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr)}
+.eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:.6rem}
+.display-h{font-family:var(--display);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;line-height:1.1;letter-spacing:-.02em;color:var(--tx);margin-bottom:.85rem}
+.display-h em{font-style:italic;color:var(--blue)}
 
-    .cta-band{margin-top:1rem;display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;justify-content:space-between;
-      background:color-mix(in hsl,var(--surface)92%,transparent);border:1px solid var(--border);border-radius:16px;padding:1rem 1.1rem}
+/* ── WHY SPLIT ── */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--bdr);border-radius:24px;overflow:hidden;box-shadow:var(--sh-lg)}
+@media(max-width:820px){.why-grid{grid-template-columns:1fr}}
+.why-photo{position:relative;min-height:440px}
+.why-photo img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.why-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(33,150,243,.22) 0%,transparent 55%)}
+.why-float{position:absolute;bottom:1.5rem;left:1.5rem;right:1.5rem;z-index:2;background:rgba(255,255,255,.13);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:1rem 1.2rem;color:#fff}
+.why-float p{font-size:.85rem;line-height:1.55;font-family:var(--display);font-style:italic;font-weight:700}
+.why-float cite{display:block;margin-top:.4rem;font-size:.72rem;font-family:var(--body);font-style:normal;opacity:.8}
+.why-copy{padding:3.5rem 3rem;background:var(--surf);display:flex;flex-direction:column;justify-content:center}
+@media(max-width:820px){.why-copy{padding:2.25rem 1.75rem}}
+.why-copy p{color:var(--tx2);font-size:.96rem;line-height:1.75;margin-bottom:.85rem}
 
-    details.card{padding:1rem;border-radius:14px;border:1px solid var(--border);background:var(--surface)}
-    details + details{margin-top:.6rem}
-    summary{cursor:pointer;font-weight:700}
-  </style>
+/* ── WHAT WE PROVIDE (numbered rows) ── */
+.provide-list{margin-top:.25rem}
+.prov-item{display:grid;grid-template-columns:60px 1fr auto;gap:0 1.75rem;align-items:start;padding:1.75rem 0;border-top:1px solid var(--bdr)}
+.prov-item:last-child{border-bottom:1px solid var(--bdr)}
+.prov-item:hover .prov-n{color:var(--blue);opacity:1}
+@media(max-width:620px){.prov-item{grid-template-columns:44px 1fr;gap:0 1rem}.prov-icon{display:none}}
+.prov-n{font-family:var(--display);font-size:2.2rem;font-weight:900;color:var(--tx);opacity:.1;line-height:1;letter-spacing:-.04em;padding-top:.1rem;transition:color .2s,opacity .2s}
+.prov-body h3{font-family:var(--display);font-size:1.08rem;font-weight:700;color:var(--tx);margin-bottom:.35rem}
+.prov-body p{font-size:.88rem;color:var(--tx2);line-height:1.6;max-width:520px;margin-bottom:.55rem}
+.prov-checks{display:flex;flex-direction:column;gap:.3rem}
+.prov-check{display:flex;align-items:flex-start;gap:.5rem;font-size:.84rem;color:var(--tx2)}
+.prov-check::before{content:'✓';color:var(--blue);font-weight:900;flex-shrink:0;margin-top:.05em}
+.prov-icon{width:44px;height:44px;border-radius:12px;background:var(--blue-pale);border:1px solid var(--blue-ring);display:grid;place-items:center;font-size:1.15rem;flex-shrink:0;margin-top:.15rem}
+
+/* ── WHO WE SERVE strip ── */
+.serve-strip{background:var(--blue);padding:5rem 0;position:relative;overflow:hidden}
+.serve-strip::before{content:'';position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,.06)}
+.serve-strip::after{content:'';position:absolute;left:-60px;bottom:-70px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.04)}
+.serve-inner{display:grid;grid-template-columns:1fr 1.8fr;gap:4rem;align-items:center;position:relative;z-index:1}
+@media(max-width:820px){.serve-inner{grid-template-columns:1fr}}
+.serve-label{font-family:var(--display);font-size:clamp(2rem,5vw,3.2rem);font-weight:900;color:#fff;line-height:1.1;letter-spacing:-.03em}
+.serve-label em{font-style:italic;opacity:.65;font-size:.78em;display:block}
+.serve-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem}
+@media(max-width:580px){.serve-cards{grid-template-columns:1fr}}
+.serve-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:1.2rem 1rem}
+.serve-card .sc-icon{font-size:1.5rem;margin-bottom:.6rem}
+.serve-card h4{font-size:.9rem;font-weight:700;color:#fff;margin-bottom:.3rem}
+.serve-card p{font-size:.8rem;color:rgba(255,255,255,.72);line-height:1.55}
+
+/* ── HOW IT WORKS (4-step timeline) ── */
+.hw-rail{position:relative;margin-top:2rem;padding-top:.5rem}
+.hw-line{position:absolute;top:22px;left:calc(12.5% + 14px);right:calc(12.5% + 14px);height:2px;background:var(--bdr);z-index:0}
+@media(max-width:820px){.hw-line{display:none}}
+.hw-nodes{display:grid;grid-template-columns:repeat(4,1fr);position:relative;z-index:1}
+@media(max-width:820px){.hw-nodes{grid-template-columns:1fr 1fr;gap:2rem 1rem}}
+@media(max-width:480px){.hw-nodes{grid-template-columns:1fr}}
+.hw-node{padding-right:1rem}
+.hw-dot-wrap{margin-bottom:1.1rem}
+.hw-dot{width:44px;height:44px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-family:var(--display);font-size:1rem;font-weight:900;border:3px solid var(--surf);box-shadow:0 0 0 2px var(--blue);transition:transform .25s var(--ease)}
+.hw-node:hover .hw-dot{transform:scale(1.15)}
+.hw-node h3{font-family:var(--display);font-size:.95rem;font-weight:700;color:var(--tx);margin-bottom:.35rem}
+.hw-node p{font-size:.82rem;color:var(--muted);line-height:1.55}
+
+/* ── CONFIDENTIALITY BADGE ── */
+.confid-row{display:flex;align-items:center;gap:.75rem;margin-top:2.5rem;padding:1.1rem 1.4rem;background:rgba(33,150,243,.06);border:1.5px solid var(--blue-ring);border-radius:14px}
+.confid-row .ci-icon{font-size:1.5rem;flex-shrink:0}
+.confid-row p{font-size:.88rem;color:var(--tx2);line-height:1.55}
+.confid-row strong{color:var(--tx)}
+
+/* ── FAQ ── */
+.faq-list{max-width:800px;margin:0 auto}
+details.faq{border-bottom:1px solid var(--bdr)}
+details.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 0;font-weight:700;font-size:.97rem;color:var(--tx);gap:1rem}
+details.faq summary::-webkit-details-marker{display:none}
+.faq-tog{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--bdr);display:grid;place-items:center;font-size:1.15rem;color:var(--blue);flex-shrink:0;transition:background .2s}
+details.faq[open] .faq-tog{background:var(--blue);color:#fff;border-color:var(--blue)}
+.p-icon{display:block}.m-icon{display:none}
+details.faq[open] .p-icon{display:none}
+details.faq[open] .m-icon{display:block}
+details.faq .ans{font-size:.93rem;color:var(--tx2);padding-bottom:1.25rem;line-height:1.7}
+
+/* ── CTA BAND ── */
+.cta-band{background:var(--tx);border-radius:28px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;box-shadow:var(--sh-lg);min-height:300px}
+@media(max-width:820px){.cta-band{grid-template-columns:1fr}}
+.cta-left{padding:3.5rem 3rem;display:flex;flex-direction:column;justify-content:center}
+.cta-left .eyebrow{color:rgba(255,255,255,.45)}
+.cta-left h2{font-family:var(--display);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:.7rem;letter-spacing:-.02em}
+.cta-left p{color:rgba(255,255,255,.62);font-size:.93rem;line-height:1.7;margin-bottom:1.75rem;max-width:400px}
+.cta-btns{display:flex;gap:.65rem;flex-wrap:wrap}
+.cta-right{background:var(--blue);position:relative;overflow:hidden;min-height:220px}
+.cta-right::before{content:'';position:absolute;bottom:-70px;right:-70px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.09)}
+.cta-right::after{content:'';position:absolute;top:-50px;left:-50px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.06)}
+.cta-right-inner{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:3rem 2.5rem;gap:.75rem}
+.cta-big{font-family:var(--display);font-size:clamp(2.5rem,6vw,5rem);font-weight:900;color:#fff;line-height:.9;letter-spacing:-.04em}
+.cta-right-inner p{color:rgba(255,255,255,.72);font-size:.88rem}
+
+/* ── FOOTER ── */
+.foot{padding:2.25rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:1px solid var(--bdr)}
+.foot-logo{display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:.95rem;color:var(--tx)}
+.foot-logo img{width:28px;height:28px;border-radius:7px}
+.foot p{font-size:.8rem;color:var(--muted)}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero .hero-pill{animation:fadeUp .7s var(--ease) both}
+.hero h1{animation:fadeUp .8s .1s var(--ease) both}
+.hero .hero-sub{animation:fadeUp .8s .2s var(--ease) both}
+.hero .hero-btns{animation:fadeUp .8s .3s var(--ease) both}
+.hero .hero-urgent{animation:fadeUp .8s .4s var(--ease) both}
+.hero-right{animation:fadeUp .9s .15s var(--ease) both}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.reveal.in{opacity:1;transform:translateY(0)}
+</style>
 </head>
 <body>
-  <!-- Header injected by base.js -->
-  <div id="site-header"></div>
 
-  <!-- ================= HERO ================= -->
-  <section class="hero hero--legal reveal in">
-    <div class="container center">
-      <div class="eyebrow"
-        data-en="Justice. Dignity. Protection."
-        data-fr="Justice. Dignité. Protection."
-        data-de="Gerechtigkeit. Würde. Schutz.">
-        Justice. Dignity. Protection.
-      </div>
+<!-- DRAWER -->
+<nav class="nav-drawer" id="drawer">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+    <span style="font-weight:700;font-size:1rem">Tuunganes</span>
+    <button id="drawerClose" style="background:transparent;border:none;font-size:1.4rem;cursor:pointer;color:var(--tx)">✕</button>
+  </div>
+  <a href="../index.html" data-en="Home" data-fr="Accueil" data-de="Start">Home</a>
+  <a href="../about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+  <a href="services.html" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+  <a href="../contact.html" class="btn btn-solid" style="justify-content:center;margin-top:.5rem">Contact us</a>
+</nav>
 
-      <h1
-        data-en="Legal Clinic & Advocacy"
-        data-fr="Clinique Juridique & Plaidoyer"
-        data-de="Rechtsklinik & Advocacy">
-        Legal Clinic & Advocacy
-      </h1>
-
-      <p class="lede"
-        data-en="Free, confidential legal assistance for vulnerable people in Eastern DRC  with a focus on women, children, displaced families and survivors of violence."
-        data-fr="Assistance juridique gratuite et confidentielle pour les personnes vulnérables à l’Est de la RDC  avec un focus sur les femmes, les enfants, les familles déplacées et les survivant·e·s de violences."
-        data-de="Kostenlose, vertrauliche Rechtsunterstützung für besonders schutzbedürftige Menschen im Osten der DR Kongo  mit Fokus auf Frauen, Kinder, vertriebene Familien und Überlebende von Gewalt.">
-        Free, confidential legal assistance for vulnerable people in Eastern DRC  with a focus on women, children, displaced families and survivors of violence.
-      </p>
+<!-- NAV -->
+<header class="nav">
+  <a href="../index.html" class="nav-logo"><img src="../assets/fevicon.png" alt="Tuunganes"/><span>Tuunganes</span></a>
+  <nav class="nav-links">
+    <a href="../about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+    <a href="services.html" class="active" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+    <a href="../index.html#impact" data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
+    <a href="../index.html#join" data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</a>
+  </nav>
+  <div class="nav-end">
+    <div class="lang-pills" role="group">
+      <button type="button" data-lang="en" class="on">EN</button>
+      <button type="button" data-lang="fr">FR</button>
+      <button type="button" data-lang="de">DE</button>
     </div>
-  </section>
+    <button id="themeBtn" class="theme-pill" aria-label="Toggle theme">🌙</button>
+    <a href="../contact.html" class="nav-cta" data-en="Contact" data-fr="Contact" data-de="Kontakt">Contact</a>
+    <button class="ham" id="hamBtn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
 
-  <!-- ================= WHY IT MATTERS (split) ================= -->
-  <section class="section reveal in">
-    <div class="container grid-2">
-      <div class="card pad">
-        <h2
-          data-en="Why it matters in Congo"
-          data-fr="Pourquoi c’est essentiel au Congo"
-          data-de="Warum es im Kongo wichtig ist">
-          Why it matters in Congo
-        </h2>
-
-        <p
-          data-en="Communities in North and South Kivu face conflict, displacement and exploitation. Many victims cannot afford a lawyer, don’t know their rights, or fear retaliation. Cases  especially those involving children  are too often ignored."
-          data-fr="Les communautés du Nord et du Sud-Kivu font face aux conflits, aux déplacements et à l’exploitation. Beaucoup de victimes ne peuvent pas payer d’avocat, ne connaissent pas leurs droits ou craignent des représailles. Les dossiers  notamment ceux impliquant des enfants  sont trop souvent ignorés."
-          data-de="Gemeinschaften in Nord- und Südkivu erleben Konflikte, Vertreibung und Ausbeutung. Viele Betroffene können sich keinen Anwalt leisten, kennen ihre Rechte nicht oder fürchten Repression. Fälle  insbesondere mit Kindern  bleiben zu oft unbeachtet.">
-          Communities in North and South Kivu face conflict, displacement and exploitation…
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-wm" aria-hidden="true">J</div>
+  <div class="frame">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-pill" data-en="Justice · Dignity · Protection" data-fr="Justice · Dignité · Protection" data-de="Gerechtigkeit · Würde · Schutz">Justice · Dignity · Protection</div>
+        <h1
+          data-en="Legal help<br>for those who<br><em>need it most.</em>"
+          data-fr="Aide juridique<br>pour ceux qui en<br><em>ont le plus besoin.</em>"
+          data-de="Rechtshilfe<br>für die, die sie<br><em>am meisten brauchen.</em>">
+          Legal help<br>for those who<br><em>need it most.</em>
+        </h1>
+        <p class="hero-sub"
+          data-en="Free, confidential legal assistance for vulnerable people in Eastern DRC — with a focus on women, children, displaced families, and survivors of violence."
+          data-fr="Assistance juridique gratuite et confidentielle pour les personnes vulnérables à l'Est de la RDC — avec un accent sur les femmes, les enfants, les familles déplacées et les survivant·e·s de violences."
+          data-de="Kostenlose, vertrauliche Rechtshilfe für schutzbedürftige Menschen im Osten der DRK — mit Fokus auf Frauen, Kinder, vertriebene Familien und Gewaltüberlebende.">
+          Free, confidential legal assistance for vulnerable people in Eastern DRC — with a focus on women, children, displaced families, and survivors of violence.
         </p>
-
-        <p class="muted"
-          data-en="Tuunganes’ Legal Clinic combines legal aid, protection services and community education to restore dignity and access to justice."
-          data-fr="La Clinique juridique de Tuunganes combine aide juridique, services de protection et éducation communautaire pour restaurer la dignité et l’accès à la justice."
-          data-de="Die Rechtsklinik von Tuunganes verbindet Rechtsbeistand, Schutzmaßnahmen und Aufklärung, um Würde und Zugang zur Justiz wiederherzustellen.">
-          Tuunganes’ Legal Clinic combines legal aid, protection services and community education…
-        </p>
+        <div class="hero-btns">
+          <a href="../contact.html" class="btn btn-solid" data-en="Request help" data-fr="Demander de l'aide" data-de="Hilfe anfragen">Request help</a>
+          <a href="#services" class="btn btn-ghost" data-en="What we provide" data-fr="Ce que nous offrons" data-de="Was wir anbieten">What we provide</a>
+        </div>
+        <div class="hero-urgent" role="alert">
+          <span data-en="Emergencies prioritized same day — reach us now" data-fr="Urgences traitées le jour même — contactez-nous" data-de="Notfälle werden am selben Tag priorisiert — jetzt kontaktieren">Emergencies prioritized same day — reach us now</span>
+        </div>
       </div>
-
-      <figure class="imgframe">
-        <img src="../assets/sup.jpg" alt="Community legal support in Eastern DRC" loading="lazy">
-      </figure>
+      <div class="hero-right" aria-hidden="true">
+        <div class="hph hph-a"><img src="../assets/sup.jpg" alt=""/></div>
+        <div class="hph hph-b"><img src="../assets/all.jpeg" alt=""/></div>
+        <div class="hph-badge">
+          <strong data-en="Free" data-fr="Gratuit" data-de="Kostenlos">Free</strong>
+          <span data-en="& Confidential" data-fr="& Confidentiel" data-de="& Vertraulich">& Confidential</span>
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ================= WHAT WE PROVIDE ================= -->
-  <section class="section reveal in">
-    <div class="container">
-      <h2
-        data-en="What we provide"
-        data-fr="Ce que nous offrons"
-        data-de="Was wir anbieten">
-        What we provide
-      </h2>
+<!-- ═══ WHY IT MATTERS ═══ -->
+<section class="sec reveal" id="why">
+  <div class="frame">
+    <div class="why-grid">
+      <div class="why-photo">
+        <img src="../assets/sup.jpg" alt="Community legal support in Eastern DRC" loading="lazy"/>
+        <div class="why-float">
+          <p data-en="&ldquo;Many victims don't know their rights, can't afford a lawyer, or fear retaliation. Access to justice should not depend on wealth.&rdquo;" data-fr="&ldquo;Beaucoup de victimes ne connaissent pas leurs droits, ne peuvent pas payer un avocat ou craignent les représailles. L'accès à la justice ne doit pas dépendre de la richesse.&rdquo;" data-de="&ldquo;Viele Betroffene kennen ihre Rechte nicht, können sich keinen Anwalt leisten oder fürchten Vergeltung. Zugang zur Justiz darf nicht vom Reichtum abhängen.&rdquo;">&ldquo;Many victims don't know their rights, can't afford a lawyer, or fear retaliation. Access to justice should not depend on wealth.&rdquo;</p>
+          <cite>Tuunganes Legal Clinic Team</cite>
+        </div>
+      </div>
+      <div class="why-copy">
+        <span class="eyebrow" data-en="The challenge" data-fr="Le défi" data-de="Die Herausforderung">The challenge</span>
+        <h2 class="display-h" data-en="Justice for<br><em>every person.</em>" data-fr="La justice pour<br><em>chaque personne.</em>" data-de="Gerechtigkeit für<br><em>jeden Menschen.</em>">Justice for<br><em>every person.</em></h2>
+        <p data-en="Communities in North and South Kivu face conflict, displacement, and exploitation daily. Many victims cannot afford a lawyer, don't know their rights, or fear retaliation. Cases involving children are too often ignored or buried in bureaucracy." data-fr="Les communautés du Nord et du Sud-Kivu font face quotidiennement aux conflits, aux déplacements et à l'exploitation. Beaucoup de victimes ne peuvent pas payer un avocat, ne connaissent pas leurs droits ou craignent des représailles. Les dossiers impliquant des enfants sont trop souvent ignorés ou noyés dans la bureaucratie." data-de="Gemeinschaften in Nord- und Südkivu erleben täglich Konflikte, Vertreibung und Ausbeutung. Viele können sich keinen Anwalt leisten, kennen ihre Rechte nicht oder fürchten Repressionen. Kinderfälle werden zu oft ignoriert.">Communities in North and South Kivu face conflict, displacement, and exploitation daily. Many victims cannot afford a lawyer, don't know their rights, or fear retaliation. Cases involving children are too often ignored or buried in bureaucracy.</p>
+        <p data-en="Tuunganes' Legal Clinic combines legal aid, protection services, and community rights education — restoring dignity and opening real pathways to justice for those who need it most." data-fr="La Clinique juridique de Tuunganes combine aide juridique, services de protection et éducation aux droits communautaires — restaurant la dignité et ouvrant des voies concrètes vers la justice pour ceux qui en ont le plus besoin." data-de="Die Rechtsklinik von Tuunganes verbindet Rechtsbeistand, Schutzdienste und Gemeinschaftsrechtsaufklärung — Würde wiederherstellen und echte Zugänge zur Justiz öffnen.">Tuunganes' Legal Clinic combines legal aid, protection services, and community rights education — restoring dignity and opening real pathways to justice for those who need it most.</p>
+        <div style="display:flex;gap:.65rem;flex-wrap:wrap;margin-top:1.25rem">
+          <a href="../contact.html" class="btn btn-solid" data-en="Request help" data-fr="Demander de l'aide" data-de="Hilfe anfragen">Request help</a>
+          <a href="services.html" class="btn btn-ghost" data-en="All services" data-fr="Tous les services" data-de="Alle Leistungen">All services</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <div class="pillars-grid">
-        <article class="card pad">
+<!-- ═══ WHAT WE PROVIDE ═══ -->
+<section class="sec-dark reveal" id="services">
+  <div class="frame">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:.5rem">
+      <div>
+        <span class="eyebrow" data-en="Our services" data-fr="Nos services" data-de="Unsere Dienste">Our services</span>
+        <h2 class="display-h" style="margin-bottom:0" data-en="What we<br><em>provide.</em>" data-fr="Ce que<br>nous <em>offrons.</em>" data-de="Was wir<br><em>anbieten.</em>">What we<br><em>provide.</em></h2>
+      </div>
+      <a href="../contact.html" class="btn btn-ghost" style="margin-bottom:.2rem" data-en="Request help →" data-fr="Demander de l'aide →" data-de="Hilfe anfragen →">Request help →</a>
+    </div>
+    <div class="provide-list">
+      <div class="prov-item">
+        <div class="prov-n">01</div>
+        <div class="prov-body">
           <h3 data-en="Free Legal Aid" data-fr="Aide juridique gratuite" data-de="Kostenlose Rechtsberatung">Free Legal Aid</h3>
-          <p class="muted"
-            data-en="Walk-in or referred consultations for people who cannot afford representation."
-            data-fr="Consultations sur place ou orientées pour les personnes ne pouvant pas payer un avocat."
-            data-de="Offene oder überwiesene Beratungen für Menschen ohne finanzielle Mittel.">
-            Walk-in or referred consultations…
-          </p>
-          <ul class="list">
-            <li class="check" data-en="Family & child protection" data-fr="Famille & protection de l’enfance" data-de="Familie & Kinderschutz">Family & child protection</li>
-            <li class="check" data-en="Gender-based violence (GBV)" data-fr="Violences basées sur le genre (VBG)" data-de="Geschlechtsbasierte Gewalt (GBV)">Gender-based violence (GBV)</li>
-            <li class="check" data-en="Labor & workplace rights" data-fr="Droit du travail" data-de="Arbeitsrecht & Arbeitnehmerrechte">Labor & workplace rights</li>
-          </ul>
-        </article>
-
-        <article class="card pad">
-          <h3 data-en="Child Safety & Missing Children" data-fr="Protection de l’enfant & enfants disparus" data-de="Kinderschutz & Vermisste">Child Safety & Missing Children</h3>
-          <p class="muted"
-            data-en="Coordination with schools and authorities on abductions, trafficking and safe reunification."
-            data-fr="Coordination avec écoles et autorités sur les enlèvements, la traite et la réunification sécurisée."
-            data-de="Koordination mit Schulen und Behörden bei Entführungen, Menschenhandel und sicherer Wiedervereinigung.">
-            Coordination with schools and authorities…
-          </p>
-          <ul class="list">
-            <li class="check" data-en="Emergency reporting & evidence" data-fr="Signalement d’urgence & collecte de preuves" data-de="Notfallmeldung & Beweissicherung">Emergency reporting & evidence</li>
-            <li class="check" data-en="Victim-centered approach" data-fr="Approche centrée sur la victime" data-de="Opferzentrierter Ansatz">Victim-centered approach</li>
-          </ul>
-        </article>
-
-        <article class="card pad">
-          <h3 data-en="Mediation & Community Peace" data-fr="Médiation & paix communautaire" data-de="Mediation & Gemeindefrieden">Mediation & Community Peace</h3>
-          <p class="muted"
-            data-en="Neutral facilitation to resolve disputes (land, family, neighbors) before escalation."
-            data-fr="Facilitation neutre pour résoudre les différends (foncier, famille, voisinage) avant l’escalade."
-            data-de="Neutrale Moderation bei Streitfällen (Land, Familie, Nachbarschaft) vor der Eskalation.">
-            Neutral facilitation to resolve disputes…
-          </p>
-          <ul class="list">
-            <li class="check" data-en="Land & property issues" data-fr="Problèmes fonciers & immobiliers" data-de="Land- & Eigentumsfragen">Land & property issues</li>
-            <li class="check" data-en="Community agreements" data-fr="Accords communautaires" data-de="Gemeinschaftliche Vereinbarungen">Community agreements</li>
-          </ul>
-        </article>
-
-        <article class="card pad">
-          <h3 data-en="Civil Registry & Documentation" data-fr="État civil & documents" data-de="Meldewesen & Dokumente">Civil Registry & Documentation</h3>
-          <p class="muted"
-            data-en="Guidance for birth certificates, IDs, school attestations and lost documents."
-            data-fr="Appui pour actes de naissance, pièces d’identité, attestations scolaires et documents perdus."
-            data-de="Hilfe bei Geburtsurkunden, Ausweisen, Schulbescheinigungen und Verlustdokumenten.">
-            Guidance for birth certificates, IDs, attestations…
-          </p>
-        </article>
-
-        <article class="card pad">
-          <h3 data-en="Detention & Police Matters" data-fr="Détention & affaires policières" data-de="Haft & Polizeisachen">Detention & Police Matters</h3>
-          <p class="muted"
-            data-en="Linkage to licensed lawyers and rights monitoring in police/penal processes."
-            data-fr="Orientation vers des avocats agréés et monitoring des droits dans les procédures policières/pénales."
-            data-de="Vermittlung an zugelassene Anwälte und Rechtemonitoring in Polizei-/Strafverfahren.">
-            Linkage to licensed lawyers and rights monitoring…
-          </p>
-        </article>
-        <article class="card pad">
-          <h3 data-en="Rights Awareness & Training" data-fr="Sensibilisation & formation" data-de="Rechtsaufklärung & Schulungen">Rights Awareness & Training</h3>
-          <p class="muted"
-            data-en="Workshops for schools, parents and community leaders on law, protection and safe reporting."
-            data-fr="Ateliers pour écoles, parents et leaders communautaires : droit, protection et signalement sécurisé."
-            data-de="Workshops für Schulen, Eltern und Gemeinde: Recht, Schutz und sichere Meldung.">
-            Workshops for schools, parents and community leaders…
-          </p>
-        </article>
+          <p data-en="Walk-in or referred consultations for people who cannot afford legal representation. Our paralegals and partner lawyers listen, assess, and advise — at no cost." data-fr="Consultations sur place ou orientées pour les personnes ne pouvant pas payer un avocat. Nos parajuristes et avocats partenaires écoutent, évaluent et conseillent — gratuitement." data-de="Offene oder überwiesene Beratungen für Menschen ohne finanzielle Mittel. Unsere Paralegals und Partneranwälte hören zu, bewerten und beraten — kostenlos.">Walk-in or referred consultations for people who cannot afford legal representation. Our paralegals and partner lawyers listen, assess, and advise — at no cost.</p>
+          <div class="prov-checks">
+            <div class="prov-check" data-en="Family &amp; child protection law" data-fr="Droit de la famille &amp; protection de l'enfance" data-de="Familien- &amp; Kinderschutzrecht">Family &amp; child protection law</div>
+            <div class="prov-check" data-en="Gender-based violence (GBV) cases" data-fr="Dossiers de violences basées sur le genre (VBG)" data-de="Fälle geschlechtsbasierter Gewalt (GBV)">Gender-based violence (GBV) cases</div>
+            <div class="prov-check" data-en="Labor &amp; workplace rights" data-fr="Droit du travail &amp; droits des travailleurs" data-de="Arbeitsrecht &amp; Arbeitnehmerrechte">Labor &amp; workplace rights</div>
+          </div>
+        </div>
+        <div class="prov-icon">⚖️</div>
+      </div>
+      <div class="prov-item">
+        <div class="prov-n">02</div>
+        <div class="prov-body">
+          <h3 data-en="Child Safety &amp; Missing Children" data-fr="Sécurité des enfants &amp; Enfants disparus" data-de="Kinderschutz &amp; Vermisste Kinder">Child Safety &amp; Missing Children</h3>
+          <p data-en="Coordination with schools, families, and authorities on abductions, trafficking, and safe family reunification. Emergency cases are handled the same day." data-fr="Coordination avec écoles, familles et autorités sur les enlèvements, la traite et la réunification familiale sécurisée. Les cas d'urgence sont traités le jour même." data-de="Koordination mit Schulen, Familien und Behörden bei Entführungen, Menschenhandel und sicherer Familienzusammenführung. Notfälle werden am selben Tag behandelt.">Coordination with schools, families, and authorities on abductions, trafficking, and safe family reunification. Emergency cases are handled the same day.</p>
+          <div class="prov-checks">
+            <div class="prov-check" data-en="Emergency reporting &amp; evidence collection" data-fr="Signalement d'urgence &amp; collecte de preuves" data-de="Notfallmeldung &amp; Beweissicherung">Emergency reporting &amp; evidence collection</div>
+            <div class="prov-check" data-en="Victim-centered, trauma-informed approach" data-fr="Approche centrée sur la victime, sensible au traumatisme" data-de="Opferzentrierter, traumainformierter Ansatz">Victim-centered, trauma-informed approach</div>
+          </div>
+        </div>
+        <div class="prov-icon">🛡️</div>
+      </div>
+      <div class="prov-item">
+        <div class="prov-n">03</div>
+        <div class="prov-body">
+          <h3 data-en="Mediation &amp; Community Peace" data-fr="Médiation &amp; Paix communautaire" data-de="Mediation &amp; Gemeindefrieden">Mediation &amp; Community Peace</h3>
+          <p data-en="Neutral facilitation to resolve disputes — land, family conflicts, and neighbor disagreements — before they escalate into legal battles or violence." data-fr="Facilitation neutre pour résoudre les différends — foncier, conflits familiaux, désaccords de voisinage — avant qu'ils n'escaladent en batailles juridiques ou en violences." data-de="Neutrale Moderation zur Beilegung von Streitigkeiten — Land, Familienkonflikte, Nachbarschaftsstreitigkeiten — bevor sie eskalieren.">Neutral facilitation to resolve disputes — land, family conflicts, and neighbor disagreements — before they escalate into legal battles or violence.</p>
+          <div class="prov-checks">
+            <div class="prov-check" data-en="Land &amp; property disputes" data-fr="Litiges fonciers &amp; immobiliers" data-de="Land- &amp; Eigentumsstreitigkeiten">Land &amp; property disputes</div>
+            <div class="prov-check" data-en="Binding community agreements" data-fr="Accords communautaires contraignants" data-de="Verbindliche Gemeinschaftsvereinbarungen">Binding community agreements</div>
+          </div>
+        </div>
+        <div class="prov-icon">🤝</div>
+      </div>
+      <div class="prov-item">
+        <div class="prov-n">04</div>
+        <div class="prov-body">
+          <h3 data-en="Civil Registry &amp; Documentation" data-fr="État civil &amp; Documentation" data-de="Meldewesen &amp; Dokumente">Civil Registry &amp; Documentation</h3>
+          <p data-en="Guidance and support for obtaining or recovering vital documents — birth certificates, national IDs, school attestations, and papers lost during displacement or conflict." data-fr="Accompagnement pour l'obtention ou la récupération de documents vitaux — actes de naissance, cartes d'identité, attestations scolaires et documents perdus lors de déplacements." data-de="Unterstützung bei der Beschaffung oder Wiederherstellung wichtiger Dokumente — Geburtsurkunden, Ausweise, Schulbescheinigungen und bei Vertreibung verlorene Papiere.">Guidance and support for obtaining or recovering vital documents — birth certificates, national IDs, school attestations, and papers lost during displacement or conflict.</p>
+        </div>
+        <div class="prov-icon">📄</div>
+      </div>
+      <div class="prov-item">
+        <div class="prov-n">05</div>
+        <div class="prov-body">
+          <h3 data-en="Detention &amp; Police Matters" data-fr="Détention &amp; Affaires policières" data-de="Haft &amp; Polizeisachen">Detention &amp; Police Matters</h3>
+          <p data-en="Linkage to licensed lawyers and active rights monitoring in police and penal processes — ensuring due process and preventing illegal detention." data-fr="Orientation vers des avocats agréés et surveillance active des droits dans les procédures policières et pénales — garantissant le droit au procès équitable et prévenant la détention illégale." data-de="Vermittlung an zugelassene Anwälte und aktives Rechtsmonitoring in Polizei- und Strafverfahren — Sicherstellung des ordentlichen Verfahrens und Prävention von Untersuchungshaft.">Linkage to licensed lawyers and active rights monitoring in police and penal processes — ensuring due process and preventing illegal detention.</p>
+        </div>
+        <div class="prov-icon">🏛️</div>
+      </div>
+      <div class="prov-item">
+        <div class="prov-n">06</div>
+        <div class="prov-body">
+          <h3 data-en="Rights Awareness &amp; Training" data-fr="Sensibilisation aux droits &amp; Formation" data-de="Rechtsaufklärung &amp; Schulungen">Rights Awareness &amp; Training</h3>
+          <p data-en="Workshops for schools, parents, and community leaders on law, protection, and safe reporting — building a community where more people know their rights and can help others." data-fr="Ateliers pour les écoles, parents et leaders communautaires sur le droit, la protection et le signalement sécurisé — construisant une communauté où davantage de personnes connaissent leurs droits." data-de="Workshops für Schulen, Eltern und Gemeindeführer zu Recht, Schutz und sicherer Meldung — eine Gemeinschaft aufbauen, in der mehr Menschen ihre Rechte kennen.">Workshops for schools, parents, and community leaders on law, protection, and safe reporting — building a community where more people know their rights and can help others.</p>
+        </div>
+        <div class="prov-icon">📚</div>
       </div>
     </div>
-  </section>
-  <!-- ================= HOW IT WORKS ================= -->
-  <section class="section reveal in">
-    <div class="container">
-      <h2
-        data-en="How it works"
-        data-fr="Comment ça marche"
-        data-de="So funktioniert es">
-        How it works
-      </h2>
-      <div class="steps">
-        <div class="card pad step">
-          <div class="num">1</div>
-          <h3 data-en="Intake & safety" data-fr="Accueil & sécurité" data-de="Aufnahme & Sicherheit">Intake & safety</h3>
-          <p class="muted"
-            data-en="We listen, stabilize the situation and document facts confidentially."
-            data-fr="Nous écoutons, sécurisons la situation et documentons les faits de manière confidentielle."
-            data-de="Wir hören zu, stabilisieren die Lage und dokumentieren vertraulich.">
-            We listen and document confidentially.
-          </p>
+  </div>
+</section>
+
+<!-- ═══ WHO WE SERVE ═══ -->
+<section class="serve-strip reveal">
+  <div class="frame">
+    <div class="serve-inner">
+      <div class="serve-label">Who<br>we<br><em>serve.</em></div>
+      <div class="serve-cards">
+        <div class="serve-card">
+          <div class="sc-icon">👩</div>
+          <h4 data-en="Women &amp; Girls" data-fr="Femmes &amp; Filles" data-de="Frauen &amp; Mädchen">Women &amp; Girls</h4>
+          <p data-en="Survivors of gender-based violence, exploitation, and discrimination who need safe, judgment-free legal support." data-fr="Survivantes de violences basées sur le genre, d'exploitation et de discrimination qui ont besoin d'un soutien juridique sûr et sans jugement." data-de="Überlebende geschlechtsbasierter Gewalt, Ausbeutung und Diskriminierung, die sichere, urteilsfreie Rechtshilfe benötigen.">Survivors of GBV, exploitation, and discrimination needing safe, judgment-free legal support.</p>
         </div>
-        <div class="card pad step">
-          <div class="num">2</div>
+        <div class="serve-card">
+          <div class="sc-icon">👧</div>
+          <h4 data-en="Children &amp; Students" data-fr="Enfants &amp; Élèves" data-de="Kinder &amp; Schüler:innen">Children &amp; Students</h4>
+          <p data-en="Missing or at-risk children, abuse survivors, school safety cases, and matters involving parental rights and child custody." data-fr="Enfants disparus ou à risque, survivants d'abus, cas de sécurité scolaire et questions liées aux droits parentaux et à la garde." data-de="Vermisste oder gefährdete Kinder, Missbrauchsüberlebende, Schulsicherheitsfälle und Fragen zum Elternrecht und Sorgerecht.">Missing or at-risk children, abuse survivors, school safety cases, and parental rights matters.</p>
+        </div>
+        <div class="serve-card">
+          <div class="sc-icon">👨‍👩‍👧</div>
+          <h4 data-en="Displaced Families" data-fr="Familles déplacées" data-de="Vertriebene Familien">Displaced Families</h4>
+          <p data-en="Families who have lost land, property, or documents due to conflict or displacement — and need help navigating humanitarian and legal systems." data-fr="Familles qui ont perdu terres, biens ou documents à cause des conflits ou déplacements — et qui ont besoin d'aide pour naviguer les systèmes humanitaires et juridiques." data-de="Familien, die durch Konflikte oder Vertreibung Land, Eigentum oder Dokumente verloren haben und Hilfe bei humanitären und rechtlichen Systemen benötigen.">Families who lost land, property, or documents due to conflict — needing help navigating humanitarian and legal systems.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW IT WORKS ═══ -->
+<section class="sec reveal" id="process">
+  <div class="frame">
+    <span class="eyebrow" data-en="Our process" data-fr="Notre processus" data-de="Unser Prozess">Our process</span>
+    <h2 class="display-h" data-en="How it<br><em>works.</em>" data-fr="Comment ça<br><em>marche.</em>" data-de="Wie es<br><em>funktioniert.</em>">How it<br><em>works.</em></h2>
+    <div class="hw-rail">
+      <div class="hw-line"></div>
+      <div class="hw-nodes">
+        <div class="hw-node">
+          <div class="hw-dot-wrap"><div class="hw-dot">1</div></div>
+          <h3 data-en="Intake &amp; safety" data-fr="Accueil &amp; sécurité" data-de="Aufnahme &amp; Sicherheit">Intake &amp; safety</h3>
+          <p data-en="We listen, stabilize the situation, and document all facts confidentially. Your safety is the first priority." data-fr="Nous écoutons, stabilisons la situation et documentons les faits de manière confidentielle. Votre sécurité est la première priorité." data-de="Wir hören zu, stabilisieren die Lage und dokumentieren alles vertraulich. Ihre Sicherheit hat oberste Priorität.">We listen, stabilize, and document confidentially. Your safety is the first priority.</p>
+        </div>
+        <div class="hw-node">
+          <div class="hw-dot-wrap"><div class="hw-dot">2</div></div>
           <h3 data-en="Case review" data-fr="Analyse du dossier" data-de="Fallprüfung">Case review</h3>
-          <p class="muted"
-            data-en="Lawyers/paralegals assess options  legal action, mediation or referrals."
-            data-fr="Avocats/parajuristes évaluent les options  action, médiation ou orientation."
-            data-de="Jurist:innen/Para­legal prüfen Optionen  Verfahren, Mediation oder Verweis.">
-            We assess options with you.
-          </p>
+          <p data-en="Lawyers and paralegals assess your options — legal action, mediation, referral, or a combination — and explain everything clearly." data-fr="Avocats et parajuristes évaluent vos options — action en justice, médiation, orientation ou une combinaison — et vous expliquent tout clairement." data-de="Anwälte und Paralegals prüfen Ihre Optionen — Klage, Mediation, Überweisung — und erklären alles verständlich.">Lawyers and paralegals assess your options and explain everything clearly.</p>
         </div>
-        <div class="card pad step">
-          <div class="num">3</div>
+        <div class="hw-node">
+          <div class="hw-dot-wrap"><div class="hw-dot">3</div></div>
           <h3 data-en="Action" data-fr="Action" data-de="Maßnahmen">Action</h3>
-          <p class="muted"
-            data-en="Filing, letters, negotiations, safe referrals or support at authorities."
-            data-fr="Dépôt, courriers, négociations, orientations sécurisées ou appui auprès des autorités."
-            data-de="Anzeigen, Schreiben, Verhandlungen, sichere Verweise oder Begleitung.">
-            Concrete steps toward resolution.
-          </p>
+          <p data-en="Filing documents, writing letters, negotiating, safe referrals, or accompanying you to authorities — concrete steps toward resolution." data-fr="Dépôt de documents, rédaction de courriers, négociations, orientations sécurisées ou accompagnement auprès des autorités — des étapes concrètes vers la résolution." data-de="Dokumente einreichen, Briefe schreiben, verhandeln, sichere Überweisungen oder Begleitung zu Behörden — konkrete Schritte zur Lösung.">Filing documents, negotiating, safe referrals, or accompanying you to authorities — concrete steps toward resolution.</p>
         </div>
-        <div class="card pad step">
-          <div class="num">4</div>
+        <div class="hw-node">
+          <div class="hw-dot-wrap"><div class="hw-dot">4</div></div>
           <h3 data-en="Follow-up" data-fr="Suivi" data-de="Nachbetreuung">Follow-up</h3>
-          <p class="muted"
-            data-en="We track outcomes and provide ongoing support where needed."
-            data-fr="Nous suivons les résultats et assurons l’appui continu si nécessaire."
-            data-de="Wir verfolgen Ergebnisse und bieten fortlaufende Unterstützung.">
-            We track outcomes and support as needed.
-          </p>
-        </div>
-      </div>
-      <div class="cta-band">
-        <p class="muted"
-          data-en="We are youth-led, professional and community-rooted. Your safety and privacy come first."
-          data-fr="Nous sommes une équipe jeune, professionnelle et ancrée dans la communauté. Votre sécurité et votre vie privée sont prioritaires."
-          data-de="Junges, professionelles Team mit starken Community-Wurzeln. Ihre Sicherheit und Privatsphäre stehen an erster Stelle.">
-          We are youth-led, professional and community-rooted. Your safety and privacy come first.
-        </p>
-        <div class="hero-ctas">
-          <a href="../contact.html" class="btn btn-primary"
-            data-en="Request help"
-            data-fr="Demander de l’aide"
-            data-de="Hilfe anfragen">Request help</a>
-          <a href="../services/services.html" class="btn btn-ghost"
-            data-en="Explore all services"
-            data-fr="Voir tous les services"
-            data-de="Alle Services ansehen">Explore all services</a>
+          <p data-en="We track outcomes and provide ongoing support where needed — making sure nothing falls through the cracks after your case is filed." data-fr="Nous suivons les résultats et assurons l'appui continu si nécessaire — en veillant à ce que rien ne passe à travers les mailles après le dépôt de votre dossier." data-de="Wir verfolgen Ergebnisse und bieten fortlaufende Unterstützung — damit nach der Einreichung nichts verloren geht.">We track outcomes and provide ongoing support — making sure nothing falls through the cracks.</p>
         </div>
       </div>
     </div>
-  </section>
+    <div class="confid-row">
+      <div class="ci-icon">🔒</div>
+      <p><strong data-en="Strictly confidential." data-fr="Strictement confidentiel." data-de="Streng vertraulich.">Strictly confidential.</strong> <span data-en="We follow strict safeguarding protocols and obtain consent at every step. Information is only shared when it directly protects you or a child in danger. We are a youth-led, professional and community-rooted team." data-fr="Nous appliquons des protocoles de protection stricts et recueillons le consentement à chaque étape. Les informations ne sont partagées que pour vous protéger, vous ou un enfant en danger. Nous sommes une équipe jeune, professionnelle et ancrée dans la communauté." data-de="Wir befolgen strenge Schutzprotokolle und holen bei jedem Schritt Ihre Einwilligung ein. Informationen werden nur geteilt, um Sie oder ein gefährdetes Kind zu schützen. Wir sind ein junges, professionelles, gemeinschaftsverankertes Team.">We follow strict safeguarding protocols and obtain consent at every step. Information is only shared when it directly protects you or a child in danger. We are a youth-led, professional and community-rooted team.</span></p>
+    </div>
+  </div>
+</section>
 
-  <!-- ================= WHO WE SERVE ================= -->
-  <section class="section reveal in">
-    <div class="container">
-      <h2
-        data-en="Who we serve"
-        data-fr="Qui nous aidons"
-        data-de="Wem wir helfen">
-        Who we serve
-      </h2>
-      <div class="grid-3">
-        <article class="card pad">
-          <h3 data-en="Women & Girls" data-fr="Femmes & filles" data-de="Frauen & Mädchen">Women & Girls</h3>
-          <p class="muted"
-            data-en="Survivors of GBV, exploitation and discrimination."
-            data-fr="Survivantes de VBG, d’exploitation et de discrimination."
-            data-de="Überlebende geschlechtsbasierter Gewalt, Ausbeutung und Diskriminierung.">
-            Survivors of GBV, exploitation and discrimination.
-          </p>
-        </article>
-        <article class="card pad">
-          <h3 data-en="Children & Students" data-fr="Enfants & élèves" data-de="Kinder & Schüler:innen">Children & Students</h3>
-          <p class="muted"
-            data-en="Missing children, abuse, school safety and parental rights."
-            data-fr="Enfants disparus, abus, sécurité scolaire et droits parentaux."
-            data-de="Vermisste Kinder, Missbrauch, Schulsicherheit und Elternrechte.">
-            Missing children, abuse, school safety and parental rights.
-          </p>
-        </article>
-        <article class="card pad">
-          <h3 data-en="Displaced Families" data-fr="Familles déplacées" data-de="Vertriebene Familien">Displaced Families</h3>
-          <p class="muted"
-            data-en="Land/property, documentation and humanitarian referrals."
-            data-fr="Foncier/biens, documents et orientations humanitaires."
-            data-de="Land/Eigentum, Dokumente und humanitäre Verweise.">
-            Land/property, documentation and referrals.
-          </p>
-        </article>
+<!-- ═══ FAQ ═══ -->
+<section class="sec-dark reveal" id="faq">
+  <div class="frame">
+    <span class="eyebrow" data-en="FAQ" data-fr="FAQ" data-de="FAQ">FAQ</span>
+    <h2 class="display-h" style="margin-bottom:2rem" data-en="Common <em>questions.</em>" data-fr="Questions <em>fréquentes.</em>" data-de="Häufige <em>Fragen.</em>">Common <em>questions.</em></h2>
+    <div class="faq-list">
+      <details class="faq"><summary><span data-en="Is the service really free?" data-fr="Le service est-il vraiment gratuit ?" data-de="Ist der Dienst wirklich kostenlos?">Is the service really free?</span><div class="faq-tog"><span class="p-icon">+</span><span class="m-icon">−</span></div></summary><p class="ans" data-en="Yes. Basic legal aid and mediation are free for eligible clients. If a licensed lawyer must file a formal case, we discuss any potential fees transparently and always seek pro bono options first." data-fr="Oui. L'aide juridique de base et la médiation sont gratuites pour les bénéficiaires éligibles. Si un avocat doit déposer un dossier formel, nous discutons des éventuels frais en toute transparence et cherchons toujours des options pro bono en premier." data-de="Ja. Basis-Rechtsbeistand und Mediation sind kostenlos. Wenn ein Anwalt einen formellen Fall einreichen muss, besprechen wir mögliche Kosten transparent und suchen immer zuerst Pro-bono-Möglichkeiten.">Yes. Basic legal aid and mediation are free. If a licensed lawyer must file a formal case, we always seek pro bono options first.</p></details>
+      <details class="faq"><summary><span data-en="Do you go to court?" data-fr="Allez-vous au tribunal ?" data-de="Gehen Sie vor Gericht?">Do you go to court?</span><div class="faq-tog"><span class="p-icon">+</span><span class="m-icon">−</span></div></summary><p class="ans" data-en="We partner with licensed lawyers when court action is required. Many issues can be resolved through mediation, administrative processes, or community agreements — which is often faster and safer." data-fr="Nous travaillons avec des avocats agréés lorsqu'une action en justice est nécessaire. Beaucoup de problèmes se résolvent par médiation, démarches administratives ou accords communautaires — souvent plus rapides et plus sûrs." data-de="Bei Bedarf arbeiten wir mit zugelassenen Anwälten. Vieles lässt sich durch Mediation, Verwaltungsverfahren oder Gemeinschaftsvereinbarungen klären — oft schneller und sicherer.">We partner with licensed lawyers when needed. Many issues resolve through mediation, which is often faster and safer.</p></details>
+      <details class="faq"><summary><span data-en="Is my information confidential?" data-fr="Mes informations sont-elles confidentielles ?" data-de="Sind meine Daten vertraulich?">Is my information confidential?</span><div class="faq-tog"><span class="p-icon">+</span><span class="m-icon">−</span></div></summary><p class="ans" data-en="Absolutely. We follow strict safeguarding protocols, obtain consent before every step, and only share information when it directly protects you or a child in danger. Nothing is shared without your knowledge." data-fr="Absolument. Nous appliquons des protocoles de protection stricts, recueillons le consentement avant chaque étape et ne partageons des informations que pour vous protéger ou protéger un enfant en danger. Rien n'est partagé sans votre connaissance." data-de="Absolut. Strenge Schutzprotokolle, Einwilligung vor jedem Schritt, und Informationen werden nur zum Schutz Ihrer oder eines gefährdeten Kindes geteilt. Nichts ohne Ihr Wissen.">Absolutely. We obtain consent before every step, and nothing is ever shared without your knowledge.</p></details>
+      <details class="faq"><summary><span data-en="How quickly can you help?" data-fr="À quelle vitesse pouvez-vous aider ?" data-de="Wie schnell können Sie helfen?">How quickly can you help?</span><div class="faq-tog"><span class="p-icon">+</span><span class="m-icon">−</span></div></summary><p class="ans" data-en="Emergencies — child abduction, GBV risk, unlawful detention — are prioritized the same day. For other cases, we schedule the earliest possible slot, usually within 1–3 days." data-fr="Les urgences — enlèvement d'enfant, risque de VBG, détention illégale — sont prioritaires le jour même. Pour les autres dossiers, nous planifions le premier créneau disponible, généralement sous 1–3 jours." data-de="Notfälle — Kindesentführung, GBV-Risiko, unrechtmäßige Haft — haben am selben Tag Priorität. Andere Fälle erhalten den frühestmöglichen Termin, in der Regel innerhalb von 1–3 Tagen.">Emergencies are prioritized the same day. Other cases are scheduled within 1–3 days.</p></details>
+      <details class="faq"><summary><span data-en="Do you work outside Bukavu &amp; Goma?" data-fr="Intervenez-vous hors de Bukavu &amp; Goma ?" data-de="Arbeiten Sie außerhalb von Bukavu &amp; Goma?">Do you work outside Bukavu &amp; Goma?</span><div class="faq-tog"><span class="p-icon">+</span><span class="m-icon">−</span></div></summary><p class="ans" data-en="Yes. We support cases across the DRC remotely and, when necessary, deploy on-site with local partner organizations to serve communities in more remote areas." data-fr="Oui. Nous accompagnons des dossiers à travers la RDC à distance et, si nécessaire, nous déployons sur le terrain avec des organisations partenaires locales pour servir les communautés éloignées." data-de="Ja. Wir unterstützen Fälle in der gesamten DRK remote und entsenden bei Bedarf Mitarbeitende vor Ort mit lokalen Partnerorganisationen.">Yes. We support cases across the DRC remotely and deploy on-site with local partners when necessary.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="sec reveal">
+  <div class="frame">
+    <div class="cta-band">
+      <div class="cta-left">
+        <span class="eyebrow" style="color:rgba(255,255,255,.45)" data-en="Need help?" data-fr="Besoin d'aide ?" data-de="Brauchen Sie Hilfe?">Need help?</span>
+        <h2 data-en="Reach out. We respond as fast as possible." data-fr="Contactez-nous. Nous répondons aussi vite que possible." data-de="Melden Sie sich. Wir reagieren so schnell wie möglich.">Reach out. We respond as fast as possible.</h2>
+        <p data-en="Whether you're facing an emergency or need time to think — we're here. Tell us what happened and we'll take it from there." data-fr="Que vous fassiez face à une urgence ou que vous ayez besoin de temps pour réfléchir — nous sommes là. Dites-nous ce qui s'est passé et nous prendrons le relais." data-de="Ob Notfall oder wenn Sie Zeit zum Nachdenken brauchen — wir sind da. Schildern Sie, was passiert ist, und wir übernehmen von dort.">Whether you're facing an emergency or need time to think — we're here. Tell us what happened and we'll take it from there.</p>
+        <div class="cta-btns">
+          <a href="../contact.html" class="btn btn-urgent" data-en="Contact the Legal Clinic" data-fr="Contacter la Clinique juridique" data-de="Rechtsklinik kontaktieren">Contact the Legal Clinic</a>
+          <a href="../index.html#join" class="btn btn-wg" data-en="Partner or volunteer" data-fr="Devenir partenaire ou bénévole" data-de="Partnern oder freiwillig">Partner or volunteer</a>
+        </div>
       </div>
-    </div>
-  </section>
-
-  <!-- ================= FAQs ================= -->
-  <section class="section reveal in">
-    <div class="container center">
-      <h2 data-en="FAQs" data-fr="FAQ" data-de="FAQ">FAQs</h2>
-
-      <details class="card">
-        <summary
-          data-en="Is the service really free?"
-          data-fr="Le service est-il vraiment gratuit ?"
-          data-de="Ist der Dienst wirklich kostenlos?">
-          Is the service really free?
-        </summary>
-        <p class="muted"
-          data-en="Yes. Basic legal aid and mediation are free for eligible clients. If a licensed lawyer must file a case, we discuss any possible fees and seek pro bono options."
-          data-fr="Oui. L’aide juridique de base et la médiation sont gratuites pour les bénéficiaires éligibles. Si un avocat doit déposer une affaire, nous discutons des éventuels frais et cherchons des options pro bono."
-          data-de="Ja. Basis-Rechtsbeistand und Mediation sind für Berechtigte kostenlos. Wenn ein:e Anwält:in Klage einreichen muss, besprechen wir mögliche Kosten und bemühen uns um Pro-bono-Lösungen.">
-          Yes  free for eligible clients; we also seek pro bono options.
-        </p>
-      </details>
-
-      <details class="card">
-        <summary
-          data-en="Do you go to court?"
-          data-fr="Allez-vous au tribunal ?"
-          data-de="Gehen Sie vor Gericht?">
-          Do you go to court?
-        </summary>
-        <p class="muted"
-          data-en="We partner with licensed lawyers when court action is required. Many issues can be resolved through mediation or administrative processes."
-          data-fr="Nous travaillons avec des avocats agréés si une action en justice est nécessaire. Beaucoup de problèmes se résolvent par médiation ou démarches administratives."
-          data-de="Bei Bedarf arbeiten wir mit zugelassenen Anwält:innen. Vieles lässt sich auch durch Mediation oder Verwaltung klären.">
-          We partner with licensed lawyers when court action is required.
-        </p>
-      </details>
-
-      <details class="card">
-        <summary
-          data-en="Do you work outside Bukavu and Goma?"
-          data-fr="Intervenez-vous hors de Bukavu et Goma ?"
-          data-de="Arbeiten Sie außerhalb von Bukavu und Goma?">
-          Do you work outside Bukavu and Goma?
-        </summary>
-        <p class="muted"
-          data-en="Yes. We support cases across the DRC remotely and, when necessary, on site with local partners."
-          data-fr="Oui. Nous accompagnons des dossiers à travers la RDC à distance et, si nécessaire, sur le terrain avec des partenaires locaux."
-          data-de="Ja. Wir unterstützen Fälle in der gesamten DRK remote und bei Bedarf vor Ort mit Partnern.">
-          Yes  nationwide support with local partners.
-        </p>
-      </details>
-
-      <details class="card">
-        <summary
-          data-en="Is my information confidential?"
-          data-fr="Mes informations sont-elles confidentielles ?"
-          data-de="Sind meine Informationen vertraulich?">
-          Is my information confidential?
-        </summary>
-        <p class="muted"
-          data-en="Absolutely. We follow strict safeguarding, obtain consent and only share information when it protects you or a child."
-          data-fr="Absolument. Nous appliquons une protection stricte, recueillons le consentement et ne partageons des informations que pour vous protéger, vous ou un enfant."
-          data-de="Auf jeden Fall. Strenger Schutz, Einwilligung und Informationsweitergabe nur zum Schutz von Ihnen oder einem Kind.">
-          Absolutely  strict safeguarding and consent.
-        </p>
-      </details>
-
-      <details class="card">
-        <summary
-          data-en="How quickly can you help?"
-          data-fr="À quelle vitesse pouvez-vous aider ?"
-          data-de="Wie schnell können Sie helfen?">
-          How quickly can you help?
-        </summary>
-        <p class="muted"
-          data-en="Emergencies (child abduction, risk of GBV, unlawful detention) are prioritized the same day. For other cases, we schedule the earliest possible slot."
-          data-fr="Les urgences (enlèvement d’enfant, risque de VBG, détention illégale) sont prioritaires le jour même. Pour les autres dossiers, nous planifions le premier créneau disponible."
-          data-de="Notfälle (Kindesentführung, GBV-Risiko, unrechtmäßige Haft) haben am selben Tag Priorität. Andere Fälle erhalten den frühestmöglichen Termin.">
-          Emergencies are prioritized the same day.
-        </p>
-      </details>
-    </div>
-  </section>
-
-  <!-- ================= CTA ================= -->
-  <section class="section reveal in">
-    <div class="container center">
-      <div class="cta-band">
-        <p class="muted"
-          data-en="Need help now? Tell us what happened  we will respond as fast as possible."
-          data-fr="Besoin d’aide maintenant ? Expliquez-nous ce qui s’est passé  nous répondrons au plus vite."
-          data-de="Brauchen Sie jetzt Hilfe? Schildern Sie den Vorfall  wir reagieren so schnell wie möglich.">
-          Need help now? Tell us what happened  we will respond as fast as possible.
-        </p>
-        <div class="hero-ctas">
-          <a href="../contact.html" class="btn btn-primary"
-            data-en="Contact the Legal Clinic"
-            data-fr="Contacter la Clinique juridique"
-            data-de="Rechtsklinik kontaktieren">Contact the Legal Clinic</a>
-          <a href="../index.html#join" class="btn btn-ghost"
-            data-en="Partner or volunteer"
-            data-fr="Devenir partenaire ou bénévole"
-            data-de="Partnern oder freiwillig helfen">Partner or volunteer</a>
+      <div class="cta-right">
+        <div class="cta-right-inner">
+          <div class="cta-big" aria-hidden="true">Jus<br>tice.</div>
+          <p data-en="Free. Confidential.<br>For everyone." data-fr="Gratuit. Confidentiel.<br>Pour tous." data-de="Kostenlos. Vertraulich.<br>Für alle.">Free. Confidential.<br>For everyone.</p>
         </div>
       </div>
     </div>
-  </section>
-  <!-- Footer injected by base.js -->
-  <div id="site-footer"></div>
+  </div>
+</section>
 
-  <!-- Global scripts -->
-  <script src="../route/base.js" defer></script>
-  <script src="../route/lang.js" defer></script>
-  <script src="../route/animations.js" defer></script>
+<!-- FOOTER -->
+<footer>
+  <div class="frame foot">
+    <a href="../index.html" class="foot-logo"><img src="../assets/fevicon.png" alt="Tuunganes"/><span>Tuunganes</span></a>
+    <p>&copy; 2025 Tuunganes &nbsp;·&nbsp; Bukavu &amp; Goma, DRC</p>
+    <div style="display:flex;gap:1rem">
+      <a href="../about.html" style="font-size:.82rem;color:var(--muted)" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+      <a href="services.html" style="font-size:.82rem;color:var(--muted)" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+      <a href="../contact.html" style="font-size:.82rem;color:var(--muted)" data-en="Contact" data-fr="Contact" data-de="Kontakt">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const s=localStorage.getItem('tuunganes-theme');
+  const dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  document.documentElement.setAttribute('data-theme',s||(dark?'dark':'light'));
+})();
+document.addEventListener('DOMContentLoaded',function(){
+  const root=document.documentElement;
+  const themeBtn=document.getElementById('themeBtn');
+  function syncIcon(){themeBtn.textContent=root.getAttribute('data-theme')==='dark'?'☀️':'🌙'}
+  syncIcon();
+  themeBtn.addEventListener('click',function(){
+    const next=root.getAttribute('data-theme')==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);localStorage.setItem('tuunganes-theme',next);syncIcon();
+  });
+  const hamBtn=document.getElementById('hamBtn');
+  const drawer=document.getElementById('drawer');
+  document.getElementById('drawerClose').addEventListener('click',()=>{drawer.classList.remove('open');hamBtn.setAttribute('aria-expanded','false')});
+  hamBtn.addEventListener('click',()=>{const o=drawer.classList.toggle('open');hamBtn.setAttribute('aria-expanded',String(o))});
+  document.addEventListener('click',e=>{if(!drawer.contains(e.target)&&!hamBtn.contains(e.target)){drawer.classList.remove('open');hamBtn.setAttribute('aria-expanded','false')}});
+  function applyLang(lang){
+    localStorage.setItem('siteLang',lang);
+    document.querySelectorAll('.lang-pills button').forEach(b=>b.classList.toggle('on',b.dataset.lang===lang));
+    document.querySelectorAll('[data-'+lang+']').forEach(el=>{
+      const val=el.getAttribute('data-'+lang);if(!val)return;
+      if(['H1','H2','H3'].includes(el.tagName)){el.innerHTML=val;return;}
+      if(!el.querySelector('[data-'+lang+']:not(script)')){el.textContent=val;}
+    });
+  }
+  const saved=localStorage.getItem('siteLang')||'en';
+  document.querySelectorAll('.lang-pills [data-lang]').forEach(btn=>{
+    btn.addEventListener('click',()=>applyLang(btn.dataset.lang));
+    if(btn.dataset.lang===saved)btn.classList.add('on');
+  });
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+  },{threshold:0.07});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const t=document.querySelector(a.getAttribute('href'));
+      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}
+    });
+  });
+});
+</script>
+<script src="../route/base.js" defer></script>
+<script src="../route/lang.js" defer></script>
+<script src="../route/animations.js" defer></script>
 </body>
 </html>

@@ -1,359 +1,498 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="light dark" />
-  <title
-    data-en="Agriculture & Food Security (AgTech) | Tuunganes"
-    data-fr="Agriculture & Sécurité alimentaire (AgTech) | Tuunganes"
-    data-de="Landwirtschaft & Ernährungssicherheit (AgTech) | Tuunganes">
-    Agriculture & Food Security (AgTech) | Tuunganes
-  </title>
-  <link rel="icon" href="../assets/fevicon.png" type="image/png" />
-  <link rel="stylesheet" href="../css/styles.css" />
-  <style>
-    .section{padding-block:clamp(2.25rem,5vw,3.5rem)}
-    .center{max-width:980px;margin-inline:auto}
-    .grid-2{display:grid;grid-template-columns:1.05fr .95fr;gap:1.2rem;align-items:center}
-    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
-    @media (max-width:960px){.grid-2{grid-template-columns:1fr}}
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="color-scheme" content="light dark"/>
+<title data-en="Agriculture & Food Security | Tuunganes" data-fr="Agriculture & Sécurité alimentaire | Tuunganes" data-de="Landwirtschaft & Ernährungssicherheit | Tuunganes">Agriculture & Food Security | Tuunganes</title>
+<link rel="icon" href="../assets/fevicon.png" type="image/png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../css/styles.css"/>
+<style>
+:root{--blue:#2196f3;--blue-d:#1565c0;--blue-pale:rgba(33,150,243,.10);--blue-ring:rgba(33,150,243,.28);--ease:cubic-bezier(.4,0,.2,1);--display:'Playfair Display',Georgia,serif;--body:'DM Sans',system-ui,sans-serif}
+[data-theme="light"]{--bg:#f5f8ff;--bg2:#e8f2fe;--surf:#fff;--tx:#0a1628;--tx2:#253650;--muted:#5e7a96;--bdr:#c5daf2;--sh:0 1px 4px rgba(0,0,0,.05),0 8px 28px rgba(0,0,0,.07);--sh-lg:0 4px 40px rgba(0,0,0,.11)}
+[data-theme="dark"]{--bg:#050d1a;--bg2:#0b1725;--surf:#0f1c2e;--tx:#ecf3ff;--tx2:#a5c2de;--muted:#5a7898;--bdr:rgba(255,255,255,.07);--sh:0 2px 10px rgba(0,0,0,.45),0 12px 40px rgba(0,0,0,.3);--sh-lg:0 8px 48px rgba(0,0,0,.4)}
 
-    .hero--agri{padding-block:clamp(3rem,6vw,5rem)}
-    .eyebrow{letter-spacing:.06em;text-transform:uppercase;font-weight:800;color:var(--text-muted)}
-    .lede{color:var(--text-2);max-width:70ch}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--tx);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .28s var(--ease),color .28s var(--ease)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font-family:inherit}
+ul{list-style:none;padding:0;margin:0}
+.frame{width:min(1200px,94vw);margin:0 auto}
 
-    .imgframe{border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
-    .imgframe img{display:block;width:100%;height:auto;object-fit:cover}
+/* ── NAV ── */
+.nav{position:fixed;top:1rem;left:50%;transform:translateX(-50%);width:min(1100px,90vw);background:color-mix(in srgb,var(--surf) 82%,transparent);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--bdr);border-radius:999px;padding:.5rem .5rem .5rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;z-index:1000;box-shadow:var(--sh)}
+.nav-logo{display:flex;align-items:center;gap:.55rem;font-size:.95rem;font-weight:700;color:var(--tx);flex-shrink:0}
+.nav-logo img{width:30px;height:30px;border-radius:8px}
+.nav-links{display:flex;align-items:center;gap:.15rem;flex:1;justify-content:center}
+.nav-links a{padding:.42rem .85rem;border-radius:999px;font-size:.82rem;font-weight:600;color:var(--tx2);transition:color .15s,background .15s}
+.nav-links a:hover,.nav-links a.active{color:var(--blue);background:var(--blue-pale)}
+.nav-end{display:flex;align-items:center;gap:.45rem;flex-shrink:0}
+.lang-pills{display:flex;gap:.18rem;background:var(--bg2);border:1px solid var(--bdr);border-radius:999px;padding:.22rem .28rem}
+.lang-pills button{border:none;background:transparent;border-radius:999px;padding:.22rem .55rem;font-size:.74rem;font-weight:700;cursor:pointer;color:var(--muted);transition:background .15s,color .15s}
+.lang-pills button.on{background:var(--blue);color:#fff}
+.theme-pill{width:36px;height:36px;border-radius:999px;border:1px solid var(--bdr);background:var(--bg2);display:grid;place-items:center;cursor:pointer;font-size:.95rem;transition:border-color .15s,transform .2s}
+.theme-pill:hover{border-color:var(--blue);transform:rotate(20deg)}
+.nav-cta{background:var(--blue);color:#fff;border:none;padding:.48rem 1.15rem;border-radius:999px;font-size:.82rem;font-weight:600;cursor:pointer;transition:background .15s,transform .15s;white-space:nowrap}
+.nav-cta:hover{background:var(--blue-d);transform:translateY(-1px)}
+.ham{display:none;flex-direction:column;gap:4px;cursor:pointer;background:var(--bg2);border:1px solid var(--bdr);border-radius:999px;padding:.55rem .75rem}
+.ham span{display:block;width:18px;height:2px;background:var(--tx);border-radius:2px}
+.nav-drawer{display:none;position:fixed;inset:0;background:var(--surf);z-index:999;flex-direction:column;padding:2rem 1.75rem;gap:1.25rem}
+.nav-drawer.open{display:flex}
+.nav-drawer a{font-size:1.1rem;font-weight:600;color:var(--tx2);padding:.5rem 0;border-bottom:1px solid var(--bdr)}
+@media(max-width:720px){.ham{display:flex}.nav-links,.nav-end{display:none}}
 
-    .card.pad{padding:1rem 1.1rem}
-    .muted{color:var(--text-muted)}
-    .list{margin:.5rem 0 0 1.1rem}
-    .list li{margin:.35rem 0}
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.72rem 1.65rem;border-radius:999px;border:none;cursor:pointer;font-size:.88rem;font-weight:600;transition:all .2s var(--ease);white-space:nowrap;font-family:var(--body)}
+.btn-solid{background:var(--blue);color:#fff;box-shadow:0 4px 16px rgba(33,150,243,.3)}
+.btn-solid:hover{background:var(--blue-d);transform:translateY(-2px);box-shadow:0 8px 24px rgba(33,150,243,.4)}
+.btn-ghost{background:transparent;color:var(--tx);border:1.5px solid var(--bdr)}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-1px)}
+.btn-w{background:#fff;color:var(--blue);font-weight:700}
+.btn-w:hover{background:#e3f2fd;transform:translateY(-1px)}
+.btn-wg{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}
+.btn-wg:hover{background:rgba(255,255,255,.1);border-color:#fff}
 
-    .chip-row{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.5rem}
-    .chip{border:1px solid var(--border);border-radius:999px;padding:.3rem .6rem;font-weight:600;background:color-mix(in hsl,var(--surface)92%,transparent)}
+/* ── HERO ── */
+.hero{min-height:100svh;display:grid;place-items:center;padding:8rem 0 5rem;background:var(--surf);border-bottom:1px solid var(--bdr);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 70% at 85% 40%,rgba(33,150,243,.09) 0%,transparent 65%);pointer-events:none}
+[data-theme="dark"] .hero::before{background:radial-gradient(ellipse 55% 70% at 85% 40%,rgba(33,150,243,.16) 0%,transparent 65%)}
+.hero-wm{position:absolute;right:-2rem;bottom:-4rem;font-family:var(--display);font-size:40vw;font-weight:900;line-height:.8;color:var(--blue);opacity:.03;pointer-events:none;user-select:none}
+[data-theme="dark"] .hero-wm{opacity:.055}
+.hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:center;position:relative;z-index:1}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr}.hero-right{display:none}}
+.hero-pill{display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);border:1.5px solid var(--blue-ring);border-radius:999px;padding:.35rem .9rem;margin-bottom:1.5rem}
+.hero-pill::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--blue)}
+.hero h1{font-family:var(--display);font-size:clamp(2.8rem,6.5vw,5rem);font-weight:900;line-height:1.02;letter-spacing:-.025em;color:var(--tx);margin-bottom:1.1rem}
+.hero h1 em{font-style:italic;color:var(--blue)}
+.hero-sub{font-size:1.05rem;color:var(--tx2);max-width:460px;line-height:1.75;margin-bottom:2rem}
+.hero-btns{display:flex;gap:.7rem;flex-wrap:wrap}
+.hero-right{position:relative;height:460px}
+.hph{position:absolute;border-radius:20px;overflow:hidden;box-shadow:var(--sh-lg);border:1px solid var(--bdr)}
+.hph img{width:100%;height:100%;object-fit:cover}
+.hph-a{width:65%;top:0;right:0;height:290px}
+.hph-b{width:52%;bottom:0;left:0;height:250px}
+.hph-badge{position:absolute;bottom:100px;right:-12px;z-index:2;background:var(--blue);color:#fff;border-radius:14px;padding:.9rem 1.1rem;box-shadow:0 8px 28px rgba(33,150,243,.4)}
+.hph-badge strong{font-family:var(--display);font-size:1.5rem;font-weight:900;display:block;line-height:1}
+.hph-badge span{font-size:.72rem;opacity:.85}
 
-    .stat{display:flex;flex-direction:column;gap:.25rem;align-items:flex-start;padding:1rem;border:1px solid var(--border);background:var(--surface);border-radius:14px;box-shadow:var(--shadow)}
-    .stat strong{font-size:1.1rem;color:var(--brand)}
+/* ── SHARED ── */
+.sec{padding:7rem 0}
+.sec-dark{padding:7rem 0;background:var(--surf);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr)}
+.eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:.6rem}
+.display-h{font-family:var(--display);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;line-height:1.1;letter-spacing:-.02em;color:var(--tx);margin-bottom:.85rem}
+.display-h em{font-style:italic;color:var(--blue)}
 
-    .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
-    .step .num{width:2rem;height:2rem;display:inline-grid;place-items:center;border-radius:999px;border:1px solid var(--border);font-weight:800;margin-bottom:.35rem}
+/* ── WHY SPLIT ── */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--bdr);border-radius:24px;overflow:hidden;box-shadow:var(--sh-lg)}
+@media(max-width:820px){.why-grid{grid-template-columns:1fr}}
+.why-photo{position:relative;min-height:440px}
+.why-photo img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.why-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(33,150,243,.22) 0%,transparent 55%)}
+.why-float{position:absolute;bottom:1.5rem;left:1.5rem;right:1.5rem;z-index:2;background:rgba(255,255,255,.13);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:1rem 1.2rem;color:#fff}
+.why-float p{font-size:.85rem;line-height:1.55;font-family:var(--display);font-style:italic;font-weight:700}
+.why-float cite{display:block;margin-top:.4rem;font-size:.72rem;font-family:var(--body);font-style:normal;opacity:.8}
+.why-copy{padding:3.5rem 3rem;background:var(--surf);display:flex;flex-direction:column;justify-content:center}
+@media(max-width:820px){.why-copy{padding:2.25rem 1.75rem}}
+.why-copy p{color:var(--tx2);font-size:.96rem;line-height:1.75;margin-bottom:.85rem}
 
-    .cta-band{margin-top:1rem;display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;justify-content:space-between;
-      background:color-mix(in hsl,var(--surface)92%,transparent);border:1px solid var(--border);border-radius:16px;padding:1rem 1.1rem}
-  </style>
+/* ── FOCUS AREAS (numbered rows) ── */
+.focus-list{margin-top:.25rem}
+.focus-item{display:grid;grid-template-columns:60px 1fr auto;gap:0 1.75rem;align-items:start;padding:1.75rem 0;border-top:1px solid var(--bdr)}
+.focus-item:last-child{border-bottom:1px solid var(--bdr)}
+.focus-item:hover .focus-n{color:var(--blue);opacity:1}
+@media(max-width:620px){.focus-item{grid-template-columns:44px 1fr;gap:0 1rem}.focus-icon{display:none}}
+.focus-n{font-family:var(--display);font-size:2.2rem;font-weight:900;color:var(--tx);opacity:.1;line-height:1;letter-spacing:-.04em;padding-top:.1rem;transition:color .2s,opacity .2s}
+.focus-body h3{font-family:var(--display);font-size:1.08rem;font-weight:700;color:var(--tx);margin-bottom:.35rem}
+.focus-body p{font-size:.88rem;color:var(--tx2);line-height:1.6;max-width:520px;margin-bottom:.5rem}
+.chip-row{display:flex;flex-wrap:wrap;gap:.35rem}
+.chip{font-size:.75rem;font-weight:600;color:var(--blue);background:var(--blue-pale);border:1px solid var(--blue-ring);border-radius:999px;padding:.18rem .6rem}
+.focus-icon{width:44px;height:44px;border-radius:12px;background:var(--blue-pale);border:1px solid var(--blue-ring);display:grid;place-items:center;font-size:1.15rem;flex-shrink:0;margin-top:.15rem}
+
+/* ── IMPACT STRIP ── */
+.impact-strip{background:var(--blue);padding:5rem 0;position:relative;overflow:hidden}
+.impact-strip::before{content:'';position:absolute;right:-80px;top:-80px;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,.06)}
+.impact-strip::after{content:'';position:absolute;left:-60px;bottom:-70px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.04)}
+.impact-inner{display:grid;grid-template-columns:1fr 2fr;gap:4rem;align-items:center;position:relative;z-index:1}
+@media(max-width:820px){.impact-inner{grid-template-columns:1fr}}
+.impact-label{font-family:var(--display);font-size:clamp(2rem,5vw,3.2rem);font-weight:900;color:#fff;line-height:1.1;letter-spacing:-.03em}
+.impact-label em{font-style:italic;opacity:.65;font-size:.78em;display:block}
+.impact-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem}
+@media(max-width:480px){.impact-cards{grid-template-columns:1fr}}
+.impact-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:1.2rem 1rem}
+.impact-card .ic-icon{font-size:1.4rem;margin-bottom:.6rem}
+.impact-card h4{font-size:.88rem;font-weight:700;color:#fff;margin-bottom:.3rem}
+.impact-card p{font-size:.8rem;color:rgba(255,255,255,.72);line-height:1.55}
+
+/* ── HOW WE WORK (5-step timeline) ── */
+.hw-rail{position:relative;margin-top:2rem;padding-top:.5rem}
+.hw-line{position:absolute;top:22px;left:calc(10% + 14px);right:calc(10% + 14px);height:2px;background:var(--bdr);z-index:0}
+@media(max-width:820px){.hw-line{display:none}}
+.hw-nodes{display:grid;grid-template-columns:repeat(5,1fr);position:relative;z-index:1}
+@media(max-width:820px){.hw-nodes{grid-template-columns:1fr 1fr;gap:2rem 1rem}}
+@media(max-width:480px){.hw-nodes{grid-template-columns:1fr}}
+.hw-node{padding-right:1rem}
+.hw-dot-wrap{margin-bottom:1.1rem}
+.hw-dot{width:44px;height:44px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-family:var(--display);font-size:1rem;font-weight:900;border:3px solid var(--surf);box-shadow:0 0 0 2px var(--blue);transition:transform .25s var(--ease)}
+.hw-node:hover .hw-dot{transform:scale(1.15)}
+.hw-node h3{font-family:var(--display);font-size:.95rem;font-weight:700;color:var(--tx);margin-bottom:.35rem}
+.hw-node p{font-size:.82rem;color:var(--muted);line-height:1.55}
+
+/* ── FAQ ── */
+.faq-list{max-width:800px;margin:0 auto}
+details.faq{border-bottom:1px solid var(--bdr)}
+details.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 0;font-weight:700;font-size:.97rem;color:var(--tx);gap:1rem}
+details.faq summary::-webkit-details-marker{display:none}
+.faq-tog{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--bdr);display:grid;place-items:center;font-size:1.15rem;color:var(--blue);flex-shrink:0;transition:background .2s}
+details.faq[open] .faq-tog{background:var(--blue);color:#fff;border-color:var(--blue)}
+.p-icon{display:block}.m-icon{display:none}
+details.faq[open] .p-icon{display:none}
+details.faq[open] .m-icon{display:block}
+details.faq .ans{font-size:.93rem;color:var(--tx2);padding-bottom:1.25rem;line-height:1.7}
+
+/* ── CTA BAND ── */
+.cta-band{background:var(--tx);border-radius:28px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;box-shadow:var(--sh-lg);min-height:300px}
+@media(max-width:820px){.cta-band{grid-template-columns:1fr}}
+.cta-left{padding:3.5rem 3rem;display:flex;flex-direction:column;justify-content:center}
+.cta-left .eyebrow{color:rgba(255,255,255,.45)}
+.cta-left h2{font-family:var(--display);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:.7rem;letter-spacing:-.02em}
+.cta-left p{color:rgba(255,255,255,.62);font-size:.93rem;line-height:1.7;margin-bottom:1.75rem;max-width:400px}
+.cta-btns{display:flex;gap:.65rem;flex-wrap:wrap}
+.cta-right{background:var(--blue);position:relative;overflow:hidden;min-height:220px}
+.cta-right::before{content:'';position:absolute;bottom:-70px;right:-70px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.09)}
+.cta-right::after{content:'';position:absolute;top:-50px;left:-50px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.06)}
+.cta-right-inner{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:3rem 2.5rem;gap:.75rem}
+.cta-big{font-family:var(--display);font-size:clamp(3rem,7vw,5rem);font-weight:900;color:#fff;line-height:.9;letter-spacing:-.04em}
+.cta-right-inner p{color:rgba(255,255,255,.72);font-size:.88rem}
+
+/* ── FOOTER ── */
+.foot{padding:2.25rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:1px solid var(--bdr)}
+.foot-logo{display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:.95rem;color:var(--tx)}
+.foot-logo img{width:28px;height:28px;border-radius:7px}
+.foot p{font-size:.8rem;color:var(--muted)}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero .hero-pill{animation:fadeUp .7s var(--ease) both}
+.hero h1{animation:fadeUp .8s .1s var(--ease) both}
+.hero .hero-sub{animation:fadeUp .8s .2s var(--ease) both}
+.hero .hero-btns{animation:fadeUp .8s .3s var(--ease) both}
+.hero-right{animation:fadeUp .9s .15s var(--ease) both}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.reveal.in{opacity:1;transform:translateY(0)}
+</style>
 </head>
 <body>
-  <!-- Header injected by base.js -->
-  <div id="site-header"></div>
 
-  <!-- ================= HERO ================= -->
-  <section class="hero hero--agri reveal in">
-    <div class="container center">
-      <div class="eyebrow"
-           data-en="AgTech by Tuunganes"
-           data-fr="AgTech par Tuunganes"
-           data-de="AgTech von Tuunganes">AgTech by Tuunganes</div>
+<!-- DRAWER -->
+<nav class="nav-drawer" id="drawer">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+    <span style="font-weight:700;font-size:1rem">Tuunganes</span>
+    <button id="drawerClose" style="background:transparent;border:none;font-size:1.4rem;cursor:pointer;color:var(--tx)">✕</button>
+  </div>
+  <a href="../index.html" data-en="Home" data-fr="Accueil" data-de="Start">Home</a>
+  <a href="../about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+  <a href="services.html" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+  <a href="../contact.html" class="btn btn-solid" style="justify-content:center;margin-top:.5rem">Contact us</a>
+</nav>
 
-      <h1
-        data-en="Agriculture & Food Security"
-        data-fr="Agriculture & Sécurité alimentaire"
-        data-de="Landwirtschaft & Ernährungssicherheit">
-        Agriculture & Food Security
-      </h1>
-      <p class="lede"
-         data-en="Sustainable agriculture is the backbone of resilient communities. We help smallholder farmers in Eastern DRC increase yields, access markets, and strengthen local food systems."
-         data-fr="Une agriculture durable est la base de communautés résilientes. Nous aidons les petits exploitants de l’Est de la RDC à augmenter leurs rendements, accéder aux marchés et renforcer les systèmes alimentaires locaux."
-         data-de="Nachhaltige Landwirtschaft ist das Rückgrat widerstandsfähiger Gemeinschaften. Wir helfen Kleinbäuer:innen im Osten der DR Kongo, Erträge zu steigern, Märkte zu erreichen und lokale Ernährungssysteme zu stärken.">
-        Sustainable agriculture is the backbone of resilient communities…
-      </p>
-
-      <div class="hero-ctas" style="margin-top:.9rem;display:flex;gap:.8rem;flex-wrap:wrap">
-        <a href="../contact.html" class="btn btn-primary"
-           data-en="Talk to our team"
-           data-fr="Parler à notre équipe"
-           data-de="Mit unserem Team sprechen">Talk to our team</a>
-        <a href="../services/services.html" class="btn btn-ghost"
-           data-en="Explore all services"
-           data-fr="Voir tous les services"
-           data-de="Alle Services ansehen">Explore all services</a>
-      </div>
+<!-- NAV -->
+<header class="nav">
+  <a href="../index.html" class="nav-logo"><img src="../assets/fevicon.png" alt="Tuunganes"/><span>Tuunganes</span></a>
+  <nav class="nav-links">
+    <a href="../about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+    <a href="services.html" class="active" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+    <a href="../index.html#impact" data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
+    <a href="../index.html#join" data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</a>
+  </nav>
+  <div class="nav-end">
+    <div class="lang-pills" role="group">
+      <button type="button" data-lang="en" class="on">EN</button>
+      <button type="button" data-lang="fr">FR</button>
+      <button type="button" data-lang="de">DE</button>
     </div>
-  </section>
+    <button id="themeBtn" class="theme-pill" aria-label="Toggle theme">🌙</button>
+    <a href="../contact.html" class="nav-cta" data-en="Contact" data-fr="Contact" data-de="Kontakt">Contact</a>
+    <button class="ham" id="hamBtn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
 
-  <!-- ================= WHY IT MATTERS ================= -->
-  <section class="section reveal in">
-    <div class="container grid-2">
-      <div class="card pad">
-        <h2
-          data-en="Why this matters"
-          data-fr="Pourquoi c’est important"
-          data-de="Warum das wichtig ist">
-          Why this matters
-        </h2>
-
-        <p
-          data-en="Agriculture is the backbone of communities in the Democratic Republic of Congo, yet many smallholder farmers face low productivity, lack of access to markets, and outdated farming techniques."
-          data-fr="L’agriculture est l’épine dorsale des communautés en République Démocratique du Congo, mais de nombreux petits producteurs font face à une faible productivité, à un manque d’accès aux marchés et à des techniques dépassées."
-          data-de="Landwirtschaft ist das Rückgrat vieler Gemeinden in der DR Kongo, doch Kleinbäuer:innen kämpfen mit niedriger Produktivität, mangelndem Marktzugang und veralteten Anbaumethoden.">
-          Agriculture is the backbone of communities in the DRC…
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-wm" aria-hidden="true">F</div>
+  <div class="frame">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-pill" data-en="AgTech by Tuunganes" data-fr="AgTech par Tuunganes" data-de="AgTech von Tuunganes">AgTech by Tuunganes</div>
+        <h1
+          data-en="Growing food.<br>Growing<br><em>resilience.</em>"
+          data-fr="Cultiver la nourriture.<br>Cultiver la<br><em>résilience.</em>"
+          data-de="Nahrung anbauen.<br>Resilienz<br><em>aufbauen.</em>">
+          Growing food.<br>Growing<br><em>resilience.</em>
+        </h1>
+        <p class="hero-sub"
+          data-en="We help smallholder farmers in Eastern DRC increase yields, access markets, and strengthen local food systems — using training, digital tools, and community programs."
+          data-fr="Nous aidons les petits exploitants de l'Est de la RDC à augmenter leurs rendements, accéder aux marchés et renforcer les systèmes alimentaires locaux grâce à la formation, aux outils numériques et aux programmes communautaires."
+          data-de="Wir helfen Kleinbäuer:innen im Osten der DRK, Erträge zu steigern, Märkte zu erreichen und lokale Ernährungssysteme zu stärken — mit Training, digitalen Tools und Gemeinschaftsprogrammen.">
+          We help smallholder farmers in Eastern DRC increase yields, access markets, and strengthen local food systems — using training, digital tools, and community programs.
         </p>
-
-        <p class="muted"
-          data-en="In Eastern DRC, conflict and displacement have disrupted food systems, leaving families vulnerable to hunger and malnutrition. Sustainable agriculture is key to resilience and development."
-          data-fr="À l’Est de la RDC, les conflits et déplacements ont perturbé les systèmes alimentaires, rendant les familles vulnérables à la faim et à la malnutrition. Une agriculture durable est essentielle à la résilience et au développement."
-          data-de="Im Osten der DR Kongo haben Konflikte und Vertreibung Ernährungssysteme gestört – Familien sind anfällig für Hunger und Mangelernährung. Nachhaltige Landwirtschaft ist entscheidend für Resilienz und Entwicklung.">
-          In Eastern DRC, conflict and displacement have disrupted food systems…
-        </p>
-      </div>
-
-      <figure class="imgframe">
-        <img src="../assets/agri1.jpg" alt="Smallholder farming in Eastern DRC" loading="lazy">
-      </figure>
-    </div>
-  </section>
-  <!-- ================= OUR FOCUS AREAS ================= -->
-  <section class="section reveal in">
-    <div class="container">
-      <h2
-        data-en="Our focus areas"
-        data-fr="Nos axes d’action"
-        data-de="Unsere Schwerpunkte">
-        Our focus areas
-      </h2>
-
-      <div class="grid-3">
-        <article class="card pad">
-          <h3 data-en="Farmer Training & Capacity Building" data-fr="Formation & renforcement de capacités" data-de="Schulungen & Kapazitätsaufbau">Farmer Training & Capacity Building</h3>
-          <p class="muted"
-             data-en="Workshops and practical resources that teach modern, climate-smart techniques and post-harvest best practices."
-             data-fr="Ateliers et ressources pratiques sur les techniques modernes, intelligentes face au climat, et les bonnes pratiques post-récolte."
-             data-de="Workshops und praxisnahe Unterlagen zu modernen, klimaintelligenten Methoden und Post-Harvest-Best-Practices.">
-            Workshops & climate-smart practices.
-          </p>
-        </article>
-
-        <article class="card pad">
-          <h3 data-en="Digital Tools for Agriculture" data-fr="Outils numériques pour l’agriculture" data-de="Digitale Werkzeuge für die Landwirtschaft">Digital Tools for Agriculture</h3>
-          <p class="muted"
-             data-en="Apps and simple platforms for crop planning, weather, soil tips, yield tracking, and cooperative coordination."
-             data-fr="Applications et plateformes simples pour la planification des cultures, la météo, les conseils sur les sols, le suivi des rendements et la coordination en coopérative."
-             data-de="Apps und einfache Plattformen für Anbauplanung, Wetter, Bodentipps, Ertrags-Tracking und Kooperationskoordination.">
-            Apps & platforms for planning and tracking.
-          </p>
-          <div class="chip-row">
-                <span class="chip"
-                        data-en="Weather"
-                        data-fr="Météo"
-                        data-de="Wetter">Weather</span>
-
-                <span class="chip"
-                        data-en="Soil tips"
-                        data-fr="Conseils sur les sols"
-                        data-de="Bodentipps">Soil tips</span>
-
-                <span class="chip"
-                        data-en="Yield logs"
-                        data-fr="Suivi des rendements"
-                        data-de="Ertragsprotokolle">Yield logs</span>
-
-                <span class="chip"
-                        data-en="Coop tools"
-                        data-fr="Outils coopératifs"
-                        data-de="Genossenschafts-Tools">Coop tools</span>
-            </div>
-
-        </article>
-
-        <article class="card pad">
-          <h3 data-en="Market Access" data-fr="Accès au marché" data-de="Marktzugang">Market Access</h3>
-          <p class="muted"
-             data-en="Linking farmers to buyers and input suppliers, reducing post-harvest losses and improving prices."
-             data-fr="Relier les agriculteurs aux acheteurs et fournisseurs d’intrants, réduire les pertes post-récolte et améliorer les prix."
-             data-de="Vernetzung mit Abnehmern und Lieferanten, weniger Nachernteverluste und bessere Preise.">
-            Buyers, inputs & fair pricing.
-          </p>
-        </article>
-
-        <article class="card pad">
-          <h3 data-en="Community Gardens & Food Programs" data-fr="Jardins communautaires & programmes alimentaires" data-de="Gemeinschaftsgärten & Ernährungsprogramme">Community Gardens & Food Programs</h3>
-          <p class="muted"
-             data-en="Supporting schools and local groups to grow food, fight malnutrition and build food literacy."
-             data-fr="Soutien aux écoles et groupes locaux pour cultiver, lutter contre la malnutrition et développer la culture alimentaire."
-             data-de="Unterstützung von Schulen und lokalen Gruppen beim Anbau, gegen Mangelernährung und für Ernährungskompetenz.">
-            School & community food initiatives.
-          </p>
-        </article>
-      </div>
-    </div>
-  </section>
-  <!-- ================= PROGRAM GOALS ================= -->
-  <section class="section reveal in">
-    <div class="container center">
-      <h2
-        data-en="Why this work matters"
-        data-fr="Pourquoi ce travail est essentiel"
-        data-de="Warum diese Arbeit wichtig ist">
-        Why this work matters
-      </h2>
-
-      <div class="grid-3" style="margin-top:.6rem">
-        <div class="stat">
-          <strong data-en="Reduce hunger & malnutrition" data-fr="Réduire faim & malnutrition" data-de="Hunger & Mangelernährung senken">Reduce hunger & malnutrition</strong>
-          <span class="muted" data-en="Reliable access to nutritious food for families." data-fr="Accès fiable à une alimentation nutritive pour les familles." data-de="Verlässlicher Zugang zu nahrhaften Lebensmitteln.">Reliable access to nutritious food.</span>
+        <div class="hero-btns">
+          <a href="../contact.html" class="btn btn-solid" data-en="Talk to our team" data-fr="Parler à notre équipe" data-de="Mit unserem Team sprechen">Talk to our team</a>
+          <a href="services.html" class="btn btn-ghost" data-en="All services" data-fr="Tous les services" data-de="Alle Leistungen">All services</a>
         </div>
-        <div class="stat">
-          <strong data-en="Increase farmer income" data-fr="Augmenter les revenus" data-de="Einkommen der Bäuer:innen steigern">Increase farmer income</strong>
-          <span class="muted" data-en="Higher yields and fairer prices improve livelihoods." data-fr="De meilleurs rendements et des prix plus justes améliorent les moyens de subsistance." data-de="Höhere Erträge und fairere Preise verbessern Lebensgrundlagen.">Better yields & prices.</span>
-        </div>
-        <div class="stat">
-          <strong data-en="Stronger local food systems" data-fr="Systèmes alimentaires renforcés" data-de="Stärkere lokale Ernährungssysteme">Stronger local food systems</strong>
-          <span class="muted" data-en="Communities withstand conflict and climate shocks." data-fr="Des communautés plus résilientes face aux conflits et aux chocs climatiques." data-de="Gemeinschaften werden widerstandsfähiger gegen Konflikte & Klimaeinflüsse.">Resilience to shocks.</span>
+      </div>
+      <div class="hero-right" aria-hidden="true">
+        <div class="hph hph-a"><img src="../assets/agri1.jpg" alt=""/></div>
+        <div class="hph hph-b"><img src="../assets/kids.jpg" alt=""/></div>
+        <div class="hph-badge">
+          <strong data-en="DRC Farmers" data-fr="Agriculteurs RDC" data-de="DRK-Bauern">DRC Farmers</strong>
+          <span data-en="Supported with digital tools" data-fr="Soutenus par outils numériques" data-de="Mit digitalen Tools unterstützt">Supported with digital tools</span>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ================= HOW WE WORK ================= -->
-  <section class="section reveal in">
-    <div class="container">
-      <h2 data-en="How we work" data-fr="Notre approche" data-de="So arbeiten wir">How we work</h2>
-      <div class="steps" style="margin-top:.6rem">
-        <div class="card pad step">
-          <div class="num">1</div>
+<!-- ═══ WHY IT MATTERS ═══ -->
+<section class="sec reveal" id="why">
+  <div class="frame">
+    <div class="why-grid">
+      <div class="why-photo">
+        <img src="../assets/agri1.jpg" alt="Smallholder farming in Eastern DRC" loading="lazy"/>
+        <div class="why-float">
+          <p data-en="&ldquo;Hunger is not just a food problem. It is a development problem, a technology problem, and a community problem.&rdquo;" data-fr="&ldquo;La faim n'est pas seulement un problème alimentaire. C'est un problème de développement, de technologie et de communauté.&rdquo;" data-de="&ldquo;Hunger ist nicht nur ein Ernährungsproblem. Es ist ein Entwicklungs-, Technologie- und Gemeinschaftsproblem.&rdquo;">&ldquo;Hunger is not just a food problem. It is a development problem, a technology problem, and a community problem.&rdquo;</p>
+          <cite>Tuunganes AgTech Team</cite>
+        </div>
+      </div>
+      <div class="why-copy">
+        <span class="eyebrow" data-en="The challenge" data-fr="Le défi" data-de="Die Herausforderung">The challenge</span>
+        <h2 class="display-h" data-en="Eastern DRC needs<br><em>food security.</em>" data-fr="L'Est de la RDC a besoin<br>de <em>sécurité alimentaire.</em>" data-de="OstDRK braucht<br><em>Ernährungssicherheit.</em>">Eastern DRC needs<br><em>food security.</em></h2>
+        <p data-en="Agriculture is the backbone of communities in the DRC, yet many smallholder farmers face low productivity, lack of access to markets, and outdated techniques. Conflict and displacement have further disrupted food systems, leaving families vulnerable to hunger and malnutrition." data-fr="L'agriculture est l'épine dorsale des communautés de la RDC, mais de nombreux petits exploitants font face à une faible productivité, un manque d'accès aux marchés et des techniques dépassées. Les conflits ont encore davantage perturbé les systèmes alimentaires." data-de="Landwirtschaft ist das Rückgrat der Gemeinschaften in der DRK, doch Kleinbäuer:innen kämpfen mit niedriger Produktivität und mangelndem Marktzugang. Konflikte haben die Ernährungssysteme weiter destabilisiert.">Agriculture is the backbone of communities in the DRC, yet many smallholder farmers face low productivity, lack of access to markets, and outdated techniques. Conflict and displacement have further disrupted food systems, leaving families vulnerable to hunger and malnutrition.</p>
+        <p data-en="Tuunganes responds with practical programs: climate-smart training, simple digital tools for planning and market access, and community food initiatives designed around Congo's realities." data-fr="Tuunganes répond avec des programmes pratiques : formation climato-intelligente, outils numériques simples pour la planification et l'accès aux marchés, et initiatives alimentaires communautaires adaptées aux réalités du Congo." data-de="Tuunganes antwortet mit praxisnahen Programmen: klimaintelligentes Training, einfache digitale Tools für Planung und Marktzugang sowie Gemeinschaftsernährungsinitiativen.">Tuunganes responds with practical programs: climate-smart training, simple digital tools for planning and market access, and community food initiatives designed around Congo's realities.</p>
+        <div style="display:flex;gap:.65rem;flex-wrap:wrap;margin-top:1.25rem">
+          <a href="../contact.html" class="btn btn-solid" data-en="Start a conversation" data-fr="Commencer une discussion" data-de="Gespräch beginnen">Start a conversation</a>
+          <a href="services.html" class="btn btn-ghost" data-en="All services" data-fr="Tous les services" data-de="Alle Leistungen">All services</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ FOCUS AREAS ═══ -->
+<section class="sec-dark reveal" id="focus">
+  <div class="frame">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:.5rem">
+      <div>
+        <span class="eyebrow" data-en="Our programs" data-fr="Nos programmes" data-de="Unsere Programme">Our programs</span>
+        <h2 class="display-h" style="margin-bottom:0" data-en="Four areas of<br><em>focus.</em>" data-fr="Quatre axes<br><em>d'action.</em>" data-de="Vier<br><em>Schwerpunkte.</em>">Four areas of<br><em>focus.</em></h2>
+      </div>
+      <a href="../contact.html" class="btn btn-ghost" style="margin-bottom:.2rem" data-en="Partner with us →" data-fr="Devenir partenaire →" data-de="Partner werden →">Partner with us →</a>
+    </div>
+    <div class="focus-list">
+      <div class="focus-item">
+        <div class="focus-n">01</div>
+        <div class="focus-body">
+          <h3 data-en="Farmer Training &amp; Capacity Building" data-fr="Formation &amp; Renforcement de capacités" data-de="Schulungen &amp; Kapazitätsaufbau">Farmer Training &amp; Capacity Building</h3>
+          <p data-en="Practical workshops teaching modern, climate-smart farming techniques and post-harvest best practices — designed for Eastern DRC's conditions and delivered in local languages." data-fr="Ateliers pratiques sur les techniques agricoles modernes et climato-intelligentes et les meilleures pratiques post-récolte — conçus pour les conditions de l'Est de la RDC et dispensés en langues locales." data-de="Praxisworkshops zu modernen, klimaintelligenten Anbautechniken und Post-Harvest-Best-Practices — auf die Bedingungen Ost-DRKs zugeschnitten und in lokalen Sprachen vermittelt.">Practical workshops teaching modern, climate-smart farming techniques and post-harvest best practices — designed for Eastern DRC's conditions and delivered in local languages.</p>
+        </div>
+        <div class="focus-icon">🌾</div>
+      </div>
+      <div class="focus-item">
+        <div class="focus-n">02</div>
+        <div class="focus-body">
+          <h3 data-en="Digital Tools for Agriculture" data-fr="Outils numériques pour l'agriculture" data-de="Digitale Werkzeuge für die Landwirtschaft">Digital Tools for Agriculture</h3>
+          <p data-en="Simple offline-first apps for crop planning, weather insights, soil advice, yield tracking, and cooperative coordination — accessible on basic smartphones." data-fr="Applications simples offline-first pour la planification des cultures, les informations météo, les conseils sur les sols, le suivi des rendements et la coordination coopérative — accessibles sur smartphones basiques." data-de="Einfache Offline-First-Apps für Anbauplanung, Wetterinfos, Bodenberatung, Ertrags-Tracking und Genossenschaftskoordination — auf einfachen Smartphones.">Simple offline-first apps for crop planning, weather insights, soil advice, yield tracking, and cooperative coordination — accessible on basic smartphones.</p>
+          <div class="chip-row"><span class="chip" data-en="Weather" data-fr="Météo" data-de="Wetter">Weather</span><span class="chip" data-en="Soil tips" data-fr="Conseils sols" data-de="Bodentipps">Soil tips</span><span class="chip" data-en="Yield tracking" data-fr="Suivi rendements" data-de="Ertrags-Tracking">Yield tracking</span><span class="chip" data-en="Offline-first" data-fr="Hors ligne d'abord" data-de="Offline-First">Offline-first</span></div>
+        </div>
+        <div class="focus-icon">📱</div>
+      </div>
+      <div class="focus-item">
+        <div class="focus-n">03</div>
+        <div class="focus-body">
+          <h3 data-en="Market Access &amp; Fair Prices" data-fr="Accès au marché &amp; Prix équitables" data-de="Marktzugang &amp; Faire Preise">Market Access &amp; Fair Prices</h3>
+          <p data-en="Linking farmers directly to buyers and input suppliers — reducing post-harvest losses, cutting out exploitative middlemen, and helping cooperatives negotiate better prices." data-fr="Relier directement les agriculteurs aux acheteurs et fournisseurs d'intrants — réduire les pertes post-récolte, éliminer les intermédiaires exploiteurs et aider les coopératives à négocier de meilleurs prix." data-de="Direktverbindung von Bauern zu Käufern und Inputlieferanten — Nachernteverluste reduzieren, Zwischenhändler ausschalten, Genossenschaften bessere Preise sichern.">Linking farmers directly to buyers and input suppliers — reducing post-harvest losses, cutting out exploitative middlemen, and helping cooperatives negotiate better prices.</p>
+        </div>
+        <div class="focus-icon">🤝</div>
+      </div>
+      <div class="focus-item">
+        <div class="focus-n">04</div>
+        <div class="focus-body">
+          <h3 data-en="Community Gardens &amp; Food Programs" data-fr="Jardins communautaires &amp; Programmes alimentaires" data-de="Gemeinschaftsgärten &amp; Ernährungsprogramme">Community Gardens &amp; Food Programs</h3>
+          <p data-en="Supporting schools and community groups to grow their own food, fight malnutrition, and build lifelong food literacy — starting with the youngest generation." data-fr="Soutenir les écoles et groupes communautaires pour cultiver leur propre nourriture, lutter contre la malnutrition et développer la culture alimentaire à vie — en commençant par les plus jeunes." data-de="Schulen und Gemeinschaftsgruppen beim Eigenanbau, der Bekämpfung von Mangelernährung und dem Aufbau lebenslanger Ernährungskompetenz unterstützen.">Supporting schools and community groups to grow their own food, fight malnutrition, and build lifelong food literacy — starting with the youngest generation.</p>
+        </div>
+        <div class="focus-icon">🌱</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ IMPACT STRIP ═══ -->
+<section class="impact-strip reveal">
+  <div class="frame">
+    <div class="impact-inner">
+      <div class="impact-label">Why<br>this<br><em>matters.</em></div>
+      <div class="impact-cards">
+        <div class="impact-card">
+          <div class="ic-icon">🍽️</div>
+          <h4 data-en="Reduce hunger &amp; malnutrition" data-fr="Réduire faim &amp; malnutrition" data-de="Hunger &amp; Mangelernährung senken">Reduce hunger &amp; malnutrition</h4>
+          <p data-en="Reliable access to nutritious food for families — especially children — in conflict-affected areas." data-fr="Accès fiable à une alimentation nutritive pour les familles — surtout les enfants — dans les zones touchées par les conflits." data-de="Verlässlicher Zugang zu nahrhaften Lebensmitteln für Familien — besonders Kinder — in Konfliktgebieten.">Reliable nutritious food access for families in conflict zones.</p>
+        </div>
+        <div class="impact-card">
+          <div class="ic-icon">💰</div>
+          <h4 data-en="Increase farmer income" data-fr="Augmenter les revenus agricoles" data-de="Landwirtschaftliches Einkommen steigern">Increase farmer income</h4>
+          <p data-en="Higher yields and fairer market prices improve livelihoods and keep families out of poverty." data-fr="De meilleurs rendements et des prix plus justes améliorent les moyens de subsistance et sortent les familles de la pauvreté." data-de="Höhere Erträge und fairere Preise verbessern Lebensgrundlagen und heben Familien aus der Armut.">Better yields and fairer prices lift families out of poverty.</p>
+        </div>
+        <div class="impact-card">
+          <div class="ic-icon">🛡️</div>
+          <h4 data-en="Stronger food systems" data-fr="Systèmes alimentaires plus solides" data-de="Stärkere Ernährungssysteme">Stronger food systems</h4>
+          <p data-en="Communities that grow and trade their own food are more resilient to conflict, displacement, and climate shocks." data-fr="Les communautés qui produisent et échangent leur propre nourriture résistent mieux aux conflits, déplacements et chocs climatiques." data-de="Gemeinschaften mit eigenem Anbau und Handel sind widerstandsfähiger gegen Konflikte, Vertreibung und Klimaschocks.">Local food systems build resilience to shocks.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ HOW WE WORK ═══ -->
+<section class="sec reveal" id="process">
+  <div class="frame">
+    <span class="eyebrow" data-en="Our approach" data-fr="Notre approche" data-de="Unser Ansatz">Our approach</span>
+    <h2 class="display-h" data-en="How we work<br><em>with farmers.</em>" data-fr="Comment nous travaillons<br><em>avec les agriculteurs.</em>" data-de="Wie wir mit<br><em>Bauern arbeiten.</em>">How we work<br><em>with farmers.</em></h2>
+    <div class="hw-rail">
+      <div class="hw-line"></div>
+      <div class="hw-nodes">
+        <div class="hw-node">
+          <div class="hw-dot-wrap"><div class="hw-dot">1</div></div>
           <h3 data-en="Assess" data-fr="Diagnostiquer" data-de="Bewerten">Assess</h3>
-          <p class="muted" data-en="Field visit and baseline survey with farmers and cooperatives." data-fr="Visite terrain et ligne de base avec agriculteurs et coopératives." data-de="Feldbesuch und Baseline-Erhebung mit Bäuer:innen und Genossenschaften.">Field visit & baseline.</p>
+          <p data-en="Field visit and baseline survey with farmers and cooperatives to understand real needs." data-fr="Visite terrain et enquête de base avec agriculteurs et coopératives pour comprendre les besoins réels." data-de="Feldbesuch und Baseline-Erhebung mit Bäuer:innen und Genossenschaften.">Field visit and baseline survey to understand real needs.</p>
         </div>
-        <div class="card pad step">
-          <div class="num">2</div>
+        <div class="hw-node">
+          <div class="hw-dot-wrap"><div class="hw-dot">2</div></div>
           <h3 data-en="Train" data-fr="Former" data-de="Schulen">Train</h3>
-          <p class="muted" data-en="Practical workshops on climate-smart practices and post-harvest." data-fr="Ateliers pratiques sur les pratiques climato-intelligentes et le post-récolte." data-de="Praxisworkshops zu klimaintelligenten Methoden und Post-Harvest.">Hands-on workshops.</p>
+          <p data-en="Hands-on workshops on climate-smart techniques, post-harvest handling, and cooperative management." data-fr="Ateliers pratiques sur les techniques climato-intelligentes, la gestion post-récolte et la gestion coopérative." data-de="Praxisworkshops zu klimaintelligenten Methoden, Post-Harvest-Handling und Genossenschaftsverwaltung.">Hands-on workshops on climate-smart techniques and cooperative management.</p>
         </div>
-        <div class="card pad step">
-          <div class="num">3</div>
-          <h3 data-en="Deploy Tools" data-fr="Déployer les outils" data-de="Tools einführen">Deploy Tools</h3>
-          <p class="muted" data-en="Simple digital tools for planning, weather and yield tracking." data-fr="Outils numériques simples pour la planification, la météo et le suivi des rendements." data-de="Einfache digitale Tools für Planung, Wetter und Ertrags-Tracking.">Simple digital tools.</p>
+        <div class="hw-node">
+          <div class="hw-dot-wrap"><div class="hw-dot">3</div></div>
+          <h3 data-en="Deploy tools" data-fr="Déployer les outils" data-de="Tools einführen">Deploy tools</h3>
+          <p data-en="Set up simple digital tools for crop planning, weather, and yield tracking on farmers' existing devices." data-fr="Mise en place d'outils numériques simples pour la planification des cultures, la météo et le suivi des rendements sur les appareils existants." data-de="Einfache digitale Tools für Planung, Wetter und Ertrags-Tracking auf vorhandenen Geräten.">Simple digital tools for crop planning and yield tracking.</p>
         </div>
-        <div class="card pad step">
-          <div class="num">4</div>
-          <h3 data-en="Link to Markets" data-fr="Relier aux marchés" data-de="Mit Märkten vernetzen">Link to Markets</h3>
-          <p class="muted" data-en="Connect to buyers and inputs; support aggregation and logistics." data-fr="Connexion aux acheteurs et intrants ; appui à l’agrégation et à la logistique." data-de="Vernetzung mit Abnehmern & Inputs; Unterstützung bei Bündelung & Logistik.">Buyers & logistics.</p>
+        <div class="hw-node">
+          <div class="hw-dot-wrap"><div class="hw-dot">4</div></div>
+          <h3 data-en="Link to markets" data-fr="Relier aux marchés" data-de="Märkte erschließen">Link to markets</h3>
+          <p data-en="Connect cooperatives to verified buyers and input suppliers, and support aggregation and logistics." data-fr="Connecter les coopératives à des acheteurs vérifiés et des fournisseurs d'intrants, et soutenir l'agrégation et la logistique." data-de="Genossenschaften mit verifizierten Käufern verbinden und Bündelung &amp; Logistik unterstützen.">Connect to verified buyers and support aggregation and logistics.</p>
         </div>
-        <div class="card pad step">
-          <div class="num">5</div>
-          <h3 data-en="Monitor & Improve" data-fr="Suivre & améliorer" data-de="Messen & verbessern">Monitor & Improve</h3>
-          <p class="muted" data-en="Track outcomes and iterate with farmers and partners." data-fr="Suivi des résultats et itérations avec agriculteurs et partenaires." data-de="Ergebnisse messen und gemeinsam iterieren.">Outcomes + iteration.</p>
-        </div>
-      </div>
-
-      <div class="cta-band">
-        <p class="muted"
-           data-en="Ready to co-design an agriculture program with your community or cooperative?"
-           data-fr="Prêt·e à co-concevoir un programme agricole avec votre communauté ou coopérative ?"
-           data-de="Bereit, gemeinsam mit Ihrer Gemeinschaft oder Genossenschaft ein Landwirtschaftsprogramm zu entwerfen?">
-          Ready to co-design an agriculture program with your community or cooperative?
-        </p>
-        <div class="hero-ctas">
-          <a href="../contact.html" class="btn btn-primary"
-             data-en="Start a conversation"
-             data-fr="Commencer une discussion"
-             data-de="Ein Gespräch starten">Start a conversation</a>
-          <a href="../services/services.html" class="btn btn-ghost"
-             data-en="See all services"
-             data-fr="Voir tous les services"
-             data-de="Alle Services ansehen">See all services</a>
+        <div class="hw-node">
+          <div class="hw-dot-wrap"><div class="hw-dot">5</div></div>
+          <h3 data-en="Monitor &amp; improve" data-fr="Suivre &amp; améliorer" data-de="Messen &amp; verbessern">Monitor &amp; improve</h3>
+          <p data-en="Track outcomes, collect farmer feedback, and iterate continuously with communities and partners." data-fr="Suivre les résultats, collecter les retours des agriculteurs et itérer en continu avec les communautés et partenaires." data-de="Ergebnisse verfolgen, Feedback sammeln und kontinuierlich mit Gemeinschaften iterieren.">Track outcomes and iterate continuously with communities and partners.</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ================= FAQ ================= -->
-  <section class="section reveal in">
-    <div class="container center">
-      <h2 data-en="FAQs" data-fr="FAQ" data-de="FAQ">FAQs</h2>
-
-      <details class="card pad">
-        <summary
-          data-en="Do you work outside Bukavu & Goma?"
-          data-fr="Intervenez-vous en dehors de Bukavu & Goma ?"
-          data-de="Arbeiten Sie auch außerhalb von Bukavu & Goma?">
-          Do you work outside Bukavu & Goma?
-        </summary>
-        <p class="muted"
-           data-en="Yes. We support cooperatives and NGOs across the DRC, remotely and on site where needed."
-           data-fr="Oui. Nous accompagnons des coopératives et ONG à travers la RDC, à distance et sur site si nécessaire."
-           data-de="Ja. Wir unterstützen Genossenschaften und NGOs landesweit – remote und bei Bedarf vor Ort.">
-          Yes   nationwide and remote.
-        </p>
-      </details>
-
-      <details class="card pad">
-        <summary
-          data-en="How do smallholders participate?"
-          data-fr="Comment les petits producteurs participent-ils ?"
-          data-de="Wie beteiligen sich Kleinbäuer:innen?">
-          How do smallholders participate?
-        </summary>
-        <p class="muted"
-           data-en="Through local groups or cooperatives. We co-design sessions, then run practical training and follow-ups with lead farmers."
-           data-fr="Via des groupes locaux ou des coopératives. Nous co-concevons les sessions puis animons des formations pratiques et suivis avec des agriculteurs référents."
-           data-de="Über lokale Gruppen oder Genossenschaften. Wir co-designen Workshops und führen Praxistrainings mit Lead-Farmer:innen durch.">
-          Via local groups or coops.
-        </p>
-      </details>
-
-      <details class="card pad">
-        <summary
-          data-en="Do you supply seeds, tools or funding?"
-          data-fr="Fournissez-vous semences, outils ou financement ?"
-          data-de="Liefern Sie Saatgut, Geräte oder Finanzierung?">
-          Do you supply seeds, tools or funding?
-        </summary>
-        <p class="muted"
-           data-en="We focus on training, coordination and digital tools. For inputs or finance, we can connect you to trusted partners."
-           data-fr="Nous nous concentrons sur la formation, la coordination et les outils numériques. Pour les intrants ou le financement, nous pouvons vous relier à des partenaires de confiance."
-           data-de="Unser Fokus liegt auf Training, Koordination und digitalen Tools. Für Betriebsmittel oder Finanzierung vernetzen wir mit verlässlichen Partnern.">
-          Training first; partners for inputs/finance.
-        </p>
-      </details>
-
-      <details class="card pad">
-        <summary
-          data-en="How do you handle low connectivity?"
-          data-fr="Comment gérez-vous la faible connectivité ?"
-          data-de="Wie gehen Sie mit geringer Konnektivität um?">
-          How do you handle low connectivity?
-        </summary>
-        <p class="muted"
-           data-en="Our tools are offline-first with lightweight sync; we also use SMS/USSD where smartphones are limited."
-           data-fr="Nos outils sont offline-first avec synchronisation légère ; nous utilisons aussi SMS/USSD lorsque les smartphones sont limités."
-           data-de="Unsere Tools sind offline-first mit schlanker Synchronisierung; bei geringer Smartphone-Abdeckung nutzen wir SMS/USSD.">
-          Offline-first + SMS/USSD.
-        </p>
-      </details>
-
-      <details class="card pad">
-        <summary
-          data-en="Can schools start gardens with you?"
-          data-fr="Les écoles peuvent-elles créer des jardins avec vous ?"
-          data-de="Können Schulen mit Ihnen Gärten aufbauen?">
-          Can schools start gardens with you?
-        </summary>
-        <p class="muted"
-           data-en="Yes. We support school gardens and food programs to improve nutrition and teach practical skills."
-           data-fr="Oui. Nous soutenons les jardins scolaires et programmes alimentaires pour améliorer la nutrition et enseigner des compétences pratiques."
-           data-de="Ja. Wir unterstützen Schulgärten und Ernährungsprogramme zur Verbesserung der Ernährung und als Praxisschulung.">
-          Yes   school gardens & food programs.
-        </p>
-      </details>
+<!-- ═══ FAQ ═══ -->
+<section class="sec-dark reveal" id="faq">
+  <div class="frame">
+    <span class="eyebrow" data-en="FAQ" data-fr="FAQ" data-de="FAQ">FAQ</span>
+    <h2 class="display-h" style="margin-bottom:2rem" data-en="Common <em>questions.</em>" data-fr="Questions <em>fréquentes.</em>" data-de="Häufige <em>Fragen.</em>">Common <em>questions.</em></h2>
+    <div class="faq-list">
+      <details class="faq"><summary><span data-en="Do you work outside Bukavu &amp; Goma?" data-fr="Intervenez-vous hors de Bukavu &amp; Goma ?" data-de="Arbeiten Sie auch außerhalb von Bukavu &amp; Goma?">Do you work outside Bukavu &amp; Goma?</span><div class="faq-tog"><span class="p-icon">+</span><span class="m-icon">−</span></div></summary><p class="ans" data-en="Yes. We support cooperatives and NGOs across the DRC — remotely and on-site where needed. We're also open to partnerships in other parts of Africa." data-fr="Oui. Nous accompagnons des coopératives et ONG à travers la RDC — à distance et sur place si nécessaire. Nous sommes ouverts à des partenariats dans d'autres régions d'Afrique." data-de="Ja. Wir unterstützen Genossenschaften und NGOs in der ganzen DRK — remote und vor Ort. Wir sind auch offen für Partnerschaften in anderen Teilen Afrikas.">Yes. We support cooperatives and NGOs across the DRC — remotely and on-site where needed. We're also open to partnerships in other parts of Africa.</p></details>
+      <details class="faq"><summary><span data-en="How do smallholder farmers participate?" data-fr="Comment les petits exploitants participent-ils ?" data-de="Wie beteiligen sich Kleinbäuer:innen?">How do smallholder farmers participate?</span><div class="faq-tog"><span class="p-icon">+</span><span class="m-icon">−</span></div></summary><p class="ans" data-en="Through local groups or cooperatives. We co-design sessions with lead farmers, run practical field training, and follow up with communities over time to measure real impact." data-fr="Via des groupes locaux ou des coopératives. Nous co-concevons les sessions avec des agriculteurs référents, animons des formations pratiques sur le terrain et suivons les communautés dans le temps." data-de="Über lokale Gruppen oder Genossenschaften. Wir co-designen Sessions mit Lead-Farmer:innen und begleiten Gemeinschaften über Zeit.">Through local groups or cooperatives. We co-design sessions with lead farmers, run practical field training, and follow up with communities over time.</p></details>
+      <details class="faq"><summary><span data-en="Do you supply seeds, tools, or funding?" data-fr="Fournissez-vous semences, outils ou financement ?" data-de="Liefern Sie Saatgut, Geräte oder Finanzierung?">Do you supply seeds, tools, or funding?</span><div class="faq-tog"><span class="p-icon">+</span><span class="m-icon">−</span></div></summary><p class="ans" data-en="Our core focus is training, digital tools, and market coordination. For seeds, equipment, or financial support, we can connect you to trusted partner organizations and input suppliers in the DRC." data-fr="Notre cœur de métier est la formation, les outils numériques et la coordination des marchés. Pour les semences, équipements ou soutien financier, nous pouvons vous mettre en relation avec des organisations partenaires de confiance." data-de="Unser Kern ist Training, digitale Tools und Marktkoordination. Für Saatgut, Ausrüstung oder finanzielle Unterstützung vernetzen wir mit vertrauenswürdigen Partnerorganisationen.">Our core focus is training, digital tools, and market coordination. For seeds, equipment, or financial support, we connect you to trusted partner organizations.</p></details>
+      <details class="faq"><summary><span data-en="How do you handle low connectivity?" data-fr="Comment gérez-vous la faible connectivité ?" data-de="Wie gehen Sie mit geringer Konnektivität um?">How do you handle low connectivity?</span><div class="faq-tog"><span class="p-icon">+</span><span class="m-icon">−</span></div></summary><p class="ans" data-en="All our digital tools are offline-first — they work without internet and sync automatically when connectivity returns. Where smartphones are rare, we use SMS and USSD to ensure no one is excluded." data-fr="Tous nos outils numériques sont offline-first — ils fonctionnent sans internet et se synchronisent automatiquement au retour de la connexion. Où les smartphones sont rares, nous utilisons SMS et USSD." data-de="Alle unsere Tools sind Offline-First — sie funktionieren ohne Internet und synchronisieren automatisch. Wo Smartphones selten sind, nutzen wir SMS und USSD.">All tools are offline-first and sync automatically. Where smartphones are rare, we use SMS and USSD to ensure no one is left out.</p></details>
+      <details class="faq"><summary><span data-en="Can schools start community gardens with you?" data-fr="Les écoles peuvent-elles créer des jardins avec vous ?" data-de="Können Schulen Gemeinschaftsgärten mit Ihnen aufbauen?">Can schools start community gardens with you?</span><div class="faq-tog"><span class="p-icon">+</span><span class="m-icon">−</span></div></summary><p class="ans" data-en="Absolutely. School gardens are one of our favorite programs — they improve student nutrition, teach practical agricultural skills, and engage the whole community. Contact us to start planning." data-fr="Absolument. Les jardins scolaires sont l'un de nos programmes préférés — ils améliorent la nutrition des élèves, enseignent des compétences agricoles pratiques et mobilisent toute la communauté." data-de="Absolut. Schulgärten sind eines unserer liebsten Programme — sie verbessern die Schülerernährung, vermitteln praktische Fähigkeiten und binden die ganze Gemeinschaft ein.">Absolutely. School gardens are one of our favorite programs — they improve nutrition, teach skills, and engage the whole community. Contact us to start planning.</p></details>
     </div>
-  </section>
-  <!-- Footer injected by base.js -->
-  <div id="site-footer"></div>
-  <!-- Global scripts -->
-  <script src="../route/base.js" defer></script>
-  <script src="../route/lang.js" defer></script>
-  <script src="../route/animations.js" defer></script>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="sec reveal">
+  <div class="frame">
+    <div class="cta-band">
+      <div class="cta-left">
+        <span class="eyebrow" style="color:rgba(255,255,255,.45)" data-en="Get involved" data-fr="S'impliquer" data-de="Mitmachen">Get involved</span>
+        <h2 data-en="Ready to grow food security together?" data-fr="Prêt à développer la sécurité alimentaire ensemble ?" data-de="Bereit, Ernährungssicherheit gemeinsam aufzubauen?">Ready to grow food security together?</h2>
+        <p data-en="Whether you're a farmer cooperative, an NGO, a school, or a donor — we'd love to build a program with you. Start a conversation today." data-fr="Que vous soyez une coopérative agricole, une ONG, une école ou un bailleur — nous serions ravis de construire un programme avec vous. Commencez une discussion aujourd'hui." data-de="Ob Genossenschaft, NGO, Schule oder Geldgeber — wir möchten gemeinsam ein Programm entwickeln. Beginnen Sie noch heute ein Gespräch.">Whether you're a farmer cooperative, an NGO, a school, or a donor — we'd love to build a program with you. Start a conversation today.</p>
+        <div class="cta-btns">
+          <a href="../contact.html" class="btn btn-w" data-en="Start a conversation" data-fr="Commencer une discussion" data-de="Gespräch beginnen">Start a conversation</a>
+          <a href="services.html" class="btn btn-wg" data-en="All services" data-fr="Tous les services" data-de="Alle Leistungen">All services</a>
+        </div>
+      </div>
+      <div class="cta-right">
+        <div class="cta-right-inner">
+          <div class="cta-big" aria-hidden="true">Grow<br>ing.</div>
+          <p data-en="Food. Resilience.<br>Community." data-fr="Nourriture. Résilience.<br>Communauté." data-de="Nahrung. Resilienz.<br>Gemeinschaft.">Food. Resilience.<br>Community.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="frame foot">
+    <a href="../index.html" class="foot-logo"><img src="../assets/fevicon.png" alt="Tuunganes"/><span>Tuunganes</span></a>
+    <p>&copy; 2025 Tuunganes &nbsp;·&nbsp; Bukavu &amp; Goma, DRC</p>
+    <div style="display:flex;gap:1rem">
+      <a href="../about.html" style="font-size:.82rem;color:var(--muted)" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+      <a href="services.html" style="font-size:.82rem;color:var(--muted)" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+      <a href="../contact.html" style="font-size:.82rem;color:var(--muted)" data-en="Contact" data-fr="Contact" data-de="Kontakt">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  const s=localStorage.getItem('tuunganes-theme');
+  const dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  document.documentElement.setAttribute('data-theme',s||(dark?'dark':'light'));
+})();
+document.addEventListener('DOMContentLoaded',function(){
+  const root=document.documentElement;
+  const themeBtn=document.getElementById('themeBtn');
+  function syncIcon(){themeBtn.textContent=root.getAttribute('data-theme')==='dark'?'☀️':'🌙'}
+  syncIcon();
+  themeBtn.addEventListener('click',function(){
+    const next=root.getAttribute('data-theme')==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);localStorage.setItem('tuunganes-theme',next);syncIcon();
+  });
+  const hamBtn=document.getElementById('hamBtn');
+  const drawer=document.getElementById('drawer');
+  document.getElementById('drawerClose').addEventListener('click',()=>{drawer.classList.remove('open');hamBtn.setAttribute('aria-expanded','false')});
+  hamBtn.addEventListener('click',()=>{const o=drawer.classList.toggle('open');hamBtn.setAttribute('aria-expanded',String(o))});
+  document.addEventListener('click',e=>{if(!drawer.contains(e.target)&&!hamBtn.contains(e.target)){drawer.classList.remove('open');hamBtn.setAttribute('aria-expanded','false')}});
+  function applyLang(lang){
+    localStorage.setItem('siteLang',lang);
+    document.querySelectorAll('.lang-pills button').forEach(b=>b.classList.toggle('on',b.dataset.lang===lang));
+    document.querySelectorAll('[data-'+lang+']').forEach(el=>{
+      const val=el.getAttribute('data-'+lang);if(!val)return;
+      if(['H1','H2','H3'].includes(el.tagName)){el.innerHTML=val;return;}
+      if(!el.querySelector('[data-'+lang+']:not(script)')){el.textContent=val;}
+    });
+  }
+  const saved=localStorage.getItem('siteLang')||'en';
+  document.querySelectorAll('.lang-pills [data-lang]').forEach(btn=>{
+    btn.addEventListener('click',()=>applyLang(btn.dataset.lang));
+    if(btn.dataset.lang===saved)btn.classList.add('on');
+  });
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+  },{threshold:0.07});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const t=document.querySelector(a.getAttribute('href'));
+      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}
+    });
+  });
+});
+</script>
+<script src="../route/base.js" defer></script>
+<script src="../route/lang.js" defer></script>
+<script src="../route/animations.js" defer></script>
 </body>
 </html>

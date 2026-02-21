@@ -1,291 +1,507 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="light dark" />
-  <title
-    data-en="Contact Tuunganes"
-    data-fr="Contacter Tuunganes"
-    data-de="Kontakt Tuunganes">Contact Tuunganes</title>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="color-scheme" content="light dark"/>
+<title data-en="Contact Tuunganes" data-fr="Contacter Tuunganes" data-de="Kontakt Tuunganes">Contact Tuunganes</title>
+<link rel="icon" href="assets/fevicon.png" type="image/png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/styles.css"/>
+<style>
+:root{--blue:#2196f3;--blue-d:#1565c0;--blue-pale:rgba(33,150,243,.10);--blue-ring:rgba(33,150,243,.28);--ease:cubic-bezier(.4,0,.2,1);--display:'Playfair Display',Georgia,serif;--body:'DM Sans',system-ui,sans-serif}
+[data-theme="light"]{--bg:#f5f8ff;--bg2:#e8f2fe;--surf:#fff;--tx:#0a1628;--tx2:#253650;--muted:#5e7a96;--bdr:#c5daf2;--sh:0 1px 4px rgba(0,0,0,.05),0 8px 28px rgba(0,0,0,.07);--sh-lg:0 4px 40px rgba(0,0,0,.11);--input-bg:#f0f6ff}
+[data-theme="dark"]{--bg:#050d1a;--bg2:#0b1725;--surf:#0f1c2e;--tx:#ecf3ff;--tx2:#a5c2de;--muted:#5a7898;--bdr:rgba(255,255,255,.07);--sh:0 2px 10px rgba(0,0,0,.45),0 12px 40px rgba(0,0,0,.3);--sh-lg:0 8px 48px rgba(0,0,0,.4);--input-bg:rgba(255,255,255,.05)}
 
-  <link rel="icon" href="assets/fevicon.png" type="image/png" />
-  <link rel="stylesheet" href="css/styles.css" />
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--tx);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .28s var(--ease),color .28s var(--ease)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font-family:inherit}
+ul{list-style:none;padding:0;margin:0}
+.frame{width:min(1200px,94vw);margin:0 auto}
 
-  <style>
-    /* Layout */
-    .page-hero{padding-block:clamp(2.5rem,6vw,4.5rem)}
-    .lede{color:var(--text-2);max-width:68ch}
-    .grid{display:grid;grid-template-columns:1.18fr .82fr;gap:1rem;align-items:start}
-    @media (max-width:960px){.grid{grid-template-columns:1fr}}
+/* ── NAV ── */
+.nav{position:fixed;top:1rem;left:50%;transform:translateX(-50%);width:min(1100px,90vw);background:color-mix(in srgb,var(--surf) 82%,transparent);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--bdr);border-radius:999px;padding:.5rem .5rem .5rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;z-index:1000;box-shadow:var(--sh)}
+.nav-logo{display:flex;align-items:center;gap:.55rem;font-size:.95rem;font-weight:700;color:var(--tx);flex-shrink:0}
+.nav-logo img{width:30px;height:30px;border-radius:8px}
+.nav-links{display:flex;align-items:center;gap:.15rem;flex:1;justify-content:center}
+.nav-links a{padding:.42rem .85rem;border-radius:999px;font-size:.82rem;font-weight:600;color:var(--tx2);transition:color .15s,background .15s}
+.nav-links a:hover,.nav-links a.active{color:var(--blue);background:var(--blue-pale)}
+.nav-end{display:flex;align-items:center;gap:.45rem;flex-shrink:0}
+.lang-pills{display:flex;gap:.18rem;background:var(--bg2);border:1px solid var(--bdr);border-radius:999px;padding:.22rem .28rem}
+.lang-pills button{border:none;background:transparent;border-radius:999px;padding:.22rem .55rem;font-size:.74rem;font-weight:700;cursor:pointer;color:var(--muted);transition:background .15s,color .15s}
+.lang-pills button.on{background:var(--blue);color:#fff}
+.theme-pill{width:36px;height:36px;border-radius:999px;border:1px solid var(--bdr);background:var(--bg2);display:grid;place-items:center;cursor:pointer;font-size:.95rem;transition:border-color .15s,transform .2s}
+.theme-pill:hover{border-color:var(--blue);transform:rotate(20deg)}
+.nav-cta{background:var(--blue);color:#fff;border:none;padding:.48rem 1.15rem;border-radius:999px;font-size:.82rem;font-weight:600;cursor:pointer;transition:background .15s,transform .15s;white-space:nowrap}
+.nav-cta:hover{background:var(--blue-d);transform:translateY(-1px)}
+.ham{display:none;flex-direction:column;gap:4px;cursor:pointer;background:var(--bg2);border:1px solid var(--bdr);border-radius:999px;padding:.55rem .75rem}
+.ham span{display:block;width:18px;height:2px;background:var(--tx);border-radius:2px}
+.nav-drawer{display:none;position:fixed;inset:0;background:var(--surf);z-index:999;flex-direction:column;padding:2rem 1.75rem;gap:1.25rem}
+.nav-drawer.open{display:flex}
+.nav-drawer a{font-size:1.1rem;font-weight:600;color:var(--tx2);padding:.5rem 0;border-bottom:1px solid var(--bdr)}
+@media(max-width:720px){.ham{display:flex}.nav-links,.nav-end{display:none}}
 
-    /* Cards & fields */
-    .card.pad{padding:1rem 1.1rem}
-    .glass{background:var(--surface);border:1px solid var(--border);border-radius:16px;box-shadow:var(--shadow)}
-    .field{display:flex;flex-direction:column;gap:.35rem}
-    .field-row{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
-    @media (max-width:720px){.field-row{grid-template-columns:1fr}}
-    label{font-weight:700}
-    input,select,textarea{
-      background:color-mix(in hsl,var(--surface) 92%, transparent);
-      border:1px solid var(--border);
-      border-radius:12px;
-      padding:.7rem .8rem;
-      outline:none;
-    }
-    textarea{min-height:140px;resize:vertical}
-    .hint{font-size:.9rem;color:var(--text-muted)}
-    .error{font-size:.9rem;color:#b91c1c}
-    .success{display:none;margin-top:.75rem;padding:.8rem 1rem;border-radius:12px;border:1px solid #16a34a;background:#ecfdf5;color:#065f46}
-    .success.show{display:block}
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.72rem 1.65rem;border-radius:999px;border:none;cursor:pointer;font-size:.88rem;font-weight:600;transition:all .2s var(--ease);white-space:nowrap;font-family:var(--body)}
+.btn-solid{background:var(--blue);color:#fff;box-shadow:0 4px 16px rgba(33,150,243,.3)}
+.btn-solid:hover{background:var(--blue-d);transform:translateY(-2px);box-shadow:0 8px 24px rgba(33,150,243,.4)}
+.btn-solid:disabled{opacity:.6;transform:none;cursor:not-allowed}
+.btn-ghost{background:transparent;color:var(--tx);border:1.5px solid var(--bdr)}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-1px)}
 
-    /* Contact method pills */
-    .pill-row{display:flex;gap:.5rem;flex-wrap:wrap}
-    .pill{display:inline-flex;align-items:center;gap:.4rem;border:1px solid var(--border);border-radius:999px;padding:.35rem .7rem;background:color-mix(in hsl,var(--surface) 92%, transparent)}
-    .pill input{accent-color:var(--brand)}
+/* ── HERO ── */
+.page-hero{
+  padding:9rem 0 6rem;background:var(--surf);border-bottom:1px solid var(--bdr);
+  position:relative;overflow:hidden;
+}
+.page-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 50% 80% at 90% 50%,rgba(33,150,243,.08) 0%,transparent 65%);pointer-events:none}
+[data-theme="dark"] .page-hero::before{background:radial-gradient(ellipse 50% 80% at 90% 50%,rgba(33,150,243,.14) 0%,transparent 65%)}
+.hero-wm{position:absolute;right:-1rem;bottom:-4rem;font-family:var(--display);font-size:45vw;font-weight:900;line-height:.8;color:var(--blue);opacity:.03;pointer-events:none;user-select:none}
+[data-theme="dark"] .hero-wm{opacity:.055}
+.hero-pill{display:inline-flex;align-items:center;gap:.45rem;font-size:.7rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--blue);border:1.5px solid var(--blue-ring);border-radius:999px;padding:.35rem .9rem;margin-bottom:1.2rem}
+.hero-pill::before{content:'';width:7px;height:7px;border-radius:50%;background:var(--blue)}
+.page-hero h1{font-family:var(--display);font-size:clamp(2.6rem,7vw,5rem);font-weight:900;letter-spacing:-.03em;line-height:1.02;color:var(--tx);margin-bottom:.9rem}
+.page-hero h1 em{font-style:italic;color:var(--blue)}
+.page-hero>div>p{color:var(--tx2);font-size:1.05rem;max-width:500px;line-height:1.72;margin-bottom:0}
 
-    /* Sidebar improvements */
-    .aside{position:sticky;top:92px}
-    .aside h3{margin-bottom:.35rem}
-    .list-plain{list-style:none;padding:0;margin:0}
-    .list-plain li+li{margin-top:.4rem}
-    .row{display:flex;align-items:center;gap:.6rem}
-    .badge{border:1px solid var(--border);border-radius:999px;padding:.2rem .55rem;font-size:.85rem}
-    .vsep{height:1px;background:var(--border);margin:.9rem 0}
+/* ── MAIN GRID ── */
+.contact-grid{
+  display:grid;
+  grid-template-columns:1.2fr .8fr;
+  gap:2rem;
+  align-items:start;
+  padding:5rem 0 7rem;
+}
+@media(max-width:960px){.contact-grid{grid-template-columns:1fr}}
 
-    /* Demo link buttons */
-    .link-stack{display:grid;gap:.5rem}
-    .link-btn{
-      display:flex;align-items:center;justify-content:space-between;gap:.6rem;
-      padding:.6rem .8rem;border:1px solid var(--border);border-radius:12px;text-decoration:none;
-      background:color-mix(in hsl,var(--surface) 94%, transparent);font-weight:700;
-    }
-    .link-btn:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(0,0,0,.08)}
-    .chev{font-weight:900;opacity:.6}
+/* ── FORM CARD ── */
+.form-card{
+  background:var(--surf);border:1px solid var(--bdr);
+  border-radius:24px;padding:2.5rem 2.25rem;
+  box-shadow:var(--sh);
+}
+.form-card h2{font-family:var(--display);font-size:1.6rem;font-weight:900;letter-spacing:-.02em;color:var(--tx);margin-bottom:1.75rem}
 
-    /* Button stretch on mobile */
-    @media (max-width:720px){ .link-stack .link-btn{justify-content:center} }
+/* field */
+.fld{display:flex;flex-direction:column;gap:.4rem;margin-bottom:1.1rem}
+.fld label{font-size:.83rem;font-weight:700;color:var(--tx);letter-spacing:.01em}
+.fld input,.fld select,.fld textarea{
+  background:var(--input-bg);
+  border:1.5px solid var(--bdr);
+  border-radius:12px;
+  padding:.72rem .95rem;
+  font-size:.93rem;
+  color:var(--tx);
+  font-family:var(--body);
+  outline:none;
+  transition:border-color .15s,box-shadow .15s;
+  width:100%;
+}
+.fld input::placeholder,.fld textarea::placeholder{color:var(--muted)}
+.fld input:focus,.fld select:focus,.fld textarea:focus{
+  border-color:var(--blue);
+  box-shadow:0 0 0 3px var(--blue-pale);
+}
+.fld input.err,.fld select.err,.fld textarea.err{border-color:#e53e3e;box-shadow:0 0 0 3px rgba(229,62,62,.12)}
+.fld textarea{min-height:140px;resize:vertical;line-height:1.6}
+.fld select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 12 8' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%235e7a96' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;background-size:12px;cursor:pointer}
+.err-msg{font-size:.78rem;color:#e53e3e;font-weight:600;margin-top:.2rem;display:none}
+.err-msg.show{display:block}
 
-    /* Tiny helpers */
-    .muted{color:var(--text-muted)}
-  </style>
+.frow{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:560px){.frow{grid-template-columns:1fr}}
+
+/* contact method */
+.method-group{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:.35rem}
+.method-opt{display:flex;align-items:center;gap:.45rem;cursor:pointer;padding:.45rem .85rem;border:1.5px solid var(--bdr);border-radius:999px;font-size:.84rem;font-weight:600;color:var(--tx2);transition:border-color .15s,color .15s,background .15s}
+.method-opt input{display:none}
+.method-opt:has(input:checked){border-color:var(--blue);color:var(--blue);background:var(--blue-pale)}
+
+/* success */
+.form-success{
+  display:none;margin-top:1.25rem;
+  background:rgba(33,150,243,.08);border:1.5px solid var(--blue-ring);
+  border-radius:14px;padding:1.1rem 1.25rem;
+  font-size:.93rem;color:var(--blue);line-height:1.6;font-weight:600;
+  align-items:center;gap:.6rem;
+}
+.form-success.show{display:flex}
+.form-success::before{content:'✓';width:26px;height:26px;border-radius:50%;background:var(--blue);color:#fff;display:grid;place-items:center;font-size:.88rem;font-weight:900;flex-shrink:0}
+
+.submit-row{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;margin-top:.5rem}
+.submit-hint{font-size:.8rem;color:var(--muted)}
+
+/* ── SIDEBAR ── */
+.sidebar{position:sticky;top:6.5rem;display:flex;flex-direction:column;gap:1.25rem}
+
+.side-card{background:var(--surf);border:1px solid var(--bdr);border-radius:20px;padding:1.75rem 1.5rem;box-shadow:var(--sh)}
+.side-card h3{font-family:var(--display);font-size:1.1rem;font-weight:700;color:var(--tx);margin-bottom:1.1rem;letter-spacing:-.01em}
+
+.contact-method{display:flex;align-items:center;gap:.85rem;padding:.75rem 0;border-bottom:1px solid var(--bdr)}
+.contact-method:last-child{border-bottom:none;padding-bottom:0}
+.contact-method:first-child{padding-top:0}
+.cm-icon{width:38px;height:38px;border-radius:11px;background:var(--blue-pale);border:1px solid var(--blue-ring);display:grid;place-items:center;font-size:1rem;flex-shrink:0}
+.cm-label{font-size:.7rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:.15rem}
+.cm-value{font-size:.9rem;font-weight:600;color:var(--tx)}
+.cm-value a{color:var(--blue);transition:opacity .15s}
+.cm-value a:hover{opacity:.75}
+
+/* demo links */
+.demo-link{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:.85rem 1rem;border:1px solid var(--bdr);border-radius:14px;
+  background:var(--bg);font-size:.88rem;font-weight:700;color:var(--tx);
+  transition:border-color .18s,transform .18s,box-shadow .18s;margin-bottom:.55rem;
+}
+.demo-link:last-child{margin-bottom:0}
+.demo-link:hover{border-color:var(--blue-ring);transform:translateX(3px);box-shadow:var(--sh)}
+.demo-link .dl-icon{font-size:.95rem;margin-right:.4rem}
+.demo-link .dl-arrow{color:var(--blue);font-weight:900;font-size:1rem;transition:transform .18s}
+.demo-link:hover .dl-arrow{transform:translateX(3px)}
+
+/* ── FOOTER ── */
+.foot{padding:2.25rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:1px solid var(--bdr)}
+.foot-logo{display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:.95rem;color:var(--tx)}
+.foot-logo img{width:28px;height:28px;border-radius:7px}
+.foot p{font-size:.8rem;color:var(--muted)}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.page-hero .hero-pill{animation:fadeUp .7s var(--ease) both}
+.page-hero h1{animation:fadeUp .8s .1s var(--ease) both}
+.page-hero>div>p{animation:fadeUp .8s .2s var(--ease) both}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.reveal.in{opacity:1;transform:translateY(0)}
+</style>
 </head>
 <body>
-  <!-- Global header -->
-  <div id="site-header"></div>
 
-  <!-- Hero -->
-  <section class="hero page-hero reveal in">
-    <div class="container hero-content">
-      <h1 data-en="Contact Tuunganes" data-fr="Contacter Tuunganes" data-de="Kontakt Tuunganes">Contact Tuunganes</h1>
-      <p class="lede"
-        data-en="Tell us about your school, NGO or business. We’ll reply with practical next steps tailored for the DRC context."
-        data-fr="Parlez-nous de votre école, ONG ou entreprise. Nous vous répondrons avec des prochaines étapes adaptées au contexte de la RDC."
-        data-de="Erzählen Sie uns von Ihrer Schule, NGO oder Ihrem Unternehmen. Wir melden uns mit konkreten nächsten Schritten für den DRK-Kontext.">
-        Tell us about your school, NGO or business. We’ll reply with practical next steps tailored for the DRC context.
-      </p>
+<!-- DRAWER -->
+<nav class="nav-drawer" id="drawer">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+    <span style="font-weight:700;font-size:1rem">Tuunganes</span>
+    <button id="drawerClose" style="background:transparent;border:none;font-size:1.4rem;cursor:pointer;color:var(--tx)">✕</button>
+  </div>
+  <a href="index.html" data-en="Home" data-fr="Accueil" data-de="Start">Home</a>
+  <a href="about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+  <a href="services/services.html" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+  <a href="contact.html" style="color:var(--blue)" data-en="Contact" data-fr="Contact" data-de="Kontakt">Contact</a>
+</nav>
+
+<!-- NAV -->
+<header class="nav">
+  <a href="index.html" class="nav-logo"><img src="assets/fevicon.png" alt="Tuunganes"/><span>Tuunganes</span></a>
+  <nav class="nav-links">
+    <a href="about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+    <a href="services/services.html" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+    <a href="index.html#impact" data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
+    <a href="index.html#join" data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</a>
+  </nav>
+  <div class="nav-end">
+    <div class="lang-pills" role="group">
+      <button type="button" data-lang="en" class="on">EN</button>
+      <button type="button" data-lang="fr">FR</button>
+      <button type="button" data-lang="de">DE</button>
     </div>
-  </section>
+    <button id="themeBtn" class="theme-pill" aria-label="Toggle theme">🌙</button>
+    <a href="contact.html" class="nav-cta active" data-en="Contact" data-fr="Contact" data-de="Kontakt">Contact</a>
+    <button class="ham" id="hamBtn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
 
-  <!-- Content -->
-  <section class="page-section reveal in">
-    <div class="container grid">
-      <!-- FORM -->
-      <form id="contactForm" class="glass card pad" novalidate>
-        <h2 data-en="Send us a message" data-fr="Envoyez-nous un message" data-de="Schreiben Sie uns">Send us a message</h2>
+<!-- HERO -->
+<section class="page-hero">
+  <div class="hero-wm" aria-hidden="true">C</div>
+  <div class="frame" style="position:relative;z-index:1">
+    <div class="hero-pill" data-en="Get in touch" data-fr="Contactez-nous" data-de="Kontakt aufnehmen">Get in touch</div>
+    <h1 data-en="Let's build<br>something<br><em>together.</em>" data-fr="Construisons<br>quelque chose<br><em>ensemble.</em>" data-de="Lassen Sie uns<br>gemeinsam etwas<br><em>aufbauen.</em>">Let's build<br>something<br><em>together.</em></h1>
+    <p data-en="Tell us about your school, NGO, or business. We'll reply with practical next steps tailored to the DRC context — usually within 1–2 business days." data-fr="Parlez-nous de votre école, ONG ou entreprise. Nous vous répondrons avec des prochaines étapes pratiques adaptées au contexte RDC — généralement sous 1–2 jours ouvrés." data-de="Erzählen Sie uns von Ihrer Schule, NGO oder Ihrem Unternehmen. Wir melden uns mit konkreten nächsten Schritten für den DRK-Kontext — in der Regel innerhalb von 1–2 Werktagen.">Tell us about your school, NGO, or business. We'll reply with practical next steps tailored to the DRC context — usually within 1–2 business days.</p>
+  </div>
+</section>
 
-        <div class="field-row">
-          <div class="field">
-            <label for="fullName" data-en="Full name" data-fr="Nom complet" data-de="Vollständiger Name">Full name</label>
-            <input id="fullName" name="fullName" type="text" required
-              placeholder="Your name" data-en="Your name" data-fr="Votre nom" data-de="Ihr Name" aria-describedby="nameErr">
-            <div id="nameErr" class="error" aria-live="polite"></div>
-          </div>
+<!-- CONTACT GRID -->
+<div class="frame">
+  <div class="contact-grid reveal">
 
-          <div class="field">
-            <label for="email" data-en="Email" data-fr="E-mail" data-de="E-Mail">Email</label>
-            <input id="email" name="email" type="email" required
-              placeholder="you@example.org" data-en="you@example.org" data-fr="vous@example.org" data-de="sie@beispiel.org" aria-describedby="emailErr">
-            <div id="emailErr" class="error" aria-live="polite"></div>
-          </div>
+    <!-- ═══ FORM ═══ -->
+    <form id="contactForm" class="form-card" novalidate>
+      <h2 data-en="Send us a message" data-fr="Envoyez-nous un message" data-de="Schreiben Sie uns">Send us a message</h2>
+
+      <div class="frow">
+        <div class="fld">
+          <label for="fullName" data-en="Full name" data-fr="Nom complet" data-de="Vollständiger Name">Full name</label>
+          <input id="fullName" name="fullName" type="text" required autocomplete="name"
+            placeholder="Your name" data-en="Your name" data-fr="Votre nom" data-de="Ihr Name"/>
+          <div class="err-msg" id="nameErr"></div>
         </div>
-
-        <div class="field-row">
-          <div class="field">
-            <label for="org" data-en="Organization (optional)" data-fr="Organisation (optionnel)" data-de="Organisation (optional)">Organization (optional)</label>
-            <input id="org" name="org" type="text"
-              placeholder="School / NGO / Company" data-en="School / NGO / Company" data-fr="École / ONG / Entreprise" data-de="Schule / NGO / Firma">
-          </div>
-
-          <div class="field">
-            <label for="phone" data-en="Phone (optional)" data-fr="Téléphone (optionnel)" data-de="Telefon (optional)">Phone (optional)</label>
-            <input id="phone" name="phone" type="tel"
-              placeholder="+243 99 000 0000" data-en="+243 99 000 0000" data-fr="+243 99 000 0000" data-de="+243 99 000 0000">
-            <div class="hint" data-en="WhatsApp is fine too." data-fr="WhatsApp est accepté." data-de="WhatsApp geht auch.">WhatsApp is fine too.</div>
-          </div>
+        <div class="fld">
+          <label for="email" data-en="Email" data-fr="E-mail" data-de="E-Mail">Email</label>
+          <input id="email" name="email" type="email" required autocomplete="email"
+            placeholder="you@example.org" data-en="you@example.org" data-fr="vous@example.org" data-de="sie@beispiel.org"/>
+          <div class="err-msg" id="emailErr"></div>
         </div>
+      </div>
 
-        <div class="field">
-          <label for="topic" data-en="Topic" data-fr="Sujet" data-de="Thema">Topic</label>
-          <select id="topic" name="topic" required aria-describedby="topicErr">
-            <option value="" selected data-en="Select a topic" data-fr="Choisir un sujet" data-de="Thema wählen">Select a topic</option>
-            <option value="it" data-en="IT Consultancy & Cloud" data-fr="Conseil IT & Cloud" data-de="IT-Beratung & Cloud">IT Consultancy & Cloud</option>
-            <option value="school" data-en="Masomo   School Management" data-fr="Masomo   Gestion scolaire" data-de="Masomo   Schulverwaltung">Masomo   School Management</option>
-            <option value="health" data-en="Afya   Digital Health" data-fr="Afya   Santé numérique" data-de="Afya   Digitale Gesundheit">Afya   Digital Health</option>
-            <option value="legal" data-en="Legal Clinic & Advocacy" data-fr="Clinique juridique & plaidoyer" data-de="Rechtsberatung & Advocacy">Legal Clinic & Advocacy</option>
-            <option value="agri" data-en="Agriculture & Food Security" data-fr="Agriculture & sécurité alimentaire" data-de="Landwirtschaft & Ernährungssicherheit">Agriculture & Food Security</option>
-            <option value="other" data-en="Other" data-fr="Autre" data-de="Sonstiges">Other</option>
-          </select>
-          <div id="topicErr" class="error" aria-live="polite"></div>
+      <div class="frow">
+        <div class="fld">
+          <label for="org" data-en="Organization (optional)" data-fr="Organisation (optionnel)" data-de="Organisation (optional)">Organization (optional)</label>
+          <input id="org" name="org" type="text" autocomplete="organization"
+            placeholder="School / NGO / Company" data-en="School / NGO / Company" data-fr="École / ONG / Entreprise" data-de="Schule / NGO / Firma"/>
         </div>
-
-        <div class="field">
-          <label for="message" data-en="Your message" data-fr="Votre message" data-de="Ihre Nachricht">Your message</label>
-          <textarea id="message" name="message" required
-            placeholder="Tell us what you need help with…" data-en="Tell us what you need help with…" data-fr="Expliquez votre besoin…" data-de="Wobei brauchen Sie Hilfe?…" aria-describedby="msgErr"></textarea>
-          <div id="msgErr" class="error" aria-live="polite"></div>
+        <div class="fld">
+          <label for="phone" data-en="Phone / WhatsApp (optional)" data-fr="Téléphone / WhatsApp (optionnel)" data-de="Telefon / WhatsApp (optional)">Phone / WhatsApp (optional)</label>
+          <input id="phone" name="phone" type="tel" autocomplete="tel"
+            placeholder="+243 99 000 0000"/>
         </div>
+      </div>
 
-        <div class="field-row">
-          <div class="field">
-            <label data-en="Preferred contact method" data-fr="Moyen de contact préféré" data-de="Bevorzugte Kontaktart">Preferred contact method</label>
-            <div class="pill-row" role="group" aria-label="Contact method">
-              <label class="pill"><input type="radio" name="contactMethod" value="email" checked> <span data-en="Email" data-fr="E-mail" data-de="E-Mail">Email</span></label>
-              <label class="pill"><input type="radio" name="contactMethod" value="phone"> <span data-en="Phone/WhatsApp" data-fr="Téléphone/WhatsApp" data-de="Telefon/WhatsApp">Phone/WhatsApp</span></label>
-            </div>
-          </div>
-          <div class="field">
-            <span class="hint" data-en="We reply within 1–2 business days." data-fr="Réponse sous 1–2 jours ouvrés." data-de="Antwort in 1–2 Werktagen.">We reply within 1–2 business days.</span>
-          </div>
+      <div class="fld">
+        <label for="topic" data-en="Topic" data-fr="Sujet" data-de="Thema">Topic</label>
+        <select id="topic" name="topic" required>
+          <option value="" data-en="Select a topic…" data-fr="Choisir un sujet…" data-de="Thema wählen…">Select a topic…</option>
+          <option value="it" data-en="IT Consultancy & Digital Transformation" data-fr="Conseil IT & Transformation numérique" data-de="IT-Beratung & Digitale Transformation">IT Consultancy &amp; Digital Transformation</option>
+          <option value="school" data-en="Masomo — School Management" data-fr="Masomo — Gestion scolaire" data-de="Masomo — Schulverwaltung">Masomo — School Management</option>
+          <option value="health" data-en="Afya — Digital Health" data-fr="Afya — Santé numérique" data-de="Afya — Digitale Gesundheit">Afya — Digital Health</option>
+          <option value="tuchati" data-en="TuChati — Congolese Chat App" data-fr="TuChati — Application de chat congolaise" data-de="TuChati — Kongolesische Chat-App">TuChati — Congolese Chat App</option>
+          <option value="legal" data-en="Legal Clinic & Advocacy" data-fr="Clinique juridique & Plaidoyer" data-de="Rechtsklinik & Advocacy">Legal Clinic &amp; Advocacy</option>
+          <option value="agri" data-en="Agriculture & Food Security" data-fr="Agriculture & Sécurité alimentaire" data-de="Landwirtschaft & Ernährungssicherheit">Agriculture &amp; Food Security</option>
+          <option value="volunteer" data-en="Volunteering / Donate devices" data-fr="Bénévolat / Donner des appareils" data-de="Ehrenamt / Geräte spenden">Volunteering / Donate devices</option>
+          <option value="other" data-en="Other" data-fr="Autre" data-de="Sonstiges">Other</option>
+        </select>
+        <div class="err-msg" id="topicErr"></div>
+      </div>
+
+      <div class="fld">
+        <label for="message" data-en="Your message" data-fr="Votre message" data-de="Ihre Nachricht">Your message</label>
+        <textarea id="message" name="message" required
+          placeholder="Tell us what you need help with…" data-en="Tell us what you need help with…" data-fr="Expliquez votre besoin…" data-de="Wobei brauchen Sie Hilfe?…"></textarea>
+        <div class="err-msg" id="msgErr"></div>
+      </div>
+
+      <div class="fld">
+        <label data-en="Preferred contact method" data-fr="Moyen de contact préféré" data-de="Bevorzugte Kontaktart">Preferred contact method</label>
+        <div class="method-group" role="group">
+          <label class="method-opt"><input type="radio" name="contactMethod" value="email" checked/> <span data-en="Email" data-fr="E-mail" data-de="E-Mail">Email</span></label>
+          <label class="method-opt"><input type="radio" name="contactMethod" value="whatsapp"/> <span data-en="WhatsApp" data-fr="WhatsApp" data-de="WhatsApp">WhatsApp</span></label>
+          <label class="method-opt"><input type="radio" name="contactMethod" value="phone"/> <span data-en="Phone call" data-fr="Appel téléphonique" data-de="Telefonanruf">Phone call</span></label>
         </div>
+      </div>
 
-        <!-- honeypot -->
-        <input type="text" name="website" id="website" style="display:none" tabindex="-1" autocomplete="off" />
+      <!-- Honeypot -->
+      <input type="text" name="website" id="website" style="display:none" tabindex="-1" autocomplete="off"/>
 
-        <button type="submit" class="btn btn-primary" id="submitBtn"
+      <div class="submit-row">
+        <button type="submit" class="btn btn-solid" id="submitBtn"
           data-en="Send message" data-fr="Envoyer le message" data-de="Nachricht senden">Send message</button>
+        <span class="submit-hint" data-en="We reply within 1–2 business days." data-fr="Réponse sous 1–2 jours ouvrés." data-de="Antwort in 1–2 Werktagen.">We reply within 1–2 business days.</span>
+      </div>
 
-        <div id="formSuccess" class="success"
-          data-en="Thanks! Your message has been recorded. We’ll get back to you soon."
-          data-fr="Merci ! Votre message a bien été enregistré. Nous revenons vers vous rapidement."
-          data-de="Danke! Ihre Nachricht wurde erfasst. Wir melden uns bald.">
-          Thanks! Your message has been recorded. We’ll get back to you soon.
-        </div>
-      </form>
+      <div class="form-success" id="formSuccess"
+        data-en="Message sent! We'll get back to you soon."
+        data-fr="Message envoyé ! Nous revenons vers vous bientôt."
+        data-de="Nachricht gesendet! Wir melden uns bald.">
+        Message sent! We'll get back to you soon.
+      </div>
+    </form>
 
-      <!-- SIDEBAR (fixed the “not good” part) -->
-      <aside class="glass card pad aside">
+    <!-- ═══ SIDEBAR ═══ -->
+    <aside class="sidebar">
+
+      <!-- Contact methods -->
+      <div class="side-card">
         <h3 data-en="Other ways to reach us" data-fr="Autres moyens de nous joindre" data-de="Weitere Kontaktwege">Other ways to reach us</h3>
-
-        <ul class="list-plain">
-          <li class="row">
-            <span class="badge">Email</span>
-            <a href="mailto:info@tuunganes.com" data-en="info@tuunganes.com" data-fr="info@tuunganes.com" data-de="info@tuunganes.com">info@tuunganes.com</a>
-          </li>
-          <li class="row">
-            <span class="badge">WhatsApp</span>
-            <a href="https://wa.me/+243972887465" target="_blank" rel="noopener">243 972 887 465</a>
-          </li>
-        </ul>
-
-        <div class="vsep" role="separator" aria-hidden="true"></div>
-
-        <h4 data-en="Looking for a demo?" data-fr="Vous souhaitez une démo ?" data-de="Demo gewünscht?">Looking for a demo?</h4>
-        <div class="link-stack">
-          <a class="link-btn" href="services/school-management.html">
-            <span data-en="Masomo   School Management" data-fr="Masomo   Gestion scolaire" data-de="Masomo   Schulverwaltung">Masomo   School Management</span>
-            <span class="chev">›</span>
-          </a>
-          <a class="link-btn" href="services/digital-health.html">
-            <span data-en="Afya   Digital Health" data-fr="Afya   Santé numérique" data-de="Afya   Digitale Gesundheit">Afya   Digital Health</span>
-            <span class="chev">›</span>
-          </a>
-          <a class="link-btn" href="services/it-consultancy.html">
-            <span data-en="IT & Cloud Consultancy" data-fr="Conseil IT & Cloud" data-de="IT- & Cloud-Beratung">IT & Cloud Consultancy</span>
-            <span class="chev">›</span>
-          </a>
-          <a class="link-btn" href="services/AgTech.html">
-            <span data-en="Agriculture & Food Security" data-fr="Agriculture & sécurité alimentaire" data-de="Landwirtschaft & Ernährungssicherheit">Agriculture & Food Security</span>
-            <span class="chev">›</span>
-          </a>
+        <div class="contact-method">
+          <div class="cm-icon">✉️</div>
+          <div>
+            <div class="cm-label">Email</div>
+            <div class="cm-value"><a href="mailto:info@tuunganes.com">info@tuunganes.com</a></div>
+          </div>
         </div>
+        <div class="contact-method">
+          <div class="cm-icon">💬</div>
+          <div>
+            <div class="cm-label">WhatsApp</div>
+            <div class="cm-value"><a href="https://wa.me/243972887465" target="_blank" rel="noopener">+243 972 887 465</a></div>
+          </div>
+        </div>
+        <div class="contact-method">
+          <div class="cm-icon">📍</div>
+          <div>
+            <div class="cm-label" data-en="Based in" data-fr="Basés à" data-de="Standort">Based in</div>
+            <div class="cm-value" data-en="Bukavu &amp; Goma, DRC" data-fr="Bukavu &amp; Goma, RDC" data-de="Bukavu &amp; Goma, DRK">Bukavu &amp; Goma, DRC</div>
+          </div>
+        </div>
+      </div>
 
-        <p class="muted" style="margin-top:.75rem"
-          data-en="Prefer email? Attach documents and photos if helpful."
-          data-fr="Vous préférez l’e-mail ? Joignez des documents ou photos si utile."
-          data-de="Lieber E-Mail? Fügen Sie bei Bedarf Dokumente/Fotos bei.">
-          Prefer email? Attach documents and photos if helpful.
-        </p>
-      </aside>
+      <!-- Demo links -->
+      <div class="side-card">
+        <h3 data-en="Looking for a demo?" data-fr="Vous souhaitez une démo ?" data-de="Demo gewünscht?">Looking for a demo?</h3>
+        <a class="demo-link" href="services/school-management.html">
+          <span><span class="dl-icon">🎓</span><span data-en="Masomo — School Management" data-fr="Masomo — Gestion scolaire" data-de="Masomo — Schulverwaltung">Masomo — School Management</span></span>
+          <span class="dl-arrow">→</span>
+        </a>
+        <a class="demo-link" href="services/digital-health.html">
+          <span><span class="dl-icon">🏥</span><span data-en="Afya — Digital Health" data-fr="Afya — Santé numérique" data-de="Afya — Digitale Gesundheit">Afya — Digital Health</span></span>
+          <span class="dl-arrow">→</span>
+        </a>
+        <a class="demo-link" href="https://tuchati.tuunganes.com/" target="_blank" rel="noopener">
+          <span><span class="dl-icon">💬</span><span data-en="TuChati — Congolese Chat App" data-fr="TuChati — App de chat congolaise" data-de="TuChati — Kongolesische Chat-App">TuChati — Congolese Chat App</span></span>
+          <span class="dl-arrow">→</span>
+        </a>
+        <a class="demo-link" href="services/it-consultancy.html">
+          <span><span class="dl-icon">💻</span><span data-en="IT Consultancy &amp; Cloud" data-fr="Conseil IT &amp; Cloud" data-de="IT- &amp; Cloud-Beratung">IT Consultancy &amp; Cloud</span></span>
+          <span class="dl-arrow">→</span>
+        </a>
+        <a class="demo-link" href="services/AgTech.html">
+          <span><span class="dl-icon">🌱</span><span data-en="Agriculture &amp; Food Security" data-fr="Agriculture &amp; Sécurité alimentaire" data-de="Landwirtschaft &amp; Ernährungssicherheit">Agriculture &amp; Food Security</span></span>
+          <span class="dl-arrow">→</span>
+        </a>
+      </div>
+
+      <!-- Response time note -->
+      <div class="side-card" style="background:var(--blue);border-color:var(--blue);padding:1.5rem">
+        <div style="font-size:1.6rem;margin-bottom:.65rem">⚡</div>
+        <div style="font-family:var(--display);font-size:1.05rem;font-weight:700;color:#fff;margin-bottom:.4rem" data-en="Fast response" data-fr="Réponse rapide" data-de="Schnelle Antwort">Fast response</div>
+        <p style="font-size:.85rem;color:rgba(255,255,255,.78);line-height:1.6" data-en="We typically reply within 1–2 business days. For urgent matters, reach us directly on WhatsApp." data-fr="Nous répondons généralement sous 1–2 jours ouvrés. Pour les urgences, contactez-nous directement sur WhatsApp." data-de="Wir antworten in der Regel innerhalb von 1–2 Werktagen. Für dringende Anliegen kontaktieren Sie uns direkt über WhatsApp.">We typically reply within 1–2 business days. For urgent matters, reach us directly on WhatsApp.</p>
+      </div>
+
+    </aside>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="frame foot">
+    <a href="index.html" class="foot-logo"><img src="assets/fevicon.png" alt="Tuunganes"/><span>Tuunganes</span></a>
+    <p>&copy; 2025 Tuunganes &nbsp;·&nbsp; Bukavu &amp; Goma, DRC</p>
+    <div style="display:flex;gap:1rem">
+      <a href="about.html" style="font-size:.82rem;color:var(--muted)" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+      <a href="services/services.html" style="font-size:.82rem;color:var(--muted)" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+      <a href="contact.html" style="font-size:.82rem;color:var(--blue)" data-en="Contact" data-fr="Contact" data-de="Kontakt">Contact</a>
     </div>
-  </section>
+  </div>
+</footer>
 
-  <!-- Global footer -->
-  <div id="site-footer"></div>
+<script>
+/* ── Theme: init before paint ── */
+(function(){
+  const s=localStorage.getItem('tuunganes-theme');
+  const dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  document.documentElement.setAttribute('data-theme',s||(dark?'dark':'light'));
+})();
 
-  <!-- Scripts -->
-  <script src="route/base.js" defer></script>
-  <script src="route/lang.js" defer></script>
-  <script src="route/animations.js" defer></script>
+document.addEventListener('DOMContentLoaded',function(){
+  const root=document.documentElement;
+  const themeBtn=document.getElementById('themeBtn');
+  function syncIcon(){themeBtn.textContent=root.getAttribute('data-theme')==='dark'?'☀️':'🌙'}
+  syncIcon();
+  themeBtn.addEventListener('click',function(){
+    const next=root.getAttribute('data-theme')==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);localStorage.setItem('tuunganes-theme',next);syncIcon();
+  });
 
-  <script>
-    // Client-side validation + lightweight "submit"
-    document.addEventListener('DOMContentLoaded', () => {
-      const f = document.getElementById('contactForm');
-      const success = document.getElementById('formSuccess');
-      const btn = document.getElementById('submitBtn');
+  /* ── Nav ── */
+  const hamBtn=document.getElementById('hamBtn');
+  const drawer=document.getElementById('drawer');
+  document.getElementById('drawerClose').addEventListener('click',()=>{drawer.classList.remove('open');hamBtn.setAttribute('aria-expanded','false')});
+  hamBtn.addEventListener('click',()=>{const o=drawer.classList.toggle('open');hamBtn.setAttribute('aria-expanded',String(o))});
+  document.addEventListener('click',e=>{if(!drawer.contains(e.target)&&!hamBtn.contains(e.target)){drawer.classList.remove('open');hamBtn.setAttribute('aria-expanded','false')}});
 
-      function tx(el){
-        const lang = localStorage.getItem('siteLang') || 'en';
-        return el?.getAttribute('data-' + lang) || el?.getAttribute('data-en') || '';
-      }
-
-      f.addEventListener('submit', (e) => {
-        e.preventDefault();
-        success.classList.remove('show');
-        if (document.getElementById('website').value.trim() !== '') return; // honeypot
-
-        const fullName = f.fullName.value.trim();
-        const email = f.email.value.trim();
-        const topic = f.topic.value;
-        const message = f.message.value.trim();
-
-        const errs = {
-          name:{en:'Please enter your name',fr:'Veuillez saisir votre nom',de:'Bitte geben Sie Ihren Namen ein'},
-          email:{en:'Please enter a valid email',fr:'Veuillez saisir un e-mail valide',de:'Bitte eine gültige E-Mail eingeben'},
-          topic:{en:'Please choose a topic',fr:'Veuillez choisir un sujet',de:'Bitte ein Thema wählen'},
-          msg:{en:'Please write a short message',fr:'Veuillez écrire un bref message',de:'Bitte schreiben Sie eine kurze Nachricht'}
-        };
-        const L = localStorage.getItem('siteLang') || 'en';
-
-        const nameErr = document.getElementById('nameErr');
-        const emailErr = document.getElementById('emailErr');
-        const topicErr = document.getElementById('topicErr');
-        const msgErr = document.getElementById('msgErr');
-        [nameErr,emailErr,topicErr,msgErr].forEach(e=>e.textContent='');
-
-        let ok = true;
-        if(!fullName){ nameErr.textContent = errs.name[L]; ok = false; }
-        if(!email || !/^\S+@\S+\.\S+$/.test(email)){ emailErr.textContent = errs.email[L]; ok=false; }
-        if(!topic){ topicErr.textContent = errs.topic[L]; ok=false; }
-        if(!message){ msgErr.textContent = errs.msg[L]; ok=false; }
-        if(!ok) return;
-
-        btn.disabled = true;
-        btn.textContent = {en:'Sending…',fr:'Envoi…',de:'Senden…'}[L];
-
-        // Simulate success; wire to your backend later
-        setTimeout(() => {
-          btn.disabled = false;
-          btn.textContent = tx(btn) || 'Send message';
-          f.reset();
-          success.textContent = tx(success);
-          success.classList.add('show');
-          // keep placeholders in current language
-          if (window.setLang) window.setLang(L);
-        }, 600);
-      });
+  /* ── Language ── */
+  function applyLang(lang){
+    localStorage.setItem('siteLang',lang);
+    document.querySelectorAll('.lang-pills button').forEach(b=>b.classList.toggle('on',b.dataset.lang===lang));
+    document.querySelectorAll('[data-'+lang+']').forEach(el=>{
+      const val=el.getAttribute('data-'+lang);if(!val)return;
+      if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){el.placeholder=val;return;}
+      if(el.tagName==='OPTION'){el.textContent=val;return;}
+      if(['H1','H2','H3'].includes(el.tagName)){el.innerHTML=val;return;}
+      if(!el.querySelector('[data-'+lang+']:not(script)')){el.textContent=val;}
     });
-  </script>
+  }
+  const saved=localStorage.getItem('siteLang')||'en';
+  document.querySelectorAll('.lang-pills [data-lang]').forEach(btn=>{
+    btn.addEventListener('click',()=>applyLang(btn.dataset.lang));
+    if(btn.dataset.lang===saved)btn.classList.add('on');
+  });
+
+  /* ── Scroll reveal ── */
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+  },{threshold:0.07});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+  /* ── Form validation ── */
+  const form=document.getElementById('contactForm');
+  const submitBtn=document.getElementById('submitBtn');
+  const formSuccess=document.getElementById('formSuccess');
+
+  const msgs={
+    name:{en:'Please enter your name',fr:'Veuillez saisir votre nom',de:'Bitte Ihren Namen eingeben'},
+    email:{en:'Please enter a valid email',fr:'Veuillez saisir un e-mail valide',de:'Bitte eine gültige E-Mail eingeben'},
+    topic:{en:'Please choose a topic',fr:'Veuillez choisir un sujet',de:'Bitte ein Thema wählen'},
+    msg:{en:'Please write a short message',fr:'Veuillez écrire un bref message',de:'Bitte schreiben Sie eine kurze Nachricht'},
+    sending:{en:'Sending…',fr:'Envoi…',de:'Senden…'}
+  };
+
+  function getL(){return localStorage.getItem('siteLang')||'en'}
+
+  function setErr(inputId,errId,msg){
+    const inp=document.getElementById(inputId);
+    const err=document.getElementById(errId);
+    if(msg){inp.classList.add('err');err.textContent=msg;err.classList.add('show');}
+    else{inp.classList.remove('err');err.textContent='';err.classList.remove('show');}
+  }
+
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    if(document.getElementById('website').value.trim()!=='')return;
+    formSuccess.classList.remove('show');
+
+    const L=getL();
+    const name=document.getElementById('fullName').value.trim();
+    const email=document.getElementById('email').value.trim();
+    const topic=document.getElementById('topic').value;
+    const message=document.getElementById('message').value.trim();
+
+    // clear
+    ['nameErr','emailErr','topicErr','msgErr'].forEach(id=>{
+      const err=document.getElementById(id);
+      err.textContent='';err.classList.remove('show');
+    });
+    ['fullName','email','topic','message'].forEach(id=>document.getElementById(id).classList.remove('err'));
+
+    let ok=true;
+    if(!name){setErr('fullName','nameErr',msgs.name[L]);ok=false;}
+    if(!email||!/^\S+@\S+\.\S+$/.test(email)){setErr('email','emailErr',msgs.email[L]);ok=false;}
+    if(!topic){setErr('topic','topicErr',msgs.topic[L]);ok=false;}
+    if(!message){setErr('message','msgErr',msgs.msg[L]);ok=false;}
+    if(!ok)return;
+
+    submitBtn.disabled=true;
+    const origText=submitBtn.textContent;
+    submitBtn.textContent=msgs.sending[L];
+
+    // Simulate async submit (wire to your backend here)
+    setTimeout(()=>{
+      submitBtn.disabled=false;
+      submitBtn.textContent=origText;
+      form.reset();
+      const successMsg=formSuccess.getAttribute('data-'+L)||formSuccess.getAttribute('data-en');
+      formSuccess.textContent=successMsg;
+      formSuccess.classList.add('show');
+      formSuccess.scrollIntoView({behavior:'smooth',block:'nearest'});
+    },700);
+  });
+});
+</script>
+<script src="route/base.js" defer></script>
+<script src="route/lang.js" defer></script>
+<script src="route/animations.js" defer></script>
 </body>
 </html>

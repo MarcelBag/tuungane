@@ -1,416 +1,546 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="color-scheme" content="light dark" />
-  <title
-    data-en="Afya Digital Health | Tuunganes"
-    data-fr="Afya Santé Numérique | Tuunganes"
-    data-de="Afya Digitale Gesundheit | Tuunganes">
-    Afya Digital Health | Tuunganes
-  </title>
-  <link rel="icon" href="../assets/fevicon.png" type="image/png" />
-  <link rel="stylesheet" href="../css/styles.css" />
-  <style>
-    .section{padding-block:clamp(2.25rem,5vw,3.5rem)}
-    .center{max-width:980px;margin-inline:auto}
-    .grid-2{display:grid;grid-template-columns:1.05fr .95fr;gap:1.2rem;align-items:center}
-    .grid-3{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
-    @media (max-width:960px){.grid-2{grid-template-columns:1fr}}
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<meta name="color-scheme" content="light dark"/>
+<title data-en="Afya Digital Health | Tuunganes" data-fr="Afya Santé Numérique | Tuunganes" data-de="Afya Digitale Gesundheit | Tuunganes">Afya Digital Health | Tuunganes</title>
+<link rel="icon" href="../assets/fevicon.png" type="image/png"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../css/styles.css"/>
+<style>
+:root{--blue:#2196f3;--blue-d:#1565c0;--blue-pale:rgba(33,150,243,.10);--blue-ring:rgba(33,150,243,.28);--ease:cubic-bezier(.4,0,.2,1);--display:'Playfair Display',Georgia,serif;--body:'DM Sans',system-ui,sans-serif}
+[data-theme="light"]{--bg:#f5f8ff;--bg2:#e8f2fe;--surf:#fff;--tx:#0a1628;--tx2:#253650;--muted:#5e7a96;--bdr:#c5daf2;--sh:0 1px 4px rgba(0,0,0,.05),0 8px 28px rgba(0,0,0,.07);--sh-lg:0 4px 40px rgba(0,0,0,.11)}
+[data-theme="dark"]{--bg:#050d1a;--bg2:#0b1725;--surf:#0f1c2e;--tx:#ecf3ff;--tx2:#a5c2de;--muted:#5a7898;--bdr:rgba(255,255,255,.07);--sh:0 2px 10px rgba(0,0,0,.45),0 12px 40px rgba(0,0,0,.3);--sh-lg:0 8px 48px rgba(0,0,0,.4)}
 
-    .hero--afya{padding-block:clamp(3rem,6vw,5rem)}
-    .eyebrow{letter-spacing:.06em;text-transform:uppercase;font-weight:800;color:var(--text-muted)}
-    .lede{color:var(--text-2);max-width:70ch}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--body);background:var(--bg);color:var(--tx);font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background .28s var(--ease),color .28s var(--ease)}
+a{color:inherit;text-decoration:none}
+img{display:block;max-width:100%}
+button{font-family:inherit}
+ul{list-style:none;padding:0;margin:0}
+.frame{width:min(1200px,94vw);margin:0 auto}
 
-    .imgframe{border-radius:16px;overflow:hidden;box-shadow:var(--shadow)}
-    .imgframe img{display:block;width:100%;height:auto;object-fit:cover}
+/* ── NAV ── */
+.nav{position:fixed;top:1rem;left:50%;transform:translateX(-50%);width:min(1100px,90vw);background:color-mix(in srgb,var(--surf) 82%,transparent);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border:1px solid var(--bdr);border-radius:999px;padding:.5rem .5rem .5rem 1.4rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;z-index:1000;box-shadow:var(--sh)}
+.nav-logo{display:flex;align-items:center;gap:.55rem;font-size:.95rem;font-weight:700;color:var(--tx);flex-shrink:0}
+.nav-logo img{width:30px;height:30px;border-radius:8px}
+.nav-links{display:flex;align-items:center;gap:.15rem;flex:1;justify-content:center}
+.nav-links a{padding:.42rem .85rem;border-radius:999px;font-size:.82rem;font-weight:600;color:var(--tx2);transition:color .15s,background .15s}
+.nav-links a:hover,.nav-links a.active{color:var(--blue);background:var(--blue-pale)}
+.nav-end{display:flex;align-items:center;gap:.45rem;flex-shrink:0}
+.lang-pills{display:flex;gap:.18rem;background:var(--bg2);border:1px solid var(--bdr);border-radius:999px;padding:.22rem .28rem}
+.lang-pills button{border:none;background:transparent;border-radius:999px;padding:.22rem .55rem;font-size:.74rem;font-weight:700;cursor:pointer;color:var(--muted);transition:background .15s,color .15s}
+.lang-pills button.on{background:var(--blue);color:#fff}
+.theme-pill{width:36px;height:36px;border-radius:999px;border:1px solid var(--bdr);background:var(--bg2);display:grid;place-items:center;cursor:pointer;font-size:.95rem;transition:border-color .15s,transform .2s}
+.theme-pill:hover{border-color:var(--blue);transform:rotate(20deg)}
+.nav-cta{background:var(--blue);color:#fff;border:none;padding:.48rem 1.15rem;border-radius:999px;font-size:.82rem;font-weight:600;cursor:pointer;transition:background .15s,transform .15s;white-space:nowrap}
+.nav-cta:hover{background:var(--blue-d);transform:translateY(-1px)}
+.ham{display:none;flex-direction:column;gap:4px;cursor:pointer;background:var(--bg2);border:1px solid var(--bdr);border-radius:999px;padding:.55rem .75rem}
+.ham span{display:block;width:18px;height:2px;background:var(--tx);border-radius:2px}
+.nav-drawer{display:none;position:fixed;inset:0;background:var(--surf);z-index:999;flex-direction:column;padding:2rem 1.75rem;gap:1.25rem}
+.nav-drawer.open{display:flex}
+.nav-drawer a{font-size:1.1rem;font-weight:600;color:var(--tx2);padding:.5rem 0;border-bottom:1px solid var(--bdr)}
+@media(max-width:720px){.ham{display:flex}.nav-links,.nav-end{display:none}}
 
-    .card.pad{padding:1rem 1.1rem}
-    .muted{color:var(--text-muted)}
-    .list{margin:.5rem 0 0 1.1rem}
-    .list li{margin:.35rem 0}
+/* ── BUTTONS ── */
+.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.72rem 1.65rem;border-radius:999px;border:none;cursor:pointer;font-size:.88rem;font-weight:600;transition:all .2s var(--ease);white-space:nowrap;font-family:var(--body)}
+.btn-solid{background:var(--blue);color:#fff;box-shadow:0 4px 16px rgba(33,150,243,.3)}
+.btn-solid:hover{background:var(--blue-d);transform:translateY(-2px);box-shadow:0 8px 24px rgba(33,150,243,.4)}
+.btn-ghost{background:transparent;color:var(--tx);border:1.5px solid var(--bdr)}
+.btn-ghost:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-1px)}
+.btn-w{background:#fff;color:var(--blue);font-weight:700}
+.btn-w:hover{background:#e3f2fd;transform:translateY(-1px)}
+.btn-wg{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}
+.btn-wg:hover{background:rgba(255,255,255,.1);border-color:#fff}
 
-    .chip-row{display:flex;flex-wrap:wrap;gap:.45rem;margin-top:.5rem}
-    .chip{border:1px solid var(--border);border-radius:999px;padding:.3rem .6rem;font-weight:600;background:color-mix(in hsl,var(--surface)92%,transparent)}
+/* ── HERO ── */
+.hero{min-height:100svh;display:grid;place-items:center;padding:8rem 0 5rem;background:var(--surf);border-bottom:1px solid var(--bdr);position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 70% at 85% 40%,rgba(33,150,243,.09) 0%,transparent 65%);pointer-events:none}
+[data-theme="dark"] .hero::before{background:radial-gradient(ellipse 55% 70% at 85% 40%,rgba(33,150,243,.16) 0%,transparent 65%)}
+.hero-wm{position:absolute;right:-2rem;bottom:-4rem;font-family:var(--display);font-size:40vw;font-weight:900;line-height:.8;color:var(--blue);opacity:.03;pointer-events:none;user-select:none}
+[data-theme="dark"] .hero-wm{opacity:.055}
+.hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:center;position:relative;z-index:1}
+@media(max-width:900px){.hero-inner{grid-template-columns:1fr}.hero-right{display:none}}
+.hero-pill{display:inline-flex;align-items:center;gap:.5rem;font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--blue);border:1.5px solid var(--blue-ring);border-radius:999px;padding:.35rem .9rem;margin-bottom:1.5rem}
+.hero-pill::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--blue)}
+.hero h1{font-family:var(--display);font-size:clamp(2.8rem,6.5vw,5rem);font-weight:900;line-height:1.02;letter-spacing:-.025em;color:var(--tx);margin-bottom:1.1rem}
+.hero h1 em{font-style:italic;color:var(--blue)}
+.hero-sub{font-size:1.05rem;color:var(--tx2);max-width:460px;line-height:1.75;margin-bottom:2rem}
+.hero-btns{display:flex;gap:.7rem;flex-wrap:wrap}
 
-    .steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
-    .step .num{width:2rem;height:2rem;display:inline-grid;place-items:center;border-radius:999px;border:1px solid var(--border);font-weight:800;margin-bottom:.35rem}
+/* hero right: photo */
+.hero-right{position:relative;height:460px}
+.hph{position:absolute;border-radius:20px;overflow:hidden;box-shadow:var(--sh-lg);border:1px solid var(--bdr)}
+.hph img{width:100%;height:100%;object-fit:cover}
+.hph-a{width:65%;top:0;right:0;height:290px}
+.hph-b{width:52%;bottom:0;left:0;height:250px}
+.hph-badge{position:absolute;bottom:100px;right:-12px;z-index:2;background:var(--blue);color:#fff;border-radius:14px;padding:.9rem 1.1rem;box-shadow:0 8px 28px rgba(33,150,243,.4)}
+.hph-badge strong{font-family:var(--display);font-size:1.5rem;font-weight:900;display:block;line-height:1}
+.hph-badge span{font-size:.72rem;opacity:.85}
 
-    .stat{display:flex;flex-direction:column;gap:.25rem;align-items:flex-start;padding:1rem;border:1px solid var(--border);background:var(--surface);border-radius:14px;box-shadow:var(--shadow)}
-    .stat strong{font-size:1.1rem;color:var(--brand)}
+/* ── SHARED ── */
+.sec{padding:7rem 0}
+.sec-dark{padding:7rem 0;background:var(--surf);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr)}
+.eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:.6rem}
+.display-h{font-family:var(--display);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;line-height:1.1;letter-spacing:-.02em;color:var(--tx);margin-bottom:.85rem}
+.display-h em{font-style:italic;color:var(--blue)}
 
-    .cta-band{margin-top:1rem;display:flex;gap:.8rem;flex-wrap:wrap;align-items:center;justify-content:space-between;
-      background:color-mix(in hsl,var(--surface)92%,transparent);border:1px solid var(--border);border-radius:16px;padding:1rem 1.1rem}
+/* ── WHY SPLIT ── */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--bdr);border-radius:24px;overflow:hidden;box-shadow:var(--sh-lg)}
+@media(max-width:820px){.why-grid{grid-template-columns:1fr}}
+.why-photo{position:relative;min-height:440px}
+.why-photo img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
+.why-photo::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(33,150,243,.25) 0%,transparent 55%)}
+.why-float{position:absolute;bottom:1.5rem;left:1.5rem;z-index:2;background:rgba(255,255,255,.13);backdrop-filter:blur(14px);border:1px solid rgba(255,255,255,.25);border-radius:14px;padding:1rem 1.3rem;color:#fff;max-width:calc(100% - 3rem)}
+.why-float p{font-size:.85rem;line-height:1.55;font-family:var(--display);font-style:italic;font-weight:700}
+.why-float cite{display:block;margin-top:.4rem;font-size:.72rem;font-family:var(--body);font-style:normal;opacity:.8}
+.why-copy{padding:3.5rem 3rem;background:var(--surf);display:flex;flex-direction:column;justify-content:center}
+@media(max-width:820px){.why-copy{padding:2.25rem 1.75rem}}
+.why-copy p{color:var(--tx2);font-size:.96rem;line-height:1.75;margin-bottom:.85rem}
 
-    details.card{padding:1rem;border-radius:14px;border:1px solid var(--border);background:var(--surface)}
-    details+details{margin-top:.6rem}
-    summary{cursor:pointer;font-weight:700}
-  </style>
+/* ── WHAT WE BUILD (numbered rows) ── */
+.build-list{margin-top:.25rem}
+.build-item{display:grid;grid-template-columns:60px 1fr auto;gap:0 1.75rem;align-items:start;padding:1.75rem 0;border-top:1px solid var(--bdr)}
+.build-item:last-child{border-bottom:1px solid var(--bdr)}
+.build-item:hover .build-n{color:var(--blue);opacity:1}
+@media(max-width:620px){.build-item{grid-template-columns:44px 1fr;gap:0 1rem}.build-icon{display:none}}
+.build-n{font-family:var(--display);font-size:2.2rem;font-weight:900;color:var(--tx);opacity:.1;line-height:1;letter-spacing:-.04em;padding-top:.1rem;transition:color .2s,opacity .2s}
+.build-body h3{font-family:var(--display);font-size:1.08rem;font-weight:700;color:var(--tx);margin-bottom:.35rem}
+.build-body p{font-size:.88rem;color:var(--tx2);line-height:1.6;max-width:520px;margin-bottom:.5rem}
+.chip-row{display:flex;flex-wrap:wrap;gap:.35rem}
+.chip{font-size:.75rem;font-weight:600;color:var(--blue);background:var(--blue-pale);border:1px solid var(--blue-ring);border-radius:999px;padding:.18rem .6rem}
+.build-icon{width:44px;height:44px;border-radius:12px;background:var(--blue-pale);border:1px solid var(--blue-ring);display:grid;place-items:center;font-size:1.15rem;flex-shrink:0;margin-top:.15rem}
+
+/* ── HOW IT WORKS ── */
+.steps-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:2rem}
+@media(max-width:820px){.steps-grid{grid-template-columns:1fr 1fr;gap:1.5rem 1rem}}
+@media(max-width:480px){.steps-grid{grid-template-columns:1fr}}
+
+/* connecting line */
+.steps-grid::before{
+  content:'';position:absolute;
+  top:22px;left:calc(12.5% + 12px);right:calc(12.5% + 12px);
+  height:2px;background:var(--bdr);
+  z-index:0;
+}
+@media(max-width:820px){.steps-grid::before{display:none}}
+
+.step-node{position:relative;z-index:1;padding-right:1.25rem}
+.step-dot-wrap{margin-bottom:1.1rem}
+.step-dot{
+  width:44px;height:44px;border-radius:50%;
+  background:var(--blue);color:#fff;
+  display:grid;place-items:center;
+  font-family:var(--display);font-size:1rem;font-weight:900;
+  border:3px solid var(--surf);
+  box-shadow:0 0 0 2px var(--blue);
+  transition:transform .25s var(--ease);
+}
+.step-node:hover .step-dot{transform:scale(1.15)}
+.step-node h3{font-family:var(--display);font-size:.95rem;font-weight:700;color:var(--tx);margin-bottom:.35rem}
+.step-node p{font-size:.83rem;color:var(--muted);line-height:1.55}
+
+/* ── PROGRAMS STRIP ── */
+.prog-strip{background:var(--blue);padding:5rem 0;position:relative;overflow:hidden}
+.prog-strip::before{content:'';position:absolute;right:-80px;top:-80px;width:340px;height:340px;border-radius:50%;background:rgba(255,255,255,.06)}
+.prog-strip::after{content:'';position:absolute;left:-60px;bottom:-70px;width:220px;height:220px;border-radius:50%;background:rgba(255,255,255,.04)}
+.prog-inner{display:grid;grid-template-columns:1fr 1.6fr;gap:4rem;align-items:center;position:relative;z-index:1}
+@media(max-width:820px){.prog-inner{grid-template-columns:1fr}}
+.prog-label{font-family:var(--display);font-size:clamp(2rem,5vw,3.2rem);font-weight:900;color:#fff;line-height:1.1;letter-spacing:-.03em}
+.prog-label em{font-style:italic;opacity:.65;font-size:.78em;display:block}
+.prog-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:.85rem}
+@media(max-width:480px){.prog-cards{grid-template-columns:1fr}}
+.prog-card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.18);border-radius:14px;padding:1.1rem 1rem}
+.prog-card h4{font-size:.88rem;font-weight:700;color:#fff;margin-bottom:.35rem}
+.prog-card p{font-size:.8rem;color:rgba(255,255,255,.72);line-height:1.55}
+
+/* ── TECH CHIPS ── */
+.tech-row{display:flex;flex-wrap:wrap;gap:.55rem;justify-content:center;margin-top:1.75rem}
+.tech-chip{font-size:.82rem;font-weight:600;color:var(--tx2);background:var(--surf);border:1.5px solid var(--bdr);border-radius:999px;padding:.32rem .85rem;box-shadow:var(--sh);transition:border-color .15s,color .15s}
+.tech-chip:hover{border-color:var(--blue-ring);color:var(--blue)}
+
+/* ── FAQ ── */
+.faq-list{max-width:800px;margin:0 auto}
+details.faq{border-bottom:1px solid var(--bdr)}
+details.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;padding:1.2rem 0;font-weight:700;font-size:.97rem;color:var(--tx);gap:1rem}
+details.faq summary::-webkit-details-marker{display:none}
+.faq-tog{width:26px;height:26px;border-radius:50%;border:1.5px solid var(--bdr);display:grid;place-items:center;font-size:1.15rem;color:var(--blue);flex-shrink:0;transition:background .2s}
+details.faq[open] .faq-tog{background:var(--blue);color:#fff;border-color:var(--blue)}
+.p-icon{display:block}.m-icon{display:none}
+details.faq[open] .p-icon{display:none}
+details.faq[open] .m-icon{display:block}
+details.faq .ans{font-size:.93rem;color:var(--tx2);padding-bottom:1.25rem;line-height:1.7}
+
+/* ── CTA BAND ── */
+.cta-band{background:var(--tx);border-radius:28px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;box-shadow:var(--sh-lg);min-height:300px}
+@media(max-width:820px){.cta-band{grid-template-columns:1fr}}
+.cta-left{padding:3.5rem 3rem;display:flex;flex-direction:column;justify-content:center}
+.cta-left .eyebrow{color:rgba(255,255,255,.45)}
+.cta-left h2{font-family:var(--display);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:.7rem;letter-spacing:-.02em}
+.cta-left p{color:rgba(255,255,255,.62);font-size:.93rem;line-height:1.7;margin-bottom:1.75rem;max-width:400px}
+.cta-btns{display:flex;gap:.65rem;flex-wrap:wrap}
+.cta-right{background:var(--blue);position:relative;overflow:hidden;min-height:220px}
+.cta-right::before{content:'';position:absolute;bottom:-70px;right:-70px;width:280px;height:280px;border-radius:50%;background:rgba(255,255,255,.09)}
+.cta-right::after{content:'';position:absolute;top:-50px;left:-50px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.06)}
+.cta-right-inner{position:relative;z-index:1;height:100%;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:3rem 2.5rem;gap:.75rem}
+.cta-big{font-family:var(--display);font-size:clamp(3rem,7vw,5.5rem);font-weight:900;color:#fff;line-height:.9;letter-spacing:-.04em}
+.cta-right-inner p{color:rgba(255,255,255,.72);font-size:.88rem}
+
+/* ── FOOTER ── */
+.foot{padding:2.25rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:1px solid var(--bdr)}
+.foot-logo{display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:.95rem;color:var(--tx)}
+.foot-logo img{width:28px;height:28px;border-radius:7px}
+.foot p{font-size:.8rem;color:var(--muted)}
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
+.hero .hero-pill{animation:fadeUp .7s var(--ease) both}
+.hero h1{animation:fadeUp .8s .1s var(--ease) both}
+.hero .hero-sub{animation:fadeUp .8s .2s var(--ease) both}
+.hero .hero-btns{animation:fadeUp .8s .3s var(--ease) both}
+.hero-right{animation:fadeUp .9s .15s var(--ease) both}
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
+.reveal.in{opacity:1;transform:translateY(0)}
+</style>
 </head>
 <body>
-  <!-- Header injected by base.js -->
-  <div id="site-header"></div>
-  <!-- ================= HERO ================= -->
-  <section class="hero hero--afya reveal in">
-    <div class="container center">
-      <div class="eyebrow"
-           data-en="Afya by Tuunganes"
-           data-fr="Afya par Tuunganes"
-           data-de="Afya von Tuunganes">Afya by Tuunganes</div>
 
-      <h1
-        data-en="Digital Health for All"
-        data-fr="La santé numérique pour tous"
-        data-de="Digitale Gesundheit für alle">
-        Digital Health for All
-      </h1>
-      <p class="lede"
-         data-en="Connecting families in rural Congo to clinicians through telehealth, mobile education and data-driven tools  designed for low-connectivity environments."
-         data-fr="Relier les familles en zones rurales du Congo aux cliniciens via la télémédecine, l’éducation mobile et des outils guidés par les données  conçus pour les environnements à faible connectivité."
-         data-de="Familien im ländlichen Kongo per Telemedizin, mobiler Aufklärung und datengestützten Tools mit Kliniker:innen verbinden  ausgelegt für geringe Konnektivität.">
-        Connecting families in rural Congo to clinicians through telehealth, mobile education and data-driven tools  designed for low-connectivity environments.
-      </p>
-      <div class="hero-ctas" style="margin-top:.9rem;display:flex;gap:.8rem;flex-wrap:wrap">
-        <a href="https://afya.tuunganes.com" target="_blank" rel="noopener" class="btn btn-primary"
-           data-en="Explore Afya"
-           data-fr="Explorer Afya"
-           data-de="Afya entdecken">Explore Afya</a>
-        <a href="../contact.html" class="btn btn-ghost"
-           data-en="Talk to our team"
-           data-fr="Parler à notre équipe"
-           data-de="Mit unserem Team sprechen">Talk to our team</a>
+<!-- DRAWER -->
+<nav class="nav-drawer" id="drawer">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+    <span style="font-weight:700;font-size:1rem">Tuunganes</span>
+    <button id="drawerClose" style="background:transparent;border:none;font-size:1.4rem;cursor:pointer;color:var(--tx)">✕</button>
+  </div>
+  <a href="../index.html" data-en="Home" data-fr="Accueil" data-de="Start">Home</a>
+  <a href="../about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+  <a href="services.html" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+  <a href="../contact.html" class="btn btn-solid" style="justify-content:center;margin-top:.5rem">Contact us</a>
+</nav>
+
+<!-- NAV -->
+<header class="nav">
+  <a href="../index.html" class="nav-logo"><img src="../assets/fevicon.png" alt="Tuunganes"/><span>Tuunganes</span></a>
+  <nav class="nav-links">
+    <a href="../about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+    <a href="services.html" class="active" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+    <a href="../index.html#impact" data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
+    <a href="../index.html#join" data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</a>
+  </nav>
+  <div class="nav-end">
+    <div class="lang-pills" role="group">
+      <button type="button" data-lang="en" class="on">EN</button>
+      <button type="button" data-lang="fr">FR</button>
+      <button type="button" data-lang="de">DE</button>
+    </div>
+    <button id="themeBtn" class="theme-pill" aria-label="Toggle theme">🌙</button>
+    <a href="../contact.html" class="nav-cta" data-en="Contact" data-fr="Contact" data-de="Kontakt">Contact</a>
+    <button class="ham" id="hamBtn" aria-label="Menu" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ═══ HERO ═══ -->
+<section class="hero">
+  <div class="hero-wm" aria-hidden="true">A</div>
+  <div class="frame">
+    <div class="hero-inner">
+      <div>
+        <div class="hero-pill" data-en="Afya by Tuunganes" data-fr="Afya par Tuunganes" data-de="Afya von Tuunganes">Afya by Tuunganes</div>
+        <h1
+          data-en="Health care<br>for every<br><em>last mile.</em>"
+          data-fr="Des soins de santé<br>pour chaque<br><em>dernier kilomètre.</em>"
+          data-de="Gesundheitsversorgung<br>für jeden<br><em>letzten Kilometer.</em>">
+          Health care<br>for every<br><em>last mile.</em>
+        </h1>
+        <p class="hero-sub"
+          data-en="Connecting families in rural Congo to clinicians through telehealth, mobile education, and data-driven tools — built for low-connectivity environments."
+          data-fr="Relier les familles rurales du Congo aux cliniciens via la télémédecine, l'éducation mobile et des outils guidés par les données — conçus pour les environnements à faible connectivité."
+          data-de="Familien im ländlichen Kongo mit Kliniker:innen verbinden — durch Telemedizin, mobile Aufklärung und datengestützte Tools für schwache Konnektivität.">
+          Connecting families in rural Congo to clinicians through telehealth, mobile education, and data-driven tools — built for low-connectivity environments.
+        </p>
+        <div class="hero-btns">
+          <a href="https://afya.tuunganes.com" target="_blank" rel="noopener" class="btn btn-solid" data-en="Explore Afya" data-fr="Explorer Afya" data-de="Afya entdecken">Explore Afya</a>
+          <a href="../contact.html" class="btn btn-ghost" data-en="Talk to our team" data-fr="Parler à notre équipe" data-de="Mit unserem Team sprechen">Talk to our team</a>
+        </div>
+      </div>
+      <div class="hero-right" aria-hidden="true">
+        <div class="hph hph-a"><img src="../assets/all.jpeg" alt=""/></div>
+        <div class="hph hph-b"><img src="../assets/kids.jpg" alt=""/></div>
+        <div class="hph-badge">
+          <strong data-en="Offline-first" data-fr="Hors ligne d'abord" data-de="Offline-First">Offline-first</strong>
+          <span data-en="Works anywhere" data-fr="Fonctionne partout" data-de="Funktioniert überall">Works anywhere</span>
+        </div>
       </div>
     </div>
-  </section>
-  <!-- ================= WHY IT MATTERS (split) ================= -->
-  <section class="section reveal in">
-    <div class="container grid-2">
-      <div class="card pad">
-        <h2
-          data-en="Why it matters in Congo"
-          data-fr="Pourquoi c’est essentiel au Congo"
-          data-de="Warum es im Kongo wichtig ist">
-          Why it matters in Congo
-        </h2>
-        <p
-          data-en="In Eastern DRC, many families walk hours for basic care. Preventable diseases such as malaria and malnutrition remain common, and health information is often hard to access."
-          data-fr="À l’Est de la RDC, de nombreuses familles marchent des heures pour des soins de base. Des maladies évitables comme le paludisme et la malnutrition restent fréquentes, et l’information sanitaire est difficile d’accès."
-          data-de="Im Osten der DR Kongo laufen viele Familien stundenlang zur Basisversorgung. Vermeidbare Krankheiten wie Malaria und Mangelernährung sind verbreitet, Gesundheitsinformationen oft schwer zugänglich.">
-          In Eastern DRC, many families walk hours for basic care…
-        </p>
-        <p class="muted"
-          data-en="Afya blends teleconsultations, community-based data collection and mobile education to bring timely advice and follow-up to the last mile."
-          data-fr="Afya combine téléconsultations, collecte de données communautaires et éducation mobile pour apporter des conseils et un suivi jusqu’au dernier kilomètre."
-          data-de="Afya verbindet Telekonsultationen, gemeinschaftsnahe Datenerhebung und mobile Aufklärung, um Beratung und Nachsorge bis in die entlegensten Gebiete zu bringen.">
-          Afya blends teleconsultations, community data and mobile education…
-        </p>
+  </div>
+</section>
+
+<!-- ═══ WHY IT MATTERS ═══ -->
+<section class="sec reveal" id="why">
+  <div class="frame">
+    <div class="why-grid">
+      <div class="why-photo">
+        <img src="../assets/all.jpeg" alt="Community health in Eastern DRC" loading="lazy"/>
+        <div class="why-float">
+          <p data-en="&ldquo;Many families walk hours just to reach a basic clinic. Afya brings care to them.&rdquo;" data-fr="&ldquo;Beaucoup de familles marchent des heures pour atteindre une clinique. Afya leur apporte les soins.&rdquo;" data-de="&ldquo;Viele Familien laufen stundenlang zu einer Klinik. Afya bringt die Versorgung zu ihnen.&rdquo;">&ldquo;Many families walk hours just to reach a basic clinic. Afya brings care to them.&rdquo;</p>
+          <cite>Tuunganes Health Team</cite>
+        </div>
       </div>
-
-      <figure class="imgframe">
-        <img src="../assets/all.jpeg" alt="Community digital health in Eastern DRC" loading="lazy">
-      </figure>
+      <div class="why-copy">
+        <span class="eyebrow" data-en="The challenge" data-fr="Le défi" data-de="Die Herausforderung">The challenge</span>
+        <h2 class="display-h" data-en="Eastern DRC<br>needs <em>better health.</em>" data-fr="L'Est de la RDC a<br>besoin d'une <em>meilleure santé.</em>" data-de="OstdRC braucht<br><em>bessere Gesundheit.</em>">Eastern DRC<br>needs <em>better health.</em></h2>
+        <p data-en="In Eastern DRC, many families walk hours for basic care. Preventable diseases like malaria and malnutrition remain common, and health information is often hard to access in remote and conflict-affected areas." data-fr="Dans l'Est de la RDC, de nombreuses familles marchent des heures pour des soins de base. Des maladies évitables comme le paludisme et la malnutrition restent fréquentes, et l'information sanitaire est difficile d'accès dans les zones reculées et touchées par les conflits." data-de="Im Osten der DRK laufen viele Familien stundenlang für Grundversorgung. Vermeidbare Krankheiten wie Malaria bleiben verbreitet, Gesundheitsinformationen sind oft schwer zugänglich.">In Eastern DRC, many families walk hours for basic care. Preventable diseases like malaria and malnutrition remain common, and health information is often hard to access in remote and conflict-affected areas.</p>
+        <p data-en="Afya blends teleconsultations, community-based data collection, and mobile education to bring timely advice and follow-up care to the last mile — even without a stable internet connection." data-fr="Afya combine téléconsultations, collecte de données communautaires et éducation mobile pour apporter des conseils et un suivi jusqu'au dernier kilomètre — même sans connexion internet stable." data-de="Afya verbindet Telekonsultationen, gemeinschaftsnahe Datenerhebung und mobile Aufklärung — auch ohne stabile Internetverbindung.">Afya blends teleconsultations, community-based data collection, and mobile education to bring timely advice and follow-up care to the last mile — even without a stable internet connection.</p>
+        <div style="display:flex;gap:.65rem;flex-wrap:wrap;margin-top:1.25rem">
+          <a href="https://afya.tuunganes.com" target="_blank" rel="noopener" class="btn btn-solid" data-en="Visit Afya" data-fr="Visiter Afya" data-de="Afya besuchen">Visit Afya</a>
+          <a href="../contact.html" class="btn btn-ghost" data-en="Book a call" data-fr="Réserver un appel" data-de="Gespräch buchen">Book a call</a>
+        </div>
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ================= WHAT WE BUILD ================= -->
-  <section class="section reveal in">
-    <div class="container">
-      <h2
-        data-en="What we build"
-        data-fr="Ce que nous construisons"
-        data-de="Was wir entwickeln">
-        What we build
-      </h2>
-
-      <div class="grid-3">
-        <article class="card pad">
-          <h3 data-en="Telehealth & Triage" data-fr="Télésanté & triage" data-de="Telemedizin & Triage">Telehealth & Triage</h3>
-          <p class="muted"
-            data-en="Community health workers capture symptoms offline; clinicians review and advise by phone or chat."
-            data-fr="Les agents de santé collectent les symptômes hors ligne ; les cliniciens analysent et conseillent par téléphone ou messagerie."
-            data-de="Community-Health-Worker erfassen Symptome offline; Kliniker:innen beraten per Telefon oder Chat.">
-            CHWs collect offline; clinicians advise remotely.
-          </p>
-        </article>
-
-        <article class="card pad">
+<!-- ═══ WHAT WE BUILD ═══ -->
+<section class="sec-dark reveal" id="features">
+  <div class="frame">
+    <div style="display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:1rem;margin-bottom:.5rem">
+      <div>
+        <span class="eyebrow" data-en="Our tools" data-fr="Nos outils" data-de="Unsere Tools">Our tools</span>
+        <h2 class="display-h" style="margin-bottom:0" data-en="What we build<br><em>for health.</em>" data-fr="Ce que nous construisons<br><em>pour la santé.</em>" data-de="Was wir für<br><em>Gesundheit bauen.</em>">What we build<br><em>for health.</em></h2>
+      </div>
+      <a href="https://afya.tuunganes.com" target="_blank" rel="noopener" class="btn btn-ghost" style="margin-bottom:.2rem" data-en="See Afya live →" data-fr="Voir Afya en direct →" data-de="Afya live ansehen →">See Afya live →</a>
+    </div>
+    <div class="build-list">
+      <div class="build-item">
+        <div class="build-n">01</div>
+        <div class="build-body">
+          <h3 data-en="Telehealth &amp; Triage" data-fr="Télésanté &amp; Triage" data-de="Telemedizin &amp; Triage">Telehealth &amp; Triage</h3>
+          <p data-en="Community health workers capture symptoms offline; clinicians review cases and advise families by phone or chat — no hospital visit required." data-fr="Les agents de santé communautaires collectent les symptômes hors ligne ; les cliniciens examinent les cas et conseillent les familles par téléphone ou messagerie." data-de="Community Health Worker erfassen Symptome offline; Kliniker:innen prüfen Fälle und beraten Familien per Telefon oder Chat.">Community health workers capture symptoms offline; clinicians review cases and advise families by phone or chat — no hospital visit required.</p>
+        </div>
+        <div class="build-icon">🩺</div>
+      </div>
+      <div class="build-item">
+        <div class="build-n">02</div>
+        <div class="build-body">
           <h3 data-en="Mobile Health Education" data-fr="Éducation santé mobile" data-de="Mobile Gesundheitsaufklärung">Mobile Health Education</h3>
-          <p class="muted"
-            data-en="SMS/WhatsApp campaigns for malaria, nutrition, vaccination and maternal health."
-            data-fr="Campagnes SMS/WhatsApp: paludisme, nutrition, vaccination et santé maternelle."
-            data-de="SMS/WhatsApp-Kampagnen zu Malaria, Ernährung, Impfungen und Müttergesundheit.">
-            SMS/WhatsApp campaigns on priority topics.
-          </p>
-        </article>
-
-        <article class="card pad">
-          <h3 data-en="Maternal & Child Health" data-fr="Santé maternelle & infantile" data-de="Mütter- & Kindergesundheit">Maternal & Child Health</h3>
-          <p class="muted"
-            data-en="Digital reminders for ANC/PNC visits, growth monitoring and danger sign alerts."
-            data-fr="Rappels numériques pour CPN/CPoN, suivi de croissance et alertes de signes de danger."
-            data-de="Digitale Erinnerungen für Vor-/Nachsorge, Wachstumskontrolle und Warnzeichen.">
-            Digital reminders and growth tracking.
-          </p>
-        </article>
-
-        <article class="card pad">
-          <h3 data-en="Data & Early Warning" data-fr="Données & alerte précoce" data-de="Daten & Frühwarnung">Data & Early Warning</h3>
-          <p class="muted"
-            data-en="KoboToolbox forms plus dashboards (Power BI/Looker) spot trends and trigger outreach."
-            data-fr="Formulaires KoboToolbox + tableaux de bord (Power BI/Looker) pour détecter les tendances et déclencher l’action."
-            data-de="KoboToolbox-Formulare und Dashboards (Power BI/Looker) erkennen Trends und lösen Maßnahmen aus.">
-            Kobo + dashboards for outreach.
-          </p>
-          <div class="chip-row">
-            <span class="chip">KoboToolbox</span><span class="chip">Power BI</span><span class="chip">Looker Studio</span>
-          </div>
-        </article>
-
-        <article class="card pad">
-          <h3 data-en="Clinic Tools" data-fr="Outils pour cliniques" data-de="Tools für Kliniken">Clinic Tools</h3>
-          <p class="muted"
-            data-en="Patient lists, follow-up queues and secure notes; exports to DHIS2 where available."
-            data-fr="Listes de patients, files de suivi et notes sécurisées ; exports vers DHIS2 lorsque disponible."
-            data-de="Patientenlisten, Nachverfolgung, sichere Notizen; Export nach DHIS2 (wo verfügbar).">
-            Patient lists, follow-up and exports.
-          </p>
-          <div class="chip-row">
-            <span class="chip">DHIS2 (where available)</span><span class="chip">CSV/Excel</span>
-          </div>
-        </article>
-
-        <article class="card pad">
-          <h3 data-en="Offline & Low-Bandwidth" data-fr="Hors ligne & bas débit" data-de="Offline & geringe Bandbreite">Offline & Low-Bandwidth</h3>
-          <p class="muted"
-            data-en="Works offline-first on Android devices; syncs when signal returns; data encrypted in transit."
-            data-fr="Fonctionne hors ligne sur Android ; synchronisation lorsque le réseau revient ; données chiffrées en transit."
-            data-de="Offline-first auf Android; Synchronisation bei Signal; Daten verschlüsselt während der Übertragung.">
-            Offline-first, secure sync.
-          </p>
-        </article>
+          <p data-en="SMS and WhatsApp campaigns on malaria, nutrition, vaccination, and maternal health — reaching families who can't read, in their local language." data-fr="Campagnes SMS et WhatsApp sur le paludisme, la nutrition, la vaccination et la santé maternelle — atteignant les familles dans leur langue locale." data-de="SMS- und WhatsApp-Kampagnen zu Malaria, Ernährung, Impfungen und Müttergesundheit — in der Lokalsprache.">SMS and WhatsApp campaigns on malaria, nutrition, vaccination, and maternal health — reaching families who can't read, in their local language.</p>
+          <div class="chip-row"><span class="chip">WhatsApp</span><span class="chip">SMS</span></div>
+        </div>
+        <div class="build-icon">📱</div>
+      </div>
+      <div class="build-item">
+        <div class="build-n">03</div>
+        <div class="build-body">
+          <h3 data-en="Maternal &amp; Child Health" data-fr="Santé maternelle &amp; infantile" data-de="Mütter- &amp; Kindergesundheit">Maternal &amp; Child Health</h3>
+          <p data-en="Digital reminders for antenatal and postnatal visits, growth monitoring, and automated danger sign alerts — keeping mothers and newborns safe." data-fr="Rappels numériques pour les visites prénatales et postnatales, le suivi de croissance et les alertes de signes de danger — pour protéger mères et nouveau-nés." data-de="Digitale Erinnerungen für Vor-/Nachsorgetermine, Wachstumskontrolle und Warnzeichenalarme — für sichere Mütter und Neugeborene.">Digital reminders for antenatal and postnatal visits, growth monitoring, and automated danger sign alerts — keeping mothers and newborns safe.</p>
+        </div>
+        <div class="build-icon">🤱</div>
+      </div>
+      <div class="build-item">
+        <div class="build-n">04</div>
+        <div class="build-body">
+          <h3 data-en="Data Collection &amp; Early Warning" data-fr="Collecte de données &amp; Alerte précoce" data-de="Datenerfassung &amp; Frühwarnung">Data Collection &amp; Early Warning</h3>
+          <p data-en="KoboToolbox forms for community surveys. Power BI and Looker Studio dashboards surface trends, triggering targeted outreach before issues become crises." data-fr="Formulaires KoboToolbox pour les enquêtes communautaires. Les tableaux de bord Power BI et Looker Studio révèlent les tendances pour déclencher l'action." data-de="KoboToolbox-Formulare für Gemeinschaftserhebungen. Power BI und Looker Studio erkennen Trends und lösen gezielten Einsatz aus.">KoboToolbox forms for community surveys. Power BI and Looker Studio dashboards surface trends, triggering targeted outreach before issues become crises.</p>
+          <div class="chip-row"><span class="chip">KoboToolbox</span><span class="chip">Power BI</span><span class="chip">Looker Studio</span></div>
+        </div>
+        <div class="build-icon">📊</div>
+      </div>
+      <div class="build-item">
+        <div class="build-n">05</div>
+        <div class="build-body">
+          <h3 data-en="Clinic Tools &amp; DHIS2 Export" data-fr="Outils pour cliniques &amp; Export DHIS2" data-de="Klinik-Tools &amp; DHIS2-Export">Clinic Tools &amp; DHIS2 Export</h3>
+          <p data-en="Patient lists, follow-up queues, and secure clinical notes — with export to DHIS2 where available, and CSV/Excel for all other cases." data-fr="Listes de patients, files de suivi et notes cliniques sécurisées — avec export vers DHIS2 ou CSV/Excel." data-de="Patientenlisten, Nachverfolgungswarteschlangen und sichere Notizen — mit Export nach DHIS2 oder CSV/Excel.">Patient lists, follow-up queues, and secure clinical notes — with export to DHIS2 where available, and CSV/Excel for all other cases.</p>
+          <div class="chip-row"><span class="chip">DHIS2</span><span class="chip">CSV/Excel</span></div>
+        </div>
+        <div class="build-icon">🏥</div>
+      </div>
+      <div class="build-item">
+        <div class="build-n">06</div>
+        <div class="build-body">
+          <h3 data-en="Offline &amp; Low-Bandwidth First" data-fr="Hors ligne &amp; Faible débit d'abord" data-de="Offline &amp; Geringe Bandbreite zuerst">Offline &amp; Low-Bandwidth First</h3>
+          <p data-en="Everything works offline-first on Android devices. Data is encrypted in transit and syncs automatically the moment a connection is available." data-fr="Tout fonctionne hors ligne sur Android. Les données sont chiffrées en transit et se synchronisent automatiquement dès qu'une connexion est disponible." data-de="Alles offline-first auf Android. Daten verschlüsselt in Transit und automatische Synchronisation bei Verbindung.">Everything works offline-first on Android devices. Data is encrypted in transit and syncs automatically the moment a connection is available.</p>
+          <div class="chip-row"><span class="chip">Android</span><span class="chip">Offline-first</span><span class="chip">E2E encrypted</span></div>
+        </div>
+        <div class="build-icon">📡</div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ================= HOW IT WORKS ================= -->
-  <section class="section reveal in">
-    <div class="container">
-      <h2
-        data-en="How it works"
-        data-fr="Comment ça marche"
-        data-de="So funktioniert es">
-        How it works
-      </h2>
-      <div class="steps">
-        <div class="card pad step">
-          <div class="num">1</div>
-          <h3 data-en="Community Intake" data-fr="Accueil communautaire" data-de="Community Intake">Community Intake</h3>
-          <p class="muted"
-             data-en="CHW screens and records symptoms offline; severe cases flagged immediately."
-             data-fr="ASC évalue et enregistre hors ligne ; cas graves signalés immédiatement."
-             data-de="CHW erfasst offline; schwere Fälle sofort markiert.">
-            CHW screens & records.
-          </p>
-        </div>
-        <div class="card pad step">
-          <div class="num">2</div>
-          <h3 data-en="Clinician Review" data-fr="Revue clinicien" data-de="Ärztliche Prüfung">Clinician Review</h3>
-          <p class="muted"
-             data-en="Nurse/doctor reviews the case and calls/texts the family or CHW."
-             data-fr="Infirmier·e/médecin examine le dossier et contacte famille ou ASC."
-             data-de="Pflege/Ärzt:in prüft den Fall und kontaktiert Familie oder CHW.">
-            Nurse/doctor contacts.
-          </p>
-        </div>
-        <div class="card pad step">
-          <div class="num">3</div>
-          <h3 data-en="Guidance & Referral" data-fr="Conseil & orientation" data-de="Beratung & Überweisung">Guidance & Referral</h3>
-          <p class="muted"
-             data-en="Care advice is given; urgent cases referred to nearest facility."
-             data-fr="Conseils prodigués ; cas urgents orientés vers la structure la plus proche."
-             data-de="Beratung; dringende Fälle an nächste Einrichtung überwiesen.">
-            Advice + urgent referrals.
-          </p>
-        </div>
-        <div class="card pad step">
-          <div class="num">4</div>
-          <h3 data-en="Follow-up & Education" data-fr="Suivi & éducation" data-de="Nachsorge & Aufklärung">Follow-up & Education</h3>
-          <p class="muted"
-             data-en="Automated reminders and targeted SMS/WhatsApp education for the family."
-             data-fr="Rappels automatisés et messages d’éducation ciblés pour la famille."
-             data-de="Automatische Erinnerungen und gezielte Aufklärung per SMS/WhatsApp.">
-            Reminders + education.
-          </p>
-        </div>
+<!-- ═══ HOW IT WORKS ═══ -->
+<section class="sec reveal" id="how">
+  <div class="frame">
+    <span class="eyebrow" data-en="The process" data-fr="Le processus" data-de="Der Prozess">The process</span>
+    <h2 class="display-h" data-en="How Afya<br><em>works.</em>" data-fr="Comment Afya<br><em>fonctionne.</em>" data-de="Wie Afya<br><em>funktioniert.</em>">How Afya<br><em>works.</em></h2>
+    <div class="steps-grid">
+      <div class="step-node">
+        <div class="step-dot-wrap"><div class="step-dot">1</div></div>
+        <h3 data-en="Community intake" data-fr="Accueil communautaire" data-de="Community Intake">Community intake</h3>
+        <p data-en="A community health worker screens and records symptoms offline. Severe cases are flagged immediately for urgent review." data-fr="Un agent de santé communautaire évalue et enregistre hors ligne. Les cas graves sont signalés immédiatement." data-de="Ein Community Health Worker erfasst offline. Schwere Fälle werden sofort markiert.">A community health worker screens and records symptoms offline. Severe cases are flagged immediately.</p>
       </div>
+      <div class="step-node">
+        <div class="step-dot-wrap"><div class="step-dot">2</div></div>
+        <h3 data-en="Clinician review" data-fr="Revue clinicienne" data-de="Ärztliche Prüfung">Clinician review</h3>
+        <p data-en="A nurse or doctor reviews the submitted case and contacts the family or CHW directly by phone or in-app message." data-fr="Une infirmière ou un médecin examine le dossier soumis et contacte la famille ou l'ASC directement." data-de="Eine Pflegerin oder ein Arzt prüft den Fall und kontaktiert die Familie oder den CHW direkt.">A nurse or doctor reviews the case and contacts the family or CHW directly by phone or message.</p>
+      </div>
+      <div class="step-node">
+        <div class="step-dot-wrap"><div class="step-dot">3</div></div>
+        <h3 data-en="Guidance &amp; referral" data-fr="Conseil &amp; orientation" data-de="Beratung &amp; Überweisung">Guidance &amp; referral</h3>
+        <p data-en="Care advice is given remotely. Urgent cases are referred to the nearest health facility with a pre-filled referral slip." data-fr="Les conseils sont donnés à distance. Les cas urgents sont orientés vers la structure la plus proche avec un bon de référence pré-rempli." data-de="Fernberatung. Dringende Fälle werden mit ausgefülltem Überweisungsschein weitergeleitet.">Care advice is given remotely. Urgent cases are referred to the nearest facility with a pre-filled referral slip.</p>
+      </div>
+      <div class="step-node">
+        <div class="step-dot-wrap"><div class="step-dot">4</div></div>
+        <h3 data-en="Follow-up &amp; education" data-fr="Suivi &amp; éducation" data-de="Nachsorge &amp; Aufklärung">Follow-up &amp; education</h3>
+        <p data-en="Automated SMS and WhatsApp reminders keep the family informed and on track with treatment, vaccinations, and follow-up visits." data-fr="Des rappels SMS et WhatsApp automatisés gardent la famille informée et à jour sur le traitement et les visites de suivi." data-de="Automatische SMS/WhatsApp-Erinnerungen halten die Familie über Behandlung und Nachsorgetermine auf dem Laufenden.">Automated reminders keep the family on track with treatment, vaccinations, and follow-up visits.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-      <div class="cta-band">
-        <p class="muted"
-          data-en="See the live Afya platform, use demo data, or talk to us about pilots."
-          data-fr="Découvrez la plateforme Afya, utilisez des données de démo ou parlons d’un pilote."
-          data-de="Sehen Sie sich Afya live an, nutzen Sie Demodaten oder sprechen Sie mit uns über Pilotprojekte.">
-          See the live Afya platform, use demo data, or talk to us about pilots.
-        </p>
-        <div class="hero-ctas">
-          <a href="https://afya.tuunganes.com" target="_blank" rel="noopener" class="btn btn-primary"
-             data-en="Open Afya"
-             data-fr="Ouvrir Afya"
-             data-de="Afya öffnen">Open Afya</a>
-          <a href="../contact.html" class="btn btn-ghost"
-             data-en="Contact us"
-             data-fr="Nous contacter"
-             data-de="Kontakt aufnehmen">Contact us</a>
+<!-- ═══ PROGRAMS ═══ -->
+<section class="prog-strip reveal">
+  <div class="frame">
+    <div class="prog-inner">
+      <div class="prog-label">
+        Programs<br>in <em>action.</em>
+      </div>
+      <div class="prog-cards">
+        <div class="prog-card">
+          <h4 data-en="Malaria fast-track" data-fr="Paludisme fast-track" data-de="Malaria-Fasttrack">Malaria fast-track</h4>
+          <p data-en="Rapid triage and test reminders in high-incidence zones, reducing delays from symptom to treatment." data-fr="Triage rapide et rappels de test dans les zones à forte incidence, réduisant les délais du symptôme au traitement." data-de="Schnelle Triage und Test-Erinnerungen in Hochinzidenzgebieten, um Verzögerungen zu reduzieren.">Rapid triage and test reminders in high-incidence zones.</p>
+        </div>
+        <div class="prog-card">
+          <h4 data-en="Maternal SMS" data-fr="SMS maternité" data-de="SMS für Mütter">Maternal SMS</h4>
+          <p data-en="Antenatal and postnatal care reminders with automated danger sign alerts for new mothers." data-fr="Rappels de CPN/CPoN avec alertes automatiques de signes de danger pour les nouvelles mères." data-de="Erinnerungen zur Vor-/Nachsorge mit automatischen Warnzeichen-Alerts für Mütter.">ANC/PNC reminders with danger sign alerts for new mothers.</p>
+        </div>
+        <div class="prog-card">
+          <h4 data-en="School health days" data-fr="Journées santé scolaires" data-de="Schulgesundheitstage">School health days</h4>
+          <p data-en="Screening and referral drives run together with local clinics — bringing preventive care directly to schools." data-fr="Dépistage et orientation organisés avec les cliniques locales — apportant des soins préventifs directement dans les écoles." data-de="Screening und Überweisungen mit lokalen Kliniken — Prävention direkt in Schulen.">Screening and referral drives with local clinics — care to schools.</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ================= PROGRAMS & OUTCOMES ================= -->
-  <section class="section reveal in">
-    <div class="container">
-      <h2
-        data-en="Programs & outcomes"
-        data-fr="Programmes & résultats"
-        data-de="Programme & Ergebnisse">
-        Programs & outcomes
-      </h2>
+<!-- ═══ INTEGRATIONS ═══ -->
+<section class="sec reveal" id="tech">
+  <div class="frame" style="text-align:center">
+    <span class="eyebrow" data-en="Built with" data-fr="Construit avec" data-de="Gebaut mit">Built with</span>
+    <h2 class="display-h" data-en="Integrations &amp;<br><em>platforms.</em>" data-fr="Intégrations &amp;<br><em>plateformes.</em>" data-de="Integrationen &amp;<br><em>Plattformen.</em>">Integrations &amp;<br><em>platforms.</em></h2>
+    <div class="tech-row">
+      <span class="tech-chip">KoboToolbox</span>
+      <span class="tech-chip">DHIS2</span>
+      <span class="tech-chip">Power BI</span>
+      <span class="tech-chip">Looker Studio</span>
+      <span class="tech-chip">WhatsApp</span>
+      <span class="tech-chip">SMS</span>
+      <span class="tech-chip">Android</span>
+      <span class="tech-chip">CSV / Excel</span>
+    </div>
+  </div>
+</section>
 
-      <div class="grid-3">
-        <div class="stat">
-          <strong data-en="Malaria fast-track" data-fr="Paludisme fast-track" data-de="Malaria-Fasttrack">Malaria fast-track</strong>
-          <span class="muted"
-                data-en="Rapid triage + test reminder flows in high-incidence zones."
-                data-fr="Triage rapide + rappels de test dans les zones à forte incidence."
-                data-de="Schnelle Triage + Test-Erinnerungen in Hochinzidenzgebieten.">
-            Rapid triage + reminder flows.
-          </span>
+<!-- ═══ FAQ ═══ -->
+<section class="sec-dark reveal" id="faq">
+  <div class="frame">
+    <span class="eyebrow" data-en="FAQ" data-fr="FAQ" data-de="FAQ">FAQ</span>
+    <h2 class="display-h" style="margin-bottom:2rem" data-en="Common <em>questions.</em>" data-fr="Questions <em>fréquentes.</em>" data-de="Häufige <em>Fragen.</em>">Common <em>questions.</em></h2>
+    <div class="faq-list">
+      <details class="faq"><summary><span data-en="Do you operate outside Bukavu &amp; Goma?" data-fr="Intervenez-vous hors de Bukavu &amp; Goma ?" data-de="Arbeiten Sie auch außerhalb von Bukavu &amp; Goma?">Do you operate outside Bukavu &amp; Goma?</span><div class="faq-tog"><span class="p-icon">+</span><span class="m-icon">−</span></div></summary><p class="ans" data-en="Yes. We support partners across the DRC remotely, and on-site with local clinics when needed. We're also open to partnerships in other African countries." data-fr="Oui. Nous accompagnons des partenaires à travers la RDC à distance, et sur le terrain avec les cliniques locales si nécessaire. Nous sommes ouverts à des partenariats dans d'autres pays africains." data-de="Ja. Wir unterstützen Partner landesweit remote und vor Ort. Wir sind auch offen für Partnerschaften in anderen afrikanischen Ländern.">Yes. We support partners across the DRC remotely, and on-site with local clinics when needed. We're also open to partnerships in other African countries.</p></details>
+      <details class="faq"><summary><span data-en="Is Afya secure and privacy-compliant?" data-fr="Afya est-il sécurisé et conforme à la confidentialité ?" data-de="Ist Afya sicher und datenschutzkonform?">Is Afya secure and privacy-compliant?</span><div class="faq-tog"><span class="p-icon">+</span><span class="m-icon">−</span></div></summary><p class="ans" data-en="Yes. We use consent-based workflows, role-based access control, and encryption in transit. Data policies adapt to local DRC regulations and partner requirements." data-fr="Oui. Nous utilisons des flux basés sur le consentement, un contrôle d'accès par rôles et un chiffrement en transit. Les politiques s'adaptent aux réglementations locales et aux exigences des partenaires." data-de="Ja. Einwilligungsbasierte Abläufe, rollenbasierter Zugriff und Verschlüsselung in Transit. Richtlinien passen sich lokalen Vorgaben an.">Yes. We use consent-based workflows, role-based access control, and encryption in transit. Data policies adapt to local DRC regulations and partner requirements.</p></details>
+      <details class="faq"><summary><span data-en="Can Afya work without internet?" data-fr="Afya peut-il fonctionner sans internet ?" data-de="Kann Afya ohne Internet funktionieren?">Can Afya work without internet?</span><div class="faq-tog"><span class="p-icon">+</span><span class="m-icon">−</span></div></summary><p class="ans" data-en="Yes. Forms and patient records work offline-first on Android devices. All data syncs automatically when a connection becomes available — no data is ever lost." data-fr="Oui. Les formulaires et dossiers fonctionnent hors ligne sur Android. Toutes les données se synchronisent automatiquement dès qu'une connexion est disponible — aucune donnée n'est perdue." data-de="Ja. Formulare und Patientenakten sind Offline-First auf Android. Alle Daten synchronisieren automatisch bei Verbindung — keine Datenverluste.">Yes. Forms and patient records work offline-first on Android devices. All data syncs automatically when a connection becomes available — no data is ever lost.</p></details>
+      <details class="faq"><summary><span data-en="How do I run a pilot with Afya?" data-fr="Comment lancer un pilote avec Afya ?" data-de="Wie starte ich ein Pilotprojekt mit Afya?">How do I run a pilot with Afya?</span><div class="faq-tog"><span class="p-icon">+</span><span class="m-icon">−</span></div></summary><p class="ans" data-en="Contact us and tell us about your community or clinic. We'll set up a demo environment with sample data, train your team, and support you through the first weeks of deployment." data-fr="Contactez-nous et parlez-nous de votre communauté ou clinique. Nous créerons un environnement de démo avec des données exemples et formerons votre équipe." data-de="Kontaktieren Sie uns und schildern Sie Ihre Gemeinschaft oder Klinik. Wir richten eine Demo-Umgebung ein und begleiten Ihr Team durch die ersten Wochen.">Contact us and tell us about your community or clinic. We'll set up a demo environment with sample data, train your team, and support you through the first weeks of deployment.</p></details>
+    </div>
+  </div>
+</section>
+
+<!-- ═══ CTA ═══ -->
+<section class="sec reveal">
+  <div class="frame">
+    <div class="cta-band">
+      <div class="cta-left">
+        <span class="eyebrow" style="color:rgba(255,255,255,.45)" data-en="Get started" data-fr="Commencer" data-de="Loslegen">Get started</span>
+        <h2 data-en="Ready to bring health to the last mile?" data-fr="Prêt à apporter la santé au dernier kilomètre ?" data-de="Bereit, Gesundheit bis zum letzten Kilometer zu bringen?">Ready to bring health to the last mile?</h2>
+        <p data-en="Explore the live Afya platform, use demo data, or talk to us about running a pilot in your community or clinic." data-fr="Explorez la plateforme Afya en direct, utilisez des données de démo ou parlez-nous de lancer un pilote dans votre communauté ou clinique." data-de="Erkunden Sie die Live-Afya-Plattform, nutzen Sie Demodaten oder sprechen Sie über ein Pilotprojekt.">Explore the live Afya platform, use demo data, or talk to us about running a pilot in your community or clinic.</p>
+        <div class="cta-btns">
+          <a href="https://afya.tuunganes.com" target="_blank" rel="noopener" class="btn btn-w" data-en="Visit Afya" data-fr="Visiter Afya" data-de="Afya besuchen">Visit Afya</a>
+          <a href="../contact.html" class="btn btn-wg" data-en="Book a call" data-fr="Réserver un appel" data-de="Gespräch buchen">Book a call</a>
         </div>
-        <div class="stat">
-          <strong data-en="Maternal SMS" data-fr="SMS maternité" data-de="SMS für Mütter">Maternal SMS</strong>
-          <span class="muted"
-                data-en="ANC/PNC reminders and danger signs prompts."
-                data-fr="Rappels CPN/CPoN et alertes signes de danger."
-                data-de="Erinnerungen vor/nach der Geburt & Warnhinweise.">
-            ANC/PNC reminders.
-          </span>
-        </div>
-        <div class="stat">
-          <strong data-en="School health days" data-fr="Journées santé à l’école" data-de="Schulgesundheitstage">School health days</strong>
-          <span class="muted"
-                data-en="Screening + referral drives with local clinics."
-                data-fr="Dépistage + orientation avec les cliniques locales."
-                data-de="Screening + Überweisungen mit lokalen Kliniken.">
-            Screening + referrals.
-          </span>
+      </div>
+      <div class="cta-right">
+        <div class="cta-right-inner">
+          <div class="cta-big" aria-hidden="true">Af<br>ya.</div>
+          <p data-en="Health for<br>every last mile." data-fr="Santé jusqu'au<br>dernier kilomètre." data-de="Gesundheit bis zum<br>letzten Kilometer.">Health for<br>every last mile.</p>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- ================= INTEGRATIONS ================= -->
-  <section class="section reveal in">
-    <div class="container center">
-      <h2
-        data-en="Integrations & platforms"
-        data-fr="Intégrations & plateformes"
-        data-de="Integrationen & Plattformen">
-        Integrations & platforms
-      </h2>
-      <div class="chip-row" style="justify-content:center">
-        <span class="chip">KoboToolbox</span>
-        <span class="chip">DHIS2</span>
-        <span class="chip">Power BI</span>
-        <span class="chip">Looker Studio</span>
-        <span class="chip">WhatsApp</span>
-        <span class="chip">SMS</span>
-        <span class="chip">Android</span>
-      </div>
+<!-- FOOTER -->
+<footer>
+  <div class="frame foot">
+    <a href="../index.html" class="foot-logo"><img src="../assets/fevicon.png" alt="Tuunganes"/><span>Tuunganes</span></a>
+    <p>&copy; 2025 Tuunganes &nbsp;·&nbsp; Bukavu &amp; Goma, DRC</p>
+    <div style="display:flex;gap:1rem">
+      <a href="../about.html" style="font-size:.82rem;color:var(--muted)" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+      <a href="services.html" style="font-size:.82rem;color:var(--muted)" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+      <a href="../contact.html" style="font-size:.82rem;color:var(--muted)" data-en="Contact" data-fr="Contact" data-de="Kontakt">Contact</a>
     </div>
-  </section>
+  </div>
+</footer>
 
-  <!-- ================= FAQ ================= -->
-  <section class="section reveal in">
-    <div class="container center">
-      <h2 data-en="FAQs" data-fr="FAQ" data-de="FAQ">FAQs</h2>
-
-      <details class="card">
-        <summary
-          data-en="Do you operate outside Bukavu & Goma?"
-          data-fr="Intervenez-vous hors de Bukavu & Goma ?"
-          data-de="Arbeiten Sie auch außerhalb von Bukavu & Goma?">
-          Do you operate outside Bukavu & Goma?
-        </summary>
-        <p class="muted"
-           data-en="Yes. We support partners across the DRC remotely, and on site with local clinics when needed."
-           data-fr="Oui. Nous accompagnons des partenaires à travers la RDC à distance, et sur le terrain avec les cliniques locales si nécessaire."
-           data-de="Ja. Wir unterstützen Partner landesweit remote und bei Bedarf vor Ort mit lokalen Kliniken.">
-          Yes  nationwide with local partners.
-        </p>
-      </details>
-
-      <details class="card">
-        <summary
-          data-en="Is Afya compliant and secure?"
-          data-fr="Afya est-il conforme et sécurisé ?"
-          data-de="Ist Afya konform und sicher?">
-          Is Afya compliant and secure?
-        </summary>
-        <p class="muted"
-           data-en="We use consent-based workflows, role-based access and encryption in transit. Data policies adapt to local regulations and partner requirements."
-           data-fr="Nous utilisons des parcours basés sur le consentement, des accès par rôles et un chiffrement en transit. Les politiques s’adaptent aux réglementations locales et aux exigences des partenaires."
-           data-de="Einwilligungsbasierte Abläufe, rollenbasierter Zugriff und Verschlüsselung in Transit. Richtlinien passen sich lokalen Vorgaben und Partneranforderungen an.">
-          Consent, RBAC and encryption in transit.
-        </p>
-      </details>
-
-      <details class="card">
-        <summary
-          data-en="Can Afya work offline?"
-          data-fr="Afya peut-il fonctionner hors ligne ?"
-          data-de="Kann Afya offline arbeiten?">
-          Can Afya work offline?
-        </summary>
-        <p class="muted"
-           data-en="Yes. Forms and records work offline-first on Android and sync when connectivity returns."
-           data-fr="Oui. Les formulaires et dossiers fonctionnent hors ligne sur Android et se synchronisent au retour du réseau."
-           data-de="Ja. Formulare und Akten sind offline-first auf Android und synchronisieren bei Verbindung.">
-          Yes  offline-first on Android.
-        </p>
-      </details>
-    </div>
-  </section>
-
-  <!-- ================= CTA ================= -->
-  <section class="section reveal in">
-    <div class="container center">
-      <div class="cta-band">
-        <p class="muted"
-           data-en="Ready to explore Afya or run a pilot in your community?"
-           data-fr="Prêt à explorer Afya ou lancer un pilote dans votre communauté ?"
-           data-de="Bereit, Afya zu testen oder ein Pilotprojekt zu starten?">
-          Ready to explore Afya or run a pilot in your community?
-        </p>
-        <div class="hero-ctas">
-          <a href="https://afya.tuunganes.com" target="_blank" rel="noopener" class="btn btn-primary"
-             data-en="Visit Afya"
-             data-fr="Visiter Afya"
-             data-de="Afya besuchen">Visit Afya</a>
-          <a href="../contact.html" class="btn btn-ghost"
-             data-en="Book a call"
-             data-fr="Réserver un appel"
-             data-de="Gespräch buchen">Book a call</a>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Footer injected by base.js -->
-  <div id="site-footer"></div>
-
-  <!-- Global scripts -->
-  <script src="../route/base.js" defer></script>
-  <script src="../route/lang.js" defer></script>
-  <script src="../route/animations.js" defer></script>
+<script>
+(function(){
+  const s=localStorage.getItem('tuunganes-theme');
+  const dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
+  document.documentElement.setAttribute('data-theme',s||(dark?'dark':'light'));
+})();
+document.addEventListener('DOMContentLoaded',function(){
+  const root=document.documentElement;
+  const themeBtn=document.getElementById('themeBtn');
+  function syncIcon(){themeBtn.textContent=root.getAttribute('data-theme')==='dark'?'☀️':'🌙'}
+  syncIcon();
+  themeBtn.addEventListener('click',function(){
+    const next=root.getAttribute('data-theme')==='dark'?'light':'dark';
+    root.setAttribute('data-theme',next);localStorage.setItem('tuunganes-theme',next);syncIcon();
+  });
+  const hamBtn=document.getElementById('hamBtn');
+  const drawer=document.getElementById('drawer');
+  document.getElementById('drawerClose').addEventListener('click',()=>{drawer.classList.remove('open');hamBtn.setAttribute('aria-expanded','false')});
+  hamBtn.addEventListener('click',()=>{const o=drawer.classList.toggle('open');hamBtn.setAttribute('aria-expanded',String(o))});
+  document.addEventListener('click',e=>{if(!drawer.contains(e.target)&&!hamBtn.contains(e.target)){drawer.classList.remove('open');hamBtn.setAttribute('aria-expanded','false')}});
+  function applyLang(lang){
+    localStorage.setItem('siteLang',lang);
+    document.querySelectorAll('.lang-pills button').forEach(b=>b.classList.toggle('on',b.dataset.lang===lang));
+    document.querySelectorAll('[data-'+lang+']').forEach(el=>{
+      const val=el.getAttribute('data-'+lang);if(!val)return;
+      if(['H1','H2','H3'].includes(el.tagName)){el.innerHTML=val;return;}
+      if(!el.querySelector('[data-'+lang+']:not(script)')){el.textContent=val;}
+    });
+  }
+  const saved=localStorage.getItem('siteLang')||'en';
+  document.querySelectorAll('.lang-pills [data-lang]').forEach(btn=>{
+    btn.addEventListener('click',()=>applyLang(btn.dataset.lang));
+    if(btn.dataset.lang===saved)btn.classList.add('on');
+  });
+  const io=new IntersectionObserver(entries=>{
+    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
+  },{threshold:0.07});
+  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  document.querySelectorAll('a[href^="#"]').forEach(a=>{
+    a.addEventListener('click',e=>{
+      const t=document.querySelector(a.getAttribute('href'));
+      if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth'});}
+    });
+  });
+});
+</script>
+<script src="../route/base.js" defer></script>
+<script src="../route/lang.js" defer></script>
+<script src="../route/animations.js" defer></script>
 </body>
 </html>
