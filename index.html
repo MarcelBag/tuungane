@@ -114,24 +114,58 @@ button { font-family: inherit; }
   white-space: nowrap;
 }
 .nav-cta:hover { background: var(--blue-d); transform: translateY(-1px); }
-/* hamburger */
+
+/* ─── HAMBURGER ──────────────────────────────────────────────── */
 .ham {
   display: none; flex-direction: column; gap: 4px; cursor: pointer;
   background: var(--bg2); border: 1px solid var(--bdr); border-radius: 999px;
   padding: .55rem .75rem;
 }
 .ham span { display: block; width: 18px; height: 2px; background: var(--tx); border-radius: 2px; transition: .2s; }
+
+/* ─── DRAWER ─────────────────────────────────────────────────── */
 .nav-drawer {
   display: none; position: fixed; inset: 0; background: var(--surf);
   z-index: 999; flex-direction: column; padding: 2rem 1.75rem; gap: 1.25rem;
   border-right: 1px solid var(--bdr);
+  overflow-y: auto;
 }
 .nav-drawer.open { display: flex; }
-.nav-drawer a { font-size: 1.1rem; font-weight: 700; color: var(--tx2); padding: .5rem 0; border-bottom: 1px solid var(--bdr); }
+.nav-drawer a {
+  font-size: 1.1rem; font-weight: 700; color: var(--tx2);
+  padding: .5rem 0; border-bottom: 1px solid var(--bdr);
+}
 .nav-drawer a:hover { color: var(--blue); }
+
+/* Drawer language pills */
+.drawer-lang {
+  display: flex; gap: .35rem; padding: .5rem 0;
+  border-bottom: 1px solid var(--bdr);
+}
+.drawer-lang button {
+  border: 1px solid var(--bdr); background: var(--bg2); border-radius: 999px;
+  padding: .3rem .75rem; font-size: .8rem; font-weight: 700; cursor: pointer;
+  color: var(--muted); transition: background .15s, color .15s;
+}
+.drawer-lang button.on { background: var(--blue); color: #fff; border-color: var(--blue); }
+
+/* ─── MOBILE NAV BREAKPOINT ──────────────────────────────────── */
 @media (max-width: 720px) {
+  /* Hide nav links and specific nav-end children — NOT the whole nav-end */
+  .nav-links { display: none; }
+  .nav-end .lang-pills,
+  .nav-end .nav-cta { display: none; }
+
+  /* Show hamburger; keep theme toggle visible */
   .ham { display: flex; }
-  .nav-links, .nav-end { display: none; }
+  .nav-end { display: flex; gap: .4rem; }
+
+  /* Tighten nav pill */
+  .nav {
+    top: .6rem;
+    width: 93vw;
+    padding: .4rem .5rem .4rem 1rem;
+  }
 }
 
 /* ─── HERO ───────────────────────────────────────────────────── */
@@ -140,7 +174,6 @@ button { font-family: inherit; }
   display: grid; place-items: center;
   padding: 8rem 0 5rem; position: relative; overflow: hidden;
 }
-/* background orbs */
 .hero::before {
   content: '';
   position: absolute; inset: 0;
@@ -179,7 +212,6 @@ button { font-family: inherit; }
   font-style: normal; color: var(--blue);
   position: relative; display: inline-block;
 }
-/* animated underline on the brand name */
 .hero-h1 em::after {
   content: '';
   position: absolute; left: 0; bottom: -.1em; width: 100%; height: .08em;
@@ -359,7 +391,6 @@ button { font-family: inherit; }
   width: 180px; height: 180px; border-radius: 50%;
   background: rgba(255,255,255,.04); pointer-events: none;
 }
-@media (max-width: 720px) { .cta-band { grid-template-columns: 1fr; padding: 2.5rem 1.75rem; } }
 .cta-band h2 { font-size: clamp(1.3rem, 3vw, 1.75rem); color: #fff; margin-bottom: .5rem; letter-spacing: -.02em; }
 .cta-band p { color: rgba(255,255,255,.82); font-size: .95rem; max-width: 500px; }
 .cta-btns { display: flex; gap: .75rem; flex-wrap: wrap; flex-shrink: 0; }
@@ -412,6 +443,62 @@ button { font-family: inherit; }
 @keyframes fadeUp { from { opacity: 0; transform: translateY(28px); } to { opacity: 1; transform: translateY(0); } }
 .reveal { opacity: 0; transform: translateY(28px); transition: opacity .65s var(--ease), transform .65s var(--ease); }
 .reveal.in { opacity: 1; transform: translateY(0); }
+
+/* ══════════════════════════════════════════════════════════════
+   MOBILE STYLES — 480px and below
+══════════════════════════════════════════════════════════════ */
+@media (max-width: 480px) {
+
+  /* ── Hero ── */
+  .hero { padding: 6.5rem 0 4rem; }
+  .hero-h1 { font-size: 2.1rem; }
+  .hero-sub { font-size: .92rem; }
+  .hero-btns { flex-direction: column; gap: .55rem; }
+  .hero-btns .btn { width: 100%; justify-content: center; }
+
+  /* ── About ── */
+  .about-sec { padding: 4rem 0; }
+  .about-text { padding-left: 0; }
+
+  /* ── Services ── */
+  .services-sec { padding: 4rem 0; }
+  .svc-header { flex-direction: column; align-items: flex-start; gap: .5rem; }
+  .bcard { grid-column: span 12 !important; }
+  .bcard-img { height: 170px; }
+  .bcard.tall .bcard-img { height: 200px; }
+
+  /* ── Impact ── */
+  .impact-sec { padding: 4rem 0; }
+  .stats-wall { grid-template-columns: 1fr 1fr; gap: .6rem; }
+  .stat-tile { padding: 1.1rem; }
+  .stat-tile b { font-size: 2rem; }
+
+  /* ── CTA Band ── */
+  .cta-band {
+    margin: 0 0 4rem;
+    padding: 2rem 1.25rem;
+    grid-template-columns: 1fr;
+    border-radius: 16px;
+  }
+  .cta-btns { flex-direction: column; gap: .5rem; }
+  .cta-btns .btn { width: 100%; justify-content: center; }
+
+  /* ── Join / Form ── */
+  .join-sec { padding: 4rem 0; }
+  .form-box { padding: 1.35rem 1.1rem; }
+  .join-pills { gap: .4rem; }
+
+  /* ── Buttons ── */
+  .btn { padding: .65rem 1.2rem; font-size: .85rem; }
+
+  /* ── Footer ── */
+  .foot {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: .75rem;
+    padding: 1.75rem 0;
+  }
+}
 </style>
 </head>
 <body>
@@ -422,6 +509,14 @@ button { font-family: inherit; }
     <span style="font-weight:800;font-size:1rem">Tuunganes</span>
     <button id="drawerClose" style="background:transparent;border:none;font-size:1.4rem;cursor:pointer;color:var(--tx)">✕</button>
   </div>
+
+  <!-- Language switcher inside drawer for mobile -->
+  <div class="drawer-lang">
+    <button type="button" data-lang="en" class="on">EN</button>
+    <button type="button" data-lang="fr">FR</button>
+    <button type="button" data-lang="de">DE</button>
+  </div>
+
   <a href="about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
   <a href="services/services.html" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
   <a href="#impact" data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
@@ -442,13 +537,16 @@ button { font-family: inherit; }
     <a href="#join" data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</a>
   </nav>
   <div class="nav-end">
+    <!-- Desktop only: lang pills + contact CTA -->
     <div class="lang-pills" role="group">
       <button type="button" data-lang="en" class="on">EN</button>
       <button type="button" data-lang="fr">FR</button>
       <button type="button" data-lang="de">DE</button>
     </div>
-    <button id="themeBtn" class="theme-pill" aria-label="Toggle theme" title="Toggle theme">🌙</button>
     <a href="contact.html" class="nav-cta" data-en="Contact" data-fr="Contact" data-de="Kontakt">Contact</a>
+    <!-- Theme toggle stays visible on all screen sizes -->
+    <button id="themeBtn" class="theme-pill" aria-label="Toggle theme" title="Toggle theme">🌙</button>
+    <!-- Hamburger — visible on mobile only -->
     <button class="ham" id="hamBtn" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
@@ -568,7 +666,7 @@ button { font-family: inherit; }
         </div>
       </article>
 
-      <!-- AgTech (rest) -->
+      <!-- AgTech (mid) -->
       <article class="bcard mid">
         <a class="bcard-link" href="services/AgTech.html" aria-label="AgTech"></a>
         <img class="bcard-img" src="assets/agri1.jpg" alt="Agriculture" loading="lazy"/>
@@ -677,7 +775,8 @@ button { font-family: inherit; }
 })();
 
 document.addEventListener('DOMContentLoaded', function() {
-  // ── 2. Set correct theme icon after DOM ready
+
+  // ── 2. Theme toggle
   const root = document.documentElement;
   const themeBtn = document.getElementById('themeBtn');
   function syncIcon() {
@@ -691,31 +790,39 @@ document.addEventListener('DOMContentLoaded', function() {
     syncIcon();
   });
 
-  // ── 3. Mobile nav
+  // ── 3. Mobile nav — hamburger & drawer
   const hamBtn = document.getElementById('hamBtn');
   const drawer = document.getElementById('drawer');
   const drawerClose = document.getElementById('drawerClose');
-  hamBtn.addEventListener('click', () => {
-    const open = drawer.classList.toggle('open');
-    hamBtn.setAttribute('aria-expanded', String(open));
-  });
-  drawerClose.addEventListener('click', () => {
+
+  function openDrawer() {
+    drawer.classList.add('open');
+    hamBtn.setAttribute('aria-expanded', 'true');
+  }
+  function closeDrawer() {
     drawer.classList.remove('open');
     hamBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  hamBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    drawer.classList.contains('open') ? closeDrawer() : openDrawer();
   });
+  drawerClose.addEventListener('click', closeDrawer);
   document.addEventListener('click', e => {
-    if (!drawer.contains(e.target) && !hamBtn.contains(e.target)) {
-      drawer.classList.remove('open');
-      hamBtn.setAttribute('aria-expanded', 'false');
-    }
+    if (!drawer.contains(e.target) && !hamBtn.contains(e.target)) closeDrawer();
   });
 
-  // ── 4. Language switching
+  // ── 4. Language switching (works for both nav pills and drawer pills)
   let currentLang = localStorage.getItem('siteLang') || 'en';
+
   function applyLang(lang) {
     currentLang = lang;
     localStorage.setItem('siteLang', lang);
-    document.querySelectorAll('.lang-pills button').forEach(b => b.classList.toggle('on', b.dataset.lang === lang));
+    // Highlight active pill in ALL pill groups (nav + drawer)
+    document.querySelectorAll('[data-lang]').forEach(b => {
+      b.classList.toggle('on', b.dataset.lang === lang);
+    });
     document.querySelectorAll('[data-' + lang + ']').forEach(el => {
       const val = el.getAttribute('data-' + lang);
       if (!val) return;
@@ -728,13 +835,17 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
-  document.querySelectorAll('.lang-pills [data-lang]').forEach(btn => {
-    btn.addEventListener('click', () => applyLang(btn.dataset.lang));
-  });
-  // sync drawer lang buttons if any
+
+  // Attach to ALL lang buttons (nav + drawer)
   document.querySelectorAll('[data-lang]').forEach(btn => {
-    if (!btn.classList.contains('on') && btn.dataset.lang === currentLang) btn.classList.add('on');
+    btn.addEventListener('click', () => {
+      applyLang(btn.dataset.lang);
+      closeDrawer(); // close drawer after language switch on mobile
+    });
   });
+
+  // Apply saved language on load
+  applyLang(currentLang);
 
   // ── 5. Scroll reveal
   const io = new IntersectionObserver(entries => {
@@ -747,10 +858,15 @@ document.addEventListener('DOMContentLoaded', function() {
   // ── 6. Smooth scroll for anchor links
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
-      const t = document.querySelector(a.getAttribute('href'));
-      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); drawer.classList.remove('open'); }
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth' });
+        closeDrawer();
+      }
     });
   });
+
 });
 </script>
 <script src="route/lang.js" defer></script>
