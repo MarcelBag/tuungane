@@ -67,13 +67,31 @@ ul{list-style:none;padding:0;margin:0}
 .theme-pill:hover{border-color:var(--blue);transform:rotate(20deg)}
 .nav-cta{background:var(--blue);color:#fff;border:none;padding:.48rem 1.15rem;border-radius:999px;font-size:.82rem;font-weight:700;cursor:pointer;transition:background .15s,transform .15s;white-space:nowrap}
 .nav-cta:hover{background:var(--blue-d);transform:translateY(-1px)}
+
+/* ─── HAMBURGER ──────────────────────────────────────── */
 .ham{display:none;flex-direction:column;gap:4px;cursor:pointer;background:var(--bg2);border:1px solid var(--bdr);border-radius:999px;padding:.55rem .75rem}
 .ham span{display:block;width:18px;height:2px;background:var(--tx);border-radius:2px;transition:.2s}
-.nav-drawer{display:none;position:fixed;inset:0;background:var(--surf);z-index:999;flex-direction:column;padding:2rem 1.75rem;gap:1.25rem;border-right:1px solid var(--bdr)}
+
+/* ─── DRAWER ─────────────────────────────────────────── */
+.nav-drawer{display:none;position:fixed;inset:0;background:var(--surf);z-index:999;flex-direction:column;padding:2rem 1.75rem;gap:1.25rem;border-right:1px solid var(--bdr);overflow-y:auto}
 .nav-drawer.open{display:flex}
 .nav-drawer a{font-size:1.1rem;font-weight:700;color:var(--tx2);padding:.5rem 0;border-bottom:1px solid var(--bdr)}
 .nav-drawer a:hover{color:var(--blue)}
-@media(max-width:720px){.ham{display:flex}.nav-links,.nav-end{display:none}}
+
+/* Drawer language pills */
+.drawer-lang{display:flex;gap:.35rem;padding:.5rem 0;border-bottom:1px solid var(--bdr)}
+.drawer-lang button{border:1px solid var(--bdr);background:var(--bg2);border-radius:999px;padding:.3rem .75rem;font-size:.8rem;font-weight:700;cursor:pointer;color:var(--muted);transition:background .15s,color .15s}
+.drawer-lang button.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+
+/* ─── MOBILE NAV BREAKPOINT ──────────────────────────── */
+@media(max-width:720px){
+  .nav-links{display:none}
+  .nav-end .lang-pills,
+  .nav-end .nav-cta{display:none}
+  .ham{display:flex}
+  .nav-end{display:flex;gap:.4rem}
+  .nav{top:.6rem;width:93vw;padding:.4rem .5rem .4rem 1rem}
+}
 
 /* ─── BUTTONS ────────────────────────────────────────── */
 .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.7rem 1.55rem;border-radius:999px;border:none;cursor:pointer;font-size:.88rem;font-weight:700;letter-spacing:-.005em;transition:all .2s var(--ease);white-space:nowrap;font-family:inherit}
@@ -118,7 +136,6 @@ ul{list-style:none;padding:0;margin:0}
   position:relative;
 }
 .svc-row:last-child{border-bottom:1px solid var(--bdr)}
-/* alternate image position */
 .svc-row:nth-child(even) .svc-img-col{order:2}
 .svc-row:nth-child(even) .svc-text-col{order:1}
 @media(max-width:860px){
@@ -127,15 +144,9 @@ ul{list-style:none;padding:0;margin:0}
   .svc-row:nth-child(even) .svc-text-col{order:0}
 }
 
-.svc-img-col{
-  position:relative;overflow:hidden;min-height:380px;
-}
-.svc-img-col img{
-  width:100%;height:100%;object-fit:cover;display:block;
-  transition:transform .6s var(--ease);
-}
+.svc-img-col{position:relative;overflow:hidden;min-height:380px}
+.svc-img-col img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s var(--ease)}
 .svc-row:hover .svc-img-col img{transform:scale(1.03)}
-/* number badge over image */
 .svc-num{
   position:absolute;top:1.5rem;left:1.5rem;
   font-size:3rem;font-weight:800;letter-spacing:-.05em;
@@ -145,10 +156,7 @@ ul{list-style:none;padding:0;margin:0}
 }
 .svc-row:nth-child(even) .svc-num{left:auto;right:1.5rem}
 
-.svc-text-col{
-  padding:3rem 3.5rem;display:flex;flex-direction:column;justify-content:center;
-  background:var(--surf);
-}
+.svc-text-col{padding:3rem 3.5rem;display:flex;flex-direction:column;justify-content:center;background:var(--surf)}
 @media(max-width:1024px){.svc-text-col{padding:2.25rem 2rem}}
 @media(max-width:860px){.svc-text-col{padding:2rem 1.5rem}}
 
@@ -156,15 +164,11 @@ ul{list-style:none;padding:0;margin:0}
 .svc-text-col h2{font-size:clamp(1.3rem,2.5vw,1.75rem);font-weight:800;letter-spacing:-.02em;color:var(--tx);margin-bottom:.75rem;line-height:1.2}
 .svc-text-col>p{color:var(--tx2);font-size:.96rem;margin-bottom:1.25rem;line-height:1.65}
 .svc-list{display:flex;flex-direction:column;gap:.45rem;margin-bottom:1.75rem}
-.svc-list li{
-  display:flex;align-items:flex-start;gap:.65rem;
-  font-size:.88rem;color:var(--tx2);line-height:1.5;
-}
+.svc-list li{display:flex;align-items:flex-start;gap:.65rem;font-size:.88rem;color:var(--tx2);line-height:1.5}
 .svc-list li::before{
   content:'';width:18px;height:18px;border-radius:50%;flex-shrink:0;
   background:var(--blue-pale);border:1.5px solid var(--blue-ring);
-  display:grid;place-items:center;font-size:.65rem;color:var(--blue);
-  margin-top:.05em;
+  display:grid;place-items:center;margin-top:.05em;
   background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%232196f3' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
   background-size:10px;background-position:center;background-repeat:no-repeat;
 }
@@ -180,7 +184,6 @@ ul{list-style:none;padding:0;margin:0}
 }
 .cta-band::before{content:'';position:absolute;right:-60px;top:-80px;width:260px;height:260px;border-radius:50%;background:rgba(255,255,255,.06);pointer-events:none}
 .cta-band::after{content:'';position:absolute;right:60px;bottom:-100px;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.04);pointer-events:none}
-@media(max-width:720px){.cta-band{grid-template-columns:1fr;padding:2.5rem 1.75rem}}
 .cta-band h2{font-size:clamp(1.3rem,3vw,1.75rem);color:#fff;margin-bottom:.45rem;letter-spacing:-.02em}
 .cta-band p{color:rgba(255,255,255,.82);font-size:.95rem;max-width:480px;margin:0}
 .cta-btns{display:flex;gap:.65rem;flex-wrap:wrap;flex-shrink:0}
@@ -198,23 +201,59 @@ ul{list-style:none;padding:0;margin:0}
 .page-hero .hero-tag{animation:fadeUp .7s var(--ease) both}
 .page-hero h1{animation:fadeUp .8s .1s var(--ease) both}
 .page-hero p{animation:fadeUp .8s .2s var(--ease) both}
+
+/* ══════════════════════════════════════════════════════
+   MOBILE STYLES — 480px and below
+══════════════════════════════════════════════════════ */
+@media(max-width:480px){
+
+  /* ── Page hero ── */
+  .page-hero{padding:6.5rem 0 3rem}
+  .page-hero p{font-size:.95rem}
+
+  /* ── Service rows ── */
+  .svc-img-col{min-height:220px}
+  .svc-num{font-size:2.2rem;top:1rem;left:1rem}
+  .svc-row:nth-child(even) .svc-num{left:auto;right:1rem}
+  .svc-text-col{padding:1.5rem 1.1rem}
+
+  /* ── CTA band ── */
+  .cta-sec{padding:3rem 0}
+  .cta-band{grid-template-columns:1fr;padding:2rem 1.25rem;border-radius:16px}
+  .cta-btns{flex-direction:column;gap:.5rem}
+  .cta-btns .btn{width:100%;justify-content:center}
+
+  /* ── Footer ── */
+  .foot{flex-direction:column;align-items:flex-start;gap:.75rem;padding:1.75rem 0}
+
+  /* ── Buttons ── */
+  .btn{padding:.65rem 1.2rem;font-size:.85rem}
+}
 </style>
 </head>
 <body>
 
-<!-- ══ MOBILE DRAWER ══ -->
+<!-- ══════════ MOBILE DRAWER ══════════ -->
 <nav class="nav-drawer" id="drawer">
   <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
     <span style="font-weight:800;font-size:1rem">Tuunganes</span>
     <button id="drawerClose" style="background:transparent;border:none;font-size:1.4rem;cursor:pointer;color:var(--tx)">✕</button>
   </div>
+
+  <!-- Language switcher inside drawer for mobile -->
+  <div class="drawer-lang">
+    <button type="button" data-lang="en" class="on">EN</button>
+    <button type="button" data-lang="fr">FR</button>
+    <button type="button" data-lang="de">DE</button>
+  </div>
+
   <a href="../index.html" data-en="Home" data-fr="Accueil" data-de="Start">Home</a>
   <a href="../about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
   <a href="services.html" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
   <a href="../contact.html" class="btn btn-solid" style="justify-content:center;margin-top:.5rem" data-en="Contact us" data-fr="Contact" data-de="Kontakt">Contact us</a>
 </nav>
 
-<!-- ══ FLOATING NAV ══ -->
+<!-- ══════════ FLOATING NAV ══════════ -->
 <header class="nav">
   <a href="../index.html" class="nav-logo">
     <img src="../assets/fevicon.png" alt="Tuunganes"/>
@@ -227,20 +266,23 @@ ul{list-style:none;padding:0;margin:0}
     <a href="../index.html#join" data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</a>
   </nav>
   <div class="nav-end">
+    <!-- Desktop only: lang pills + contact CTA -->
     <div class="lang-pills" role="group">
       <button type="button" data-lang="en" class="on">EN</button>
       <button type="button" data-lang="fr">FR</button>
       <button type="button" data-lang="de">DE</button>
     </div>
-    <button id="themeBtn" class="theme-pill" aria-label="Toggle theme">🌙</button>
     <a href="../contact.html" class="nav-cta" data-en="Contact" data-fr="Contact" data-de="Kontakt">Contact</a>
+    <!-- Theme toggle stays visible on all screen sizes -->
+    <button id="themeBtn" class="theme-pill" aria-label="Toggle theme">🌙</button>
+    <!-- Hamburger — visible on mobile only -->
     <button class="ham" id="hamBtn" aria-label="Menu" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
 </header>
 
-<!-- ══ PAGE HERO ══ -->
+<!-- ══════════ PAGE HERO ══════════ -->
 <section class="page-hero">
   <div class="frame">
     <div class="hero-tag" data-en="What we offer" data-fr="Ce que nous offrons" data-de="Was wir anbieten">What we offer</div>
@@ -254,7 +296,7 @@ ul{list-style:none;padding:0;margin:0}
   </div>
 </section>
 
-<!-- ══ SERVICES ══ -->
+<!-- ══════════ SERVICES ══════════ -->
 <main class="services-body">
 
   <!-- 01 IT Consultancy -->
@@ -361,7 +403,7 @@ ul{list-style:none;padding:0;margin:0}
 
 </main>
 
-<!-- ══ CTA ══ -->
+<!-- ══════════ CTA ══════════ -->
 <section class="cta-sec reveal">
   <div class="frame">
     <div class="cta-band">
@@ -377,7 +419,7 @@ ul{list-style:none;padding:0;margin:0}
   </div>
 </section>
 
-<!-- ══ FOOTER ══ -->
+<!-- ══════════ FOOTER ══════════ -->
 <footer>
   <div class="frame foot">
     <a href="../index.html" class="foot-logo">
@@ -393,54 +435,90 @@ ul{list-style:none;padding:0;margin:0}
   </div>
 </footer>
 
-<!-- ══ SCRIPTS ══ -->
+<!-- ══════════ SCRIPTS ══════════ -->
 <script>
+// ── 1. Theme init (before paint)
 (function(){
-  const s=localStorage.getItem('tuunganes-theme');
-  const dark=window.matchMedia('(prefers-color-scheme:dark)').matches;
-  document.documentElement.setAttribute('data-theme',s||(dark?'dark':'light'));
+  const s = localStorage.getItem('tuunganes-theme');
+  const dark = window.matchMedia('(prefers-color-scheme:dark)').matches;
+  document.documentElement.setAttribute('data-theme', s || (dark ? 'dark' : 'light'));
 })();
 
-document.addEventListener('DOMContentLoaded',function(){
-  const root=document.documentElement;
-  const themeBtn=document.getElementById('themeBtn');
-  function syncIcon(){themeBtn.textContent=root.getAttribute('data-theme')==='dark'?'☀️':'🌙'}
+document.addEventListener('DOMContentLoaded', function(){
+
+  // ── 2. Theme toggle
+  const root = document.documentElement;
+  const themeBtn = document.getElementById('themeBtn');
+  function syncIcon(){ themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙' }
   syncIcon();
-  themeBtn.addEventListener('click',function(){
-    const next=root.getAttribute('data-theme')==='dark'?'light':'dark';
-    root.setAttribute('data-theme',next);
-    localStorage.setItem('tuunganes-theme',next);
+  themeBtn.addEventListener('click', function(){
+    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    localStorage.setItem('tuunganes-theme', next);
     syncIcon();
   });
 
-  const hamBtn=document.getElementById('hamBtn');
-  const drawer=document.getElementById('drawer');
-  const drawerClose=document.getElementById('drawerClose');
-  hamBtn.addEventListener('click',()=>{const o=drawer.classList.toggle('open');hamBtn.setAttribute('aria-expanded',String(o))});
-  drawerClose.addEventListener('click',()=>{drawer.classList.remove('open');hamBtn.setAttribute('aria-expanded','false')});
-  document.addEventListener('click',e=>{if(!drawer.contains(e.target)&&!hamBtn.contains(e.target)){drawer.classList.remove('open');hamBtn.setAttribute('aria-expanded','false')}});
+  // ── 3. Mobile nav — hamburger & drawer
+  const hamBtn = document.getElementById('hamBtn');
+  const drawer = document.getElementById('drawer');
+  const drawerClose = document.getElementById('drawerClose');
 
-  function applyLang(lang){
-    localStorage.setItem('siteLang',lang);
-    document.querySelectorAll('.lang-pills button').forEach(b=>b.classList.toggle('on',b.dataset.lang===lang));
-    document.querySelectorAll('[data-'+lang+']').forEach(el=>{
-      const val=el.getAttribute('data-'+lang);
-      if(!val)return;
-      if(el.tagName==='INPUT'||el.tagName==='TEXTAREA'){el.placeholder=val;}
-      else if(el.tagName==='H1'||el.tagName==='H2'){el.innerHTML=val;}
-      else if(!el.querySelector('[data-'+lang+']:not(script)')){el.textContent=val;}
-    });
+  function openDrawer(){
+    drawer.classList.add('open');
+    hamBtn.setAttribute('aria-expanded', 'true');
   }
-  const saved=localStorage.getItem('siteLang')||'en';
-  document.querySelectorAll('.lang-pills [data-lang]').forEach(btn=>{
-    btn.addEventListener('click',()=>applyLang(btn.dataset.lang));
-    if(btn.dataset.lang===saved)btn.classList.add('on');
+  function closeDrawer(){
+    drawer.classList.remove('open');
+    hamBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  hamBtn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    drawer.classList.contains('open') ? closeDrawer() : openDrawer();
+  });
+  drawerClose.addEventListener('click', closeDrawer);
+  document.addEventListener('click', e => {
+    if (!drawer.contains(e.target) && !hamBtn.contains(e.target)) closeDrawer();
   });
 
-  const io=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}});
-  },{threshold:0.07});
-  document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+  // ── 4. Language switching (nav pills + drawer pills stay in sync)
+  function applyLang(lang){
+    localStorage.setItem('siteLang', lang);
+    document.querySelectorAll('[data-lang]').forEach(b => {
+      b.classList.toggle('on', b.dataset.lang === lang);
+    });
+    document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+      const val = el.getAttribute('data-' + lang);
+      if (!val) return;
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = val;
+      } else if (el.tagName === 'H1' || el.tagName === 'H2') {
+        el.innerHTML = val;
+      } else if (!el.querySelector('[data-' + lang + ']:not(script)')) {
+        el.textContent = val;
+      }
+    });
+  }
+
+  // Attach to ALL lang buttons (nav + drawer)
+  document.querySelectorAll('[data-lang]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      applyLang(btn.dataset.lang);
+      closeDrawer();
+    });
+  });
+
+  // Apply saved language on load
+  applyLang(localStorage.getItem('siteLang') || 'en');
+
+  // ── 5. Scroll reveal
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.07 });
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
 });
 </script>
 <script src="../route/base.js" defer></script>
