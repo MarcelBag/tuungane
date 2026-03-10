@@ -52,7 +52,7 @@ window.setLang = function setLang(lang) {
         <header class="nav glass">
           <div class="container nav-inner">
             <a href="${url('index.html')}" class="logo">
-              <img src="${url('assets/fevicon.png')}" alt="Tuunganes" width="32" height="32">
+              <img src="${url('assets/favicon.png')}" alt="Tuunganes" width="32" height="32">
               <span>Tuunganes</span>
             </a>
 
