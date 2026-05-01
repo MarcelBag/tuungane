@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1"/>
@@ -71,6 +71,8 @@ button{font-family:inherit;cursor:pointer}
 .lang-pills{display:flex;gap:.18rem;background:var(--bg2);border:1px solid var(--bdr);border-radius:999px;padding:.22rem .28rem}
 .lang-pills button{border:none;background:transparent;border-radius:999px;padding:.22rem .55rem;font-size:.74rem;font-weight:700;color:var(--muted);transition:background .15s,color .15s}
 .lang-pills button.on{background:var(--blue);color:#fff}
+[data-theme="dark"] .lang-pills button{color:#dbeafe}
+[data-theme="dark"] .lang-pills button.on{color:#fff}
 .theme-pill{width:36px;height:36px;border-radius:999px;border:1px solid var(--bdr);background:var(--bg2);display:grid;place-items:center;font-size:.9rem;transition:border-color .15s,transform .2s}
 .theme-pill:hover{border-color:var(--blue);transform:rotate(20deg)}
 .nav-live{display:flex;align-items:center;gap:.4rem;background:var(--red);color:#fff;padding:.45rem 1rem;border-radius:999px;font-size:.78rem;font-weight:700;border:none;transition:opacity .2s;cursor:pointer}
@@ -100,6 +102,8 @@ button{font-family:inherit;cursor:pointer}
 .drawer-lang{display:flex;gap:.2rem;background:var(--bg2);border:1px solid var(--bdr);border-radius:999px;padding:.2rem .25rem}
 .drawer-lang button{border:none;background:transparent;border-radius:999px;padding:.25rem .6rem;font-size:.74rem;font-weight:700;color:var(--muted);transition:background .15s,color .15s}
 .drawer-lang button.on{background:var(--blue);color:#fff}
+[data-theme="dark"] .drawer-lang button{color:#dbeafe}
+[data-theme="dark"] .drawer-lang button.on{color:#fff}
 .drawer-theme{width:36px;height:36px;border-radius:999px;border:1px solid var(--bdr);background:var(--bg2);display:grid;place-items:center;font-size:.9rem}
 
 /* ══════════ BUTTONS ══════════ */
@@ -316,7 +320,7 @@ button{font-family:inherit;cursor:pointer}
       <button type="button" data-lang="fr">FR</button>
       <button type="button" data-lang="de">DE</button>
     </div>
-    <button id="themeBtn" class="theme-pill" aria-label="Toggle theme">☀️</button>
+    <button id="themeBtn" class="theme-pill" aria-label="Toggle theme">🌙</button>
     <button class="nav-live" onclick="document.getElementById('livePlayer').scrollIntoView({behavior:'smooth'})" data-en="▶ Tune In" data-fr="▶ Écouter" data-de="▶ Live hören">▶ Tune In</button>
     <button class="ham" id="hamBtn" aria-label="Menu"><span></span><span></span><span></span></button>
   </div>
@@ -673,10 +677,10 @@ button{font-family:inherit;cursor:pointer}
 </footer>
 
 <script>
-// Pre-paint: default dark for radio
+// Pre-paint: light by default unless the visitor saved a theme.
 (function(){
-  const s=localStorage.getItem('radio-theme');
-  document.documentElement.setAttribute('data-theme',s||'dark');
+  const s=localStorage.getItem('tuunganes-theme');
+  document.documentElement.setAttribute('data-theme',s||'light');
 })();
 
 document.addEventListener('DOMContentLoaded',function(){
@@ -695,7 +699,7 @@ document.addEventListener('DOMContentLoaded',function(){
   function toggleTheme(){
     const next=root.getAttribute('data-theme')==='dark'?'light':'dark';
     root.setAttribute('data-theme',next);
-    localStorage.setItem('radio-theme',next);
+    localStorage.setItem('tuunganes-theme',next);
     syncTheme();
   }
   themeBtn.addEventListener('click',toggleTheme);

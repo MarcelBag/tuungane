@@ -203,6 +203,14 @@
       color: #fff
     }
 
+    [data-theme="dark"] .lang-pills button {
+      color: #dbeafe
+    }
+
+    [data-theme="dark"] .lang-pills button.on {
+      color: #fff
+    }
+
     .theme-pill {
       width: 36px;
       height: 36px;
@@ -1079,8 +1087,7 @@
     /* ── Theme: init before paint ── */
     (function () {
       const s = localStorage.getItem('tuunganes-theme');
-      const dark = window.matchMedia('(prefers-color-scheme:dark)').matches;
-      document.documentElement.setAttribute('data-theme', s || (dark ? 'dark' : 'light'));
+      document.documentElement.setAttribute('data-theme', s || 'light');
     })();
 
     document.addEventListener('DOMContentLoaded', function () {

@@ -93,6 +93,8 @@ ul{list-style:none;padding:0;margin:0}
 .lang-pills{display:flex;gap:.18rem;background:var(--bg2);border:1px solid var(--bdr);border-radius:999px;padding:.22rem .28rem}
 .lang-pills button{border:none;background:transparent;border-radius:999px;padding:.22rem .55rem;font-size:.74rem;font-weight:700;cursor:pointer;color:var(--muted);transition:background .15s,color .15s}
 .lang-pills button.on{background:var(--blue);color:#fff}
+[data-theme="dark"] .lang-pills button{color:#dbeafe}
+[data-theme="dark"] .lang-pills button.on{color:#fff}
 .theme-pill{width:36px;height:36px;border-radius:999px;border:1px solid var(--bdr);background:var(--bg2);display:grid;place-items:center;cursor:pointer;font-size:.95rem;transition:border-color .15s,transform .2s}
 .theme-pill:hover{border-color:var(--blue);transform:rotate(20deg)}
 .nav-cta{background:var(--blue);color:#fff;border:none;padding:.48rem 1.15rem;border-radius:999px;font-size:.82rem;font-weight:600;cursor:pointer;transition:background .15s,transform .15s;white-space:nowrap}
@@ -112,6 +114,8 @@ ul{list-style:none;padding:0;margin:0}
 .drawer-lang{display:flex;gap:.35rem;padding:.5rem 0;border-bottom:1px solid var(--bdr)}
 .drawer-lang button{border:1px solid var(--bdr);background:var(--bg2);border-radius:999px;padding:.3rem .75rem;font-size:.8rem;font-weight:700;cursor:pointer;color:var(--muted);transition:background .15s,color .15s}
 .drawer-lang button.on{background:var(--blue);color:#fff;border-color:var(--blue)}
+[data-theme="dark"] .drawer-lang button{color:#dbeafe}
+[data-theme="dark"] .drawer-lang button.on{color:#fff}
 
 /* ── MOBILE NAV BREAKPOINT ──────────────────────── */
 @media(max-width:720px){
@@ -752,8 +756,7 @@ ul{list-style:none;padding:0;margin:0}
 // ── 1. Theme init (before paint)
 (function(){
   const s = localStorage.getItem('tuunganes-theme');
-  const dark = window.matchMedia('(prefers-color-scheme:dark)').matches;
-  document.documentElement.setAttribute('data-theme', s || (dark ? 'dark' : 'light'));
+  document.documentElement.setAttribute('data-theme', s || 'light');
 })();
 
 document.addEventListener('DOMContentLoaded', function(){
