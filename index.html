@@ -1173,6 +1173,44 @@
       margin-top: .25rem;
     }
 
+    .form-status {
+      display: none;
+      margin-top: .8rem;
+      padding: .75rem .85rem;
+      border-radius: var(--radius-sm);
+      font-size: .84rem;
+      font-weight: 700;
+      line-height: 1.45;
+    }
+
+    .form-status.show {
+      display: block;
+    }
+
+    .form-status.ok {
+      color: #0f5132;
+      background: #d1e7dd;
+      border: 1px solid #badbcc;
+    }
+
+    .form-status.err {
+      color: #842029;
+      background: #f8d7da;
+      border: 1px solid #f5c2c7;
+    }
+
+    [data-theme="dark"] .form-status.ok {
+      color: #b7f7cf;
+      background: rgba(25, 135, 84, .18);
+      border-color: rgba(25, 135, 84, .35);
+    }
+
+    [data-theme="dark"] .form-status.err {
+      color: #ffc2c7;
+      background: rgba(220, 53, 69, .18);
+      border-color: rgba(220, 53, 69, .35);
+    }
+
     /* ─── FOOTER ─────────────────────────────────────────────────── */
     .foot {
       padding: 2.25rem 0;
@@ -1827,16 +1865,24 @@
         <div class="form-box">
           <h3 data-en="Send us a message" data-fr="Envoyez-nous un message" data-de="Schreiben Sie uns">Send us a
             message</h3>
-          <form action="https://formsubmit.co/el/figive" method="POST">
-            <input type="hidden" name="_captcha" value="false" />
-            <div class="ff"><input type="text" name="name" required placeholder="Your Name" data-en="Your Name"
+          <form id="homeContactForm" novalidate>
+            <input type="hidden" name="topic" value="other" />
+            <input type="hidden" name="contactMethod" value="email" />
+            <input type="text" name="website" id="homeWebsite" style="display:none" tabindex="-1" autocomplete="off" />
+            <div class="ff"><input id="homeFullName" type="text" name="fullName" required autocomplete="name"
+                placeholder="Your Name" data-en="Your Name"
                 data-fr="Votre nom" data-de="Ihr Name" /></div>
-            <div class="ff"><input type="email" name="email" required placeholder="Your Email" data-en="Your Email"
+            <div class="ff"><input id="homeEmail" type="email" name="email" required autocomplete="email"
+                placeholder="Your Email" data-en="Your Email"
                 data-fr="Votre e-mail" data-de="Ihre E-Mail" /></div>
-            <div class="ff"><textarea name="message" rows="4" required placeholder="Your Message" data-en="Your Message"
+            <div class="ff"><textarea id="homeMessage" name="message" rows="4" required placeholder="Your Message" data-en="Your Message"
                 data-fr="Votre message" data-de="Ihre Nachricht"></textarea></div>
-            <button type="submit" class="btn btn-solid btn-fw" data-en="Send message" data-fr="Envoyer le message"
+            <button type="submit" class="btn btn-solid btn-fw" id="homeSubmitBtn" data-en="Send message" data-fr="Envoyer le message"
               data-de="Nachricht senden">Send message</button>
+            <div class="form-status" id="homeFormStatus" role="status" aria-live="polite"
+              data-en="Message sent! We'll get back to you soon."
+              data-fr="Message envoyé ! Nous revenons vers vous bientôt."
+              data-de="Nachricht gesendet! Wir melden uns bald.">Message sent! We'll get back to you soon.</div>
           </form>
         </div>
       </div>
@@ -1963,6 +2009,93 @@
           }
         });
       });
+
+      // ── 7. Home contact form: same API path as contact.html
+      const homeForm = document.getElementById('homeContactForm');
+      const homeSubmitBtn = document.getElementById('homeSubmitBtn');
+      const homeStatus = document.getElementById('homeFormStatus');
+      const homeMsgs = {
+        name: {
+          en: 'Please enter your name',
+          fr: 'Veuillez saisir votre nom',
+          de: 'Bitte Ihren Namen eingeben'
+        },
+        email: {
+          en: 'Please enter a valid email',
+          fr: 'Veuillez saisir un e-mail valide',
+          de: 'Bitte eine gültige E-Mail eingeben'
+        },
+        msg: {
+          en: 'Please write a short message',
+          fr: 'Veuillez écrire un bref message',
+          de: 'Bitte schreiben Sie eine kurze Nachricht'
+        },
+        sending: {
+          en: 'Sending…',
+          fr: 'Envoi…',
+          de: 'Senden…'
+        },
+        error: {
+          en: 'Something went wrong. Please try again later.',
+          fr: 'Un problème est survenu. Veuillez réessayer plus tard.',
+          de: 'Etwas ist schief gelaufen. Bitte versuchen Sie es später erneut.'
+        }
+      };
+
+      function showHomeStatus(type, text) {
+        homeStatus.textContent = text;
+        homeStatus.classList.remove('ok', 'err');
+        homeStatus.classList.add('show', type);
+      }
+
+      if (homeForm) {
+        homeForm.addEventListener('submit', function (e) {
+          e.preventDefault();
+          if (document.getElementById('homeWebsite').value.trim() !== '') return;
+
+          const L = currentLang || localStorage.getItem('siteLang') || 'en';
+          const name = document.getElementById('homeFullName').value.trim();
+          const email = document.getElementById('homeEmail').value.trim();
+          const message = document.getElementById('homeMessage').value.trim();
+
+          homeStatus.classList.remove('show', 'ok', 'err');
+
+          if (!name) {
+            showHomeStatus('err', homeMsgs.name[L]);
+            return;
+          }
+          if (!email || !/^\S+@\S+\.\S+$/.test(email)) {
+            showHomeStatus('err', homeMsgs.email[L]);
+            return;
+          }
+          if (!message) {
+            showHomeStatus('err', homeMsgs.msg[L]);
+            return;
+          }
+
+          homeSubmitBtn.disabled = true;
+          const originalText = homeSubmitBtn.textContent;
+          homeSubmitBtn.textContent = homeMsgs.sending[L];
+
+          fetch('https://kagua.tuunganes.com/api/contact/', {
+            method: 'POST',
+            body: new FormData(homeForm),
+            headers: {
+              'Accept': 'application/json'
+            }
+          }).then(response => {
+            if (!response.ok) throw new Error('Contact request failed');
+            homeForm.reset();
+            const successMsg = homeStatus.getAttribute('data-' + L) || homeStatus.getAttribute('data-en');
+            showHomeStatus('ok', successMsg);
+          }).catch(() => {
+            showHomeStatus('err', homeMsgs.error[L]);
+          }).finally(() => {
+            homeSubmitBtn.disabled = false;
+            homeSubmitBtn.textContent = originalText;
+          });
+        });
+      }
 
     });
   </script>
