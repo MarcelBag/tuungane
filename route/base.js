@@ -15,11 +15,12 @@ window.setLang = function setLang(lang) {
   // Swap any element that declares translations via data-*
   document.querySelectorAll('[data-en]').forEach(el => {
     const key = 'data-' + lang;
-    if (el.hasAttribute(key)) {
-      el.innerHTML = el.getAttribute(key);
+    const val = el.hasAttribute(key) ? el.getAttribute(key) : el.getAttribute('data-en');
+
+    if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+      el.placeholder = val;
     } else {
-      // Fallback to English if the requested language string is missing
-      el.innerHTML = el.getAttribute('data-en');
+      el.innerHTML = val;
     }
   });
 

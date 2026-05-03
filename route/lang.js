@@ -2,7 +2,11 @@
 function setLang(lang) {
   document.querySelectorAll('[data-en]').forEach(el => {
     if (el.hasAttribute('data-' + lang)) {
-      el.innerHTML = el.getAttribute('data-' + lang);
+      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+        el.placeholder = el.getAttribute('data-' + lang);
+      } else {
+        el.innerHTML = el.getAttribute('data-' + lang);
+      }
     }
   });
 
