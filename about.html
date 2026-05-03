@@ -1,19 +1,24 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
+
 <head>
-<meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width,initial-scale=1"/>
-<link rel="canonical" href="https://tuunganes.com/about.html"/>
-<meta name="description" content="Learn about Tuunganes - a technology-driven social enterprise born in Bukavu, Eastern DRC, dedicated to closing the opportunity gap through innovation."/>
-<meta name="keywords" content="About Tuunganes, social enterprise DRC, Bukavu tech, Goma tech, African excellence, Congo innovation"/>
-<meta name="color-scheme" content="light dark"/>
-<title data-en="About Tuunganes" data-fr="À propos de Tuunganes" data-de="Über Tuunganes">About Tuunganes</title>
-<link rel="icon" href="assets/favicon.png" type="image/png"/>
-<link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="css/styles.css"/>
-<script type="application/ld+json">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="canonical" href="https://tuunganes.com/about.html" />
+  <meta name="description"
+    content="Learn about Tuunganes - a technology-driven social enterprise born in Bukavu, Eastern DRC, dedicated to closing the opportunity gap through innovation." />
+  <meta name="keywords"
+    content="About Tuunganes, social enterprise DRC, Bukavu tech, Goma tech, African excellence, Congo innovation" />
+  <meta name="color-scheme" content="light dark" />
+  <title data-en="About Tuunganes" data-fr="À propos de Tuunganes" data-de="Über Tuunganes">About Tuunganes</title>
+  <link rel="icon" href="assets/favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:wght@400;500;600&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+  <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "BreadcrumbList",
@@ -33,824 +38,2085 @@
   ]
 }
 </script>
-<style>
-/* ── TOKENS ─────────────────────────────────────── */
-:root{
-  --blue:#2196f3;--blue-d:#1565c0;
-  --blue-pale:rgba(33,150,243,.10);--blue-ring:rgba(33,150,243,.28);
-  --ease:cubic-bezier(.4,0,.2,1);
-  --display:'Playfair Display',Georgia,serif;
-  --body:'DM Sans',system-ui,sans-serif;
-}
-[data-theme="light"]{
-  --bg:#f5f8ff;--bg2:#e8f2fe;--surf:#fff;
-  --tx:#0a1628;--tx2:#253650;--muted:#5e7a96;
-  --bdr:#c5daf2;
-  --sh:0 1px 4px rgba(0,0,0,.05),0 8px 28px rgba(0,0,0,.07);
-  --sh-lg:0 4px 40px rgba(0,0,0,.11);
-}
-[data-theme="dark"]{
-  --bg:#050d1a;--bg2:#0b1725;--surf:#0f1c2e;
-  --tx:#ecf3ff;--tx2:#a5c2de;--muted:#5a7898;
-  --bdr:rgba(255,255,255,.07);
-  --sh:0 2px 10px rgba(0,0,0,.45),0 12px 40px rgba(0,0,0,.3);
-  --sh-lg:0 8px 48px rgba(0,0,0,.4);
-}
+  <style>
+    /* ── TOKENS ─────────────────────────────────────── */
+    :root {
+      --blue: #2196f3;
+      --blue-d: #1565c0;
+      --blue-pale: rgba(33, 150, 243, .10);
+      --blue-ring: rgba(33, 150, 243, .28);
+      --ease: cubic-bezier(.4, 0, .2, 1);
+      --display: 'Playfair Display', Georgia, serif;
+      --body: 'DM Sans', system-ui, sans-serif;
+    }
 
-/* ── RESET ───────────────────────────────────────── */
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:var(--body);background:var(--bg);color:var(--tx);
-  font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;
-  overflow-x:hidden;transition:background .28s var(--ease),color .28s var(--ease)
-}
-a{color:inherit;text-decoration:none}
-img{display:block;max-width:100%}
-button{font-family:inherit}
-ul{list-style:none;padding:0;margin:0}
+    [data-theme="light"] {
+      --bg: #f5f8ff;
+      --bg2: #e8f2fe;
+      --surf: #fff;
+      --tx: #0a1628;
+      --tx2: #253650;
+      --muted: #5e7a96;
+      --bdr: #c5daf2;
+      --sh: 0 1px 4px rgba(0, 0, 0, .05), 0 8px 28px rgba(0, 0, 0, .07);
+      --sh-lg: 0 4px 40px rgba(0, 0, 0, .11);
+    }
 
-/* ── LAYOUT ─────────────────────────────────────── */
-.frame{width:min(1200px,94vw);margin:0 auto}
+    [data-theme="dark"] {
+      --bg: #050d1a;
+      --bg2: #0b1725;
+      --surf: #0f1c2e;
+      --tx: #ecf3ff;
+      --tx2: #a5c2de;
+      --muted: #5a7898;
+      --bdr: rgba(255, 255, 255, .07);
+      --sh: 0 2px 10px rgba(0, 0, 0, .45), 0 12px 40px rgba(0, 0, 0, .3);
+      --sh-lg: 0 8px 48px rgba(0, 0, 0, .4);
+    }
 
-/* ── NAV ─────────────────────────────────────────── */
-.nav{
-  position:fixed;top:1rem;left:50%;transform:translateX(-50%);
-  width:min(1100px,90vw);
-  background:color-mix(in srgb,var(--surf) 82%,transparent);
-  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
-  border:1px solid var(--bdr);border-radius:999px;
-  padding:.5rem .5rem .5rem 1.4rem;
-  display:flex;align-items:center;justify-content:space-between;gap:1rem;
-  z-index:1000;box-shadow:var(--sh);
-}
-.nav-logo{display:flex;align-items:center;gap:.55rem;font-size:.95rem;font-weight:700;color:var(--tx);flex-shrink:0;font-family:var(--body)}
-.nav-logo img{width:30px;height:30px;border-radius:8px}
-.nav-links{display:flex;align-items:center;gap:.15rem;flex:1;justify-content:center}
-.nav-links a{padding:.42rem .85rem;border-radius:999px;font-size:.82rem;font-weight:600;color:var(--tx2);transition:color .15s,background .15s}
-.nav-links a:hover,.nav-links a.active{color:var(--blue);background:var(--blue-pale)}
-.nav-end{display:flex;align-items:center;gap:.45rem;flex-shrink:0}
-.lang-pills{display:flex;gap:.18rem;background:var(--bg2);border:1px solid var(--bdr);border-radius:999px;padding:.22rem .28rem}
-.lang-pills button{border:none;background:transparent;border-radius:999px;padding:.22rem .55rem;font-size:.74rem;font-weight:700;cursor:pointer;color:var(--muted);transition:background .15s,color .15s}
-.lang-pills button.on{background:var(--blue);color:#fff}
-[data-theme="dark"] .lang-pills button{color:#dbeafe}
-[data-theme="dark"] .lang-pills button.on{color:#fff}
-.theme-pill{width:36px;height:36px;border-radius:999px;border:1px solid var(--bdr);background:var(--bg2);display:grid;place-items:center;cursor:pointer;font-size:.95rem;transition:border-color .15s,transform .2s}
-.theme-pill:hover{border-color:var(--blue);transform:rotate(20deg)}
-.nav-cta{background:var(--blue);color:#fff;border:none;padding:.48rem 1.15rem;border-radius:999px;font-size:.82rem;font-weight:600;cursor:pointer;transition:background .15s,transform .15s;white-space:nowrap}
-.nav-cta:hover{background:var(--blue-d);transform:translateY(-1px)}
+    /* ── RESET ───────────────────────────────────────── */
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0
+    }
 
-/* ── HAMBURGER ──────────────────────────────────── */
-.ham{display:none;flex-direction:column;gap:4px;cursor:pointer;background:var(--bg2);border:1px solid var(--bdr);border-radius:999px;padding:.55rem .75rem}
-.ham span{display:block;width:18px;height:2px;background:var(--tx);border-radius:2px;transition:.2s}
+    html {
+      scroll-behavior: smooth
+    }
 
-/* ── DRAWER ─────────────────────────────────────── */
-.nav-drawer{display:none;position:fixed;inset:0;background:var(--surf);z-index:999;flex-direction:column;padding:2rem 1.75rem;gap:1.25rem;border-right:1px solid var(--bdr);overflow-y:auto}
-.nav-drawer.open{display:flex}
-.nav-drawer a{font-size:1.1rem;font-weight:600;color:var(--tx2);padding:.5rem 0;border-bottom:1px solid var(--bdr)}
-.nav-drawer a:hover{color:var(--blue)}
+    body {
+      font-family: var(--body);
+      background: var(--bg);
+      color: var(--tx);
+      font-size: 16px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+      transition: background .28s var(--ease), color .28s var(--ease)
+    }
 
-/* Drawer language pills */
-.drawer-lang{display:flex;gap:.35rem;padding:.5rem 0;border-bottom:1px solid var(--bdr)}
-.drawer-lang button{border:1px solid var(--bdr);background:var(--bg2);border-radius:999px;padding:.3rem .75rem;font-size:.8rem;font-weight:700;cursor:pointer;color:var(--muted);transition:background .15s,color .15s}
-.drawer-lang button.on{background:var(--blue);color:#fff;border-color:var(--blue)}
-[data-theme="dark"] .drawer-lang button{color:#dbeafe}
-[data-theme="dark"] .drawer-lang button.on{color:#fff}
+    a {
+      color: inherit;
+      text-decoration: none
+    }
 
-/* ── MOBILE NAV BREAKPOINT ──────────────────────── */
-@media(max-width:720px){
-  .nav-links{display:none}
-  .nav-end .lang-pills,
-  .nav-end .nav-cta{display:none}
-  .ham{display:flex}
-  .nav-end{display:flex;gap:.4rem}
-  .nav{top:.6rem;width:93vw;padding:.4rem .5rem .4rem 1rem}
-}
+    img {
+      display: block;
+      max-width: 100%
+    }
 
-/* ── BUTTONS ─────────────────────────────────────── */
-.btn{display:inline-flex;align-items:center;gap:.4rem;padding:.72rem 1.65rem;border-radius:999px;border:none;cursor:pointer;font-size:.88rem;font-weight:600;transition:all .2s var(--ease);white-space:nowrap;font-family:var(--body);letter-spacing:.01em}
-.btn-solid{background:var(--blue);color:#fff;box-shadow:0 4px 16px rgba(33,150,243,.3)}
-.btn-solid:hover{background:var(--blue-d);transform:translateY(-2px);box-shadow:0 8px 24px rgba(33,150,243,.4)}
-.btn-ghost{background:transparent;color:var(--tx);border:1.5px solid var(--bdr)}
-.btn-ghost:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-1px)}
-.btn-w{background:#fff;color:var(--blue);font-weight:700}
-.btn-w:hover{background:#e3f2fd;transform:translateY(-1px)}
-.btn-wg{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.4)}
-.btn-wg:hover{background:rgba(255,255,255,.1);border-color:#fff}
+    button {
+      font-family: inherit
+    }
 
-/* ── HERO ────────────────────────────────────────── */
-.hero{
-  min-height:100svh;display:grid;place-items:center;
-  padding:8rem 0 5rem;position:relative;overflow:hidden;
-  background:var(--surf);border-bottom:1px solid var(--bdr);
-}
-.hero::before{
-  content:'';position:absolute;
-  width:700px;height:700px;border-radius:50%;
-  right:-120px;top:-140px;
-  background:radial-gradient(circle,rgba(33,150,243,.10) 0%,transparent 70%);
-  pointer-events:none;
-}
-[data-theme="dark"] .hero::before{background:radial-gradient(circle,rgba(33,150,243,.18) 0%,transparent 70%)}
-.hero-wm{
-  position:absolute;right:-2rem;bottom:-3rem;
-  font-family:var(--display);font-size:38vw;font-weight:900;line-height:.8;
-  color:var(--blue);opacity:.03;pointer-events:none;user-select:none;
-  letter-spacing:-.05em;
-}
-[data-theme="dark"] .hero-wm{opacity:.05}
-.hero-inner{
-  display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:center;
-  position:relative;z-index:1;
-}
-@media(max-width:900px){.hero-inner{grid-template-columns:1fr}.hero-right{display:none}}
-.hero-pill{
-  display:inline-flex;align-items:center;gap:.5rem;
-  font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--blue);border:1.5px solid var(--blue-ring);border-radius:999px;
-  padding:.35rem .9rem;margin-bottom:1.5rem;
-}
-.hero-pill::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--blue)}
-.hero h1{
-  font-family:var(--display);font-size:clamp(2.8rem,7vw,5.5rem);
-  font-weight:900;line-height:1.0;letter-spacing:-.02em;color:var(--tx);
-  margin-bottom:1.1rem;
-}
-.hero h1 em{font-style:italic;color:var(--blue)}
-.hero-sub{font-size:1.05rem;color:var(--tx2);max-width:460px;line-height:1.75;margin-bottom:2rem}
-.hero-btns{display:flex;gap:.7rem;flex-wrap:wrap}
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0
+    }
 
-/* right side stacked photos */
-.hero-right{position:relative;height:500px}
-.himg{position:absolute;border-radius:20px;overflow:hidden;box-shadow:var(--sh-lg);border:1px solid var(--bdr)}
-.himg img{width:100%;height:100%;object-fit:cover;display:block}
-.himg-a{width:62%;top:0;right:0;height:300px}
-.himg-b{width:52%;bottom:0;left:0;height:260px}
-.hero-tag-badge{
-  position:absolute;bottom:80px;right:-10px;z-index:2;
-  background:var(--blue);color:#fff;border-radius:14px;
-  padding:.8rem 1.1rem;box-shadow:0 8px 28px rgba(33,150,243,.4);
-}
-.hero-tag-badge strong{display:block;font-size:1.5rem;font-weight:900;line-height:1;font-family:var(--display)}
-.hero-tag-badge span{font-size:.72rem;opacity:.85;font-weight:500}
+    /* ── LAYOUT ─────────────────────────────────────── */
+    .frame {
+      width: min(1200px, 94vw);
+      margin: 0 auto
+    }
 
-/* ── SECTION HELPERS ─────────────────────────────── */
-.sec{padding:7rem 0}
-.sec-dark{padding:7rem 0;background:var(--surf);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr)}
-.eyebrow{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--blue);display:block;margin-bottom:.6rem}
-.display-h{font-family:var(--display);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;line-height:1.1;letter-spacing:-.02em;color:var(--tx);margin-bottom:.85rem}
-.display-h em{font-style:italic;color:var(--blue)}
-.body-text{color:var(--tx2);font-size:.97rem;line-height:1.75}
+    /* ── NAV ─────────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: min(1100px, 90vw);
+      background: color-mix(in srgb, var(--surf) 82%, transparent);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--bdr);
+      border-radius: 999px;
+      padding: .5rem .5rem .5rem 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      z-index: 1000;
+      box-shadow: var(--sh);
+    }
 
-/* ── WHO WE ARE ──────────────────────────────────── */
-.who-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:0;
-  border:1px solid var(--bdr);border-radius:24px;overflow:hidden;
-  box-shadow:var(--sh-lg);
-}
-@media(max-width:820px){.who-grid{grid-template-columns:1fr}}
-.who-photo{position:relative;min-height:480px}
-.who-photo img{width:100%;height:100%;object-fit:cover;display:block;position:absolute;inset:0}
-.who-photo::after{
-  content:'';position:absolute;inset:0;
-  background:linear-gradient(135deg,rgba(33,150,243,.3) 0%,transparent 60%);
-}
-.who-quote{
-  position:absolute;bottom:1.5rem;left:1.5rem;right:1.5rem;z-index:2;
-  background:rgba(255,255,255,.12);backdrop-filter:blur(14px);
-  border:1px solid rgba(255,255,255,.25);border-radius:14px;
-  padding:1.1rem 1.25rem;color:#fff;font-size:.88rem;line-height:1.6;
-  font-family:var(--display);font-style:italic;font-weight:700;
-}
-.who-quote cite{display:block;margin-top:.5rem;font-size:.72rem;font-family:var(--body);font-style:normal;opacity:.8;font-weight:500}
-.who-copy{padding:3.5rem 3rem;background:var(--surf);display:flex;flex-direction:column;justify-content:center}
-@media(max-width:820px){.who-copy{padding:2.25rem 1.75rem}}
-.who-copy p{color:var(--tx2);font-size:.96rem;line-height:1.75;margin-bottom:.85rem}
-.who-copy .btn-row{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.25rem}
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+      font-size: .95rem;
+      font-weight: 700;
+      color: var(--tx);
+      flex-shrink: 0;
+      font-family: var(--body)
+    }
 
-/* ── MISSION / VISION ────────────────────────────── */
-.mv-row{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
-@media(max-width:720px){.mv-row{grid-template-columns:1fr}}
-.mv-tile{border-radius:20px;padding:2.25rem 2rem;border:1px solid var(--bdr);box-shadow:var(--sh);position:relative;overflow:hidden;background:var(--bg)}
-.mv-tile.blue-tile{background:var(--blue);border-color:var(--blue);color:#fff}
-.mv-tile.blue-tile .mv-label{color:rgba(255,255,255,.65)}
-.mv-tile.blue-tile h3{color:#fff}
-.mv-tile.blue-tile p{color:rgba(255,255,255,.82)}
-.mv-tile::before{content:'';position:absolute;bottom:-30px;right:-30px;width:120px;height:120px;border-radius:50%;background:rgba(255,255,255,.05);pointer-events:none}
-.mv-label{font-size:.68rem;font-weight:700;letter-spacing:.13em;text-transform:uppercase;color:var(--blue);margin-bottom:.6rem;display:block}
-.mv-tile h3{font-family:var(--display);font-size:1.4rem;font-weight:900;color:var(--tx);margin-bottom:.7rem;letter-spacing:-.01em}
-.mv-tile p{font-size:.92rem;color:var(--tx2);line-height:1.7}
-.mv-tile ul{display:flex;flex-direction:column;gap:.55rem}
-.mv-tile ul li{display:flex;align-items:flex-start;gap:.6rem;font-size:.88rem;color:rgba(255,255,255,.85);line-height:1.55}
-.mv-tile ul li::before{
-  content:'';width:16px;height:16px;border-radius:50%;flex-shrink:0;
-  background:rgba(255,255,255,.2);border:1.5px solid rgba(255,255,255,.4);
-  margin-top:.12em;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%23ffffff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
-  background-size:9px;background-position:center;background-repeat:no-repeat;
-}
+    .nav-logo img {
+      width: 30px;
+      height: 30px;
+      border-radius: 8px
+    }
 
-/* ── WHAT WE DO ──────────────────────────────────── */
-.wwd-list{margin-top:1rem}
-.wwd-item{
-  display:grid;grid-template-columns:72px 1fr auto;
-  gap:0 2rem;align-items:start;
-  padding:2rem 0;border-top:1px solid var(--bdr);
-  transition:background .2s;
-}
-.wwd-item:last-child{border-bottom:1px solid var(--bdr)}
-.wwd-item:hover .wwd-num{color:var(--blue);opacity:1}
-@media(max-width:640px){
-  .wwd-item{grid-template-columns:48px 1fr;gap:0 1rem}
-  .wwd-arrow{display:none}
-}
-.wwd-num{font-family:var(--display);font-size:2.5rem;font-weight:900;color:var(--tx);opacity:.12;line-height:1;transition:color .2s,opacity .2s;letter-spacing:-.04em;padding-top:.1rem}
-.wwd-body h3{font-family:var(--display);font-size:1.15rem;font-weight:700;color:var(--tx);margin-bottom:.35rem;letter-spacing:-.01em}
-.wwd-body p{font-size:.88rem;color:var(--tx2);line-height:1.6;max-width:540px}
-.wwd-icon-wrap{width:44px;height:44px;border-radius:12px;flex-shrink:0;background:var(--blue-pale);border:1px solid var(--blue-ring);display:grid;place-items:center;font-size:1.1rem;margin-top:.2rem}
-.wwd-arrow{font-size:1.25rem;color:var(--muted);align-self:center;transition:color .2s,transform .2s}
-.wwd-item:hover .wwd-arrow{color:var(--blue);transform:translateX(4px)}
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: .15rem;
+      flex: 1;
+      justify-content: center
+    }
 
-/* ── JOURNEY TIMELINE ────────────────────────────── */
-.journey-wrap{padding:7rem 0;background:var(--surf);border-top:1px solid var(--bdr);border-bottom:1px solid var(--bdr)}
-.journey-head{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:4rem;flex-wrap:wrap;gap:1rem}
-.timeline-rail{position:relative;padding-top:2rem}
-.rail-line{position:absolute;top:2rem;left:0;right:0;height:2px;background:var(--bdr)}
-.rail-progress{position:absolute;top:0;left:0;height:2px;background:var(--blue);border-radius:2px;width:100%;animation:progress-in 1.4s 0.3s var(--ease) both}
-@keyframes progress-in{from{width:0}to{width:100%}}
-.timeline-nodes{display:grid;grid-template-columns:repeat(4,1fr);position:relative;z-index:1}
-@media(max-width:640px){
-  .timeline-nodes{grid-template-columns:1fr 1fr;row-gap:3rem}
-  .rail-line,.rail-progress{display:none}
-}
-.t-node{padding-top:0;display:flex;flex-direction:column;align-items:flex-start;padding-right:1.5rem}
-.t-dot-wrap{margin-bottom:1.25rem;position:relative}
-.t-dot{width:14px;height:14px;border-radius:50%;background:var(--blue);border:3px solid var(--surf);box-shadow:0 0 0 2px var(--blue);transition:transform .25s var(--ease)}
-.t-node:hover .t-dot{transform:scale(1.4)}
-.t-year{font-family:var(--display);font-size:2.6rem;font-weight:900;color:var(--blue);line-height:1;letter-spacing:-.04em;margin-bottom:.5rem}
-.t-title{font-size:.88rem;font-weight:700;color:var(--tx);margin-bottom:.4rem;letter-spacing:-.005em}
-.t-desc{font-size:.82rem;color:var(--muted);line-height:1.55;max-width:220px}
+    .nav-links a {
+      padding: .42rem .85rem;
+      border-radius: 999px;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--tx2);
+      transition: color .15s, background .15s
+    }
 
-/* ── IMPACT NUMBERS ──────────────────────────────── */
-.impact-strip{background:var(--blue);padding:5rem 0;position:relative;overflow:hidden}
-.impact-strip::before{content:'';position:absolute;width:600px;height:600px;border-radius:50%;top:-200px;left:-100px;background:rgba(255,255,255,.04);pointer-events:none}
-.impact-strip::after{content:'';position:absolute;width:400px;height:400px;border-radius:50%;bottom:-150px;right:-80px;background:rgba(255,255,255,.04);pointer-events:none}
-.impact-inner{display:grid;grid-template-columns:1fr 3fr;gap:4rem;align-items:center;position:relative;z-index:1}
-@media(max-width:820px){.impact-inner{grid-template-columns:1fr}}
-.impact-label{font-family:var(--display);font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:#fff;line-height:1.15}
-.impact-label em{display:block;font-style:italic;opacity:.65;font-size:.75em}
-.impact-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:rgba(255,255,255,.15);border-radius:16px;overflow:hidden}
-@media(max-width:640px){.impact-stats{grid-template-columns:1fr 1fr}}
-.i-stat{background:rgba(255,255,255,.06);padding:1.75rem 1.25rem;text-align:center}
-.i-stat b{display:block;font-family:var(--display);font-size:2.8rem;font-weight:900;color:#fff;line-height:1;margin-bottom:.3rem;letter-spacing:-.04em}
-.i-stat span{font-size:.78rem;color:rgba(255,255,255,.7);line-height:1.4}
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--blue);
+      background: var(--blue-pale)
+    }
 
-/* ── CTA BAND ────────────────────────────────────── */
-.cta-sec{padding:7rem 0}
-.cta-band{background:var(--tx);border-radius:28px;overflow:hidden;display:grid;grid-template-columns:1fr 1fr;box-shadow:var(--sh-lg);min-height:320px}
-@media(max-width:820px){.cta-band{grid-template-columns:1fr}}
-.cta-left{padding:3.5rem 3rem;display:flex;flex-direction:column;justify-content:center}
-.cta-left .eyebrow{color:rgba(255,255,255,.5)}
-.cta-left h2{font-family:var(--display);font-size:clamp(1.6rem,3.5vw,2.4rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:.75rem;letter-spacing:-.025em}
-.cta-left p{color:rgba(255,255,255,.65);font-size:.93rem;line-height:1.7;margin-bottom:1.75rem;max-width:400px}
-.cta-btns{display:flex;gap:.65rem;flex-wrap:wrap}
-.cta-right{background:var(--blue);position:relative;overflow:hidden;min-height:240px}
-.cta-right::before{content:'';position:absolute;bottom:-80px;right:-80px;width:320px;height:320px;border-radius:50%;background:rgba(255,255,255,.1)}
-.cta-right::after{content:'';position:absolute;top:-60px;left:-60px;width:200px;height:200px;border-radius:50%;background:rgba(255,255,255,.07)}
-.cta-right-inner{position:relative;z-index:1;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;height:100%;padding:3rem 2.5rem}
-.cta-big-text{font-family:var(--display);font-size:clamp(2.5rem,6vw,4.5rem);font-weight:900;color:#fff;line-height:.95;letter-spacing:-.04em;margin-bottom:1rem}
-.cta-right-inner p{color:rgba(255,255,255,.75);font-size:.88rem;margin-bottom:1.25rem}
+    .nav-end {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      flex-shrink: 0
+    }
 
-/* ── FOOTER ──────────────────────────────────────── */
-.foot{padding:2.25rem 0;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap;border-top:1px solid var(--bdr)}
-.foot-logo{display:flex;align-items:center;gap:.5rem;font-weight:700;font-size:.95rem;color:var(--tx);font-family:var(--body)}
-.foot-logo img{width:28px;height:28px;border-radius:7px}
-.foot p{font-size:.8rem;color:var(--muted)}
+    .lang-pills {
+      display: flex;
+      gap: .18rem;
+      background: var(--bg2);
+      border: 1px solid var(--bdr);
+      border-radius: 999px;
+      padding: .22rem .28rem
+    }
 
-/* ── ANIMATIONS ──────────────────────────────────── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.hero .hero-pill{animation:fadeUp .7s var(--ease) both}
-.hero h1{animation:fadeUp .8s .1s var(--ease) both}
-.hero .hero-sub{animation:fadeUp .8s .2s var(--ease) both}
-.hero .hero-btns{animation:fadeUp .8s .3s var(--ease) both}
-.hero-right{animation:fadeUp .9s .15s var(--ease) both}
-.reveal{opacity:0;transform:translateY(26px);transition:opacity .65s var(--ease),transform .65s var(--ease)}
-.reveal.in{opacity:1;transform:translateY(0)}
-.reveal-fade{opacity:0;transition:opacity .8s var(--ease)}
-.reveal-fade.in{opacity:1}
+    .lang-pills button {
+      border: none;
+      background: transparent;
+      border-radius: 999px;
+      padding: .22rem .55rem;
+      font-size: .74rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--muted);
+      transition: background .15s, color .15s
+    }
 
-/* ══════════════════════════════════════════════════
+    .lang-pills button.on {
+      background: var(--blue);
+      color: #fff
+    }
+
+    [data-theme="dark"] .lang-pills button {
+      color: #dbeafe
+    }
+
+    [data-theme="dark"] .lang-pills button.on {
+      color: #fff
+    }
+
+    .theme-pill {
+      width: 36px;
+      height: 36px;
+      border-radius: 999px;
+      border: 1px solid var(--bdr);
+      background: var(--bg2);
+      display: grid;
+      place-items: center;
+      cursor: pointer;
+      font-size: .95rem;
+      transition: border-color .15s, transform .2s
+    }
+
+    .theme-pill:hover {
+      border-color: var(--blue);
+      transform: rotate(20deg)
+    }
+
+    .nav-cta {
+      background: var(--blue);
+      color: #fff;
+      border: none;
+      padding: .48rem 1.15rem;
+      border-radius: 999px;
+      font-size: .82rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background .15s, transform .15s;
+      white-space: nowrap
+    }
+
+    .nav-cta:hover {
+      background: var(--blue-d);
+      transform: translateY(-1px)
+    }
+
+    /* ── HAMBURGER ──────────────────────────────────── */
+    .ham {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+      background: var(--bg2);
+      border: 1px solid var(--bdr);
+      border-radius: 999px;
+      padding: .55rem .75rem
+    }
+
+    .ham span {
+      display: block;
+      width: 18px;
+      height: 2px;
+      background: var(--tx);
+      border-radius: 2px;
+      transition: .2s
+    }
+
+    /* ── DRAWER ─────────────────────────────────────── */
+    .nav-drawer {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: var(--surf);
+      z-index: 999;
+      flex-direction: column;
+      padding: 2rem 1.75rem;
+      gap: 1.25rem;
+      border-right: 1px solid var(--bdr);
+      overflow-y: auto
+    }
+
+    .nav-drawer.open {
+      display: flex
+    }
+
+    .nav-drawer a {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--tx2);
+      padding: .5rem 0;
+      border-bottom: 1px solid var(--bdr)
+    }
+
+    .nav-drawer a:hover {
+      color: var(--blue)
+    }
+
+    /* Drawer language pills */
+    .drawer-lang {
+      display: flex;
+      gap: .35rem;
+      padding: .5rem 0;
+      border-bottom: 1px solid var(--bdr)
+    }
+
+    .drawer-lang button {
+      border: 1px solid var(--bdr);
+      background: var(--bg2);
+      border-radius: 999px;
+      padding: .3rem .75rem;
+      font-size: .8rem;
+      font-weight: 700;
+      cursor: pointer;
+      color: var(--muted);
+      transition: background .15s, color .15s
+    }
+
+    .drawer-lang button.on {
+      background: var(--blue);
+      color: #fff;
+      border-color: var(--blue)
+    }
+
+    [data-theme="dark"] .drawer-lang button {
+      color: #dbeafe
+    }
+
+    [data-theme="dark"] .drawer-lang button.on {
+      color: #fff
+    }
+
+    /* ── MOBILE NAV BREAKPOINT ──────────────────────── */
+    @media(max-width:720px) {
+      .nav-links {
+        display: none
+      }
+
+      .nav-end .lang-pills,
+      .nav-end .nav-cta {
+        display: none
+      }
+
+      .ham {
+        display: flex
+      }
+
+      .nav-end {
+        display: flex;
+        gap: .4rem
+      }
+
+      .nav {
+        top: .6rem;
+        width: 93vw;
+        padding: .4rem .5rem .4rem 1rem
+      }
+    }
+
+    /* ── BUTTONS ─────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      padding: .72rem 1.65rem;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: .88rem;
+      font-weight: 600;
+      transition: all .2s var(--ease);
+      white-space: nowrap;
+      font-family: var(--body);
+      letter-spacing: .01em
+    }
+
+    .btn-solid {
+      background: var(--blue);
+      color: #fff;
+      box-shadow: 0 4px 16px rgba(33, 150, 243, .3)
+    }
+
+    .btn-solid:hover {
+      background: var(--blue-d);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(33, 150, 243, .4)
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--tx);
+      border: 1.5px solid var(--bdr)
+    }
+
+    .btn-ghost:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      transform: translateY(-1px)
+    }
+
+    .btn-w {
+      background: #fff;
+      color: var(--blue);
+      font-weight: 700
+    }
+
+    .btn-w:hover {
+      background: #e3f2fd;
+      transform: translateY(-1px)
+    }
+
+    .btn-wg {
+      background: transparent;
+      color: #fff;
+      border: 1.5px solid rgba(255, 255, 255, .4)
+    }
+
+    .btn-wg:hover {
+      background: rgba(255, 255, 255, .1);
+      border-color: #fff
+    }
+
+    /* ── HERO ────────────────────────────────────────── */
+    .hero {
+      min-height: 100svh;
+      display: grid;
+      place-items: center;
+      padding: 8rem 0 5rem;
+      position: relative;
+      overflow: hidden;
+      background: var(--surf);
+      border-bottom: 1px solid var(--bdr);
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      width: 700px;
+      height: 700px;
+      border-radius: 50%;
+      right: -120px;
+      top: -140px;
+      background: radial-gradient(circle, rgba(33, 150, 243, .10) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    [data-theme="dark"] .hero::before {
+      background: radial-gradient(circle, rgba(33, 150, 243, .18) 0%, transparent 70%)
+    }
+
+    .hero-wm {
+      position: absolute;
+      right: -2rem;
+      bottom: -3rem;
+      font-family: var(--display);
+      font-size: 38vw;
+      font-weight: 900;
+      line-height: .8;
+      color: var(--blue);
+      opacity: .03;
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -.05em;
+    }
+
+    [data-theme="dark"] .hero-wm {
+      opacity: .05
+    }
+
+    .hero-inner {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    @media(max-width:900px) {
+      .hero-inner {
+        grid-template-columns: 1fr
+      }
+
+      .hero-right {
+        display: none
+      }
+    }
+
+    .hero-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--blue);
+      border: 1.5px solid var(--blue-ring);
+      border-radius: 999px;
+      padding: .35rem .9rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .hero-pill::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--blue)
+    }
+
+    .hero h1 {
+      font-family: var(--display);
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      font-weight: 900;
+      line-height: 1.0;
+      letter-spacing: -.02em;
+      color: var(--tx);
+      margin-bottom: 1.1rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--blue)
+    }
+
+    .hero-sub {
+      font-size: 1.05rem;
+      color: var(--tx2);
+      max-width: 460px;
+      line-height: 1.75;
+      margin-bottom: 2rem
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: .7rem;
+      flex-wrap: wrap
+    }
+
+    /* right side stacked photos */
+    .hero-right {
+      position: relative;
+      height: 500px
+    }
+
+    .himg {
+      position: absolute;
+      border-radius: 20px;
+      overflow: hidden;
+      box-shadow: var(--sh-lg);
+      border: 1px solid var(--bdr)
+    }
+
+    .himg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block
+    }
+
+    .himg-a {
+      width: 62%;
+      top: 0;
+      right: 0;
+      height: 300px
+    }
+
+    .himg-b {
+      width: 52%;
+      bottom: 0;
+      left: 0;
+      height: 260px
+    }
+
+    .hero-tag-badge {
+      position: absolute;
+      bottom: 80px;
+      right: -10px;
+      z-index: 2;
+      background: var(--blue);
+      color: #fff;
+      border-radius: 14px;
+      padding: .8rem 1.1rem;
+      box-shadow: 0 8px 28px rgba(33, 150, 243, .4);
+    }
+
+    .hero-tag-badge strong {
+      display: block;
+      font-size: 1.5rem;
+      font-weight: 900;
+      line-height: 1;
+      font-family: var(--display)
+    }
+
+    .hero-tag-badge span {
+      font-size: .72rem;
+      opacity: .85;
+      font-weight: 500
+    }
+
+    /* ── SECTION HELPERS ─────────────────────────────── */
+    .sec {
+      padding: 7rem 0
+    }
+
+    .sec-dark {
+      padding: 7rem 0;
+      background: var(--surf);
+      border-top: 1px solid var(--bdr);
+      border-bottom: 1px solid var(--bdr)
+    }
+
+    .eyebrow {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--blue);
+      display: block;
+      margin-bottom: .6rem
+    }
+
+    .display-h {
+      font-family: var(--display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      color: var(--tx);
+      margin-bottom: .85rem
+    }
+
+    .display-h em {
+      font-style: italic;
+      color: var(--blue)
+    }
+
+    .body-text {
+      color: var(--tx2);
+      font-size: .97rem;
+      line-height: 1.75
+    }
+
+    /* ── WHO WE ARE ──────────────────────────────────── */
+    .who-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--bdr);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--sh-lg);
+    }
+
+    @media(max-width:820px) {
+      .who-grid {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .who-photo {
+      position: relative;
+      min-height: 480px
+    }
+
+    .who-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      position: absolute;
+      inset: 0
+    }
+
+    .who-photo::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(33, 150, 243, .3) 0%, transparent 60%);
+    }
+
+    .who-quote {
+      position: absolute;
+      bottom: 1.5rem;
+      left: 1.5rem;
+      right: 1.5rem;
+      z-index: 2;
+      background: rgba(255, 255, 255, .12);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, .25);
+      border-radius: 14px;
+      padding: 1.1rem 1.25rem;
+      color: #fff;
+      font-size: .88rem;
+      line-height: 1.6;
+      font-family: var(--display);
+      font-style: italic;
+      font-weight: 700;
+    }
+
+    .who-quote cite {
+      display: block;
+      margin-top: .5rem;
+      font-size: .72rem;
+      font-family: var(--body);
+      font-style: normal;
+      opacity: .8;
+      font-weight: 500
+    }
+
+    .who-copy {
+      padding: 3.5rem 3rem;
+      background: var(--surf);
+      display: flex;
+      flex-direction: column;
+      justify-content: center
+    }
+
+    @media(max-width:820px) {
+      .who-copy {
+        padding: 2.25rem 1.75rem
+      }
+    }
+
+    .who-copy p {
+      color: var(--tx2);
+      font-size: .96rem;
+      line-height: 1.75;
+      margin-bottom: .85rem
+    }
+
+    .who-copy .btn-row {
+      display: flex;
+      gap: .6rem;
+      flex-wrap: wrap;
+      margin-top: 1.25rem
+    }
+
+    /* ── MISSION / VISION ────────────────────────────── */
+    .mv-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem
+    }
+
+    @media(max-width:720px) {
+      .mv-row {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .mv-tile {
+      border-radius: 20px;
+      padding: 2.25rem 2rem;
+      border: 1px solid var(--bdr);
+      box-shadow: var(--sh);
+      position: relative;
+      overflow: hidden;
+      background: var(--bg)
+    }
+
+    .mv-tile.blue-tile {
+      background: var(--blue);
+      border-color: var(--blue);
+      color: #fff
+    }
+
+    .mv-tile.blue-tile .mv-label {
+      color: rgba(255, 255, 255, .65)
+    }
+
+    .mv-tile.blue-tile h3 {
+      color: #fff
+    }
+
+    .mv-tile.blue-tile p {
+      color: rgba(255, 255, 255, .82)
+    }
+
+    .mv-tile::before {
+      content: '';
+      position: absolute;
+      bottom: -30px;
+      right: -30px;
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .05);
+      pointer-events: none
+    }
+
+    .mv-label {
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      color: var(--blue);
+      margin-bottom: .6rem;
+      display: block
+    }
+
+    .mv-tile h3 {
+      font-family: var(--display);
+      font-size: 1.4rem;
+      font-weight: 900;
+      color: var(--tx);
+      margin-bottom: .7rem;
+      letter-spacing: -.01em
+    }
+
+    .mv-tile p {
+      font-size: .92rem;
+      color: var(--tx2);
+      line-height: 1.7
+    }
+
+    .mv-tile ul {
+      display: flex;
+      flex-direction: column;
+      gap: .55rem
+    }
+
+    .mv-tile ul li {
+      display: flex;
+      align-items: flex-start;
+      gap: .6rem;
+      font-size: .88rem;
+      color: rgba(255, 255, 255, .85);
+      line-height: 1.55
+    }
+
+    .mv-tile ul li::before {
+      content: '';
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: rgba(255, 255, 255, .2);
+      border: 1.5px solid rgba(255, 255, 255, .4);
+      margin-top: .12em;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 12 12' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M2 6l3 3 5-5' stroke='%23ffffff' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-size: 9px;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    /* ── WHAT WE DO ──────────────────────────────────── */
+    .wwd-list {
+      margin-top: 1rem
+    }
+
+    .wwd-item {
+      display: grid;
+      grid-template-columns: 72px 1fr auto;
+      gap: 0 2rem;
+      align-items: start;
+      padding: 2rem 0;
+      border-top: 1px solid var(--bdr);
+      transition: background .2s;
+    }
+
+    .wwd-item:last-child {
+      border-bottom: 1px solid var(--bdr)
+    }
+
+    .wwd-item:hover .wwd-num {
+      color: var(--blue);
+      opacity: 1
+    }
+
+    @media(max-width:640px) {
+      .wwd-item {
+        grid-template-columns: 48px 1fr;
+        gap: 0 1rem
+      }
+
+      .wwd-arrow {
+        display: none
+      }
+    }
+
+    .wwd-num {
+      font-family: var(--display);
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--tx);
+      opacity: .12;
+      line-height: 1;
+      transition: color .2s, opacity .2s;
+      letter-spacing: -.04em;
+      padding-top: .1rem
+    }
+
+    .wwd-body h3 {
+      font-family: var(--display);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--tx);
+      margin-bottom: .35rem;
+      letter-spacing: -.01em
+    }
+
+    .wwd-body p {
+      font-size: .88rem;
+      color: var(--tx2);
+      line-height: 1.6;
+      max-width: 540px
+    }
+
+    .wwd-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      flex-shrink: 0;
+      background: var(--blue-pale);
+      border: 1px solid var(--blue-ring);
+      display: grid;
+      place-items: center;
+      font-size: 1.1rem;
+      margin-top: .2rem
+    }
+
+    .wwd-arrow {
+      font-size: 1.25rem;
+      color: var(--muted);
+      align-self: center;
+      transition: color .2s, transform .2s
+    }
+
+    .wwd-item:hover .wwd-arrow {
+      color: var(--blue);
+      transform: translateX(4px)
+    }
+
+    /* ── JOURNEY TIMELINE ────────────────────────────── */
+    .journey-wrap {
+      padding: 7rem 0;
+      background: var(--surf);
+      border-top: 1px solid var(--bdr);
+      border-bottom: 1px solid var(--bdr)
+    }
+
+    .journey-head {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      margin-bottom: 4rem;
+      flex-wrap: wrap;
+      gap: 1rem
+    }
+
+    .timeline-rail {
+      position: relative;
+      padding-top: 2rem;
+      overflow-x: auto;
+      overflow-y: hidden;
+      padding-bottom: .5rem
+    }
+
+    .timeline-rail::-webkit-scrollbar {
+      height: 6px
+    }
+
+    .timeline-rail::-webkit-scrollbar-thumb {
+      background: var(--blue-ring);
+      border-radius: 999px
+    }
+
+    .rail-line {
+      position: absolute;
+      top: 2rem;
+      left: 0;
+      height: 2px;
+      background: var(--bdr);
+      width: 100%;
+      min-width: 1840px
+    }
+
+    .rail-progress {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 2px;
+      background: var(--blue);
+      border-radius: 2px;
+      width: 100%;
+      animation: progress-in 1.4s 0.3s var(--ease) both
+    }
+
+    @keyframes progress-in {
+      from {
+        width: 0
+      }
+
+      to {
+        width: 100%
+      }
+    }
+
+    .timeline-nodes {
+      display: grid;
+      grid-template-columns: repeat(8, 230px);
+      gap: 0;
+      position: relative;
+      z-index: 1;
+      width: max-content;
+      min-width: 100%
+    }
+
+    @media(max-width:640px) {
+      .timeline-rail {
+        overflow: visible
+      }
+
+      .timeline-nodes {
+        width: auto;
+        min-width: 0;
+        grid-template-columns: 1fr 1fr;
+        row-gap: 3rem;
+        column-gap: 1.25rem
+      }
+
+      .rail-line,
+      .rail-progress {
+        display: none
+      }
+    }
+
+    .t-node {
+      padding-top: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      padding-right: 1.5rem
+    }
+
+    .t-dot-wrap {
+      margin-bottom: 1.25rem;
+      position: relative
+    }
+
+    .t-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: var(--blue);
+      border: 3px solid var(--surf);
+      box-shadow: 0 0 0 2px var(--blue);
+      transition: transform .25s var(--ease)
+    }
+
+    .t-node:hover .t-dot {
+      transform: scale(1.4)
+    }
+
+    .t-year {
+      font-family: var(--display);
+      font-size: 2.6rem;
+      font-weight: 900;
+      color: var(--blue);
+      line-height: 1;
+      letter-spacing: -.04em;
+      margin-bottom: .5rem
+    }
+
+    .t-title {
+      font-size: .88rem;
+      font-weight: 700;
+      color: var(--tx);
+      margin-bottom: .4rem;
+      letter-spacing: -.005em
+    }
+
+    .t-desc {
+      font-size: .82rem;
+      color: var(--muted);
+      line-height: 1.55;
+      max-width: 220px
+    }
+
+    .t-desc a {
+      color: var(--blue);
+      font-weight: 700;
+      text-decoration: underline;
+      text-underline-offset: 2px
+    }
+
+    /* ── IMPACT NUMBERS ──────────────────────────────── */
+    .impact-strip {
+      background: var(--blue);
+      padding: 5rem 0;
+      position: relative;
+      overflow: hidden
+    }
+
+    .impact-strip::before {
+      content: '';
+      position: absolute;
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      top: -200px;
+      left: -100px;
+      background: rgba(255, 255, 255, .04);
+      pointer-events: none
+    }
+
+    .impact-strip::after {
+      content: '';
+      position: absolute;
+      width: 400px;
+      height: 400px;
+      border-radius: 50%;
+      bottom: -150px;
+      right: -80px;
+      background: rgba(255, 255, 255, .04);
+      pointer-events: none
+    }
+
+    .impact-inner {
+      display: grid;
+      grid-template-columns: 1fr 3fr;
+      gap: 4rem;
+      align-items: center;
+      position: relative;
+      z-index: 1
+    }
+
+    @media(max-width:820px) {
+      .impact-inner {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .impact-label {
+      font-family: var(--display);
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.15
+    }
+
+    .impact-label em {
+      display: block;
+      font-style: italic;
+      opacity: .65;
+      font-size: .75em
+    }
+
+    .impact-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: rgba(255, 255, 255, .15);
+      border-radius: 16px;
+      overflow: hidden
+    }
+
+    @media(max-width:640px) {
+      .impact-stats {
+        grid-template-columns: 1fr 1fr
+      }
+    }
+
+    .i-stat {
+      background: rgba(255, 255, 255, .06);
+      padding: 1.75rem 1.25rem;
+      text-align: center
+    }
+
+    .i-stat b {
+      display: block;
+      font-family: var(--display);
+      font-size: 2.8rem;
+      font-weight: 900;
+      color: #fff;
+      line-height: 1;
+      margin-bottom: .3rem;
+      letter-spacing: -.04em
+    }
+
+    .i-stat span {
+      font-size: .78rem;
+      color: rgba(255, 255, 255, .7);
+      line-height: 1.4
+    }
+
+    /* ── CTA BAND ────────────────────────────────────── */
+    .cta-sec {
+      padding: 7rem 0
+    }
+
+    .cta-band {
+      background: var(--tx);
+      border-radius: 28px;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      box-shadow: var(--sh-lg);
+      min-height: 320px
+    }
+
+    @media(max-width:820px) {
+      .cta-band {
+        grid-template-columns: 1fr
+      }
+    }
+
+    .cta-left {
+      padding: 3.5rem 3rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center
+    }
+
+    .cta-left .eyebrow {
+      color: rgba(255, 255, 255, .5)
+    }
+
+    .cta-left h2 {
+      font-family: var(--display);
+      font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: .75rem;
+      letter-spacing: -.025em
+    }
+
+    .cta-left p {
+      color: rgba(255, 255, 255, .65);
+      font-size: .93rem;
+      line-height: 1.7;
+      margin-bottom: 1.75rem;
+      max-width: 400px
+    }
+
+    .cta-btns {
+      display: flex;
+      gap: .65rem;
+      flex-wrap: wrap
+    }
+
+    .cta-right {
+      background: var(--blue);
+      position: relative;
+      overflow: hidden;
+      min-height: 240px
+    }
+
+    .cta-right::before {
+      content: '';
+      position: absolute;
+      bottom: -80px;
+      right: -80px;
+      width: 320px;
+      height: 320px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .1)
+    }
+
+    .cta-right::after {
+      content: '';
+      position: absolute;
+      top: -60px;
+      left: -60px;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, .07)
+    }
+
+    .cta-right-inner {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      height: 100%;
+      padding: 3rem 2.5rem
+    }
+
+    .cta-big-text {
+      font-family: var(--display);
+      font-size: clamp(2.5rem, 6vw, 4.5rem);
+      font-weight: 900;
+      color: #fff;
+      line-height: .95;
+      letter-spacing: -.04em;
+      margin-bottom: 1rem
+    }
+
+    .cta-right-inner p {
+      color: rgba(255, 255, 255, .75);
+      font-size: .88rem;
+      margin-bottom: 1.25rem
+    }
+
+    /* ── FOOTER ──────────────────────────────────────── */
+    .foot {
+      padding: 2.25rem 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      border-top: 1px solid var(--bdr)
+    }
+
+    .foot-logo {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      font-weight: 700;
+      font-size: .95rem;
+      color: var(--tx);
+      font-family: var(--body)
+    }
+
+    .foot-logo img {
+      width: 28px;
+      height: 28px;
+      border-radius: 7px
+    }
+
+    .foot p {
+      font-size: .8rem;
+      color: var(--muted)
+    }
+
+    /* ── ANIMATIONS ──────────────────────────────────── */
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px)
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0)
+      }
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0
+      }
+
+      to {
+        opacity: 1
+      }
+    }
+
+    .hero .hero-pill {
+      animation: fadeUp .7s var(--ease) both
+    }
+
+    .hero h1 {
+      animation: fadeUp .8s .1s var(--ease) both
+    }
+
+    .hero .hero-sub {
+      animation: fadeUp .8s .2s var(--ease) both
+    }
+
+    .hero .hero-btns {
+      animation: fadeUp .8s .3s var(--ease) both
+    }
+
+    .hero-right {
+      animation: fadeUp .9s .15s var(--ease) both
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(26px);
+      transition: opacity .65s var(--ease), transform .65s var(--ease)
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: translateY(0)
+    }
+
+    .reveal-fade {
+      opacity: 0;
+      transition: opacity .8s var(--ease)
+    }
+
+    .reveal-fade.in {
+      opacity: 1
+    }
+
+    /* ══════════════════════════════════════════════════
    MOBILE STYLES — 480px and below
 ══════════════════════════════════════════════════ */
-@media(max-width:480px){
+    @media(max-width:480px) {
 
-  /* ── Hero ── */
-  .hero{padding:6.5rem 0 4rem}
-  .hero h1{font-size:2.6rem}
-  .hero-sub{font-size:.95rem}
-  .hero-btns{flex-direction:column;gap:.55rem}
-  .hero-btns .btn{width:100%;justify-content:center}
+      /* ── Hero ── */
+      .hero {
+        padding: 6.5rem 0 4rem
+      }
 
-  /* ── Who we are ── */
-  .sec{padding:4rem 0}
-  .who-photo{min-height:260px}
-  .who-quote{font-size:.8rem;padding:.85rem 1rem}
-  .who-copy{padding:1.75rem 1.25rem}
+      .hero h1 {
+        font-size: 2.6rem
+      }
 
-  /* ── Mission / Vision ── */
-  .sec-dark{padding:4rem 0}
-  .mv-tile{padding:1.6rem 1.25rem}
+      .hero-sub {
+        font-size: .95rem
+      }
 
-  /* ── What we do ── */
-  .wwd-num{font-size:1.8rem}
-  .wwd-item{padding:1.5rem 0}
+      .hero-btns {
+        flex-direction: column;
+        gap: .55rem
+      }
 
-  /* ── Journey timeline ── */
-  .journey-wrap{padding:4rem 0}
-  .journey-head{margin-bottom:2.5rem}
-  .t-year{font-size:2rem}
+      .hero-btns .btn {
+        width: 100%;
+        justify-content: center
+      }
 
-  /* ── Impact strip ── */
-  .impact-strip{padding:3.5rem 0}
-  .i-stat{padding:1.25rem .75rem}
-  .i-stat b{font-size:2.2rem}
+      /* ── Who we are ── */
+      .sec {
+        padding: 4rem 0
+      }
 
-  /* ── CTA section ── */
-  .cta-sec{padding:4rem 0}
-  .cta-left{padding:2rem 1.5rem}
-  .cta-btns{flex-direction:column;gap:.5rem}
-  .cta-btns .btn{width:100%;justify-content:center}
-  .cta-right-inner{padding:2rem 1.5rem}
-  .cta-big-text{font-size:3rem}
+      .who-photo {
+        min-height: 260px
+      }
 
-  /* ── Footer ── */
-  .foot{flex-direction:column;align-items:flex-start;gap:.75rem;padding:1.75rem 0}
+      .who-quote {
+        font-size: .8rem;
+        padding: .85rem 1rem
+      }
 
-  /* ── Buttons ── */
-  .btn{padding:.65rem 1.2rem;font-size:.85rem}
-}
-</style>
+      .who-copy {
+        padding: 1.75rem 1.25rem
+      }
+
+      /* ── Mission / Vision ── */
+      .sec-dark {
+        padding: 4rem 0
+      }
+
+      .mv-tile {
+        padding: 1.6rem 1.25rem
+      }
+
+      /* ── What we do ── */
+      .wwd-num {
+        font-size: 1.8rem
+      }
+
+      .wwd-item {
+        padding: 1.5rem 0
+      }
+
+      /* ── Journey timeline ── */
+      .journey-wrap {
+        padding: 4rem 0
+      }
+
+      .journey-head {
+        margin-bottom: 2.5rem
+      }
+
+      .t-year {
+        font-size: 2rem
+      }
+
+      /* ── Impact strip ── */
+      .impact-strip {
+        padding: 3.5rem 0
+      }
+
+      .i-stat {
+        padding: 1.25rem .75rem
+      }
+
+      .i-stat b {
+        font-size: 2.2rem
+      }
+
+      /* ── CTA section ── */
+      .cta-sec {
+        padding: 4rem 0
+      }
+
+      .cta-left {
+        padding: 2rem 1.5rem
+      }
+
+      .cta-btns {
+        flex-direction: column;
+        gap: .5rem
+      }
+
+      .cta-btns .btn {
+        width: 100%;
+        justify-content: center
+      }
+
+      .cta-right-inner {
+        padding: 2rem 1.5rem
+      }
+
+      .cta-big-text {
+        font-size: 3rem
+      }
+
+      /* ── Footer ── */
+      .foot {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: .75rem;
+        padding: 1.75rem 0
+      }
+
+      /* ── Buttons ── */
+      .btn {
+        padding: .65rem 1.2rem;
+        font-size: .85rem
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<!-- ══════════ MOBILE DRAWER ══════════ -->
-<nav class="nav-drawer" id="drawer">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
-    <span style="font-weight:700;font-size:1rem;font-family:var(--body)">Tuunganes</span>
-    <button id="drawerClose" style="background:transparent;border:none;font-size:1.4rem;cursor:pointer;color:var(--tx)">✕</button>
-  </div>
+  <!-- ══════════ MOBILE DRAWER ══════════ -->
+  <nav class="nav-drawer" id="drawer">
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem">
+      <span style="font-weight:700;font-size:1rem;font-family:var(--body)">Tuunganes</span>
+      <button id="drawerClose"
+        style="background:transparent;border:none;font-size:1.4rem;cursor:pointer;color:var(--tx)">✕</button>
+    </div>
 
-  <!-- Language switcher inside drawer for mobile -->
-  <div class="drawer-lang">
-    <button type="button" data-lang="en" class="on">EN</button>
-    <button type="button" data-lang="fr">FR</button>
-    <button type="button" data-lang="de">DE</button>
-  </div>
-
-  <a href="index.html" data-en="Home" data-fr="Accueil" data-de="Start">Home</a>
-  <a href="about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
-  <a href="services/services.html" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
-  <a href="contact.html" class="btn btn-solid" style="justify-content:center;margin-top:.5rem" data-en="Contact us" data-fr="Contact" data-de="Kontakt">Contact us</a>
-</nav>
-
-<!-- ══════════ FLOATING NAV ══════════ -->
-<header class="nav">
-  <a href="index.html" class="nav-logo">
-    <img src="assets/favicon.png" alt="Tuunganes"/>
-    <span>Tuunganes</span>
-  </a>
-  <nav class="nav-links">
-    <a href="about.html" class="active" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
-    <a href="services/services.html" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
-    <a href="index.html#impact" data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
-    <a href="index.html#join" data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</a>
-  </nav>
-  <div class="nav-end">
-    <!-- Desktop only: lang pills + contact CTA -->
-    <div class="lang-pills" role="group">
+    <!-- Language switcher inside drawer for mobile -->
+    <div class="drawer-lang">
       <button type="button" data-lang="en" class="on">EN</button>
       <button type="button" data-lang="fr">FR</button>
       <button type="button" data-lang="de">DE</button>
     </div>
-    <a href="contact.html" class="nav-cta" data-en="Contact" data-fr="Contact" data-de="Kontakt">Contact</a>
-    <!-- Theme toggle stays visible on all screen sizes -->
-    <button id="themeBtn" class="theme-pill" aria-label="Toggle theme">🌙</button>
-    <!-- Hamburger — visible on mobile only -->
-    <button class="ham" id="hamBtn" aria-label="Menu" aria-expanded="false">
-      <span></span><span></span><span></span>
-    </button>
-  </div>
-</header>
 
-<!-- ═══ HERO ═══ -->
-<section class="hero">
-  <div class="hero-wm" aria-hidden="true">A</div>
-  <div class="frame">
-    <div class="hero-inner">
-      <div>
-        <div class="hero-pill" 
-          data-en="Founded 2023 · Bukavu & Goma, DRC"
-          data-fr="Fondé en 2023 · Bukavu & Goma, RDC"
-          data-de="Gegründet 2023 · Bukavu & Goma">
-          Founded 2023 · Bukavu &amp; Goma, DRC
-        </div>
+    <a href="index.html" data-en="Home" data-fr="Accueil" data-de="Start">Home</a>
+    <a href="about.html" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+    <a href="services/services.html" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+    <a href="contact.html" class="btn btn-solid" style="justify-content:center;margin-top:.5rem" data-en="Contact us"
+      data-fr="Contact" data-de="Kontakt">Contact us</a>
+  </nav>
 
-        <h1
-          data-en="African Excellence.<br><em>Global Impact.</em>"
-          data-fr="Excellence africaine.<br><em>Impact mondial.</em>"
-          data-de="Afrikanische Exzellenz.<br><em>Globale Wirkung.</em>">
-          African Excellence.<br><em>Global Impact.</em>
-        </h1>
-
-        <p class="hero-sub"
-          data-en="Born in Eastern DRC, Tuunganes is building technology that restores dignity, unlocks opportunity, and connects communities to the future. We believe innovation from Africa can shape the world."
-          data-fr="Né dans l'Est de la RDC, Tuunganes construit des technologies qui restaurent la dignité, créent des opportunités et connectent les communautés à l'avenir. Nous croyons que l'innovation africaine peut façonner le monde."
-          data-de="Im Osten der DR Kongo gegründet, entwickelt Tuunganes Technologien, die Würde stärken, Chancen schaffen und Gemeinschaften mit der Zukunft verbinden. Wir glauben, dass afrikanische Innovation die Welt prägen kann.">
-          Born in Eastern DRC, Tuunganes is building technology that restores dignity, unlocks opportunity, and connects communities to the future. We believe innovation from Africa can shape the world.
-        </p>
-
-        <div class="hero-btns">
-          <a href="#who" class="btn btn-solid"
-            data-en="Discover our story"
-            data-fr="Découvrir notre histoire"
-            data-de="Unsere Geschichte entdecken">
-            Discover our story
-          </a>
-
-          <a href="services/services.html" class="btn btn-ghost"
-            data-en="Explore our work"
-            data-fr="Explorer nos actions"
-            data-de="Unsere Arbeit entdecken">
-            Explore our work
-          </a>
-        </div>
-      </div>
-
-      <div class="hero-right" aria-hidden="true">
-        <div class="himg himg-a">
-          <img src="assets/pro.jpg" alt=""/>
-        </div>
-        <div class="himg himg-b">
-          <img src="assets/learnit.jpg" alt=""/>
-        </div>
-        <div class="hero-tag-badge">
-          <strong>2023</strong>
-          <span data-en="Year founded" data-fr="Année de création" data-de="Gründungsjahr">
-            Year founded
-          </span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══ WHO WE ARE ═══ -->
-<section class="sec reveal" id="who">
-  <div class="frame">
-    <div class="who-grid">
-
-      <div class="who-photo">
-        <img src="assets/pro.jpg" alt="Tuunganes community work" loading="lazy"/>
-
-        <div class="who-quote"
-          data-en="&ldquo;Technology is not just infrastructure — it is access, empowerment, and the foundation of lasting change.&rdquo;"
-          data-fr="&ldquo;La technologie n'est pas seulement une infrastructure — c'est un accès, une autonomisation et la base d'un changement durable.&rdquo;"
-          data-de="&ldquo;Technologie ist nicht nur Infrastruktur — sie bedeutet Zugang, Befähigung und die Grundlage für nachhaltige Veränderung.&rdquo;">
-          &ldquo;Technology is not just infrastructure — it is access, empowerment, and the foundation of lasting change.&rdquo;
-          <cite>Tuunganes</cite>
-        </div>
-      </div>
-
-      <div class="who-copy">
-        <span class="eyebrow"
-          data-en="Who we are"
-          data-fr="Qui nous sommes"
-          data-de="Wer wir sind">
-          Who we are
-        </span>
-
-        <h2 class="display-h"
-          data-en="Rooted in Congo.<br><em>Engineered for Africa.</em>"
-          data-fr="Enraciné au Congo.<br><em>Conçu pour l'Afrique.</em>"
-          data-de="Im Kongo verwurzelt.<br><em>Für Afrika entwickelt.</em>">
-          Rooted in Congo.<br><em>Engineered for Africa.</em>
-        </h2>
-
-        <p class="body-text"
-          data-en="Tuunganes is a technology-driven social enterprise transforming education, health, agriculture, and digital access across the Democratic Republic of Congo. We design solutions adapted to local realities while meeting global standards."
-          data-fr="Tuunganes est une entreprise sociale technologique qui transforme l'éducation, la santé, l'agriculture et l'accès numérique en République Démocratique du Congo. Nous concevons des solutions adaptées aux réalités locales tout en respectant des standards internationaux."
-          data-de="Tuunganes ist ein technologiegetriebenes Sozialunternehmen, das Bildung, Gesundheit, Landwirtschaft und digitalen Zugang in der DR Kongo transformiert. Unsere Lösungen verbinden lokale Realität mit globalen Standards.">
-          Tuunganes is a technology-driven social enterprise transforming education, health, agriculture, and digital access across the Democratic Republic of Congo. We design solutions adapted to local realities while meeting global standards.
-        </p>
-
-        <p class="body-text"
-          data-en="From Bukavu and Goma to the broader African ecosystem, we empower institutions, entrepreneurs, and communities with tools that increase resilience, transparency, and opportunity."
-          data-fr="De Bukavu et Goma à l'écosystème africain plus large, nous donnons aux institutions, entrepreneurs et communautés les outils pour renforcer la résilience, la transparence et les opportunités."
-          data-de="Von Bukavu und Goma bis zum afrikanischen Ökosystem stärken wir Institutionen, Unternehmer und Gemeinschaften mit Werkzeugen für Resilienz, Transparenz und Chancen.">
-          From Bukavu and Goma to the broader African ecosystem, we empower institutions, entrepreneurs, and communities with tools that increase resilience, transparency, and opportunity.
-        </p>
-
-        <div class="btn-row">
-          <a href="contact.html" class="btn btn-solid"
-            data-en="Partner with us"
-            data-fr="Devenir partenaire"
-            data-de="Mit uns partnern">
-            Partner with us
-          </a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-
-<!-- ═══ MISSION & VISION ═══ -->
-<section class="sec-dark reveal" id="mission">
-  <div class="frame">
-
-    <span class="eyebrow"
-      data-en="Our foundation"
-      data-fr="Notre fondation"
-      data-de="Unser Fundament">
-      Our foundation
-    </span>
-
-    <h2 class="display-h" style="margin-bottom:2rem"
-      data-en="Mission &amp; Vision"
-      data-fr="Mission &amp; Vision"
-      data-de="Mission &amp; Vision">
-      Mission &amp; Vision
-    </h2>
-
-    <div class="mv-row">
-
-      <div class="mv-tile">
-        <span class="mv-label"
-          data-en="Mission"
-          data-fr="Mission"
-          data-de="Mission">
-          Mission
-        </span>
-
-        <h3
-          data-en="Closing the opportunity gap through technology."
-          data-fr="Réduire les inégalités d'opportunités grâce à la technologie."
-          data-de="Chancengleichheit durch Technologie schaffen.">
-          Closing the opportunity gap through technology.
-        </h3>
-
-        <p
-          data-en="We build scalable digital solutions in education, health, agriculture, and governance to ensure that underserved communities are not left behind in the digital age."
-          data-fr="Nous développons des solutions numériques évolutives dans l'éducation, la santé, l'agriculture et la gouvernance pour que les communautés vulnérables ne soient pas exclues de l'ère numérique."
-          data-de="Wir entwickeln skalierbare digitale Lösungen in Bildung, Gesundheit, Landwirtschaft und Governance, damit benachteiligte Gemeinschaften im digitalen Zeitalter nicht zurückbleiben.">
-          We build scalable digital solutions in education, health, agriculture, and governance to ensure that underserved communities are not left behind in the digital age.
-        </p>
-      </div>
-
-      <div class="mv-tile blue-tile">
-        <span class="mv-label"
-          data-en="Vision"
-          data-fr="Vision"
-          data-de="Vision">
-          Vision
-        </span>
-
-        <h3
-          data-en="An Africa that leads through innovation."
-          data-fr="Une Afrique qui dirige par l'innovation."
-          data-de="Ein Afrika, das durch Innovation führt.">
-          An Africa that leads through innovation.
-        </h3>
-
-        <ul>
-          <li data-en="Every learner connected to digital opportunity." data-fr="Chaque apprenant connecté aux opportunités numériques." data-de="Jeder Lernende hat Zugang zu digitalen Chancen.">
-            Every learner connected to digital opportunity.
-          </li>
-          <li data-en="Communities empowered by data and transparency." data-fr="Communautés renforcées par les données et la transparence." data-de="Gemeinschaften gestärkt durch Daten und Transparenz.">
-            Communities empowered by data and transparency.
-          </li>
-          <li data-en="Farmers and entrepreneurs integrated into global markets." data-fr="Agriculteurs et entrepreneurs intégrés aux marchés mondiaux." data-de="Landwirte und Unternehmer in globale Märkte integriert.">
-            Farmers and entrepreneurs integrated into global markets.
-          </li>
-          <li data-en="Technology fostering stability and peace." data-fr="La technologie favorisant la stabilité et la paix." data-de="Technologie fördert Stabilität und Frieden.">
-            Technology fostering stability and peace.
-          </li>
-        </ul>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ═══ JOURNEY ═══ -->
-<section class="journey-wrap reveal" id="journey">
-  <div class="frame">
-    <div class="journey-head">
-      <div>
-        <span class="eyebrow" data-en="Our milestones" data-fr="Nos jalons" data-de="Unsere Meilensteine">Our milestones</span>
-        <h2 class="display-h" style="margin-bottom:0" data-en="Four years of<br><em>growing roots.</em>" data-fr="Quatre ans à<br><em>prendre racine.</em>" data-de="Vier Jahre<br><em>Wurzeln schlagen.</em>">Four years of<br><em>growing roots.</em></h2>
-      </div>
-    </div>
-    <div class="timeline-rail">
-      <div class="rail-line">
-        <div class="rail-progress"></div>
-      </div>
-      <div class="timeline-nodes" style="grid-template-columns:repeat(5,1fr)">
-        <div class="t-node">
-          <div class="t-dot-wrap"><div class="t-dot"></div></div>
-          <div class="t-year">2021</div>
-          <div class="t-title" data-en="The spark" data-fr="L'étincelle" data-de="Der Funke">The spark</div>
-          <p class="t-desc" data-en="A pilot idea emerges in Bukavu connect communities through technology and compassion." data-fr="Une idée pilote émerge à Bukavu connecter les communautés par la technologie et la compassion." data-de="Eine Pilotidee entsteht in Bukavu Gemeinschaften durch Technologie und Mitgefühl verbinden.">A pilot idea emerges in Bukavu connect communities through technology and compassion.</p>
-        </div>
-        <div class="t-node">
-          <div class="t-dot-wrap"><div class="t-dot"></div></div>
-          <div class="t-year">2023</div>
-          <div class="t-title" data-en="Founded" data-fr="Fondation" data-de="Gründung">Founded</div>
-          <p class="t-desc" data-en="Tuunganes is formally established. IT consulting launches. First community partnerships formed." data-fr="Tuunganes est officiellement créé. Le conseil IT est lancé. Premiers partenariats communautaires." data-de="Tuunganes offiziell gegründet. IT-Beratung startet. Erste Community-Partnerschaften.">Tuunganes is formally established. IT consulting launches. First community partnerships formed.</p>
-        </div>
-        <div class="t-node">
-          <div class="t-dot-wrap"><div class="t-dot"></div></div>
-          <div class="t-year">2024</div>
-          <div class="t-title" data-en="TuChati born" data-fr="Naissance de TuChati" data-de="TuChati entsteht">TuChati born</div>
-          <p class="t-desc" data-en="Masomo enters alpha. Legal clinic opens. And <a href='https://tuchati.tuunganes.com/' target='_blank' rel='noopener' style='color:var(--blue);font-weight:600;text-decoration:underline'>TuChati</a> a proudly Congolese chat app is designed and launched." data-fr="Masomo entre en alpha. La clinique juridique ouvre. Et <a href='https://tuchati.tuunganes.com/' target='_blank' rel='noopener' style='color:var(--blue);font-weight:600;text-decoration:underline'>TuChati</a> est lancée." data-de="Masomo startet in Alpha. Rechtsklinik öffnet. Und <a href='https://tuchati.tuunganes.com/' target='_blank' rel='noopener' style='color:var(--blue);font-weight:600;text-decoration:underline'>TuChati</a> wird gestartet.">Masomo enters alpha. Legal clinic opens. And <a href="https://tuchati.tuunganes.com/" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600;text-decoration:underline">TuChati</a> a proudly Congolese chat app is designed and launched.</p>
-        </div>
-        <div class="t-node">
-          <div class="t-dot-wrap"><div class="t-dot"></div></div>
-          <div class="t-year">2025</div>
-          <div class="t-title" data-en="Scale-up" data-fr="Montée en charge" data-de="Skalierung">Scale-up</div>
-          <p class="t-desc" data-en="Agricultural programs, international outreach, and new community partnerships across Bukavu and Goma." data-fr="Programmes agricoles, portée internationale et nouveaux partenariats communautaires à Bukavu et Goma." data-de="Agrarprogramme, internationale Reichweite und neue Partnerschaften in Bukavu und Goma.">Agricultural programs, international outreach, and new community partnerships across Bukavu and Goma.</p>
-        </div>
-        <div class="t-node">
-          <div class="t-dot-wrap"><div class="t-dot" style="background:#fff;border:3px solid var(--surf);box-shadow:0 0 0 2px var(--blue),0 0 0 5px rgba(33,150,243,.25)"></div></div>
-          <div class="t-year" style="font-style:italic">2026</div>
-          <div class="t-title" data-en="Next chapter" data-fr="Prochain chapitre" data-de="Nächstes Kapitel">Next chapter</div>
-          <p class="t-desc" data-en="Schools across the DRC adopt Masomo. <a href='https://tuchati.tuunganes.com/' target='_blank' rel='noopener' style='color:var(--blue);font-weight:600;text-decoration:underline'>TuChati</a> gains video &amp; audio calls and launches on iOS &amp; Android." data-fr="Les écoles de RDC adoptent Masomo. <a href='https://tuchati.tuunganes.com/' target='_blank' rel='noopener' style='color:var(--blue);font-weight:600;text-decoration:underline'>TuChati</a> intègre les appels et sort sur iOS &amp; Android." data-de="Schulen in der DRK übernehmen Masomo. <a href='https://tuchati.tuunganes.com/' target='_blank' rel='noopener' style='color:var(--blue);font-weight:600;text-decoration:underline'>TuChati</a> für iOS &amp; Android.">Schools across the DRC adopt Masomo. <a href="https://tuchati.tuunganes.com/" target="_blank" rel="noopener" style="color:var(--blue);font-weight:600;text-decoration:underline">TuChati</a> gains video &amp; audio calls and launches on iOS &amp; Android.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ IMPACT NUMBERS ═══ -->
-<section class="impact-strip reveal-fade">
-  <div class="frame">
-    <div class="impact-inner">
-      <div class="impact-label">
-        One life<br>at a time.
-        <em data-en="Our impact so far." data-fr="Notre impact jusqu'ici." data-de="Unser bisheriger Einfluss.">Our impact so far.</em>
-      </div>
-      <div class="impact-stats">
-        <div class="i-stat"><b>11+</b><span data-en="Students reached" data-fr="Étudiants touchés" data-de="Schüler erreicht">Students reached</span></div>
-        <div class="i-stat"><b>5</b><span data-en="Farmers supported" data-fr="Agriculteurs soutenus" data-de="Landwirte unterstützt">Farmers supported</span></div>
-        <div class="i-stat"><b>15</b><span data-en="Youth connected" data-fr="Jeunes reliés" data-de="Jugend vernetzt">Youth connected</span></div>
-        <div class="i-stat"><b>4</b><span data-en="Women &amp; children" data-fr="Femmes &amp; enfants" data-de="Frauen &amp; Kinder">Women &amp; children</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ CTA ═══ -->
-<section class="cta-sec reveal">
-  <div class="frame">
-    <div class="cta-band">
-      <div class="cta-left">
-        <span class="eyebrow" data-en="Get involved" data-fr="S'impliquer" data-de="Mitmachen">Get involved</span>
-        <h2 data-en="Join the movement." data-fr="Rejoignez le mouvement." data-de="Werden Sie Teil der Bewegung.">Join the movement.</h2>
-        <p data-en="We collaborate with volunteers, educators, clinicians, and engineers across Bukavu, Goma, and the diaspora. Your skills or support can change lives." data-fr="Nous collaborons avec des bénévoles, éducateurs, cliniciens et ingénieurs à Bukavu, Goma et dans la diaspora. Vos compétences peuvent changer des vies." data-de="Wir arbeiten mit Freiwilligen, Pädagog:innen, Kliniker:innen und Ingenieur:innen zusammen. Ihre Unterstützung kann Leben verändern.">We collaborate with volunteers, educators, clinicians, and engineers across Bukavu, Goma, and the diaspora. Your skills or support can change lives.</p>
-        <div class="cta-btns">
-          <a href="index.html#join" class="btn btn-w" data-en="Volunteer / Donate devices" data-fr="Bénévolat / Donner des appareils" data-de="Ehrenamt / Geräte spenden">Volunteer / Donate devices</a>
-          <a href="contact.html" class="btn btn-wg" data-en="Contact us" data-fr="Nous contacter" data-de="Kontakt aufnehmen">Contact us</a>
-        </div>
-      </div>
-      <div class="cta-right">
-        <div class="cta-right-inner">
-          <div class="cta-big-text" aria-hidden="true">Tuu<br>nga<br>nes.</div>
-          <p data-en="&ldquo;Uniting communities.&rdquo;" data-fr="&ldquo;Unir les communautés.&rdquo;" data-de="&ldquo;Gemeinschaften vereinen.&rdquo;">&ldquo;Uniting communities.&rdquo;</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ FOOTER ══════════ -->
-<footer>
-  <div class="frame foot">
-    <a href="index.html" class="foot-logo">
-      <img src="assets/favicon.png" alt="Tuunganes"/>
+  <!-- ══════════ FLOATING NAV ══════════ -->
+  <header class="nav">
+    <a href="index.html" class="nav-logo">
+      <img src="assets/favicon.png" alt="Tuunganes" />
       <span>Tuunganes</span>
     </a>
-    <p>&copy; 2025 Tuunganes &nbsp;·&nbsp; Bukavu &amp; Goma, DRC</p>
-    <div style="display:flex;gap:1rem">
-      <a href="about.html" style="font-size:.82rem;color:var(--muted)" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
-      <a href="services/services.html" style="font-size:.82rem;color:var(--muted)" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
-      <a href="contact.html" style="font-size:.82rem;color:var(--muted)" data-en="Contact" data-fr="Contact" data-de="Kontakt">Contact</a>
+    <nav class="nav-links">
+      <a href="about.html" class="active" data-en="About" data-fr="À propos" data-de="Über uns">About</a>
+      <a href="services/services.html" data-en="Services" data-fr="Services" data-de="Leistungen">Services</a>
+      <a href="index.html#impact" data-en="Impact" data-fr="Impact" data-de="Wirkung">Impact</a>
+      <a href="index.html#join" data-en="Join Us" data-fr="Nous rejoindre" data-de="Mitmachen">Join Us</a>
+    </nav>
+    <div class="nav-end">
+      <!-- Desktop only: lang pills + contact CTA -->
+      <div class="lang-pills" role="group">
+        <button type="button" data-lang="en" class="on">EN</button>
+        <button type="button" data-lang="fr">FR</button>
+        <button type="button" data-lang="de">DE</button>
+      </div>
+      <a href="contact.html" class="nav-cta" data-en="Contact" data-fr="Contact" data-de="Kontakt">Contact</a>
+      <!-- Theme toggle stays visible on all screen sizes -->
+      <button id="themeBtn" class="theme-pill" aria-label="Toggle theme">🌙</button>
+      <!-- Hamburger — visible on mobile only -->
+      <button class="ham" id="hamBtn" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
     </div>
-  </div>
-</footer>
+  </header>
 
-<!-- ══════════ SCRIPTS ══════════ -->
-<script>
-// ── 1. Theme init (before paint)
-(function(){
-  const s = localStorage.getItem('tuunganes-theme');
-  document.documentElement.setAttribute('data-theme', s || 'light');
-})();
+  <!-- ═══ HERO ═══ -->
+  <section class="hero">
+    <div class="hero-wm" aria-hidden="true">A</div>
+    <div class="frame">
+      <div class="hero-inner">
+        <div>
+          <div class="hero-pill" data-en="Founded 2023 · Bukavu & Goma, DRC"
+            data-fr="Fondé en 2023 · Bukavu & Goma, RDC" data-de="Gegründet 2023 · Bukavu & Goma">
+            Founded 2023 · Bukavu &amp; Goma, DRC
+          </div>
 
-document.addEventListener('DOMContentLoaded', function(){
+          <h1 data-en="African Excellence.<br><em>Global Impact.</em>"
+            data-fr="Excellence africaine.<br><em>Impact mondial.</em>"
+            data-de="Afrikanische Exzellenz.<br><em>Globale Wirkung.</em>">
+            African Excellence.<br><em>Global Impact.</em>
+          </h1>
 
-  // ── 2. Theme toggle
-  const root = document.documentElement;
-  const themeBtn = document.getElementById('themeBtn');
-  function syncIcon(){ themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙' }
-  syncIcon();
-  themeBtn.addEventListener('click', function(){
-    const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-theme', next);
-    localStorage.setItem('tuunganes-theme', next);
-    syncIcon();
-  });
+          <p class="hero-sub"
+            data-en="Born in Eastern DRC, Tuunganes is building technology that restores dignity, unlocks opportunity, and connects communities to the future. We believe innovation from Africa can shape the world."
+            data-fr="Né dans l'Est de la RDC, Tuunganes construit des technologies qui restaurent la dignité, créent des opportunités et connectent les communautés à l'avenir. Nous croyons que l'innovation africaine peut façonner le monde."
+            data-de="Im Osten der DR Kongo gegründet, entwickelt Tuunganes Technologien, die Würde stärken, Chancen schaffen und Gemeinschaften mit der Zukunft verbinden. Wir glauben, dass afrikanische Innovation die Welt prägen kann.">
+            Born in Eastern DRC, Tuunganes is building technology that restores dignity, unlocks opportunity, and
+            connects communities to the future. We believe innovation from Africa can shape the world.
+          </p>
 
-  // ── 3. Mobile nav — hamburger & drawer
-  const hamBtn = document.getElementById('hamBtn');
-  const drawer = document.getElementById('drawer');
-  const drawerClose = document.getElementById('drawerClose');
+          <div class="hero-btns">
+            <a href="#who" class="btn btn-solid" data-en="Discover our story" data-fr="Découvrir notre histoire"
+              data-de="Unsere Geschichte entdecken">
+              Discover our story
+            </a>
 
-  function openDrawer(){
-    drawer.classList.add('open');
-    hamBtn.setAttribute('aria-expanded', 'true');
-  }
-  function closeDrawer(){
-    drawer.classList.remove('open');
-    hamBtn.setAttribute('aria-expanded', 'false');
-  }
+            <a href="services/services.html" class="btn btn-ghost" data-en="Explore our work"
+              data-fr="Explorer nos actions" data-de="Unsere Arbeit entdecken">
+              Explore our work
+            </a>
+          </div>
+        </div>
 
-  hamBtn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    drawer.classList.contains('open') ? closeDrawer() : openDrawer();
-  });
-  drawerClose.addEventListener('click', closeDrawer);
-  document.addEventListener('click', e => {
-    if (!drawer.contains(e.target) && !hamBtn.contains(e.target)) closeDrawer();
-  });
+        <div class="hero-right" aria-hidden="true">
+          <div class="himg himg-a">
+            <img src="assets/pro.jpg" alt="" />
+          </div>
+          <div class="himg himg-b">
+            <img src="assets/learnit.jpg" alt="" />
+          </div>
+          <div class="hero-tag-badge">
+            <strong>2023</strong>
+            <span data-en="Year founded" data-fr="Année de création" data-de="Gründungsjahr">
+              Year founded
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
-  // ── 4. Language switching (nav pills + drawer pills stay in sync)
-  function applyLang(lang){
-    localStorage.setItem('siteLang', lang);
-    // Sync ALL lang buttons across nav and drawer
-    document.querySelectorAll('[data-lang]').forEach(b => {
-      b.classList.toggle('on', b.dataset.lang === lang);
-    });
-    document.querySelectorAll('[data-' + lang + ']').forEach(el => {
-      const val = el.getAttribute('data-' + lang);
-      if (!val) return;
-      if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
-        el.placeholder = val;
-      } else if (['H1','H2','H3'].includes(el.tagName)) {
-        el.innerHTML = val;
-      } else if (!el.querySelector('[data-' + lang + ']:not(script)')) {
-        el.textContent = val;
+
+  <!-- ═══ WHO WE ARE ═══ -->
+  <section class="sec reveal" id="who">
+    <div class="frame">
+      <div class="who-grid">
+
+        <div class="who-photo">
+          <img src="assets/pro.jpg" alt="Tuunganes community work" loading="lazy" />
+
+          <div class="who-quote"
+            data-en="&ldquo;Technology is not just infrastructure — it is access, empowerment, and the foundation of lasting change.&rdquo;"
+            data-fr="&ldquo;La technologie n'est pas seulement une infrastructure — c'est un accès, une autonomisation et la base d'un changement durable.&rdquo;"
+            data-de="&ldquo;Technologie ist nicht nur Infrastruktur — sie bedeutet Zugang, Befähigung und die Grundlage für nachhaltige Veränderung.&rdquo;">
+            &ldquo;Technology is not just infrastructure — it is access, empowerment, and the foundation of lasting
+            change.&rdquo;
+            <cite>Tuunganes</cite>
+          </div>
+        </div>
+
+        <div class="who-copy">
+          <span class="eyebrow" data-en="Who we are" data-fr="Qui nous sommes" data-de="Wer wir sind">
+            Who we are
+          </span>
+
+          <h2 class="display-h" data-en="Rooted in Congo.<br><em>Engineered for Africa.</em>"
+            data-fr="Enraciné au Congo.<br><em>Conçu pour l'Afrique.</em>"
+            data-de="Im Kongo verwurzelt.<br><em>Für Afrika entwickelt.</em>">
+            Rooted in Congo.<br><em>Engineered for Africa.</em>
+          </h2>
+
+          <p class="body-text"
+            data-en="Tuunganes is a technology-driven social enterprise transforming education, health, agriculture, and digital access across the Democratic Republic of Congo. We design solutions adapted to local realities while meeting global standards."
+            data-fr="Tuunganes est une entreprise sociale technologique qui transforme l'éducation, la santé, l'agriculture et l'accès numérique en République Démocratique du Congo. Nous concevons des solutions adaptées aux réalités locales tout en respectant des standards internationaux."
+            data-de="Tuunganes ist ein technologiegetriebenes Sozialunternehmen, das Bildung, Gesundheit, Landwirtschaft und digitalen Zugang in der DR Kongo transformiert. Unsere Lösungen verbinden lokale Realität mit globalen Standards.">
+            Tuunganes is a technology-driven social enterprise transforming education, health, agriculture, and digital
+            access across the Democratic Republic of Congo. We design solutions adapted to local realities while meeting
+            global standards.
+          </p>
+
+          <p class="body-text"
+            data-en="From Bukavu and Goma to the broader African ecosystem, we empower institutions, entrepreneurs, and communities with tools that increase resilience, transparency, and opportunity."
+            data-fr="De Bukavu et Goma à l'écosystème africain plus large, nous donnons aux institutions, entrepreneurs et communautés les outils pour renforcer la résilience, la transparence et les opportunités."
+            data-de="Von Bukavu und Goma bis zum afrikanischen Ökosystem stärken wir Institutionen, Unternehmer und Gemeinschaften mit Werkzeugen für Resilienz, Transparenz und Chancen.">
+            From Bukavu and Goma to the broader African ecosystem, we empower institutions, entrepreneurs, and
+            communities with tools that increase resilience, transparency, and opportunity.
+          </p>
+
+          <div class="btn-row">
+            <a href="contact.html" class="btn btn-solid" data-en="Partner with us" data-fr="Devenir partenaire"
+              data-de="Mit uns partnern">
+              Partner with us
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ═══ MISSION & VISION ═══ -->
+  <section class="sec-dark reveal" id="mission">
+    <div class="frame">
+
+      <span class="eyebrow" data-en="Our foundation" data-fr="Notre fondation" data-de="Unser Fundament">
+        Our foundation
+      </span>
+
+      <h2 class="display-h" style="margin-bottom:2rem" data-en="Mission &amp; Vision" data-fr="Mission &amp; Vision"
+        data-de="Mission &amp; Vision">
+        Mission &amp; Vision
+      </h2>
+
+      <div class="mv-row">
+
+        <div class="mv-tile">
+          <span class="mv-label" data-en="Mission" data-fr="Mission" data-de="Mission">
+            Mission
+          </span>
+
+          <h3 data-en="Closing the opportunity gap through technology."
+            data-fr="Réduire les inégalités d'opportunités grâce à la technologie."
+            data-de="Chancengleichheit durch Technologie schaffen.">
+            Closing the opportunity gap through technology.
+          </h3>
+
+          <p data-en="We build scalable digital solutions in education, health, agriculture, and governance to ensure that underserved communities are not left behind in the digital age."
+            data-fr="Nous développons des solutions numériques évolutives dans l'éducation, la santé, l'agriculture et la gouvernance pour que les communautés vulnérables ne soient pas exclues de l'ère numérique."
+            data-de="Wir entwickeln skalierbare digitale Lösungen in Bildung, Gesundheit, Landwirtschaft und Governance, damit benachteiligte Gemeinschaften im digitalen Zeitalter nicht zurückbleiben.">
+            We build scalable digital solutions in education, health, agriculture, and governance to ensure that
+            underserved communities are not left behind in the digital age.
+          </p>
+        </div>
+
+        <div class="mv-tile blue-tile">
+          <span class="mv-label" data-en="Vision" data-fr="Vision" data-de="Vision">
+            Vision
+          </span>
+
+          <h3 data-en="An Africa that leads through innovation." data-fr="Une Afrique qui dirige par l'innovation."
+            data-de="Ein Afrika, das durch Innovation führt.">
+            An Africa that leads through innovation.
+          </h3>
+
+          <ul>
+            <li data-en="Every learner connected to digital opportunity."
+              data-fr="Chaque apprenant connecté aux opportunités numériques."
+              data-de="Jeder Lernende hat Zugang zu digitalen Chancen.">
+              Every learner connected to digital opportunity.
+            </li>
+            <li data-en="Communities empowered by data and transparency."
+              data-fr="Communautés renforcées par les données et la transparence."
+              data-de="Gemeinschaften gestärkt durch Daten und Transparenz.">
+              Communities empowered by data and transparency.
+            </li>
+            <li data-en="Farmers and entrepreneurs integrated into global markets."
+              data-fr="Agriculteurs et entrepreneurs intégrés aux marchés mondiaux."
+              data-de="Landwirte und Unternehmer in globale Märkte integriert.">
+              Farmers and entrepreneurs integrated into global markets.
+            </li>
+            <li data-en="Technology fostering stability and peace."
+              data-fr="La technologie favorisant la stabilité et la paix."
+              data-de="Technologie fördert Stabilität und Frieden.">
+              Technology fostering stability and peace.
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ JOURNEY ═══ -->
+  <section class="journey-wrap reveal" id="journey">
+    <div class="frame">
+      <div class="journey-head">
+        <div>
+          <span class="eyebrow" data-en="Our milestones" data-fr="Nos jalons" data-de="Unsere Meilensteine">Our
+            milestones</span>
+          <h2 class="display-h" style="margin-bottom:0" data-en="Built step by step<br><em>since 2017.</em>"
+            data-fr="Construit étape par étape<br><em>depuis 2017.</em>"
+            data-de="Schritt für Schritt gebaut<br><em>seit 2017.</em>">Built step by step<br><em>since 2017.</em></h2>
+        </div>
+      </div>
+      <div class="timeline-rail">
+        <div class="rail-line">
+          <div class="rail-progress"></div>
+        </div>
+        <div class="timeline-nodes">
+          <div class="t-node">
+            <div class="t-dot-wrap">
+              <div class="t-dot"></div>
+            </div>
+            <div class="t-year">2017</div>
+            <div>
+              <div class="t-title" data-en="Masomo begins" data-fr="Début de Masomo" data-de="Masomo beginnt">Masomo
+                begins</div>
+              <p class="t-desc"
+                data-en="The journey started with <a href='services/school-management.html'>Masomo</a>, a NetBeans-based school management system built to help schools organize students, grades, and daily administration."
+                data-fr="Le parcours a commencé avec <a href='services/school-management.html'>Masomo</a>, un système de gestion scolaire basé sur NetBeans pour aider les écoles à organiser les élèves, les notes et l'administration quotidienne."
+                data-de="Die Reise begann mit <a href='services/school-management.html'>Masomo</a>, einem auf NetBeans basierenden Schulverwaltungssystem für Schüler, Noten und tägliche Verwaltung.">
+                The journey started with <a href="services/school-management.html">Masomo</a>, a NetBeans-based school
+                management system built to help schools organize students, grades, and daily administration.</p>
+            </div>
+          </div>
+          <div class="t-node">
+            <div class="t-dot-wrap">
+              <div class="t-dot"></div>
+            </div>
+            <div class="t-year">2018</div>
+            <div>
+              <div class="t-title" data-en="Desktop launch" data-fr="Lancement desktop" data-de="Desktop-Start">Desktop
+                launch</div>
+              <p class="t-desc"
+                data-en="The first desktop version of <a href='services/school-management.html'>Masomo</a> launched, proving that schools could manage core operations with local, practical software."
+                data-fr="La première version desktop de <a href='services/school-management.html'>Masomo</a> a été lancée, montrant que les écoles pouvaient gérer leurs opérations avec un logiciel local et pratique."
+                data-de="Die erste Desktop-Version von <a href='services/school-management.html'>Masomo</a> wurde veröffentlicht und zeigte, dass Schulen ihre Kernabläufe mit praktischer lokaler Software verwalten können.">
+                The first desktop version of <a href="services/school-management.html">Masomo</a> launched, proving that
+                schools could manage core operations with local, practical software.</p>
+            </div>
+          </div>
+          <div class="t-node">
+            <div class="t-dot-wrap">
+              <div class="t-dot"></div>
+            </div>
+            <div class="t-year">2019</div>
+            <div>
+              <div class="t-title" data-en="Design improved" data-fr="Design amélioré" data-de="Design verbessert">
+                Design improved</div>
+              <p class="t-desc"
+                data-en="<a href='services/school-management.html'>Masomo</a> was redesigned and refined, making the school workflow clearer and easier for administrators to use."
+                data-fr="<a href='services/school-management.html'>Masomo</a> a été repensé et amélioré pour rendre le flux de travail scolaire plus clair et plus simple pour les administrateurs."
+                data-de="<a href='services/school-management.html'>Masomo</a> wurde neu gestaltet und verbessert, damit Schulabläufe für Administratoren klarer und einfacher werden.">
+                <a href="services/school-management.html">Masomo</a> was redesigned and refined, making the school
+                workflow clearer and easier for administrators to use.
+              </p>
+            </div>
+          </div>
+          <div class="t-node">
+            <div class="t-dot-wrap">
+              <div class="t-dot"></div>
+            </div>
+            <div class="t-year">2020</div>
+            <div>
+              <div class="t-title" data-en="Zungumza released" data-fr="Zungumza lancé"
+                data-de="Zungumza veröffentlicht">Zungumza released</div>
+              <p class="t-desc"
+                data-en="When COVID froze many plans, we released <a href='services/zungumza.html'>Zungumza</a>, a quieter place for people to publish stories, ideas, and articles without the noise of social media."
+                data-fr="Quand la COVID a bloqué de nombreux projets, nous avons lancé <a href='services/zungumza.html'>Zungumza</a>, un espace plus calme pour publier histoires, idées et articles sans le bruit des réseaux sociaux."
+                data-de="Als COVID viele Pläne stoppte, veröffentlichten wir <a href='services/zungumza.html'>Zungumza</a>, einen ruhigeren Ort für Geschichten, Ideen und Artikel ohne Social-Media-Lärm.">
+                When COVID froze many plans, we released <a href="services/zungumza.html">Zungumza</a>, a quieter place
+                for people to publish stories, ideas, and articles without the noise of social media.</p>
+            </div>
+          </div>
+          <div class="t-node">
+            <div class="t-dot-wrap">
+              <div class="t-dot"></div>
+            </div>
+            <div class="t-year">2021</div>
+            <div>
+              <div class="t-title" data-en="Uduma prototype" data-fr="Prototype Uduma" data-de="Uduma-Prototyp">Uduma
+                prototype</div>
+              <p class="t-desc"
+                data-en="We listened to companies, collected operational needs, pitched the idea, and built the first <a href='services/uduma.html'>Uduma</a> prototype for people operations."
+                data-fr="Nous avons écouté les entreprises, collecté leurs besoins opérationnels, présenté l'idée et construit le premier prototype <a href='services/uduma.html'>Uduma</a> pour la gestion du personnel."
+                data-de="Wir hörten Unternehmen zu, sammelten operative Anforderungen, präsentierten die Idee und bauten den ersten <a href='services/uduma.html'>Uduma</a>-Prototyp für Personalprozesse.">
+                We listened to companies, collected operational needs, pitched the idea, and built the first <a
+                  href="services/uduma.html">Uduma</a> prototype for people operations.</p>
+            </div>
+          </div>
+          <div class="t-node">
+            <div class="t-dot-wrap">
+              <div class="t-dot"></div>
+            </div>
+            <div class="t-year">2023</div>
+            <div>
+              <div class="t-title" data-en="TuChati and plugins" data-fr="TuChati et plugins"
+                data-de="TuChati und Plugins">TuChati and plugins</div>
+              <p class="t-desc"
+                data-en="<a href='https://tuchati.tuunganes.com/' target='_blank' rel='noopener'>TuChati</a> moved forward, Jira plugin products were built, and <a href='https://articles.tuunganes.com/' target='_blank' rel='noopener'>Zungumza articles</a> continued giving writers a public home."
+                data-fr="<a href='https://tuchati.tuunganes.com/' target='_blank' rel='noopener'>TuChati</a> a avancé, des produits plugins Jira ont été construits, et <a href='https://articles.tuunganes.com/' target='_blank' rel='noopener'>les articles Zungumza</a> ont continué à offrir une maison publique aux auteurs."
+                data-de="<a href='https://tuchati.tuunganes.com/' target='_blank' rel='noopener'>TuChati</a> entwickelte sich weiter, Jira-Plugin-Produkte wurden gebaut, und <a href='https://articles.tuunganes.com/' target='_blank' rel='noopener'>Zungumza-Artikel</a> gaben Schreibenden weiter ein öffentliches Zuhause.">
+                <a href="https://tuchati.tuunganes.com/" target="_blank" rel="noopener">TuChati</a> moved forward, Jira
+                plugin products were built, and <a href="https://articles.tuunganes.com/" target="_blank"
+                  rel="noopener">Zungumza articles</a> continued giving writers a public home.
+              </p>
+            </div>
+          </div>
+          <div class="t-node">
+            <div class="t-dot-wrap">
+              <div class="t-dot"></div>
+            </div>
+            <div class="t-year">2024</div>
+            <div>
+              <div class="t-title" data-en="Web and Docker shift" data-fr="Passage web et Docker"
+                data-de="Web- und Docker-Wechsel">Web and Docker shift</div>
+              <p class="t-desc"
+                data-en="<a href='services/school-management.html'>Masomo</a> shifted from desktop to a scalable web app. <a href='services/uduma.html'>Uduma</a> followed the same path, and both products moved into Docker containers."
+                data-fr="<a href='services/school-management.html'>Masomo</a> est passé du desktop à une application web scalable. <a href='services/uduma.html'>Uduma</a> a suivi le même chemin, et les deux produits ont été mis en conteneurs Docker."
+                data-de="<a href='services/school-management.html'>Masomo</a> wechselte vom Desktop zu einer skalierbaren Web-App. <a href='services/uduma.html'>Uduma</a> folgte demselben Weg, und beide Produkte wurden in Docker-Container gebracht.">
+                <a href="services/school-management.html">Masomo</a> shifted from desktop to a scalable web app. <a
+                  href="services/uduma.html">Uduma</a> followed the same path, and both products moved into Docker
+                containers.
+              </p>
+            </div>
+          </div>
+          <div class="t-node">
+            <div class="t-dot-wrap">
+              <div class="t-dot"
+                style="background:#fff;box-shadow:0 0 0 2px var(--blue),0 0 0 7px rgba(33,150,243,.18)"></div>
+            </div>
+            <div class="t-year" style="font-style:italic">2026</div>
+            <div>
+              <div class="t-title" data-en="Stabilizing the platform" data-fr="Stabilisation de la plateforme"
+                data-de="Plattform stabilisieren">Stabilizing the platform</div>
+              <p class="t-desc"
+                data-en="We are scaling stable Docker deployments for <a href='services/school-management.html'>Masomo</a>, <a href='services/uduma.html'>Uduma</a>, <a href='services/zungumza.html'>Zungumza</a>, and <a href='services/it-consultancy.html'>Kagua OS</a> while welcoming more clients."
+                data-fr="Nous stabilisons et faisons évoluer les déploiements Docker de <a href='services/school-management.html'>Masomo</a>, <a href='services/uduma.html'>Uduma</a>, <a href='services/zungumza.html'>Zungumza</a> et <a href='services/it-consultancy.html'>Kagua OS</a>, tout en accueillant plus de clients."
+                data-de="Wir skalieren stabile Docker-Deployments für <a href='services/school-management.html'>Masomo</a>, <a href='services/uduma.html'>Uduma</a>, <a href='services/zungumza.html'>Zungumza</a> und <a href='services/it-consultancy.html'>Kagua OS</a> und gewinnen weitere Kunden.">
+                We are scaling stable Docker deployments for <a href="services/school-management.html">Masomo</a>, <a
+                  href="services/uduma.html">Uduma</a>, <a href="services/zungumza.html">Zungumza</a>, and <a
+                  href="services/it-consultancy.html">Kagua OS</a> while welcoming more clients.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ IMPACT NUMBERS ═══ -->
+  <section class="impact-strip reveal-fade">
+    <div class="frame">
+      <div class="impact-inner">
+        <div class="impact-label">
+          One life<br>at a time.
+          <em data-en="Our impact so far." data-fr="Notre impact jusqu'ici." data-de="Unser bisheriger Einfluss.">Our
+            impact so far.</em>
+        </div>
+        <div class="impact-stats">
+          <div class="i-stat"><b>11+</b><span data-en="Students reached" data-fr="Étudiants touchés"
+              data-de="Schüler erreicht">Students reached</span></div>
+          <div class="i-stat"><b>5</b><span data-en="Farmers supported" data-fr="Agriculteurs soutenus"
+              data-de="Landwirte unterstützt">Farmers supported</span></div>
+          <div class="i-stat"><b>15</b><span data-en="Youth connected" data-fr="Jeunes reliés"
+              data-de="Jugend vernetzt">Youth connected</span></div>
+          <div class="i-stat"><b>4</b><span data-en="Women &amp; children" data-fr="Femmes &amp; enfants"
+              data-de="Frauen &amp; Kinder">Women &amp; children</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ CTA ═══ -->
+  <section class="cta-sec reveal">
+    <div class="frame">
+      <div class="cta-band">
+        <div class="cta-left">
+          <span class="eyebrow" data-en="Get involved" data-fr="S'impliquer" data-de="Mitmachen">Get involved</span>
+          <h2 data-en="Join us." data-fr="Rejoignez-nous." data-de="Begleiten Sie uns">Join us.</h2>
+          <p data-en="We collaborate with volunteers, educators, clinicians, and engineers across Bukavu, Goma, and the diaspora. Your skills or support can change lives."
+            data-fr="Nous collaborons avec des bénévoles, éducateurs, cliniciens et ingénieurs à Bukavu, Goma et dans la diaspora. Vos compétences peuvent changer des vies."
+            data-de="Wir arbeiten mit Freiwilligen, Pädagog:innen, Kliniker:innen und Ingenieur:innen zusammen. Ihre Unterstützung kann Leben verändern.">
+            We collaborate with volunteers, educators, clinicians, and engineers across Bukavu, Goma, and the diaspora.
+            Your skills or support can change lives.</p>
+          <div class="cta-btns">
+            <a href="index.html#join" class="btn btn-w" data-en="Volunteer / Donate devices"
+              data-fr="Bénévolat / Donner des appareils" data-de="Ehrenamt / Geräte spenden">Volunteer / Donate
+              devices</a>
+            <a href="contact.html" class="btn btn-wg" data-en="Contact us" data-fr="Nous contacter"
+              data-de="Kontakt aufnehmen">Contact us</a>
+          </div>
+        </div>
+        <div class="cta-right">
+          <div class="cta-right-inner">
+            <div class="cta-big-text" aria-hidden="true">Tuunganes.</div>
+            <p data-en="&ldquo;Uniting communities.&rdquo;" data-fr="&ldquo;Unir les communautés.&rdquo;"
+              data-de="&ldquo;Gemeinschaften vereinen.&rdquo;">&ldquo;Uniting communities.&rdquo;</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══════════ FOOTER ══════════ -->
+  <footer>
+    <div class="frame foot">
+      <a href="index.html" class="foot-logo">
+        <img src="assets/favicon.png" alt="Tuunganes" />
+        <span>Tuunganes</span>
+      </a>
+      <p>&copy; 2025 Tuunganes &nbsp;·&nbsp; Bukavu &amp; Goma, DRC</p>
+      <div style="display:flex;gap:1rem">
+        <a href="about.html" style="font-size:.82rem;color:var(--muted)" data-en="About" data-fr="À propos"
+          data-de="Über uns">About</a>
+        <a href="services/services.html" style="font-size:.82rem;color:var(--muted)" data-en="Services"
+          data-fr="Services" data-de="Leistungen">Services</a>
+        <a href="contact.html" style="font-size:.82rem;color:var(--muted)" data-en="Contact" data-fr="Contact"
+          data-de="Kontakt">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ══════════ SCRIPTS ══════════ -->
+  <script>
+    // ── 1. Theme init (before paint)
+    (function () {
+      const s = localStorage.getItem('tuunganes-theme');
+      document.documentElement.setAttribute('data-theme', s || 'light');
+    })();
+
+    document.addEventListener('DOMContentLoaded', function () {
+
+      // ── 2. Theme toggle
+      const root = document.documentElement;
+      const themeBtn = document.getElementById('themeBtn');
+      function syncIcon() { themeBtn.textContent = root.getAttribute('data-theme') === 'dark' ? '☀️' : '🌙' }
+      syncIcon();
+      themeBtn.addEventListener('click', function () {
+        const next = root.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        localStorage.setItem('tuunganes-theme', next);
+        syncIcon();
+      });
+
+      // ── 3. Mobile nav — hamburger & drawer
+      const hamBtn = document.getElementById('hamBtn');
+      const drawer = document.getElementById('drawer');
+      const drawerClose = document.getElementById('drawerClose');
+
+      function openDrawer() {
+        drawer.classList.add('open');
+        hamBtn.setAttribute('aria-expanded', 'true');
       }
-    });
-  }
-
-  // Attach to ALL lang buttons (nav + drawer)
-  document.querySelectorAll('[data-lang]').forEach(btn => {
-    btn.addEventListener('click', () => {
-      applyLang(btn.dataset.lang);
-      closeDrawer(); // close drawer after switching language on mobile
-    });
-  });
-
-  // Apply saved language on load
-  applyLang(localStorage.getItem('siteLang') || 'en');
-
-  // ── 5. Scroll reveal
-  const io = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
-    });
-  }, { threshold: 0.07 });
-  document.querySelectorAll('.reveal, .reveal-fade').forEach(el => io.observe(el));
-
-  // ── 6. Smooth scroll for anchor links
-  document.querySelectorAll('a[href^="#"]').forEach(a => {
-    a.addEventListener('click', e => {
-      const target = document.querySelector(a.getAttribute('href'));
-      if (target){
-        e.preventDefault();
-        target.scrollIntoView({ behavior: 'smooth' });
-        closeDrawer();
+      function closeDrawer() {
+        drawer.classList.remove('open');
+        hamBtn.setAttribute('aria-expanded', 'false');
       }
-    });
-  });
 
-});
-</script>
-<script src="route/base.js" defer></script>
-<script src="route/lang.js" defer></script>
-<script src="route/animations.js" defer></script>
+      hamBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        drawer.classList.contains('open') ? closeDrawer() : openDrawer();
+      });
+      drawerClose.addEventListener('click', closeDrawer);
+      document.addEventListener('click', e => {
+        if (!drawer.contains(e.target) && !hamBtn.contains(e.target)) closeDrawer();
+      });
+
+      // ── 4. Language switching (nav pills + drawer pills stay in sync)
+      function applyLang(lang) {
+        localStorage.setItem('siteLang', lang);
+        // Sync ALL lang buttons across nav and drawer
+        document.querySelectorAll('[data-lang]').forEach(b => {
+          b.classList.toggle('on', b.dataset.lang === lang);
+        });
+        document.querySelectorAll('[data-' + lang + ']').forEach(el => {
+          const val = el.getAttribute('data-' + lang);
+          if (!val) return;
+          if (el.tagName === 'INPUT' || el.tagName === 'TEXTAREA') {
+            el.placeholder = val;
+          } else if (['H1', 'H2', 'H3'].includes(el.tagName) || val.includes('<')) {
+            el.innerHTML = val;
+          } else if (!el.querySelector('[data-' + lang + ']:not(script)')) {
+            el.textContent = val;
+          }
+        });
+      }
+
+      // Attach to ALL lang buttons (nav + drawer)
+      document.querySelectorAll('[data-lang]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          applyLang(btn.dataset.lang);
+          closeDrawer(); // close drawer after switching language on mobile
+        });
+      });
+
+      // Apply saved language on load
+      applyLang(localStorage.getItem('siteLang') || 'en');
+
+      // ── 5. Scroll reveal
+      const io = new IntersectionObserver(entries => {
+        entries.forEach(e => {
+          if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      }, { threshold: 0.07 });
+      document.querySelectorAll('.reveal, .reveal-fade').forEach(el => io.observe(el));
+
+      // ── 6. Smooth scroll for anchor links
+      document.querySelectorAll('a[href^="#"]').forEach(a => {
+        a.addEventListener('click', e => {
+          const target = document.querySelector(a.getAttribute('href'));
+          if (target) {
+            e.preventDefault();
+            target.scrollIntoView({ behavior: 'smooth' });
+            closeDrawer();
+          }
+        });
+      });
+
+    });
+  </script>
+  <script src="route/base.js" defer></script>
+  <script src="route/lang.js" defer></script>
+  <script src="route/animations.js" defer></script>
 </body>
+
 </html>

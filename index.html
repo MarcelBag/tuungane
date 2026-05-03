@@ -13,7 +13,7 @@
   <meta property="og:site_name" content="Tuunganes" />
   <meta property="og:title" content="Tuunganes - Technology, Education, and Health Innovation in DRC" />
   <meta property="og:description"
-    content="Tuunganes unites communities in the Democratic Republic of Congo through Masomo school management, Uduma people operations, digital health, AgTech, and IT services." />
+    content="Tuunganes unites communities in the Democratic Republic of Congo through Masomo school management, Uduma people operations, Zungumza stories, digital health, AgTech, and IT services." />
   <meta property="og:url" content="https://tuunganes.com/" />
   <meta property="og:image" content="https://tuunganes.com/assets/favicon.png" />
   <meta name="twitter:card" content="summary" />
@@ -731,10 +731,11 @@
       flex-wrap: wrap;
     }
 
-    /* ─── SERVICES / BENTO ───────────────────────────────────────── */
+    /* ─── SERVICES ───────────────────────────────────────────────── */
     .services-sec {
       padding: 7rem 0;
-      background: var(--surf);
+      background:
+        linear-gradient(180deg, color-mix(in srgb, var(--surf) 92%, var(--blue-pale)) 0%, var(--surf) 100%);
       border-top: 1px solid var(--bdr);
       border-bottom: 1px solid var(--bdr);
     }
@@ -751,141 +752,200 @@
     .bento {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
-      grid-template-rows: auto;
       gap: 1rem;
     }
 
     .bcard {
-      background: var(--bg);
+      min-height: 285px;
+      background: color-mix(in srgb, var(--surf) 94%, var(--bg));
       border: 1px solid var(--bdr);
-      border-radius: var(--radius);
-      overflow: hidden;
+      border-radius: 16px;
       position: relative;
       display: flex;
       flex-direction: column;
+      isolation: isolate;
       transition: transform .22s var(--ease), box-shadow .22s var(--ease), border-color .22s;
-      box-shadow: var(--sh);
+      box-shadow: 0 8px 28px rgba(13, 27, 46, .06);
+    }
+
+    .bcard::before {
+      content: '';
+      position: absolute;
+      inset: 0 0 auto;
+      height: 4px;
+      background: var(--svc-accent, var(--blue));
+      border-radius: 16px 16px 0 0;
+      z-index: 0;
+    }
+
+    .bcard::after {
+      content: '';
+      position: absolute;
+      right: 1rem;
+      top: 1rem;
+      width: 92px;
+      height: 92px;
+      border-radius: 24px;
+      background: color-mix(in srgb, var(--svc-accent, var(--blue)) 10%, transparent);
+      transform: rotate(8deg);
+      z-index: 0;
     }
 
     .bcard:hover {
       transform: translateY(-4px);
-      box-shadow: 0 12px 36px rgba(0, 0, 0, .12);
-      border-color: var(--blue-ring);
+      box-shadow: 0 18px 44px rgba(13, 27, 46, .12);
+      border-color: color-mix(in srgb, var(--svc-accent, var(--blue)) 48%, var(--bdr));
     }
 
     .bcard.wide {
       grid-column: span 7;
+      --svc-accent: #1565c0;
     }
 
     .bcard.tall {
       grid-column: span 5;
-      grid-row: span 2;
+      --svc-accent: #b45309;
     }
 
     .bcard.mid {
-      grid-column: span 4;
+      grid-column: span 3;
     }
 
-    .bcard.rest {
-      grid-column: span 3;
+    .bcard.health {
+      --svc-accent: #0f766e;
+    }
+
+    .bcard.people {
+      --svc-accent: #7c3aed;
+    }
+
+    .bcard.story {
+      --svc-accent: #c2410c;
+    }
+
+    .bcard.agri {
+      --svc-accent: #15803d;
     }
 
     @media (max-width: 900px) {
 
       .bcard.wide,
       .bcard.tall,
-      .bcard.mid,
-      .bcard.rest {
+      .bcard.mid {
         grid-column: span 12;
       }
     }
 
     @media (min-width: 901px) and (max-width: 1100px) {
       .bcard.wide {
-        grid-column: span 8
+        grid-column: span 8;
       }
 
       .bcard.tall {
-        grid-column: span 4
+        grid-column: span 4;
       }
 
       .bcard.mid {
-        grid-column: span 6
-      }
-
-      .bcard.rest {
-        grid-column: span 6
+        grid-column: span 6;
       }
     }
 
-    .bcard-img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      display: block;
+    .bcard-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 1rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .bcard-kicker {
+      color: var(--muted);
+      font-size: .72rem;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+
+    .bcard-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: color-mix(in srgb, var(--svc-accent, var(--blue)) 12%, var(--surf));
+      border: 1px solid color-mix(in srgb, var(--svc-accent, var(--blue)) 24%, var(--bdr));
+      color: var(--svc-accent, var(--blue));
+      display: grid;
+      place-items: center;
+      font-size: .82rem;
+      font-weight: 900;
+      letter-spacing: .02em;
       flex-shrink: 0;
-    }
-
-    .bcard.tall .bcard-img {
-      height: 260px;
     }
 
     .bcard-body {
-      padding: 1.25rem 1.3rem 1.4rem;
+      padding: 1.45rem;
       flex: 1;
       display: flex;
       flex-direction: column;
-    }
-
-    .bcard-icon {
-      width: 38px;
-      height: 38px;
-      border-radius: 10px;
-      background: var(--blue-pale);
-      border: 1px solid var(--blue-ring);
-      display: grid;
-      place-items: center;
-      font-size: 1rem;
-      margin-bottom: .75rem;
-      flex-shrink: 0;
+      position: relative;
+      z-index: 1;
     }
 
     .bcard-body h3 {
-      font-size: .97rem;
+      max-width: 15rem;
+      font-size: clamp(1.05rem, 1.7vw, 1.35rem);
       font-weight: 800;
       color: var(--tx);
-      margin-bottom: .35rem;
-      letter-spacing: -.01em;
+      margin-bottom: .55rem;
+      letter-spacing: -.02em;
+      line-height: 1.15;
     }
 
     .bcard-body p {
-      font-size: .84rem;
+      max-width: 31rem;
+      font-size: .9rem;
       color: var(--tx2);
-      line-height: 1.55;
+      line-height: 1.58;
       flex: 1;
     }
 
-    .bcard-arrow {
-      margin-top: .85rem;
-      align-self: flex-start;
-      font-size: .78rem;
+    .bcard-tags {
+      display: flex;
+      gap: .42rem;
+      flex-wrap: wrap;
+      margin-top: 1.1rem;
+    }
+
+    .bcard-tags span {
+      border: 1px solid color-mix(in srgb, var(--svc-accent, var(--blue)) 18%, var(--bdr));
+      background: color-mix(in srgb, var(--svc-accent, var(--blue)) 7%, transparent);
+      color: var(--tx2);
+      border-radius: 999px;
+      padding: .28rem .58rem;
+      font-size: .72rem;
       font-weight: 700;
-      color: var(--blue);
+      line-height: 1;
+    }
+
+    .bcard-arrow {
+      margin-top: 1.25rem;
+      align-self: flex-start;
+      font-size: .82rem;
+      font-weight: 700;
+      color: var(--svc-accent, var(--blue));
       display: flex;
       align-items: center;
       gap: .3rem;
-      border-bottom: 1.5px solid transparent;
-      transition: border-color .15s;
+      transition: gap .15s;
     }
 
     .bcard:hover .bcard-arrow {
-      border-color: var(--blue);
+      gap: .5rem;
     }
 
     .bcard-link {
       position: absolute;
       inset: 0;
-      z-index: 1;
+      z-index: 2;
     }
 
     /* ─── IMPACT ─────────────────────────────────────────────────── */
@@ -1220,14 +1280,6 @@
         grid-column: span 12 !important;
       }
 
-      .bcard-img {
-        height: 170px;
-      }
-
-      .bcard.tall .bcard-img {
-        height: 200px;
-      }
-
       /* ── Impact ── */
       .impact-sec {
         padding: 4rem 0;
@@ -1317,6 +1369,7 @@
         "Uduma People Operations",
         "digital health",
         "AgTech",
+        "Zungumza stories",
         "IT consultancy",
         "legal clinic"
       ]
@@ -1326,7 +1379,7 @@
       "@id": "https://tuunganes.com/#website",
       "url": "https://tuunganes.com/",
       "name": "Tuunganes",
-      "description": "Tuunganes is the home of Masomo, Uduma, Afya Digital Health, AgTech, legal clinic, and IT consultancy services for communities and organizations in the DRC.",
+      "description": "Tuunganes is the home of Masomo, Uduma, Zungumza, Afya Digital Health, AgTech, legal clinic, and IT consultancy services for communities and organizations in the DRC.",
       "publisher": {
         "@id": "https://tuunganes.com/#organization"
       },
@@ -1351,6 +1404,11 @@
           "@type": "WebPage",
           "name": "Masomo School Management",
           "url": "https://tuunganes.com/services/school-management.html"
+        },
+        {
+          "@type": "WebPage",
+          "name": "Zungumza Stories",
+          "url": "https://tuunganes.com/services/zungumza.html"
         },
         {
           "@type": "WebPage",
@@ -1391,6 +1449,12 @@
         {
           "@type": "SiteNavigationElement",
           "position": 5,
+          "name": "Zungumza Stories",
+          "url": "https://tuunganes.com/services/zungumza.html"
+        },
+        {
+          "@type": "SiteNavigationElement",
+          "position": 6,
           "name": "Contact Tuunganes",
           "url": "https://tuunganes.com/contact.html"
         }
@@ -1506,9 +1570,10 @@
         </div>
         <div class="about-text">
           <div class="s-label" data-en="Our story" data-fr="Notre histoire" data-de="Unsere Geschichte">Our story</div>
-          <h2 data-en="Born in Bukavu. Built for Congo." data-fr="Né à Bukavu. Construit pour le Congo."
-            data-de="In Bukavu geboren. Für Kongo gebaut.">
-            Born in Bukavu. Built for Congo.
+          <h2 data-en="Born in Bukavu (DR Congo). Built for everyone."
+            data-fr="Né à Bukavu (RD Congo). Developper pour tous."
+            data-de="In Bukavu (DR Congo) geboren. Für alle gebaut.">
+            Born in Bukavu. Built for everyone.
           </h2>
           <p data-en="Tuunganes is a grassroots initiative using technology, innovation, and compassion to create community-led change especially for those affected by war, poverty, and marginalization in Bukavu and Goma."
             data-fr="Tuunganes est une initiative communautaire utilisant la technologie, l'innovation et la compassion pour créer un changement communautaire, notamment pour ceux touchés par la guerre, la pauvreté et la marginalisation à Bukavu et Goma."
@@ -1530,7 +1595,7 @@
     </div>
   </section>
 
-  <!-- ══════════ SERVICES BENTO ══════════ -->
+  <!-- ══════════ SERVICES ══════════ -->
   <section class="services-sec reveal" id="services">
     <div class="frame">
       <div class="svc-header">
@@ -1544,12 +1609,14 @@
       </div>
 
       <div class="bento">
-        <!-- IT (wide) -->
         <article class="bcard wide">
           <a class="bcard-link" href="services/it-consultancy.html" aria-label="IT Consultancy"></a>
-          <img class="bcard-img" src="assets/pro.jpg" alt="IT Consultancy" loading="lazy" />
           <div class="bcard-body">
-            <div class="bcard-icon">💻</div>
+            <div class="bcard-top">
+              <span class="bcard-kicker" data-en="Technology" data-fr="Technologie"
+                data-de="Technologie">Technology</span>
+              <span class="bcard-mark" aria-hidden="true">IT</span>
+            </div>
             <h3 data-en="IT Consultancy &amp; Digital Solutions" data-fr="Conseil &amp; solutions numériques"
               data-de="IT-Beratung &amp; Digitale Lösungen">IT Consultancy &amp; Digital Solutions</h3>
             <p data-en="Modernizing schools, NGOs and businesses with cloud, Starlink, security audits and digital transformation strategy."
@@ -1557,16 +1624,23 @@
               data-de="Modernisierung von Schulen, NGOs und Unternehmen mit Cloud, Starlink, Sicherheitsaudits und digitaler Transformationsstrategie.">
               Modernizing schools, NGOs and businesses with cloud, Starlink, security audits and digital transformation
               strategy.</p>
-            <span class="bcard-arrow">Learn more →</span>
+            <div class="bcard-tags" aria-label="IT Consultancy capabilities">
+              <span>Cloud</span>
+              <span>Starlink</span>
+              <span>Security</span>
+            </div>
+            <span class="bcard-arrow" data-en="Learn more →" data-fr="En savoir plus →" data-de="Mehr erfahren →">Learn
+              more →</span>
           </div>
         </article>
 
-        <!-- Legal (tall) -->
         <article class="bcard tall">
           <a class="bcard-link" href="services/legal-clinic.html" aria-label="Legal Clinic"></a>
-          <img class="bcard-img" src="assets/sup.jpg" alt="Legal Clinic" loading="lazy" />
           <div class="bcard-body">
-            <div class="bcard-icon">⚖️</div>
+            <div class="bcard-top">
+              <span class="bcard-kicker" data-en="Justice" data-fr="Justice" data-de="Justiz">Justice</span>
+              <span class="bcard-mark" aria-hidden="true">LC</span>
+            </div>
             <h3 data-en="Legal Clinic &amp; Advocacy" data-fr="Clinique juridique &amp; Plaidoyer"
               data-de="Rechtsklinik &amp; Advocacy">Legal Clinic &amp; Advocacy</h3>
             <p data-en="Free legal aid, child protection, community mediation, and rights awareness for vulnerable communities in Eastern DRC."
@@ -1574,55 +1648,101 @@
               data-de="Kostenlose Rechtsberatung, Kinderschutz, Gemeindemediation und Rechtsaufklärung für gefährdete Gemeinschaften.">
               Free legal aid, child protection, community mediation, and rights awareness for vulnerable communities in
               Eastern DRC.</p>
-            <span class="bcard-arrow">Learn more →</span>
+            <div class="bcard-tags" aria-label="Legal Clinic focus areas">
+              <span data-en="Legal aid" data-fr="Aide juridique" data-de="Rechtshilfe">Legal aid</span>
+              <span data-en="Protection" data-fr="Protection" data-de="Schutz">Protection</span>
+            </div>
+            <span class="bcard-arrow" data-en="Learn more →" data-fr="En savoir plus →" data-de="Mehr erfahren →">Learn
+              more →</span>
           </div>
         </article>
 
-        <!-- Afya (mid) -->
-        <article class="bcard mid">
+        <article class="bcard mid health">
           <a class="bcard-link" href="services/digital-health.html" aria-label="Afya Digital Health"></a>
-          <img class="bcard-img" src="assets/tuungane.jpeg" alt="Afya Digital Health" loading="lazy" />
           <div class="bcard-body">
-            <div class="bcard-icon">🏥</div>
+            <div class="bcard-top">
+              <span class="bcard-kicker" data-en="Health" data-fr="Santé" data-de="Gesundheit">Health</span>
+              <span class="bcard-mark" aria-hidden="true">AF</span>
+            </div>
             <h3 data-en="Afya Digital Health" data-fr="Afya Santé numérique" data-de="Afya Digitale Gesundheit">Afya
               Digital Health</h3>
             <p data-en="Telehealth, mobile education and data-driven tools for rural communities."
               data-fr="Télésanté, éducation mobile et outils basés sur les données pour les communautés rurales."
               data-de="Telemedizin, mobile Aufklärung und datengestützte Tools für ländliche Gemeinschaften.">
               Telehealth, mobile education and data-driven tools for rural communities.</p>
-            <span class="bcard-arrow">Explore Afya →</span>
+            <div class="bcard-tags" aria-label="Afya Digital Health capabilities">
+              <span>Telehealth</span>
+              <span>Mobile</span>
+            </div>
+            <span class="bcard-arrow" data-en="Explore Afya →" data-fr="Explorer Afya →"
+              data-de="Afya entdecken →">Explore Afya →</span>
           </div>
         </article>
 
-        <!-- Uduma (mid) -->
-        <article class="bcard mid">
+        <article class="bcard mid people">
           <a class="bcard-link" href="services/uduma.html" aria-label="Uduma People Operations"></a>
-          <img class="bcard-img" src="assets/pro.jpg" alt="Uduma People Operations" loading="lazy" />
           <div class="bcard-body">
-            <div class="bcard-icon">👥</div>
+            <div class="bcard-top">
+              <span class="bcard-kicker" data-en="Operations" data-fr="Opérations" data-de="Betrieb">Operations</span>
+              <span class="bcard-mark" aria-hidden="true">UD</span>
+            </div>
             <h3 data-en="Uduma People Operations" data-fr="Uduma Gestion du personnel" data-de="Uduma Personalwesen">
               Uduma People Operations</h3>
             <p data-en="Intelligent workforce management, approvals, and reporting for growing organizations."
               data-fr="Gestion intelligente du personnel, approbations et rapports pour les organisations."
               data-de="Intelligentes Workforce-Management, Genehmigungen und Berichte für Organisationen.">Intelligent
               workforce management, approvals, and reporting for growing organizations.</p>
-            <span class="bcard-arrow">Explore Uduma →</span>
+            <div class="bcard-tags" aria-label="Uduma People Operations capabilities">
+              <span>HR</span>
+              <span data-en="Approvals" data-fr="Approbations" data-de="Freigaben">Approvals</span>
+            </div>
+            <span class="bcard-arrow" data-en="Explore Uduma →" data-fr="Explorer Uduma →"
+              data-de="Uduma entdecken →">Explore Uduma →</span>
           </div>
         </article>
 
-        <!-- AgTech (mid) -->
-        <article class="bcard mid">
-          <a class="bcard-link" href="services/AgTech.html" aria-label="AgTech"></a>
-          <img class="bcard-img" src="assets/agri1.jpg" alt="Agriculture" loading="lazy" />
+        <article class="bcard mid story">
+          <a class="bcard-link" href="services/zungumza.html" aria-label="Zungumza Stories"></a>
           <div class="bcard-body">
-            <div class="bcard-icon">🌱</div>
+            <div class="bcard-top">
+              <span class="bcard-kicker" data-en="Stories" data-fr="Histoires" data-de="Geschichten">Stories</span>
+              <span class="bcard-mark" aria-hidden="true">ZU</span>
+            </div>
+            <h3 data-en="Zungumza Stories &amp; Articles" data-fr="Zungumza Histoires &amp; Articles"
+              data-de="Zungumza Geschichten &amp; Artikel">Zungumza Stories &amp; Articles</h3>
+            <p data-en="A quiet place to share stories, talks, ideas, and articles without the noise of social media."
+              data-fr="Un espace calme pour partager histoires, témoignages, idées et articles sans le bruit des réseaux sociaux."
+              data-de="Ein ruhiger Ort für Geschichten, Vorträge, Ideen und Artikel ohne Social-Media-Lärm.">A quiet
+              place to share stories, talks, ideas, and articles without the noise of social media.</p>
+            <div class="bcard-tags" aria-label="Zungumza focus areas">
+              <span data-en="Stories" data-fr="Histoires" data-de="Geschichten">Stories</span>
+              <span data-en="Articles" data-fr="Articles" data-de="Artikel">Articles</span>
+            </div>
+            <span class="bcard-arrow" data-en="Explore Zungumza →" data-fr="Explorer Zungumza →"
+              data-de="Zungumza entdecken →">Explore Zungumza →</span>
+          </div>
+        </article>
+
+        <article class="bcard mid agri">
+          <a class="bcard-link" href="services/AgTech.html" aria-label="AgTech"></a>
+          <div class="bcard-body">
+            <div class="bcard-top">
+              <span class="bcard-kicker" data-en="Agriculture" data-fr="Agriculture"
+                data-de="Landwirtschaft">Agriculture</span>
+              <span class="bcard-mark" aria-hidden="true">AG</span>
+            </div>
             <h3 data-en="Agriculture &amp; Food Security" data-fr="Agriculture &amp; Sécurité alimentaire"
               data-de="Landwirtschaft &amp; Ernährungssicherheit">Agriculture &amp; Food Security</h3>
             <p data-en="Training, digital tools and market access for smallholder farmers."
               data-fr="Formation, outils numériques et accès au marché pour les petits agriculteurs."
               data-de="Schulungen, digitale Tools und Marktzugang für Kleinbäuer:innen.">Training, digital tools and
               market access for smallholder farmers.</p>
-            <span class="bcard-arrow">Explore AgTech →</span>
+            <div class="bcard-tags" aria-label="Agriculture and Food Security focus areas">
+              <span data-en="Training" data-fr="Formation" data-de="Schulung">Training</span>
+              <span data-en="Markets" data-fr="Marchés" data-de="Märkte">Markets</span>
+            </div>
+            <span class="bcard-arrow" data-en="Explore AgTech →" data-fr="Explorer AgTech →"
+              data-de="AgTech entdecken →">Explore AgTech →</span>
           </div>
         </article>
       </div>
@@ -1634,7 +1754,7 @@
     <div class="frame">
       <div class="impact-inner">
         <div class="stats-wall">
-          <div class="stat-tile"><b>11+</b><span data-en="Students reached" data-fr="Étudiants touchés"
+          <div class="stat-tile"><b>2.000+</b><span data-en="Students reached" data-fr="Étudiants touchés"
               data-de="Schüler erreicht">Students reached</span></div>
           <div class="stat-tile"><b>5</b><span data-en="Farmers supported" data-fr="Agriculteurs soutenus"
               data-de="Landwirte unterstützt">Farmers supported</span></div>
