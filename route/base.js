@@ -100,6 +100,10 @@ window.setLang = function setLang(lang) {
                data-de="©2025 Tuunganes. Alle Rechte vorbehalten.">
               ©2025 Tuunganes. All rights reserved.
             </p>
+            <div style="display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:.5rem">
+              <a href="privacy.html" data-en="Privacy Policy" data-fr="Politique de confidentialité" data-de="Datenschutz">Privacy Policy</a>
+              <a href="terms.html" data-en="Terms of Use" data-fr="Conditions d'utilisation" data-de="Nutzungsbedingungen">Terms of Use</a>
+            </div>
           </div>
         </footer>
       `;
