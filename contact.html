@@ -585,6 +585,34 @@
       background: var(--blue-pale)
     }
 
+    .delete-warning {
+      display: none;
+      margin-top: .9rem;
+      border: 1.5px solid rgba(220, 38, 38, .35);
+      background: rgba(220, 38, 38, .08);
+      border-radius: 16px;
+      padding: 1rem 1.1rem;
+      color: var(--tx);
+      line-height: 1.6
+    }
+
+    .delete-warning.show {
+      display: block
+    }
+
+    .delete-warning strong {
+      display: block;
+      color: #b91c1c;
+      font-size: .92rem;
+      margin-bottom: .35rem
+    }
+
+    .delete-warning p {
+      color: var(--tx2);
+      font-size: .88rem;
+      margin: .35rem 0 0
+    }
+
     /* success */
     .form-success {
       display: none;
@@ -939,8 +967,21 @@
               data-de="Landwirtschaft & Ernährungssicherheit">Agriculture &amp; Food Security</option>
             <option value="volunteer" data-en="Volunteering / Donate devices" data-fr="Bénévolat / Donner des appareils"
               data-de="Ehrenamt / Geräte spenden">Volunteering / Donate devices</option>
+            <option value="delete_account" data-en="Delete account and all data"
+              data-fr="Supprimer le compte et toutes les données"
+              data-de="Konto und alle Daten löschen">Delete account and all data</option>
             <option value="other" data-en="Other" data-fr="Autre" data-de="Sonstiges">Other</option>
           </select>
+          <div class="delete-warning" id="deleteWarning" aria-live="polite">
+            <strong data-en="Important account deletion notice" data-fr="Avis important de suppression de compte"
+              data-de="Wichtiger Hinweis zur Kontolöschung">Important account deletion notice</strong>
+            <p data-en="You are about to request your data to be deleted across all Tuunganes platforms. Once this form is sent, your data will be deleted after 3 days unless you contact us before then to tell us this request was a mistake."
+              data-fr="Vous êtes sur le point de demander la suppression de vos données sur toutes les plateformes Tuunganes. Une fois ce formulaire envoyé, vos données seront supprimées après 3 jours, sauf si vous nous contactez avant ce délai pour nous signaler que cette demande était une erreur."
+              data-de="Sie sind dabei, die Löschung Ihrer Daten auf allen Tuunganes-Plattformen zu beantragen. Sobald dieses Formular gesendet wurde, werden Ihre Daten nach 3 Tagen gelöscht, sofern Sie uns nicht vorher kontaktieren und mitteilen, dass diese Anfrage ein Fehler war.">You are about to request your data to be deleted across all Tuunganes platforms. Once this form is sent, your data will be deleted after 3 days unless you contact us before then to tell us this request was a mistake.</p>
+            <p data-en="Please note that once the data is deleted, we will not have any way to retrieve it. Tuunganes will not be responsible for any loss, interruption, account impact, missing content, transaction history, messages, files, records, or other consequences caused by this deletion request."
+              data-fr="Veuillez noter qu'une fois les données supprimées, nous n'aurons aucun moyen de les récupérer. Tuunganes ne sera pas responsable des pertes, interruptions, impacts sur le compte, contenus manquants, historiques de transactions, messages, fichiers, dossiers ou autres conséquences causées par cette demande de suppression."
+              data-de="Bitte beachten Sie, dass wir die Daten nach der Löschung nicht wiederherstellen können. Tuunganes übernimmt keine Verantwortung für Verluste, Unterbrechungen, Auswirkungen auf das Konto, fehlende Inhalte, Transaktionsverläufe, Nachrichten, Dateien, Aufzeichnungen oder andere Folgen, die durch diese Löschanfrage entstehen.">Please note that once the data is deleted, we will not have any way to retrieve it. Tuunganes will not be responsible for any loss, interruption, account impact, missing content, transaction history, messages, files, records, or other consequences caused by this deletion request.</p>
+          </div>
           <div class="err-msg" id="topicErr"></div>
         </div>
 
@@ -1073,12 +1114,6 @@
       <a href="index.html" class="foot-logo"><img src="assets/favicon.png" alt="Tuunganes" /><span>Tuunganes</span></a>
       <p>&copy; 2025 Tuunganes &nbsp;·&nbsp; Bukavu &amp; Goma, DRC</p>
       <div style="display:flex;gap:1rem">
-        <a href="about.html" style="font-size:.82rem;color:var(--muted)" data-en="About" data-fr="À propos"
-          data-de="Über uns">About</a>
-        <a href="services/services.html" style="font-size:.82rem;color:var(--muted)" data-en="Services"
-          data-fr="Services" data-de="Leistungen">Services</a>
-        <a href="contact.html" style="font-size:.82rem;color:var(--blue)" data-en="Contact" data-fr="Contact"
-          data-de="Kontakt">Contact</a>
         <a href="privacy.html" style="font-size:.82rem;color:var(--muted)" data-en="Privacy Policy"
           data-fr="Politique de confidentialité" data-de="Datenschutz">Privacy Policy</a>
         <a href="terms.html" style="font-size:.82rem;color:var(--muted)" data-en="Terms of Use"
@@ -1138,12 +1173,20 @@
       /* ── URL Parameters ── */
       const params = new URLSearchParams(window.location.search);
       const demoTopic = params.get('demo');
+      const topicSelect = document.getElementById('topic');
+      const deleteWarning = document.getElementById('deleteWarning');
+
+      function syncDeleteWarning() {
+        deleteWarning.classList.toggle('show', topicSelect.value === 'delete_account');
+      }
+
       if (demoTopic) {
-        const topicSelect = document.getElementById('topic');
         if (topicSelect.querySelector(`option[value="${demoTopic}"]`)) {
           topicSelect.value = demoTopic;
         }
       }
+      topicSelect.addEventListener('change', syncDeleteWarning);
+      syncDeleteWarning();
 
       /* ── Form validation ── */
       const form = document.getElementById('contactForm');
@@ -1212,6 +1255,7 @@
         }).then(response => {
           if (response.ok) {
             form.reset();
+            syncDeleteWarning();
             const successMsg = formSuccess.getAttribute('data-' + L) || formSuccess.getAttribute('data-en');
             formSuccess.textContent = successMsg;
             formSuccess.classList.add('show');
